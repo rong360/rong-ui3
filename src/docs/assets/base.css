@@ -1,0 +1,74 @@
+/* color palette from <https://github.com/vuejs/theme> */
+:root {
+ 
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  position: relative;
+  font-weight: normal;
+  background-color: transparent;
+}
+
+img {
+  border: 0 none;
+  vertical-align: bottom;
+}
+
+
+input[type='text'],
+textarea {
+  -webkit-appearance: none;
+}
+
+/* 低版本安卓文本框层级问题 */
+
+input:focus {
+  -webkit-user-modify: read-write-plaintext-only;
+}
+
+/* 清除谷歌浏览器下的 search 叉号 */
+input::-webkit-search-cancel-button {
+  display: none;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input[readonly],
+select[disabled] {
+  color: #999 !important;
+}
+
+a,a:active,
+a:hover,
+a:visited{
+  color: #333;
+  text-decoration: none;
+}
+
+::-webkit-input-placeholder {
+  color:#C8C7CC;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,sans-serif;
+  -webkit-overflow-scrolling: touch;
+}

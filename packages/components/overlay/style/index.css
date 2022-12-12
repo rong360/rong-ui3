@@ -1,0 +1,4 @@
+:root{--r-overlay-background:rgba(0, 0, 0, 0.7)}
+.r-overlay{position:fixed;left:0;top:0;right:0;bottom:0;background-color:var(--r-overlay-background)}
+.r-overlay-fade-enter-active,.r-overlay-fade-leave-active{transition:opacity .55s ease}
+.r-overlay-fade-enter-from,.r-overlay-fade-leave-to{opacity:0}
