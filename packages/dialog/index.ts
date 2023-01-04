@@ -1,4 +1,4 @@
-import { withInstall } from '../../utils';
+import { withInstall } from '../utils';
 import _Dialog from './dialog.vue';
 
 export { $dialog } from './function-call';

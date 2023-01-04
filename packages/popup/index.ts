@@ -1,4 +1,4 @@
-import { withInstall } from '../../utils';
+import { withInstall } from '../utils';
 import _Popup from './popup.vue';
 
 export const Popup = withInstall(_Popup);

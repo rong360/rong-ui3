@@ -23,6 +23,9 @@ export default defineConfig({
       scss: {
         // 加载全局样式
         additionalData: '@import "@packages/styles/variables.scss";@import "@/docs/assets/styles/variables.scss";'
+      },
+      less: {
+        additionalData: '@import "@packages/styles/var.less";'
       }
     },
     postcss: {
@@ -53,6 +56,6 @@ export default defineConfig({
       name: 'rongui3',
       fileName: 'rongui3',
       formats: ['es', 'umd']
-    }
+    },
   }
 });

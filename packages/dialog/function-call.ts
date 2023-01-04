@@ -1,6 +1,6 @@
-import { createApp } from "vue";
-import Dialog from "./dialog.vue";
-import type { DialogProps } from "./types";
+import { createApp } from 'vue';
+import Dialog from './dialog.vue';
+import type { DialogProps } from './types';
 
 type DialogOptions = Partial<DialogProps>;
 
@@ -8,7 +8,7 @@ export const $dialog = (options: DialogOptions, components: any[]) => {
   options = Object.assign(
     {
       show: true,
-      round: true,
+      round: true
     },
     options
   );
@@ -27,6 +27,6 @@ export const $dialog = (options: DialogOptions, components: any[]) => {
   return {
     remove,
     vm,
-    app,
+    app
   };
 };

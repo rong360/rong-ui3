@@ -13,9 +13,9 @@ let importLessStr = ``;
 let components = [];
 
 componentInfo.forEach(component => {
-  importStr += `import ${component.name} from './components/${component.folder}';\n`;
-  exportStr += `export * from './components/${component.folder}';\n`;
-  importLessStr += `import './components/${component.folder}/style/index.less';\n`;
+  importStr += `import ${component.name} from './${component.folder}';\n`;
+  exportStr += `export * from './${component.folder}';\n`;
+  importLessStr += `import './${component.folder}/style/index.less';\n`;
   components.push(component.name);
 })
 

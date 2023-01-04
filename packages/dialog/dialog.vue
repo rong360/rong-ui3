@@ -17,8 +17,8 @@
 <script lang="ts">
 import { defineComponent, ref, watch, onMounted, onUnmounted } from 'vue';
 import Popup, { popupProps } from '../popup';
-import { createNamespace } from '../../utils';
-import { useCurrentInstance } from '../../composables';
+import { createNamespace } from '../utils';
+import { useCurrentInstance } from '../composables';
 
 const { name, bem } = createNamespace('dialog');
 

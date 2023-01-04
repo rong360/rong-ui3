@@ -20,8 +20,8 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, reactive, ref, onMounted, onUnmounted } from 'vue';
-import { createNamespace } from '../../utils';
-import { preventscroll } from '../../directives';
+import { createNamespace } from '../utils';
+import { preventscroll } from '../directives';
 
 const { name, bem } = createNamespace('flex-fixed');
 

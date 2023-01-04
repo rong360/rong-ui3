@@ -10,16 +10,9 @@
 import { defineComponent, computed } from 'vue';
 import type { CSSProperties } from 'vue';
 
-import { preventscroll } from '../../directives';
+import { preventscroll } from '../directives';
 
-import {
-  createNamespace,
-  truthProp,
-  makeStringProp,
-  makeNumberProp,
-  makeNumericProp,
-  makeObjectProp
-} from '../../utils';
+import { createNamespace, truthProp, makeStringProp, makeNumberProp, makeNumericProp, makeObjectProp } from '../utils';
 
 const { name, bem, prefixCls } = createNamespace('overlay');
 

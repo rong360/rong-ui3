@@ -2,7 +2,7 @@ import { camelize } from '../utils';
 const componentPrefix = 'r';
 
 // 修饰符类型
-export type modsType = Record<string, boolean> | Array<string | Record<string, boolean>>;
+type modsType = Record<string, boolean> | Array<string | Record<string, boolean>>;
 
 function genBem(name: string, mods: string): string;
 function genBem(name: string, mods?: modsType): string;

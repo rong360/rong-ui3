@@ -37,9 +37,9 @@
 import { defineComponent, ref, watch, computed } from 'vue';
 import type { CSSProperties, ExtractPropTypes } from 'vue';
 // Utils
-import { createNamespace, truthProp, makeStringProp, makeNumberProp, makeNumericProp, makeObjectProp } from '../../utils';
+import { createNamespace, truthProp, makeStringProp, makeNumberProp, makeNumericProp, makeObjectProp } from '../utils';
 // Directives
-import { preventscroll } from '../../directives';
+import { preventscroll } from '../directives';
 // Components
 import Overlay from '../overlay';
 // Types

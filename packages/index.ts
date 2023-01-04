@@ -1,18 +1,18 @@
 import type { App } from 'vue';
-import Dialog from './components/dialog';
-import FlexFixed from './components/flex-fixed';
-import Overlay from './components/overlay';
-import Popup from './components/popup';
+import Dialog from './dialog';
+import FlexFixed from './flex-fixed';
+import Overlay from './overlay';
+import Popup from './popup';
 
-import './components/dialog/style/index.less';
-import './components/flex-fixed/style/index.less';
-import './components/overlay/style/index.less';
-import './components/popup/style/index.less';
+import './dialog/style/index.less';
+import './flex-fixed/style/index.less';
+import './overlay/style/index.less';
+import './popup/style/index.less';
 
-export * from './components/dialog';
-export * from './components/flex-fixed';
-export * from './components/overlay';
-export * from './components/popup';
+export * from './dialog';
+export * from './flex-fixed';
+export * from './overlay';
+export * from './popup';
 
 const install = (app: App): void => {
   const components = [Dialog, FlexFixed, Overlay, Popup];

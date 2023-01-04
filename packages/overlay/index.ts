@@ -1,4 +1,4 @@
-import { withInstall } from '../../utils';
+import { withInstall } from '../utils';
 import _Overlay from './overlay.vue';
 
 export const Overlay = withInstall(_Overlay);

@@ -1,4 +1,4 @@
-import { withInstall } from '../../utils';
+import { withInstall } from '../utils';
 import _FlexFixed from './flex-fixed.vue';
 
 export const FlexFixed = withInstall(_FlexFixed);

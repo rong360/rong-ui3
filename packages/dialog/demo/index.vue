@@ -1,5 +1,8 @@
 <template>
-  <div> this is dialog demo <r-dialog v-model:show="showDialog"></r-dialog></div>
+  <div>
+    this is dialog demo
+    <dialog2 v-model:show="showDialog"></dialog2
+  ></div>
 </template>
 
 <script setup lang="ts">

@@ -7,7 +7,7 @@ let importStr = `import type { App } from 'vue';\n`;
 let components = [];
 
 componentInfo.forEach(component => {
-  importStr += `import ${component.name} from './components/${component.folder}/index.d.ts';\n`;
+  importStr += `import ${component.name} from './${component.folder}';\n`;
   components.push(component.name);
 })
 

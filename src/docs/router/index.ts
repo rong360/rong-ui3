@@ -18,9 +18,9 @@ const routes: Array<RouteRecordRaw> = [
 
 // 中文路由
 const cnRoutes: Array<RouteRecordRaw> = [];
-const cnDocs = import.meta.glob('/packages/components/**/doc.md');
+const cnDocs = import.meta.glob('/packages/**/README.md');
 for (const path in cnDocs) {
-  const name = (path.match(/\/packages\/components\/(.*)\/doc.md/) as any[])[1];
+  const name = (path.match(/\/packages\/(.*)\/README.md/) as any[])[1];
   cnRoutes.push({
     path: '/zh-CN/component/' + name,
     component: cnDocs[path]
@@ -35,9 +35,9 @@ routes.push({
 
 // 英文路由
 const enRoutes: Array<RouteRecordRaw> = [];
-const enDocs = import.meta.glob('/packages/**/doc.en-US.md');
+const enDocs = import.meta.glob('/packages/**/README.en-US.md');
 for (const path in enDocs) {
-  const name = (path.match(/\/packages\/(.*)\/doc.en-US.md/) as any[])[1];
+  const name = (path.match(/\/packages\/(.*)\/README.en-US.md/) as any[])[1];
   enRoutes.push({
     path: '/en-US/component/' + name,
     component: enDocs[path]
