@@ -70,7 +70,7 @@ export default defineConfig({
         additionalData: '@import "@packages/styles/variables.scss";@import "@/docs/assets/styles/variables.scss";'
       },
       less: {
-        additionalData: '@import "@packages/styles/var.less";'
+        additionalData: '@import "@packages/styles/variables.less";'
       }
     },
     postcss: {

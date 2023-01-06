@@ -1,7 +1,7 @@
 <template>
   <div>
     this is dialog demo
-    <dialog2 v-model:show="showDialog"></dialog2
+    <r-dialog v-model:show="showDialog" overlay-class="sss" teleport="body"></r-dialog
   ></div>
 </template>
 

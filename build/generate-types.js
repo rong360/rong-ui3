@@ -11,7 +11,7 @@ componentInfo.forEach(component => {
   components.push(component.name);
 })
 
-fse.outputFileSync(path.resolve(__dirname, '../dist/types/index.d.ts'),
+fse.outputFileSync(path.resolve(__dirname, '../release/types/index.d.ts'),
   `${importStr}
 export { ${components.join(', ')} };
 

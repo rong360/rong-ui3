@@ -25,7 +25,7 @@ export default defineConfig({
         additionalData: '@import "@packages/styles/variables.scss";@import "@/docs/assets/styles/variables.scss";'
       },
       less: {
-        additionalData: '@import "@packages/styles/var.less";'
+        additionalData: '@import "@packages/styles/variables.less";'
       }
     },
     postcss: {
@@ -40,6 +40,7 @@ export default defineConfig({
   },
   build: {
     minify: false,
+    outDir: 'release',
     rollupOptions: {
       external: ['vue', 'vue-router'],
       output: {
@@ -53,8 +54,8 @@ export default defineConfig({
     },
     lib: {
       entry: 'packages/index.ts',
-      name: 'rongui3',
-      fileName: 'rongui3',
+      name: 'rong-ui3',
+      fileName: 'rong-ui3',
       formats: ['es', 'umd']
     },
   }

@@ -1,4 +1,15 @@
-@import './var.less';
-@import './dialog.less';
-@import '../../popup/style/index.less';
+//:: @import '../../popup/style/index.less';
 
+:root {
+  --r-dialog-border-radius: 16px !important;
+  --r-dialog-font-size: 14px;
+  --r-dialog-background-color: #fff;
+}
+
+.r-dialog {
+  width: 270px;
+  overflow: hidden;
+  border-radius: var(--r-dialog-border-radius);
+  font-size: var(--r-dialog-font-size);
+  background-color: var(--r-dialog-background-color);
+}

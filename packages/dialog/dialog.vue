@@ -6,6 +6,8 @@
     :position="position"
     :close-on-click-overlay="closeOnClickOverlay"
     :popup-class="[`${bem()}`, className]"
+    :overlay-class="overlayClass"
+    :overlay-style="overlayStyle"
     @click-overlay="clickOverlay"
     @closed="PopupClosed"
     v-model:show="showDialog"

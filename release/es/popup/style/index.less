@@ -1,10 +1,12 @@
-@popupCls: ~'@{comps-prefix}-popup';
+@import '../../styles/variables.less';
+@import '../../overlay/style/index.less';
+
 :root {
   --r-popup-background-color:  #fff;
   --r-popup-border-radius: 6px;
 }
 
-.@{popupCls} {
+.r-popup {
   position: fixed;
   box-sizing: border-box;
   background-color: var(--r-popup-background-color);

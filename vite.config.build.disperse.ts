@@ -57,7 +57,7 @@ export default defineConfig({
       include: componentInfo.map((component: Record<string, string>) =>
         path.resolve(__dirname, `./packages/${component.folder}`)
       ),
-      outputDir: path.resolve(__dirname, './dist/types')
+      outputDir: path.resolve(__dirname, './release/types')
     })
   ],
   resolve: {
@@ -76,7 +76,7 @@ export default defineConfig({
         globals: {
           vue: 'Vue'
         },
-        dir: path.resolve(__dirname, './dist/es'),
+        dir: path.resolve(__dirname, './release/es'),
         entryFileNames: '[name]/index.js',
         plugins: []
       }

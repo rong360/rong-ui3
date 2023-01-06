@@ -21,7 +21,7 @@ const install = (app: App): void => {
   });
 };
 
-const version = '0.0.0';
+const version = '0.0.1';
 
 export { install, version, Dialog, FlexFixed, Overlay, Popup };
 export default { install, version };

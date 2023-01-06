@@ -5,39 +5,27 @@ const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
 var lessBaseImport = require('gulp-less-base-import');
 
-// index.less -> index.css
-function less2css(done) {
-  gulp
-    .src('./packages/**/style/index.less')
-    .pipe(lessBaseImport('./packages/styles/var.less'))
-    .pipe(less()) // 处理less文件
-    .pipe(autoprefixer()) // 根据browserslistrc增加前缀
-    .pipe(cleanCSS({ format: 'keep-breaks', compatibility: 'ie8' }))
-    .pipe(gulp.dest('./dist/es'));
-  done();
-}
-
-// copyLess && add index.js css.js entry
-function copyLess(done) {
-  gulp
+// copyLess && add index.js  css.js entry
+gulp.task('copyLess', function () {
+  return gulp
     .src('./packages/*/style/*.less')
     .pipe(
       through2.obj(function z(file, encoding, next) {
-        let indexJs = file.clone();
-        let cssJs = file.clone();
         if (file.path.match(/(\/|\\)style(\/|\\)index\.less/)) {
           // add index.js 用于加载.less文件
+          let indexJs = file.clone();
           indexJs.contents = Buffer.from(`import './index.less';\n`);
           indexJs.path = indexJs.path.replace(/index\.less/, 'index.js');
           this.push(indexJs);
 
           // add css.js 用于加载.css文件
-          cssJs.contents = Buffer.from(`"use strict";\nrequire("./index.css");\n`);
+          let cssJs = file.clone();
+          cssJs.contents = Buffer.from(`import './index.css';\n`);
           cssJs.path = cssJs.path.replace(/index\.less/, 'css.js');
           this.push(cssJs);
 
           // add global less && component depends on less
-          let fileContens = `@import '../../styles/var.less';\n${file.contents.toString()}`;
+          let fileContens = `@import '../../styles/variables.less';\n${file.contents.toString()}`;
           fileContens = fileContens.replace(/\/\/::\s*/, '');
           file.contents = Buffer.from(fileContens);
         }
@@ -45,15 +33,26 @@ function copyLess(done) {
         next();
       })
     )
-    .pipe(gulp.dest('./dist/es'));
-  done();
-}
+    .pipe(gulp.dest('./release/es'));
+});
 
-function copyStyles(done) {
-  gulp.src('./packages/styles/**/*.less').pipe(gulp.dest('./dist/es/styles'));
-  done();
-}
+gulp.task('copyStyles', function () {
+  return gulp.src('./packages/styles/**/*.less').pipe(gulp.dest('./release/es/styles'));
+});
 
-const buildStyles = gulp.series(copyLess, copyStyles, less2css);
+// index.less -> index.css
+gulp.task('less2css', function () {
+  return (
+    gulp
+      .src('./release/**/style/index.less')
+      // .pipe(lessBaseImport('./packages/styles/variables.less'))
+      .pipe(less()) // 处理less文件
+      .pipe(autoprefixer()) // 根据browserslistrc增加前缀
+      .pipe(cleanCSS({ format: 'keep-breaks', compatibility: 'ie8' }))
+      .pipe(gulp.dest('./release'))
+  );
+});
+
+const buildStyles = gulp.series('copyLess', 'copyStyles', 'less2css');
 
 exports.buildStyles = buildStyles;

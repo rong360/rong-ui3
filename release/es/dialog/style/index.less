@@ -1,4 +1,5 @@
-@dialogCls: ~'@{comps-prefix}-dialog';
+@import '../../styles/variables.less';
+@import '../../popup/style/index.less';
 
 :root {
   --r-dialog-border-radius: 16px !important;
@@ -6,7 +7,7 @@
   --r-dialog-background-color: #fff;
 }
 
-.@{dialogCls} {
+.r-dialog {
   width: 270px;
   overflow: hidden;
   border-radius: var(--r-dialog-border-radius);

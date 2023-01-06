@@ -1,0 +1,16 @@
+@keyframes moving {
+from {
+    transform: translateX(100%);
+}
+to {
+    transform: translateX(var(--18e92a65));
+}
+}
+@-webkit-keyframes moving {
+from {
+    -webkit-transform: translateX(100%);
+}
+to {
+    transform: translateX(var(--18e92a65));
+}
+}
