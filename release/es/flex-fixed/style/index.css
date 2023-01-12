@@ -1,5 +1,0 @@
-.r-flex-fixed{display:flex;flex-direction:column;height:100%;position:relative}
-.r-flex-fixed__main{display:block;flex:1;width:100%;overflow-x:hidden;overflow-y:scroll;-webkit-overflow-scrolling:touch;background-attachment:local;background-size:contain;background-repeat:no-repeat}
-.r-flex-fixed.r-flex-fixed--usefixed .r-flex-fixed__footercopy,.r-flex-fixed.r-flex-fixed--usefixed .r-flex-fixed__headercopy{opacity:0}
-.r-flex-fixed.r-flex-fixed--usefixed .r-flex-fixed__footer,.r-flex-fixed.r-flex-fixed--usefixed .r-flex-fixed__header{position:fixed;left:0;right:0;z-index:2}
-.r-flex-fixed.r-flex-fixed--usefixed .r-flex-fixed__footer{bottom:0}
