@@ -17,7 +17,7 @@
     <div class="doc-component-container">
       <router-view></router-view>
     </div>
-    <div class="doc-component-simulator">
+    <div class="doc-component-simulator scroll-area">
       <div class="doc-component-simulator__phone">
         <div class="doc-component-simulator__phone-status-bar">
           <img src="../../assets/images/phtitle.png" />

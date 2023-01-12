@@ -1,9 +1,9 @@
 /*!
-* rong-ui3 v0.0.1 Fri Jan 06 2023 18:43:11 GMT+0800 (中国标准时间)
+* rong-ui3 v0.0.1 Thu Jan 12 2023 17:43:35 GMT+0800 (中国标准时间)
 * (c) 2022 @jdf2e.
 * Released under the MIT License.
 */
-import { p as preventscroll, c as createNamespace, _ as _export_sfc, w as withInstall } from "../_plugin-vue_export-helper.a7bd363e.mjs";
+import { p as preventscroll, c as createNamespace, _ as _export_sfc, w as withInstall } from "../_plugin-vue_export-helper.fbb6b36e.mjs";
 import { defineComponent, toRefs, reactive, ref, onMounted, onUnmounted, resolveDirective, withDirectives, openBlock, createElementBlock, normalizeClass, createElementVNode, renderSlot, createCommentVNode } from "vue";
 const { name, bem } = createNamespace("flex-fixed");
 function scrollDirection(scrollTop, maxScrollTop, preScrollTop) {

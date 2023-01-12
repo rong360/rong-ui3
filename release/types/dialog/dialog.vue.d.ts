@@ -1,6 +1,6 @@
 export declare const dialogProps: {
-    message: (StringConstructor | ObjectConstructor | FunctionConstructor)[];
-    className: (StringConstructor | ObjectConstructor | ArrayConstructor)[];
+    message: (ObjectConstructor | StringConstructor | FunctionConstructor)[];
+    className: (ObjectConstructor | StringConstructor | ArrayConstructor)[];
     removeDialogOnHashChange: {
         type: BooleanConstructor;
         default: boolean;
@@ -29,7 +29,7 @@ export declare const dialogProps: {
         type: import("vue").PropType<import("vue").CSSProperties>;
         default: () => {};
     };
-    popupClass: (StringConstructor | ObjectConstructor | ArrayConstructor)[];
+    popupClass: (ObjectConstructor | StringConstructor | ArrayConstructor)[];
     zIndex: {
         type: (StringConstructor | NumberConstructor)[];
         default: number;
@@ -49,8 +49,8 @@ export declare const dialogProps: {
     transition: StringConstructor;
 };
 declare const _sfc_main: import("vue").DefineComponent<{
-    message: (StringConstructor | ObjectConstructor | FunctionConstructor)[];
-    className: (StringConstructor | ObjectConstructor | ArrayConstructor)[];
+    message: (ObjectConstructor | StringConstructor | FunctionConstructor)[];
+    className: (ObjectConstructor | StringConstructor | ArrayConstructor)[];
     removeDialogOnHashChange: {
         type: BooleanConstructor;
         default: boolean;
@@ -79,7 +79,7 @@ declare const _sfc_main: import("vue").DefineComponent<{
         type: import("vue").PropType<import("vue").CSSProperties>;
         default: () => {};
     };
-    popupClass: (StringConstructor | ObjectConstructor | ArrayConstructor)[];
+    popupClass: (ObjectConstructor | StringConstructor | ArrayConstructor)[];
     zIndex: {
         type: (StringConstructor | NumberConstructor)[];
         default: number;
@@ -102,9 +102,9 @@ declare const _sfc_main: import("vue").DefineComponent<{
     showDialog: import("vue").Ref<boolean>;
     clickOverlay: (e: MouseEvent) => void;
     PopupClosed: () => void;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clickOverlay" | "update:show")[], "clickOverlay" | "update:show", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
-    message: (StringConstructor | ObjectConstructor | FunctionConstructor)[];
-    className: (StringConstructor | ObjectConstructor | ArrayConstructor)[];
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:show" | "clickOverlay")[], "update:show" | "clickOverlay", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+    message: (ObjectConstructor | StringConstructor | FunctionConstructor)[];
+    className: (ObjectConstructor | StringConstructor | ArrayConstructor)[];
     removeDialogOnHashChange: {
         type: BooleanConstructor;
         default: boolean;
@@ -133,7 +133,7 @@ declare const _sfc_main: import("vue").DefineComponent<{
         type: import("vue").PropType<import("vue").CSSProperties>;
         default: () => {};
     };
-    popupClass: (StringConstructor | ObjectConstructor | ArrayConstructor)[];
+    popupClass: (ObjectConstructor | StringConstructor | ArrayConstructor)[];
     zIndex: {
         type: (StringConstructor | NumberConstructor)[];
         default: number;

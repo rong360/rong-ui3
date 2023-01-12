@@ -1,13 +1,8 @@
 <script setup lang="ts">
-import { RouterView, useRouter } from 'vue-router';
-const router = useRouter();
-const onBack = () => {
-  router.back();
-};
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
-  <span @click="onBack">sdf9s</span>
   <RouterView />
 </template>
 

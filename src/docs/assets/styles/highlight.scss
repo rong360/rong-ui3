@@ -3,10 +3,10 @@ code {
   display: block;
   padding: 16px;
   overflow-x: auto;
-  color: $nutui-doc-code-color;
+  color: #58727e;
   font-weight: 400;
   font-size: 14px;
-  font-family: $nutui-doc-code-font-family;
+  font-family: 'Source Code Pro', 'Monaco', 'Inconsolata';
   line-height: 26px;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -15,7 +15,7 @@ code {
   border-radius: 16px;
 
   span {
-    font-family: $nutui-doc-code-font-family;
+    font-family: 'Source Code Pro', 'Monaco', 'Inconsolata';
   }
 }
 

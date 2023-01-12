@@ -1,5 +1,4 @@
 const pkg = require('../package.json');
-const siteConfig = require('../config/site.json');
 const fse = require('fs-extra');
 const path = require('path');
 const glob = require('glob')

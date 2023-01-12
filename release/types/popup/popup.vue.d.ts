@@ -25,7 +25,7 @@ export declare const popupProps: {
         type: import("vue").PropType<CSSProperties>;
         default: () => {};
     };
-    popupClass: (StringConstructor | ObjectConstructor | ArrayConstructor)[];
+    popupClass: (ObjectConstructor | StringConstructor | ArrayConstructor)[];
     zIndex: {
         type: (StringConstructor | NumberConstructor)[];
         default: number;
@@ -70,7 +70,7 @@ declare const _sfc_main: import("vue").DefineComponent<{
         type: import("vue").PropType<CSSProperties>;
         default: () => {};
     };
-    popupClass: (StringConstructor | ObjectConstructor | ArrayConstructor)[];
+    popupClass: (ObjectConstructor | StringConstructor | ArrayConstructor)[];
     zIndex: {
         type: (StringConstructor | NumberConstructor)[];
         default: number;
@@ -101,7 +101,7 @@ declare const _sfc_main: import("vue").DefineComponent<{
         zIndex: string | number;
     } & CSSProperties>;
     transitionName: import("vue").ComputedRef<string>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("clickOverlay" | "update:show" | "opened" | "closed" | "open" | "close")[], "clickOverlay" | "update:show" | "opened" | "closed" | "open" | "close", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("close" | "update:show" | "clickOverlay" | "opened" | "closed" | "open")[], "close" | "update:show" | "clickOverlay" | "opened" | "closed" | "open", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<ExtractPropTypes<{
     show: BooleanConstructor;
     overlay: {
         type: BooleanConstructor;
@@ -126,7 +126,7 @@ declare const _sfc_main: import("vue").DefineComponent<{
         type: import("vue").PropType<CSSProperties>;
         default: () => {};
     };
-    popupClass: (StringConstructor | ObjectConstructor | ArrayConstructor)[];
+    popupClass: (ObjectConstructor | StringConstructor | ArrayConstructor)[];
     zIndex: {
         type: (StringConstructor | NumberConstructor)[];
         default: number;
@@ -146,11 +146,11 @@ declare const _sfc_main: import("vue").DefineComponent<{
     transition: StringConstructor;
 }>> & {
     "onUpdate:show"?: (...args: any[]) => any;
+    onClose?: (...args: any[]) => any;
     onClickOverlay?: (...args: any[]) => any;
     onOpened?: (...args: any[]) => any;
     onClosed?: (...args: any[]) => any;
     onOpen?: (...args: any[]) => any;
-    onClose?: (...args: any[]) => any;
 }, {
     show: boolean;
     zIndex: string | number;

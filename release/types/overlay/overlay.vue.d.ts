@@ -61,7 +61,7 @@ declare const _sfc_main: import("vue").DefineComponent<{
         transitionDuration: string;
         zIndex: string | number;
     } & CSSProperties>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:show" | "click")[], "update:show" | "click", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "update:show")[], "click" | "update:show", import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, Readonly<import("vue").ExtractPropTypes<{
     show: BooleanConstructor;
     className: StringConstructor;
     customStyle: {
@@ -89,8 +89,8 @@ declare const _sfc_main: import("vue").DefineComponent<{
         default: true;
     };
 }>> & {
-    "onUpdate:show"?: (...args: any[]) => any;
     onClick?: (...args: any[]) => any;
+    "onUpdate:show"?: (...args: any[]) => any;
 }, {
     show: boolean;
     customStyle: CSSProperties;

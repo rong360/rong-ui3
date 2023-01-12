@@ -3,7 +3,5 @@
 </script>
 
 <template>
-  <main>
-    this is home
-  </main>
+  <main> this is demo home </main>
 </template>

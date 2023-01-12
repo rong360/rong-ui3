@@ -38,8 +38,8 @@ export declare const Overlay: {
                 default: true;
             };
         }>> & {
-            "onUpdate:show"?: (...args: any[]) => any;
             onClick?: (...args: any[]) => any;
+            "onUpdate:show"?: (...args: any[]) => any;
         } & import("vue").VNodeProps & import("vue").AllowedComponentProps & import("vue").ComponentCustomProps, "show" | "customStyle" | "zIndex" | "animate" | "duration" | "transition" | "closeOnClickOverlay">;
         $attrs: {
             [x: string]: unknown;
@@ -52,7 +52,7 @@ export declare const Overlay: {
         }>;
         $root: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}>>;
         $parent: import("vue").ComponentPublicInstance<{}, {}, {}, {}, {}, {}, {}, {}, false, import("vue").ComponentOptionsBase<any, any, any, any, any, any, any, any, any, {}>>;
-        $emit: (event: "update:show" | "click", ...args: any[]) => void;
+        $emit: (event: "click" | "update:show", ...args: any[]) => void;
         $el: any;
         $options: import("vue").ComponentOptionsBase<Readonly<import("vue").ExtractPropTypes<{
             show: BooleanConstructor;
@@ -82,8 +82,8 @@ export declare const Overlay: {
                 default: true;
             };
         }>> & {
-            "onUpdate:show"?: (...args: any[]) => any;
             onClick?: (...args: any[]) => any;
+            "onUpdate:show"?: (...args: any[]) => any;
         }, {
             bem: (el?: string | (Record<string, boolean> | (string | Record<string, boolean>)[]), mods?: Record<string, boolean> | (string | Record<string, boolean>)[]) => string;
             onClick: (e: MouseEvent) => void;
@@ -91,7 +91,7 @@ export declare const Overlay: {
                 transitionDuration: string;
                 zIndex: string | number;
             } & import("vue").CSSProperties>;
-        }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:show" | "click")[], string, {
+        }, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "update:show")[], string, {
             show: boolean;
             customStyle: import("vue").CSSProperties;
             zIndex: string | number;
@@ -147,8 +147,8 @@ export declare const Overlay: {
             default: true;
         };
     }>> & {
-        "onUpdate:show"?: (...args: any[]) => any;
         onClick?: (...args: any[]) => any;
+        "onUpdate:show"?: (...args: any[]) => any;
     } & import("vue").ShallowUnwrapRef<{
         bem: (el?: string | (Record<string, boolean> | (string | Record<string, boolean>)[]), mods?: Record<string, boolean> | (string | Record<string, boolean>)[]) => string;
         onClick: (e: MouseEvent) => void;
@@ -188,8 +188,8 @@ export declare const Overlay: {
         default: true;
     };
 }>> & {
-    "onUpdate:show"?: (...args: any[]) => any;
     onClick?: (...args: any[]) => any;
+    "onUpdate:show"?: (...args: any[]) => any;
 }, {
     bem: (el?: string | (Record<string, boolean> | (string | Record<string, boolean>)[]), mods?: Record<string, boolean> | (string | Record<string, boolean>)[]) => string;
     onClick: (e: MouseEvent) => void;
@@ -197,7 +197,7 @@ export declare const Overlay: {
         transitionDuration: string;
         zIndex: string | number;
     } & import("vue").CSSProperties>;
-}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("update:show" | "click")[], "update:show" | "click", {
+}, unknown, {}, {}, import("vue").ComponentOptionsMixin, import("vue").ComponentOptionsMixin, ("click" | "update:show")[], "click" | "update:show", {
     show: boolean;
     customStyle: import("vue").CSSProperties;
     zIndex: string | number;

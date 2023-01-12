@@ -22,14 +22,15 @@ const cnDocs = import.meta.glob('/packages/**/README.md');
 for (const path in cnDocs) {
   const name = (path.match(/\/packages\/(.*)\/README.md/) as any[])[1];
   cnRoutes.push({
-    path: '/zh-CN/component/' + name,
+    path: name,
     component: cnDocs[path]
   });
 }
 
 routes.push({
-  path: '/zh-CN/component',
+  path: '/zh-CN/component/',
   component: Component,
+  redirect: '/zh-CN/component/dialog',
   children: cnRoutes
 });
 
@@ -39,7 +40,7 @@ const enDocs = import.meta.glob('/packages/**/README.en-US.md');
 for (const path in enDocs) {
   const name = (path.match(/\/packages\/(.*)\/README.en-US.md/) as any[])[1];
   enRoutes.push({
-    path: '/en-US/component/' + name,
+    path: name,
     component: enDocs[path]
   });
 }

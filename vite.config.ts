@@ -67,7 +67,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         // 加载全局样式
-        additionalData: '@import "@packages/styles/variables.scss";@import "@/docs/assets/styles/variables.scss";'
+        additionalData: '@import "@/docs/assets/styles/variables.scss";'
       },
       less: {
         additionalData: '@import "@packages/styles/variables.less";'
