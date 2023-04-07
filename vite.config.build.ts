@@ -2,6 +2,7 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import pkg from './package.json';
+import replace from '@rollup/plugin-replace';
 
 const banner = `/*!
 * ${pkg.name} v${pkg.version} ${new Date()}
@@ -49,7 +50,14 @@ export default defineConfig({
           vue: 'Vue'
         },
         plugins: [],
-        exports: 'named'
+        exports: 'named',
+        // chunkFileNames: '[name].js'
+        chunkFileNames: (chunkInfo) => {
+          if (chunkInfo.facadeModuleId?.includes('icon')) {
+            return `icons/[name].js`;
+          }
+          return `[name].js`;
+        }
       }
     },
     lib: {
@@ -57,6 +65,6 @@ export default defineConfig({
       name: 'rong-ui3',
       fileName: 'rong-ui3',
       formats: ['es', 'umd']
-    },
+    }
   }
 });

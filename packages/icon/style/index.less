@@ -1,0 +1,20 @@
+:root {
+  --loading-spin-animation: loadingCircle  1s infinite linear;
+}
+
+.r-icon {
+  display: inline-flex;
+  svg {
+    display: inline-block;
+  }
+  &--spin {
+    animation: var(--loading-spin-animation);
+  }
+}
+
+@keyframes loadingCircle {
+  100%{
+    -webkit-transform:rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

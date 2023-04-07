@@ -12,6 +12,8 @@ const banner = `/*!
 * Released under the MIT License.
 */`;
 
+const camelize = (str: string) => str.replace(/-(\w)/g, (_, c) => c.toUpperCase());
+
 const input: Record<string, string> = {};
 
 componentInfo.forEach((component: Record<string, string>) => {
@@ -57,7 +59,23 @@ export default defineConfig({
       include: componentInfo.map((component: Record<string, string>) =>
         path.resolve(__dirname, `./packages/${component.folder}`)
       ),
-      outputDir: path.resolve(__dirname, './release/types')
+      outputDir: path.resolve(__dirname, './release/types'),
+      beforeWriteFile: (filePath: string, content: string) => {
+        const name = filePath.split('/').slice(-2)[0];
+        if (filePath.indexOf('index.d.ts') > -1) {
+          content = `import IndexVue from './index.vue';\n
+          ${content}
+          declare module 'vue' {
+            interface GlobalComponents {
+              R${camelize(`-${name}`)}: typeof IndexVue;
+            }
+          }`;
+        }
+        return {
+          filePath,
+          content
+        };
+      }
     })
   ],
   resolve: {
@@ -78,6 +96,13 @@ export default defineConfig({
         },
         dir: path.resolve(__dirname, './release/es'),
         entryFileNames: '[name]/index.js',
+        // chunkFileNames: '[name].js',
+        chunkFileNames: (chunkInfo) => {
+          if (chunkInfo.facadeModuleId?.includes('icon')) {
+            return `icons/[name].js`;
+          }
+          return `[name].js`;
+        },
         plugins: []
       }
     },

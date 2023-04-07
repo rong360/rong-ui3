@@ -2,14 +2,14 @@
   <teleport :to="teleport" :disabled="teleport === undefined">
     <Overlay
       :class="overlayClass"
-      :custom-style="overlayStyle"
+      :style="overlayStyle"
       :close-on-click-overlay="closeOnClickOverlay"
       :animate="animate"
       :duration="duration"
       :transition="overlayTransition"
       :z-index="zIndex"
       @click="clickOverlay"
-      v-model:show="showPopup"
+      v-model:show="isPopupShow"
       v-if="overlay"
     ></Overlay>
     <Transition
@@ -21,12 +21,7 @@
       @after-leave="afterLeave"
       appear
     >
-      <div
-        :class="[bem({ round: round, [position]: true }), popupClass]"
-        :style="style"
-        v-preventscroll
-        v-show="showPopup"
-      >
+      <div :class="[bem({ [position]: true, round }), popupClass]" :style="style" v-preventscroll v-show="isPopupShow">
         <slot></slot>
       </div>
     </Transition>
@@ -36,36 +31,32 @@
 <script lang="ts">
 import { defineComponent, ref, watch, computed } from 'vue';
 import type { CSSProperties, ExtractPropTypes } from 'vue';
-// Utils
-import { createNamespace, truthProp, makeStringProp, makeNumberProp, makeNumericProp, makeObjectProp } from '../utils';
-// Directives
+import { createNamespace, truthProp, makeStringProp, makeNumberProp, makeObjectProp, makeStyleProp } from '../utils';
 import { preventscroll } from '../directives';
-// Components
 import Overlay from '../overlay';
-// Types
-import type { PopupPosition } from './types';
 
 const { name, bem, prefixCls } = createNamespace('popup');
 
 export const popupProps = {
   show: Boolean,
   overlay: truthProp,
-  overlayClass: String,
-  overlayStyle: makeObjectProp<CSSProperties>(),
+  overlayClass: [String, Array, Object],
+  overlayStyle: makeStyleProp(),
   overlayTransition: String,
   closeOnClickOverlay: truthProp,
   position: makeStringProp<PopupPosition>('center'),
-  round: Boolean,
   popupStyle: makeObjectProp<CSSProperties>(),
   popupClass: [String, Array, Object],
-  zIndex: makeNumericProp(1000),
+  zIndex: makeNumberProp(1000),
   teleport: [String, Element],
+  round: truthProp,
   animate: truthProp,
   duration: makeNumberProp(0.5),
   transition: String
 };
 
 export type PopupProps = ExtractPropTypes<typeof popupProps>;
+export type PopupPosition = 'top' | 'right' | 'bottom' | 'left' | 'center';
 
 export default defineComponent({
   name,
@@ -75,11 +66,11 @@ export default defineComponent({
   components: { Overlay },
   setup(props, { emit }) {
     // 显示与隐藏
-    const showPopup = ref(props.show);
+    const isPopupShow = ref(props.show);
     watch(
       () => props.show,
       (newVal) => {
-        showPopup.value = newVal;
+        isPopupShow.value = newVal;
       }
     );
 
@@ -96,7 +87,7 @@ export default defineComponent({
       emit('closed');
       emit('update:show', false);
     };
-    const clickOverlay = (e: MouseEvent) => {
+    const clickOverlay = (e: TouchEvent) => {
       emit('clickOverlay', e);
     };
 
@@ -116,7 +107,7 @@ export default defineComponent({
 
     return {
       bem,
-      showPopup,
+      isPopupShow,
       beforeEnter,
       afterEnter,
       beforeLeave,

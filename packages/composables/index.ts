@@ -1,1 +1,2 @@
-export * from "./useCurrentInstance";
+export * from './useCurrentInstance';
+export * from './useEventListener';

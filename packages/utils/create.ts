@@ -43,15 +43,10 @@ function createBEM(name: string) {
 }
 
 function createNamespace(name: string) {
-  // 组件样式 flexfixed -> r-flexfixed
-  // const prefixCls = `${componentPrefix}-${name.toLowerCase().replace(/-(\w)/g, (_, c) => c)}`;
-
-  // 组件命名 flex-fixed -> RFlexfixed
-  // const prefixName = camelize(`-${componentPrefix}-${name.replace('-', '')}`.toLowerCase());
   const prefixedName = `r-${name}`;
 
   return {
-    name: prefixedName,
+    name: camelize(`-${prefixedName}`), //r-flex-fixed -> RFlexFixed
     prefixedName,
     prefixCls: prefixedName,
     bem: createBEM(prefixedName)

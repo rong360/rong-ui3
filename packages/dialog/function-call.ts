@@ -1,32 +1,21 @@
-import { createApp } from 'vue';
-import Dialog from './dialog.vue';
-import type { DialogProps } from './types';
+import { render, h } from 'vue';
+import Dialog, { type DialogProps } from './index.vue';
 
-type DialogOptions = Partial<DialogProps>;
+export type $Dialog = (props: Partial<DialogProps>) => { remove: () => void };
 
-export const $dialog = (options: DialogOptions, components: any[]) => {
-  options = Object.assign(
+export const $dialog: $Dialog = (props) => {
+  props = Object.assign(
     {
-      show: true,
-      round: true
+      show: true
     },
-    options
+    props
   );
-  // Append DOM
-  const frag = document.createDocumentFragment() as unknown as Element;
-  const app = createApp(Dialog, options);
-  app.config.globalProperties.from$dialog = true;
-  components.forEach((component) => app.use(component));
-  const vm = app.mount(frag);
-  document.body.append(frag);
+  const instance = h(Dialog, { ...props, from$dialog: true }) as any;
+  render(instance, document.body);
 
-  // Remove
-  type VM = typeof vm & { showDialog: boolean };
-  const remove = () => ((vm as VM).showDialog = false);
+  const remove = () => (instance.component.proxy.isDialogShow = false);
 
   return {
-    remove,
-    vm,
-    app
+    remove
   };
 };

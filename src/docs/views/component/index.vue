@@ -1,16 +1,12 @@
 <template>
   <div class="doc-component">
     <div class="doc-component-nav">
-      <div class="doc-component-nav__group">
-        <div class="doc-component-nav__title">操作反馈</div>
-        <div class="doc-component-nav__item">
-          <router-link to="/zh-CN/component/dialog">Dialog <span>对话框</span></router-link>
-        </div>
-        <div class="doc-component-nav__item">
-          <router-link to="/zh-CN/component/flex-fixed">FlexFixed <span>布局</span></router-link>
-        </div>
-        <div class="doc-component-nav__item">
-          <router-link to="/zh-CN/component/popup">Popup <span>布局</span></router-link>
+      <div class="doc-component-nav__group" v-for="item in componentConfig" :key="item.enName">
+        <div class="doc-component-nav__title">{{ item.name }}</div>
+        <div class="doc-component-nav__item" v-for="component in item.packages" :key="component.name">
+          <router-link :to="`/zh-CN/component/${kebabCase(component.name)}`"
+            >{{ component.name }} <span>{{ component.cName }}</span></router-link
+          >
         </div>
       </div>
     </div>
@@ -32,6 +28,8 @@
 <script lang="ts" setup>
 import { ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
+import { kebabCase } from '@/docs/utils';
+import componentConfig from '../../../../config/component.json';
 
 const demoUrl = ref('');
 const route = useRoute();

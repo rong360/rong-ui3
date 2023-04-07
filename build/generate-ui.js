@@ -2,20 +2,21 @@ const pkg = require('../package.json');
 const fse = require('fs-extra');
 const path = require('path');
 const glob = require('glob')
-const componentInfo = require('./getComponentInfo')
-
-const camelize = (str) => str.replace(/-(\w)/g, (_, c) => c.toUpperCase());
+const componentInfo = require('./getComponentInfo');
 
 let importStr = `import type { App } from 'vue';\n`;
 let exportStr = ``;
 let importLessStr = ``;
+let globalComponentsStr = ``
 let components = [];
 
 componentInfo.forEach(component => {
-  importStr += `import ${component.name} from './${component.folder}';\n`;
-  exportStr += `export * from './${component.folder}';\n`;
-  importLessStr += `import './${component.folder}/style/index.less';\n`;
-  components.push(component.name);
+  let { name, folder } = component
+  importStr += `import ${name} from './${folder}';\n`;
+  exportStr += `export * from './${folder}';\n`;
+  importLessStr += `import './${folder}/style/index.less';\n`;
+  globalComponentsStr += `R${name}: typeof ${name};\n`
+  components.push(name);
 })
 
 let installFunction = `const install = (app: App): void => {
@@ -24,6 +25,12 @@ let installFunction = `const install = (app: App): void => {
     app.use(component);
   });
 };`;
+
+let globalComponentInterface = `declare module 'vue' {
+  interface GlobalComponents {
+    ${globalComponentsStr}
+  }
+}`
 
 // let fileStrBuild = `${importStr}
 // ${exportStr}
@@ -40,7 +47,8 @@ let installFunction = `const install = (app: App): void => {
 let fileStrDev = `${importStr}
 ${importLessStr}
 ${exportStr}
-${installFunction}\n
+${installFunction}
+${globalComponentInterface}
 const version = '${pkg.version}';\n
 export { install, version, ${components.join(', ')} };
 export default { install, version };

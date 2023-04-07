@@ -8,24 +8,23 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-import type { CSSProperties } from 'vue';
-
+import type { ExtractPropTypes } from 'vue';
 import { preventscroll } from '../directives';
-
-import { createNamespace, truthProp, makeStringProp, makeNumberProp, makeNumericProp, makeObjectProp } from '../utils';
+import { createNamespace, truthProp, makeStringProp, makeNumberProp } from '../utils';
 
 const { name, bem, prefixCls } = createNamespace('overlay');
 
 export const overlayProps = {
   show: Boolean,
   className: String,
-  customStyle: makeObjectProp<CSSProperties>(),
-  zIndex: makeNumericProp(1000),
+  zIndex: makeNumberProp(1000),
   animate: truthProp,
   duration: makeNumberProp(0.5),
   transition: makeStringProp(`${prefixCls}-fade`),
   closeOnClickOverlay: truthProp
 };
+
+export type OverlayProps = ExtractPropTypes<typeof overlayProps>;
 
 export default defineComponent({
   name,
@@ -33,7 +32,7 @@ export default defineComponent({
   emits: ['click', 'update:show'],
   directives: { preventscroll },
   setup(props, { emit }) {
-    const onClick = (e: MouseEvent) => {
+    const onClick = (e: TouchEvent) => {
       emit('click', e);
       if (props.closeOnClickOverlay) {
         emit('update:show', false);
@@ -41,13 +40,10 @@ export default defineComponent({
     };
 
     const style = computed(() => {
-      return Object.assign(
-        {
-          transitionDuration: `${props.duration}s`,
-          zIndex: props.zIndex
-        },
-        props.customStyle
-      );
+      return {
+        transitionDuration: `${props.duration}s`,
+        zIndex: props.zIndex
+      };
     });
 
     return {

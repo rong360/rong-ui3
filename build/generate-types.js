@@ -1,7 +1,7 @@
 const pkg = require('../package.json');
 const fse = require('fs-extra');
 const path = require('path');
-const componentInfo = require('./getComponentInfo')
+const componentInfo = require('./getComponentInfo');
 
 let importStr = `import type { App } from 'vue';\n`;
 let components = [];

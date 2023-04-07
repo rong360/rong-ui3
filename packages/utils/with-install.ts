@@ -1,5 +1,5 @@
 import type { Component, App, Plugin } from 'vue';
-import { camelize } from '../utils';
+// import { camelize } from '../utils';
 
 // type WithInstall<T> = T & {
 //   install(app: App): void;
@@ -50,14 +50,29 @@ export function withInstall<T extends Component>(options: InstallOptions) {
 //   return comp as SFCWithInstall<T>;
 // };
 
-type SFCWithInstall<T> = T & Plugin;
+// type SFCWithInstall<T> = T & Plugin;
 
-export const withInstall = <T>(comp: T) => {
-  (comp as SFCWithInstall<T>).install = (app: App) => {
+export const withInstall = <T, K>(comp: T, instanceMethods?: K) => {
+  // type Comp = SFCWithInstall<T> & K;
+  type Comp = T & K & Plugin;
+  (comp as Comp).install = (app: App) => {
     const { name } = comp as any;
     if (name) {
-      app.component(camelize(`-${name}`), comp as Component);
+      app.component(name, comp as Comp);
+    }
+    for (const key in instanceMethods) {
+      app.config.globalProperties[key] = instanceMethods[key];
     }
   };
-  return comp as SFCWithInstall<T>;
+  return Object.assign(comp as Comp, instanceMethods);
 };
+
+// export const withInstall222 = <T>(comp: T) => {
+//   (comp as SFCWithInstall<T>).install = (app: App) => {
+//     const { name } = comp as any;
+//     if (name) {
+//       app.component(camelize(`-${name}`), comp as Component);
+//     }
+//   };
+//   return comp as SFCWithInstall<T>;
+// };

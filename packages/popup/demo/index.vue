@@ -1,5 +1,3 @@
 <template>
-  <div>
-    thiisi is  popup
-  </div>
+  <div> thiisi is popup </div>
 </template>
