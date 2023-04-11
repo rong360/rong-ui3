@@ -52,19 +52,26 @@ export function withInstall<T extends Component>(options: InstallOptions) {
 
 // type SFCWithInstall<T> = T & Plugin;
 
-export const withInstall = <T, K>(comp: T, instanceMethods?: K) => {
-  // type Comp = SFCWithInstall<T> & K;
-  type Comp = T & K & Plugin;
-  (comp as Comp).install = (app: App) => {
-    const { name } = comp as any;
-    if (name) {
-      app.component(name, comp as Comp);
-    }
+/**
+ * 在组件上添加全局注册方法和实例方法的高阶函数
+ * @param component 要添加方法的组件
+ * @param instanceMethods 要添加到组件实例上的方法
+ * @returns
+ */
+export const withInstall = <T extends Component, K extends object>(
+  component: T,
+  instanceMethods?: K
+): T & K & Plugin => {
+  const comp = component as T & K & Plugin;
+  comp.install = (app: App) => {
+    const { name } = comp;
+    if (name) app.component(name, comp);
     for (const key in instanceMethods) {
       app.config.globalProperties[key] = instanceMethods[key];
     }
   };
-  return Object.assign(comp as Comp, instanceMethods);
+  // 返回添加方法后的组件对象
+  return Object.assign(comp, instanceMethods);
 };
 
 // export const withInstall222 = <T>(comp: T) => {

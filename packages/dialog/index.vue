@@ -1,5 +1,5 @@
 <template>
-  <Popup
+  <r-popup
     :animate="animate"
     :teleport="teleport"
     :position="position"
@@ -27,12 +27,13 @@
     <div :class="bem('footer')" :style="footerStyle" v-if="showConfirmBtn || showCancelBtn">
       <r-icon />dsfdf<r-icon name="close" />dfsf<r-icon name="closeCircle"></r-icon><r-icon name="loading"></r-icon>
     </div>
-  </Popup>
+  </r-popup>
 </template>
 
 <script lang="ts">
 import { defineComponent, ref, watch, render, type ExtractPropTypes } from 'vue';
 import Popup, { popupProps } from '../popup';
+import Icon from '../icon';
 import { createNamespace, truthProp, makeStringProp, makeStyleProp } from '../utils';
 import { useEventListener, useCustomEvent } from '../composables';
 
@@ -60,7 +61,8 @@ export default defineComponent({
   name,
   props: dialogProps,
   components: {
-    Popup
+    [Popup.name]: Popup,
+    [Icon.name]: Icon
   },
   emits: ['clickOverlay', 'update:show'],
   setup(props, { emit, attrs }) {

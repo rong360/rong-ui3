@@ -1,0 +1,31 @@
+@import './base.css';
+
+
+a.router-link-active,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+}
+
+#app {
+  height: 100%;
+}
+.demo {
+  min-height: 100vh;
+  padding: 0 15px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  &__item {
+    >dt {
+      font-size: 14px;
+      color: #909ca4;
+      padding: 30px 0 10px 10px;
+    }
+    > dd {
+      .row:not(:first-child) {
+        margin-top: 10px;
+      }
+    }
+  }
+}

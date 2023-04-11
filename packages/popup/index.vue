@@ -1,6 +1,6 @@
 <template>
   <teleport :to="teleport" :disabled="teleport === undefined">
-    <Overlay
+    <r-overlay
       :class="overlayClass"
       :style="overlayStyle"
       :close-on-click-overlay="closeOnClickOverlay"
@@ -11,7 +11,7 @@
       @click="clickOverlay"
       v-model:show="isPopupShow"
       v-if="overlay"
-    ></Overlay>
+    ></r-overlay>
     <Transition
       :css="animate"
       :name="transitionName"
@@ -63,7 +63,9 @@ export default defineComponent({
   props: popupProps,
   emits: ['clickOverlay', 'update:show', 'opened', 'closed', 'open', 'close'],
   directives: { preventscroll },
-  components: { Overlay },
+  components: {
+    [Overlay.name]: Overlay
+  },
   setup(props, { emit }) {
     // 显示与隐藏
     const isPopupShow = ref(props.show);

@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 import RongUi3 from '../../packages';
+import './assets/main.less';
 // import RongUi3 from 'rong-ui3';
 // import 'rong-ui3/style.css';
 // import 'rong-ui3/es/dialog/style/css.js';

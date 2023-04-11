@@ -19,7 +19,7 @@ const routes: Array<RouteRecordRaw> = [
 // 中文路由
 const cnRoutes: Array<RouteRecordRaw> = [];
 const cnDocs = import.meta.glob('/packages/**/doc/README.md');
-console.log(cnDocs)
+
 for (const path in cnDocs) {
   const name = (path.match(/\/packages\/(.*)\/doc\/README.md/) as any[])[1];
   cnRoutes.push({

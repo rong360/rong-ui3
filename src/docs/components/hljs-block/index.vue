@@ -1,5 +1,5 @@
 <template>
-  <pre ref="preRef"><code v-html="code" :class="codeClass"></code></pre>
+  <pre ref="preRef" class="hljs-block"><code v-html="code" :class="codeClass"></code></pre>
 </template>
 
 <script setup lang="ts">
@@ -29,3 +29,10 @@ onMounted(() => {
   // preRef.value && preRef.value.parentElement && (preRef.value.parentElement.className = 'hljs-wrap');
 });
 </script>
+
+<style lang="less">
+.hljs-block {
+  max-height: 400px;
+  overflow-y: auto;
+}
+</style>

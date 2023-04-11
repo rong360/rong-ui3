@@ -31,10 +31,10 @@ export const makeStyleProp = (defaultVal?: CSSProperties) => ({
   type: Object as PropType<CSSProperties>,
   default: () => defaultVal || {}
 });
-// export const makeBooleanProp = (defaultVal: Boolean = true) => ({
-//   type: Boolean,
-//   default: defaultVal
-// });
+export const makeBooleanProp = (defaultVal: Boolean = true) => ({
+  type: Boolean,
+  default: defaultVal
+});
 export const truthProp = {
   type: Boolean,
   default: true as const

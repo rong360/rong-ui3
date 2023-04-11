@@ -18,6 +18,7 @@ import Preview from './preview.vue'
 
 
 
+
 <h3>安装1</h3>
 <HljsBlock :code="demo2"></HljsBlock>
 

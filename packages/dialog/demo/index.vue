@@ -13,8 +13,8 @@ import { ref, onMounted, getCurrentInstance, h, type ComponentOptions } from 'vu
 // import { useRouter } from 'vue-router';
 // import { Dialog as Dialog2 } from 'rong-ui3';
 import Message from './Message.vue';
-// import { Dialog } from '../../index';
-// const { $dialog } = Dialog;
+import { Dialog } from '../../index';
+const { $dialog } = Dialog;
 
 const app = getCurrentInstance();
 const isDialogVisible = ref(true);
@@ -41,9 +41,9 @@ onMounted(() => {});
 const handleClick = () => {
   // console.log(Dialog);
   // const dialog = app?.appContext.config.globalProperties.$dialog({});
-  // $dialog({
-  //   message: 'SDDF'
-  // });
+  $dialog({
+    message: 'hello'
+  });
 
   setTimeout(() => {
     // dialog.remove();
