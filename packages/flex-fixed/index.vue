@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, reactive, ref, onMounted, onUnmounted } from 'vue';
-import { createNamespace } from '../utils';
+import { createNamespace, withInstall } from '../utils';
 import { preventscroll } from '../directives';
 
 const { name, bem } = createNamespace('flex-fixed');
@@ -42,7 +42,7 @@ function scrollDirection(scrollTop: number, maxScrollTop: number, preScrollTop: 
   return direction;
 }
 
-export default defineComponent({
+const FlexFixed = defineComponent({
   name,
   props: {
     hideFooterOnKeyboardShow: {
@@ -120,4 +120,6 @@ export default defineComponent({
     };
   }
 });
+
+export default withInstall(FlexFixed);
 </script>

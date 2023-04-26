@@ -21,7 +21,7 @@
       @after-leave="afterLeave"
       appear
     >
-      <div :class="[bem({ [position]: true, round }), popupClass]" :style="style" v-preventscroll v-show="isPopupShow">
+      <div :class="classes.root" :style="style" v-preventscroll v-show="isPopupShow">
         <slot></slot>
       </div>
     </Transition>
@@ -29,28 +29,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, computed } from 'vue';
-import type { CSSProperties, ExtractPropTypes } from 'vue';
-import { createNamespace, truthProp, makeStringProp, makeNumberProp, makeObjectProp, makeStyleProp } from '../utils';
+import { defineComponent, ref, watch, computed, reactive } from 'vue';
+import type { ExtractPropTypes } from 'vue';
+import { createNamespace, makeBooleanProp, makeStringProp, makeNumberProp, makeStyleProp, withInstall } from '../utils';
 import { preventscroll } from '../directives';
-import Overlay from '../overlay';
+import Overlay from '../overlay/index.vue';
 
 const { name, bem, prefixCls } = createNamespace('popup');
 
 export const popupProps = {
   show: Boolean,
-  overlay: truthProp,
+  overlay: makeBooleanProp(),
   overlayClass: [String, Array, Object],
   overlayStyle: makeStyleProp(),
   overlayTransition: String,
-  closeOnClickOverlay: truthProp,
+  closeOnClickOverlay: makeBooleanProp(false),
   position: makeStringProp<PopupPosition>('center'),
-  popupStyle: makeObjectProp<CSSProperties>(),
+  popupStyle: makeStyleProp(),
   popupClass: [String, Array, Object],
   zIndex: makeNumberProp(1000),
   teleport: [String, Element],
-  round: truthProp,
-  animate: truthProp,
+  round: makeBooleanProp(),
+  animate: makeBooleanProp(),
   duration: makeNumberProp(0.5),
   transition: String
 };
@@ -58,7 +58,7 @@ export const popupProps = {
 export type PopupProps = ExtractPropTypes<typeof popupProps>;
 export type PopupPosition = 'top' | 'right' | 'bottom' | 'left' | 'center';
 
-export default defineComponent({
+const Popup = defineComponent({
   name,
   props: popupProps,
   emits: ['clickOverlay', 'update:show', 'opened', 'closed', 'open', 'close'],
@@ -67,6 +67,10 @@ export default defineComponent({
     [Overlay.name]: Overlay
   },
   setup(props, { emit }) {
+    const classes = reactive({
+      root: computed(() => [bem({ [props.position]: true, round: props.round }), props.popupClass])
+    });
+
     // 显示与隐藏
     const isPopupShow = ref(props.show);
     watch(
@@ -108,7 +112,7 @@ export default defineComponent({
     });
 
     return {
-      bem,
+      classes,
       isPopupShow,
       beforeEnter,
       afterEnter,
@@ -120,4 +124,6 @@ export default defineComponent({
     };
   }
 });
+
+export default withInstall(Popup);
 </script>

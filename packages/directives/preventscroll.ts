@@ -10,7 +10,7 @@
  * </div>
  * ```
  */
-import type { DirectiveBinding } from "vue";
+import type { DirectiveBinding } from 'vue';
 
 interface DirectiveTarget extends HTMLElement {
   __vueTouchstartHandle__: (e: TouchEvent) => void;
@@ -23,12 +23,12 @@ export const preventscroll = {
     const mouseInfo = {
       startX: 0,
       startY: 0,
-      direction: 0,
+      direction: 0
     };
     const searchScrollArea = (el: HTMLElement | null) => {
       let scrollArea = null;
       while (el) {
-        if (el.className && el.className.indexOf && el.className.indexOf("scroll-area") > -1) {
+        if (el.className && el.className.indexOf && el.className.indexOf('scroll-area') > -1) {
           scrollArea = el;
           break;
         }
@@ -59,17 +59,17 @@ export const preventscroll = {
         e.preventDefault();
         e.stopPropagation();
       }
-      if (typeof binding.value === "function") binding.value(e);
+      if (typeof binding.value === 'function') binding.value(e);
     };
     el.__vueTouchstartHandle__ = touchstartHandler;
     el.__vueTouchmoveHandle__ = touchmoveHandler;
-    el.addEventListener("touchstart", el.__vueTouchstartHandle__, { passive: false });
-    el.addEventListener("touchmove", el.__vueTouchmoveHandle__, { passive: false });
+    el.addEventListener('touchstart', el.__vueTouchstartHandle__, { passive: false });
+    el.addEventListener('touchmove', el.__vueTouchmoveHandle__, { passive: false });
   },
   unmounted(el: DirectiveTarget) {
-    el.removeEventListener("touchstart", el.__vueTouchstartHandle__);
-    el.removeEventListener("touchmove", el.__vueTouchmoveHandle__);
-  },
+    el.removeEventListener('touchstart', el.__vueTouchstartHandle__);
+    el.removeEventListener('touchmove', el.__vueTouchmoveHandle__);
+  }
 };
 
 // 获得角度

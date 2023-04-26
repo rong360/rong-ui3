@@ -63,6 +63,14 @@ export default defineConfig({
       '@packages': fileURLToPath(new URL('./packages', import.meta.url))
     }
   },
+  // 配置/api代理
+  server: {
+    host: '0.0.0.0', //ip地址
+    open: false, //vite项目启动时自动打开浏览器
+    port: 8080, //vite项目启动时自定义端口
+    hmr: true, //开启热更新
+    proxy: {}
+  },
   css: {
     preprocessorOptions: {
       scss: {
@@ -70,7 +78,7 @@ export default defineConfig({
         additionalData: '@import "@/docs/assets/styles/variables.scss";'
       },
       less: {
-        additionalData: '@import "@packages/styles/variables.less";'
+        additionalData: '@import "@packages/styles/variables.less";@import "@packages/styles/base.less";'
       }
     },
     postcss: {

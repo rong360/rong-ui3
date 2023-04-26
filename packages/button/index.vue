@@ -1,18 +1,18 @@
 <template>
-  <div :class="bem(classes)" @click="handleClick">
-    <div :class="bem('content')">
+  <div :class="classes.root" @click="handleClick">
+    <div :class="classes.content">
       <slot name="prepend"></slot>
-      <span :class="bem('text', { prepend: !!$slots.prepend, append: !!$slots.append })">
+      <div :class="classes.text">
         <slot></slot>
-      </span>
+      </div>
       <slot name="append"></slot>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, type ExtractPropTypes, computed } from 'vue';
-import { createNamespace, makeStringProp, makeBooleanProp } from '../utils';
+import { defineComponent, type ExtractPropTypes, computed, reactive } from 'vue';
+import { createNamespace, makeStringProp, makeBooleanProp, withInstall } from '../utils';
 import type { ButtonShape, ButtonSize, ButtonType } from './type';
 
 const { name, bem } = createNamespace('button');
@@ -28,22 +28,26 @@ export const buttonProps = {
 
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>;
 
-export default defineComponent({
+const Button = defineComponent({
   name,
   props: buttonProps,
   emits: ['click'],
-  setup(props, { emit }) {
-    const classes = computed(() => {
-      return [
-        props.type,
-        props.shape,
-        props.size,
-        {
-          disabled: props.disabled,
-          plain: props.plain,
-          block: props.block
-        }
-      ];
+  setup(props, { emit, slots }) {
+    const classes = reactive({
+      root: computed(() =>
+        bem([
+          props.type,
+          props.shape,
+          props.size,
+          {
+            disabled: props.disabled,
+            plain: props.plain,
+            block: props.block
+          }
+        ])
+      ),
+      content: computed(() => bem('content')),
+      text: computed(() => bem('text', { prepend: !!slots.prepend, append: !!slots.append }))
     });
 
     const handleClick = (event: MouseEvent) => {
@@ -53,10 +57,11 @@ export default defineComponent({
     };
 
     return {
-      bem,
       classes,
       handleClick
     };
   }
 });
+
+export default withInstall(Button);
 </script>

@@ -4,38 +4,40 @@
     :teleport="teleport"
     :position="position"
     :close-on-click-overlay="closeOnClickOverlay"
-    :popup-class="[`${bem()}`, popupClass]"
+    :popup-class="classes.popup"
     :popup-style="popupStyle"
-    :overlay-class="[`${bem()}-overlay`, overlayClass]"
+    :overlay-class="classes.overlay"
     :overlay-style="overlayStyle"
     :round="round"
     @click-overlay="clickOverlay"
     @closed="popupClosed"
     v-model:show="isDialogShow"
   >
-    <div :class="bem('header')" :style="headerStyle" v-if="$slots.header || title">
+    <div :class="classes.header" :style="headerStyle" v-if="$slots.header || title">
       <slot name="header">{{ title }}</slot>
     </div>
-
-    <div :class="bem('content')" :style="contentStyle">
+    <r-icon name="close" :class="classes.close" @click="isDialogShow = false" v-if="showCloseButton" />
+    <div :class="classes.content" :style="contentStyle">
       <slot>
         <div v-if="typeof message === 'string'" v-html="message"></div>
         <component v-else :is="message" />
       </slot>
     </div>
-
-    <div :class="bem('footer')" :style="footerStyle" v-if="showConfirmBtn || showCancelBtn">
-      <r-icon />dsfdf<r-icon name="close" />dfsf<r-icon name="closeCircle"></r-icon><r-icon name="loading"></r-icon>
+    <div :class="classes.footer" :style="footerStyle" v-if="showConfirmButton || showCancelButton">
+      <r-button :class="classes.cancel" shape="square" v-if="showCancelButton">取消</r-button>
+      <r-button :class="classes.confirm" shape="square" v-if="showConfirmButton">确认</r-button>
     </div>
   </r-popup>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, watch, render, type ExtractPropTypes } from 'vue';
-import Popup, { popupProps } from '../popup';
-import Icon from '../icon';
-import { createNamespace, truthProp, makeStringProp, makeStyleProp } from '../utils';
+import { defineComponent, ref, watch, render, type ExtractPropTypes, reactive, computed } from 'vue';
+import Popup, { popupProps } from '../popup/index.vue';
+import Icon from '../icon/index.vue';
+import Button from '../button/index.vue';
+import { createNamespace, makeStringProp, makeStyleProp, makeBooleanProp, withInstall } from '../utils';
 import { useEventListener, useCustomEvent } from '../composables';
+import { $dialog, type $Dialog } from './function-call';
 
 const { name, bem } = createNamespace('dialog');
 
@@ -43,11 +45,12 @@ export const dialogProps = {
   ...popupProps,
   title: makeStringProp(''),
   headerStyle: makeStyleProp(),
+  showCloseButton: makeBooleanProp(),
   message: [String, Object, Function],
   contentStyle: makeStyleProp(),
   footerStyle: makeStyleProp(),
-  showConfirmBtn: truthProp,
-  showCancelBtn: truthProp
+  showConfirmButton: makeBooleanProp(),
+  showCancelButton: makeBooleanProp()
   // onClickOverlay: Function,
   // 自定义类名
   // className: [String, Array, Object]
@@ -56,16 +59,31 @@ export const dialogProps = {
 
 export type DialogProps = ExtractPropTypes<typeof dialogProps>;
 
-export default defineComponent({
+const Dialog = defineComponent({
   inheritAttrs: false,
   name,
   props: dialogProps,
   components: {
     [Popup.name]: Popup,
-    [Icon.name]: Icon
+    [Icon.name]: Icon,
+    [Button.name]: Button
   },
   emits: ['clickOverlay', 'update:show'],
-  setup(props, { emit, attrs }) {
+  setup(props, { emit, attrs, slots }) {
+    const classes = reactive({
+      close: computed(() => bem('close')),
+      popup: computed(() => [`${bem()}`, props.popupClass]),
+      overlay: computed(() => [`${bem()}-overlay`, props.overlayClass]),
+      header: computed(() => bem('header')),
+      content: computed(() => bem('content', { 'has-title': !!slots.header || !!props.title })),
+      footer: computed(() => [bem('footer'), 'r-hairline--top']),
+      cancel: computed(() => bem('cancel')),
+      confirm: computed(() => [
+        bem('confirm'),
+        { 'r-hairline--left': props.showConfirmButton && props.showCancelButton }
+      ])
+    });
+
     // 显示与隐藏
     const isDialogShow = ref(props.show);
     watch(
@@ -92,11 +110,13 @@ export default defineComponent({
     };
 
     return {
-      bem,
+      classes,
       isDialogShow,
       clickOverlay,
       popupClosed
     };
   }
 });
+
+export default withInstall(Dialog, { $dialog });
 </script>

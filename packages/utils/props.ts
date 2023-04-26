@@ -22,14 +22,14 @@ export const makeArrayProp = <T>() => ({
   default: () => []
 });
 
-export const makeObjectProp = <T>(defaultVal?: T) => ({
+export const makeObjectProp = <T>() => ({
   type: Object as PropType<T>,
-  default: () => defaultVal || {}
+  default: () => {}
 });
 
-export const makeStyleProp = (defaultVal?: CSSProperties) => ({
+export const makeStyleProp = () => ({
   type: Object as PropType<CSSProperties>,
-  default: () => defaultVal || {}
+  default: () => {}
 });
 export const makeBooleanProp = (defaultVal: Boolean = true) => ({
   type: Boolean,

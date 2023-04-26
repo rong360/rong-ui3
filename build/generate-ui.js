@@ -12,8 +12,8 @@ let components = [];
 
 componentInfo.forEach(component => {
   let { name, folder } = component
-  importStr += `import ${name} from './${folder}';\n`;
-  exportStr += `export * from './${folder}';\n`;
+  importStr += `import ${name} from './${folder}/index.vue';\n`;
+  exportStr += `export * from './${folder}/index.vue';\n`;
   importLessStr += `import './${folder}/style/index.less';\n`;
   globalComponentsStr += `R${name}: typeof ${name};\n`
   components.push(name);

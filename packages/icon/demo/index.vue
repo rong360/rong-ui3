@@ -1,3 +1,3 @@
 <template>
-  <div> demo </div>
+  <div> icon demo </div>
 </template>

@@ -25,8 +25,8 @@ gulp.task('copyLess', function () {
           this.push(cssJs);
 
           // add global less && component depends on less
-          let fileContens = `@import '../../styles/variables.less';\n${file.contents.toString()}`;
-          fileContens = fileContens.replace(/\/\/::\s*/, '');
+          let fileContens = `@import '../../styles/variables.less';\n@import '../../styles/base.less';\n${file.contents.toString()}`;
+          fileContens = fileContens.replace(/\/\/::\s*/g, '');
           file.contents = Buffer.from(fileContens);
         }
         this.push(file);

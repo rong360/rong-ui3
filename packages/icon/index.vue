@@ -1,17 +1,21 @@
 <script lang="ts">
 import { defineComponent, h, defineAsyncComponent } from 'vue';
-import { createNamespace, kebabCase, makeStringProp } from '../utils';
+import { createNamespace, kebabCase, makeStringProp, withInstall } from '../utils';
 const { name } = createNamespace('icon');
 
 const icons = {
   close: defineAsyncComponent(() => import('./close.vue')),
-  closeCircle: defineAsyncComponent(() => import('./close-circle.vue')),
-  loading: defineAsyncComponent(() => import('./loading.vue'))
+  'close-circle': defineAsyncComponent(() => import('./close-circle.vue')),
+  loading: defineAsyncComponent(() => import('./loading.vue')),
+  'arrow-up': defineAsyncComponent(() => import('./arrow-up.vue')),
+  'arrow-down': defineAsyncComponent(() => import('./arrow-down.vue')),
+  'arrow-left': defineAsyncComponent(() => import('./arrow-left.vue')),
+  'arrow-right': defineAsyncComponent(() => import('./arrow-right.vue'))
 };
 
-type IconType = keyof typeof icons;
+export type IconType = keyof typeof icons;
 
-export default defineComponent({
+const Icon = defineComponent({
   name,
   props: {
     name: makeStringProp<IconType>('close'),
@@ -40,4 +44,6 @@ export default defineComponent({
       );
   }
 });
+
+export default withInstall(Icon);
 </script>

@@ -1,19 +1,20 @@
 <template>
-  <div>
+  <div style="height: 3000px;">
     this is dialog demo -- {{ isDialogVisible }}
     <button @click="handleClick">click</button>
-    <r-dialog v-model:show="isDialogVisible" :message="Message" position="center">
-      <template #header> this is header </template>
+    <r-dialog v-model:show="isDialogVisible" :message="Message">
+      <template #header> 标题 </template>
     </r-dialog>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, getCurrentInstance, h, type ComponentOptions } from 'vue';
+import { ref, getCurrentInstance, h, type ComponentOptions } from 'vue';
 // import { useRouter } from 'vue-router';
 // import { Dialog as Dialog2 } from 'rong-ui3';
 import Message from './Message.vue';
 import { Dialog } from '../../index';
+
 const { $dialog } = Dialog;
 
 const app = getCurrentInstance();
@@ -36,13 +37,13 @@ const Message2 = function () {
 };
 
 // const router = useRouter();
-onMounted(() => {});
 
 const handleClick = () => {
   // console.log(Dialog);
   // const dialog = app?.appContext.config.globalProperties.$dialog({});
   $dialog({
-    message: 'hello'
+    title: 'sdfsf',
+    message: 'sdff'
   });
 
   setTimeout(() => {

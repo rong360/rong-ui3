@@ -2,10 +2,7 @@
 
 
 ### 介绍
-
-模态对话框，在浮层中显示，引导用户进行相关操作，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。
-
-弹出框组件支持函数调用和组件调用两种方式。
+弹出模态框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。支持组件调用和函数调用两种方式。
 
 <script setup>
 import demo from './test.vue'
@@ -17,9 +14,20 @@ import Preview from './preview.vue'
 <demo />
 
 
+### 安装
 
+```javascript
+import { createApp } from 'vue';
+import { Dialog } from 'rong-ui3';
 
-<h3>安装1</h3>
+const app = createApp();
+app.use(Dialog);
+```
+
+### 函数调用
+```html
+
+```
 <HljsBlock :code="demo2"></HljsBlock>
 
 

@@ -9,22 +9,24 @@
   --r-dialog-header-font-size: 16px;
   --r-dialog-header-color: rgba(38, 38, 38, 1);
   --r-dialog-header-font-weight: 400;
-  --r-dialog-header-line-height: 48px;
-  --r-dialog-header-border-bottom-color: #d8d9dc;
+  --r-dialog-header-line-height: 24px;
+  --r-dialog-header-padding-top: 15px;
 
   --r-dialog-content-font-size: 12px;
   --r-dialog-content-color: #808080;
   --r-dialog-content-line-height: 16px;
-  --r-dialog-content-padding: 15px;
+  --r-dialog-content-padding: 25px 15px 15px 15px;
+  --r-dialog-content-has-title-padding-top: 15px;
+
+  --r-dialog-button-height: 48px;
+  --r-dialog-button-border-color: #707070;
 }
 
 .r-dialog {
   overflow: hidden;
   font-size: var(--r-dialog-font-size);
   background-color: var(--r-dialog-background-color);
-  display: flex;
-  flex-direction: column;
-  min-height: 156px;
+  box-sizing: border-box;
   &.r-popup--center {
     width: 270px;
   }
@@ -40,13 +42,15 @@
     line-height: var(--r-dialog-header-line-height);
     color: var(--r-dialog-header-color);
     font-weight: var(--r-dialog-header-font-weight);
-    &::after {
-      display: block;
-      content: "";
-      height: 1px;
-      overflow: hidden;
-      background-color: var(--r-dialog-header-border-bottom-color);
-    }
+    padding-top: var(--r-dialog-header-padding-top);
+  }
+  &__close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: 15px;
+    cursor: pointer;
   }
   &__content {
     flex: 1;
@@ -58,9 +62,22 @@
     word-wrap: break-word;
     word-break: break-all;
     white-space: pre-wrap;
+    text-align: center;
+    &--has-title {
+      padding-top: var(--r-dialog-content-has-title-padding-top);
+    }
   }
   &__footer {
     display: flex;
-    justify-content: center;
+    overflow: hidden;
+    border-color: var(--r-dialog-button-border-color);
+    position: relative;
+    box-sizing: border-box;
+  }
+  &__cancel,
+  &__confirm {
+    flex: 1;
+    height: var(--r-dialog-button-height);
+    border: 0;
   }
 }

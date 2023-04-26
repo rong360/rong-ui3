@@ -1,0 +1,105 @@
+:root {
+  --r-divider-text-font-size: 14px;
+  --r-divider-text-color: #707070;
+  --r-divider-horizontal-margin: 16px 0;
+  --r-divider-vertical-margin: 0 8px;
+  --r-divider-content-padding: 16px;
+}
+
+.r-divider {
+  display: flex;
+  align-items: center;
+  font-size: var(--r-divider-text-font-size);
+  color: var(--r-divider-text-color);
+  border-color: var(--r-divider-text-color);
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    border: none;
+    border-width: 1px;
+    border-color: inherit;
+    overflow: hidden;
+  }
+  &--horizontal {
+    &::before,
+    &::after {
+      height: 0;
+      border-top-style: solid;
+    }
+  }
+  &--vertical {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    position: relative;
+    vertical-align: middle;
+    &::before,
+    &::after {
+      width: 0;
+      border-left-style: solid;
+      flex: 1;
+      min-height: 6px;
+    }
+  }
+  // dashed
+  &--horizontal&--dashed {
+    &::before,
+    &::after {
+      border-top-style: dashed;
+    }
+  }
+  &--vertical&--dashed {
+    &::before,
+    &::after {
+      border-left-style: dashed;
+    }
+  }
+  // hairline
+  &--horizontal&--hairline {
+    &::before,
+    &::after {
+      transform: scaleY(0.5);
+    }
+  }
+  &--vertical&--hairline {
+    &::before,
+    &::after {
+      transform: scaleX(0.5);
+    }
+  }
+  // content padding
+  &--horizontal&--hascontent {
+    &::before {
+      margin-right: var(--r-divider-content-padding);
+    }
+    &::after {
+      margin-left: var(--r-divider-content-padding);
+    }
+  }
+  &--vertical&--hascontent {
+    &::before {
+      margin-bottom: var(--r-divider-content-padding);
+    }
+    &::after {
+      margin-top: var(--r-divider-content-padding);
+    }
+  }
+  // margin
+  &--horizontal&--margin {
+    margin: var(--r-divider-horizontal-margin);
+  }
+  &--vertical&--margin {
+    margin: var(--r-divider-vertical-margin);
+  }
+  &--left {
+    &::before {
+      max-width: 10%;
+    }
+  }
+  &--right {
+    &::after {
+      max-width: 10%;
+    }
+  }
+}

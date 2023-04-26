@@ -19,3 +19,10 @@ export const $dialog: $Dialog = (props) => {
     remove
   };
 };
+
+declare module 'vue' {
+  // 使 TypeScript 更好地支持 this.$dialog方式调用
+  interface ComponentCustomProperties {
+    $dialog: $Dialog;
+  }
+}

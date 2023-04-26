@@ -1,37 +1,40 @@
 <template>
-  <transition :name="transition" :css="animate" appear>
-    <div :class="bem()" :style="style" v-preventscroll @click="onClick" v-show="show">
+  <transition :name="transition" :css="cssTransition" appear>
+    <div :class="classes.root" :style="style" v-preventscroll @click="onClick" v-show="show">
       <slot></slot>
     </div>
   </transition>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, reactive } from 'vue';
 import type { ExtractPropTypes } from 'vue';
 import { preventscroll } from '../directives';
-import { createNamespace, truthProp, makeStringProp, makeNumberProp } from '../utils';
+import { createNamespace, makeBooleanProp, makeStringProp, makeNumberProp, withInstall } from '../utils';
 
 const { name, bem, prefixCls } = createNamespace('overlay');
 
 export const overlayProps = {
   show: Boolean,
-  className: String,
   zIndex: makeNumberProp(1000),
-  animate: truthProp,
+  cssTransition: makeBooleanProp(),
   duration: makeNumberProp(0.5),
   transition: makeStringProp(`${prefixCls}-fade`),
-  closeOnClickOverlay: truthProp
+  closeOnClickOverlay: makeBooleanProp()
 };
 
 export type OverlayProps = ExtractPropTypes<typeof overlayProps>;
 
-export default defineComponent({
+const Overlay = defineComponent({
   name,
   props: overlayProps,
   emits: ['click', 'update:show'],
   directives: { preventscroll },
   setup(props, { emit }) {
+    const classes = reactive({
+      root: computed(() => bem())
+    });
+
     const onClick = (e: TouchEvent) => {
       emit('click', e);
       if (props.closeOnClickOverlay) {
@@ -47,10 +50,12 @@ export default defineComponent({
     });
 
     return {
-      bem,
-      onClick,
-      style
+      classes,
+      style,
+      onClick
     };
   }
 });
+
+export default withInstall(Overlay);
 </script>

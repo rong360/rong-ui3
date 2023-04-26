@@ -3,11 +3,13 @@
     <div class="doc-component-nav">
       <div class="doc-component-nav__group" v-for="item in componentConfig" :key="item.enName">
         <div class="doc-component-nav__title">{{ item.name }}</div>
-        <div class="doc-component-nav__item" v-for="component in item.packages" :key="component.name">
-          <router-link :to="`/zh-CN/component/${kebabCase(component.name)}`"
-            >{{ component.name }} <span>{{ component.cName }}</span></router-link
-          >
-        </div>
+        <template v-for="component in item.packages" :key="component.name">
+          <div class="doc-component-nav__item" v-if="component.show">
+            <router-link :to="`/zh-CN/component/${kebabCase(component.name)}`"
+              >{{ component.name }} <span>{{ component.cName }}</span></router-link
+            >
+          </div>
+        </template>
       </div>
     </div>
     <div class="doc-component-container">

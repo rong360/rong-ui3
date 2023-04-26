@@ -61,15 +61,15 @@ export default defineConfig({
       ),
       outputDir: path.resolve(__dirname, './release/types'),
       beforeWriteFile: (filePath: string, content: string) => {
-        const name = filePath.split('/').slice(-2)[0];
-        if (filePath.indexOf('index.d.ts') > -1) {
-          content = `import IndexVue from './index.vue';\n
-          ${content}
+        if (content.indexOf('export default _sfc_main;') > -1) {
+          const name = filePath.split('/').slice(-2)[0];
+          content += `
           declare module 'vue' {
             interface GlobalComponents {
-              R${camelize(`-${name}`)}: typeof IndexVue;
+              R${camelize(`-${name}`)}: typeof _sfc_main;
             }
-          }`;
+          }
+          `;
         }
         return {
           filePath,

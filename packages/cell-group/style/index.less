@@ -1,0 +1,28 @@
+:root {
+  --r-cell-group-title-padding: 16px;
+  --r-cell-group-title-font-size: 14px;
+  --r-cell-group-title-color: #666;
+  --r-cell-group-title-line-height: 16px;
+
+  --r-cell-ground-content-border-radius: 8px;
+}
+
+.r-cell-group {
+  &__title {
+    padding: var(--r-cell-group-title-padding);
+    font-size: var(--r-cell-group-title-font-size);
+    color: var(--r-cell-group-title-color);
+    line-height: var(--r-cell-group-title-line-height);
+  }
+  &__content {
+    overflow: hidden;
+    &--round {
+      border-radius: var(--r-cell-ground-content-border-radius);
+    }
+    .r-cell:last-of-type {
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
