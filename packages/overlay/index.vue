@@ -35,7 +35,7 @@ const Overlay = defineComponent({
       root: computed(() => bem())
     });
 
-    const onClick = (e: TouchEvent) => {
+    const onClick = (e: MouseEvent) => {
       emit('click', e);
       if (props.closeOnClickOverlay) {
         emit('update:show', false);

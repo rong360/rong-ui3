@@ -20,3 +20,63 @@ app.use(OverLay);
   import OverlayBasic from '../demo/OverlayBasic.vue?raw'
 </script>
 <HljsBlock :code="OverlayBasic"></HljsBlock>
+
+
+### 嵌入内容
+通过默认插槽可以在遮罩层上嵌入任意内容。  
+**特别提示：嵌套内容中有滚动区域时，滚动元素需要添加 scroll-area 类名才能滚动。**
+<script setup>
+  import OverlayEmbedContent from '../demo/OverlayEmbedContent.vue?raw'
+</script>
+<HljsBlock :code="OverlayEmbedContent"></HljsBlock>
+
+
+### 设置动画时间
+通过 `duration` 设置遮罩显示/隐藏的时间，单位 `s`
+<script setup>
+  import OverlayDuration from '../demo/OverlayDuration.vue?raw'
+</script>
+<HljsBlock :code="OverlayDuration"></HljsBlock>
+
+
+### 关闭背景渐变
+通过 `css-transition` 设置背景是否添加渐变动画
+<script setup>
+  import OverlayCssTransition from '../demo/OverlayCssTransition.vue?raw'
+</script>
+<HljsBlock :code="OverlayCssTransition"></HljsBlock>
+
+
+### 点击遮罩不关闭
+设置 `close-on-click-overlay` 可控制点击遮罩是否关闭
+<script setup>
+  import OverlayCloseOnClick from '../demo/OverlayCloseOnClick.vue?raw'
+</script>
+<HljsBlock :code="OverlayCloseOnClick"></HljsBlock>
+
+
+## API
+
+### Props
+
+| 参数                   | 说明                 | 类型           | 默认值  |
+|------------------------|--------------------|----------------|---------|
+| v-model:show           | 当前组件是否显示     | Boolean        | `false` |
+| z-index                | 遮罩层级             | String, Number | `1000`  |
+| duration               | 动画时长，单位秒      | String, Number | `0.3`   |
+| css-transition         | 背景是否添加渐变动画 | Boolean        | `true`  |
+| close-on-click-overlay | 是否点击遮罩关闭     | Boolean        | `true`  |
+
+
+### Events
+
+| 事件名 | 说明       | 回调参数          |
+|--------|----------|-------------------|
+| click  | 点击时触发 | event: MouseEvent |
+
+
+### 样式变量
+
+| 名称                   | 默认值             |
+|------------------------|--------------------|
+| --r-overlay-background | rgba(0, 0, 0, 0.7) |

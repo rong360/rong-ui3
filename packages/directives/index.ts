@@ -1,1 +1,1 @@
-export * from "./preventscroll";
+export * from './preventscroll';
