@@ -18,13 +18,13 @@ const routes: Array<RouteRecordRaw> = [
 
 // 中文路由
 const cnRoutes: Array<RouteRecordRaw> = [];
-const cnDocs = import.meta.glob('/packages/**/doc/README.md');
+const cnDoc = import.meta.glob('@/packages/**/doc/README.md');
 
-for (const path in cnDocs) {
+for (const path in cnDoc) {
   const name = (path.match(/\/packages\/(.*)\/doc\/README.md/) as any[])[1];
   cnRoutes.push({
     path: name,
-    component: cnDocs[path]
+    component: cnDoc[path]
   });
 }
 
@@ -37,12 +37,12 @@ routes.push({
 
 // 英文路由
 const enRoutes: Array<RouteRecordRaw> = [];
-const enDocs = import.meta.glob('/packages/**/doc/README.en-US.md');
-for (const path in enDocs) {
+const enDoc = import.meta.glob('@/packages/**/doc/README.en-US.md');
+for (const path in enDoc) {
   const name = (path.match(/\/packages\/(.*)\/doc\/README.en-US.md/) as any[])[1];
   enRoutes.push({
     path: name,
-    component: enDocs[path]
+    component: enDoc[path]
   });
 }
 routes.push({

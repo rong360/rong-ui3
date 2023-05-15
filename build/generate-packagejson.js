@@ -6,7 +6,7 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-const pkgString = `{
+const pkgStr = `{
   "name": "rong-ui3",
   "version": "${pkg.version}",
   "description": "A Vue.js 3.0 UI Toolkit for Web.",
@@ -23,7 +23,7 @@ const pkgString = `{
       "url": "git+https://github.com/rong360/rong-ui3.git"
   },
   "main": "rong-ui3.umd.js",
-  "module": "rong-ui3.mjs",
+  "module": "rong-ui3.es.js",
   "typings": "types/index.d.ts",
   "style": "style.css",
   "dependencies": {},
@@ -37,6 +37,6 @@ const pkgString = `{
   "license": "MIT"
 }`
 
-fse.outputFileSync(resolve('release/package.json'), pkgString)
+fse.outputFileSync(resolve('release/package.json'), pkgStr)
 
 fse.copyFileSync(resolve('README.md'), resolve('release/README.md'))

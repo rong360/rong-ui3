@@ -28,7 +28,7 @@ export const buttonProps = {
 
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>;
 
-const Button = defineComponent({
+export const Button = defineComponent({
   name,
   props: buttonProps,
   emits: ['click'],
@@ -64,4 +64,10 @@ const Button = defineComponent({
 });
 
 export default withInstall(Button);
+
+// declare module 'vue' {
+//   interface GlobalComponents {
+//     RButton: typeof Button;
+//   }
+// }
 </script>

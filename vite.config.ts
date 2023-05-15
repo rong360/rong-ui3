@@ -4,9 +4,14 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import Markdown from 'vite-plugin-md';
-import { compressText } from './src/docs/utils';
+const he = require('he');
+import Components from 'unplugin-vue-components/vite';
+import { RongUIResolver } from 'rong-ui3/resolver';
 
 import hljs from 'highlight.js';
+
+// true 测试src/packages源码, false 测试release包
+const isTestSrcPackages = true;
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -46,7 +51,7 @@ export default defineConfig({
             // 开始标签的 nesting 为 1，结束标签的 nesting 为 -1
             if (tokens[idx].nesting === 1) {
               // opening tag
-              const contentHtml = compressText(tokens[idx + 1].content);
+              const contentHtml = he.encode(tokens[idx + 1].content);
               return `<demo-block data-value="${contentHtml}">` + md.utils.escapeHtml(m[1]) + '\n';
             } else {
               // closing tag
@@ -55,12 +60,14 @@ export default defineConfig({
           }
         });
       }
+    }),
+    Components({
+      resolvers: [RongUIResolver({ from: isTestSrcPackages ? '@/packages/index.ts' : '' })]
     })
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '@packages': fileURLToPath(new URL('./packages', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
   // 配置/api代理
@@ -75,10 +82,10 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         // 加载全局样式
-        additionalData: '@import "@/docs/assets/styles/variables.scss";'
+        additionalData: '@import "@/sites/doc/assets/styles/variables.scss";'
       },
       less: {
-        additionalData: '@import "@packages/styles/variables.less";@import "@packages/styles/base.less";'
+        additionalData: '@import "@/packages/styles/variables.less";@import "@/packages/styles/base.less";'
       }
     },
     postcss: {
@@ -95,12 +102,15 @@ export default defineConfig({
           // to leave 1px alone.
           minPixelValue: 1.01,
           selectorBlackList: ['.r-doc', '.markdown-body'],
-          exclude: ['/docs/']
+          exclude: ['/doc/']
         })
       ]
     }
   },
   build: {
+    target: 'es2021',
+    // cssCodeSplit: false,
+    // cssTarget: ['chrome61'],
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),

@@ -27,7 +27,7 @@ componentConfig.forEach(category => {
     componentInfo.push({
       name: component.name,
       folder,
-      path: path.resolve(__dirname, `../packages/${folder}/index.vue`)
+      path: path.resolve(__dirname, `../src/packages/${folder}/index.vue`)
     })
   })
 })

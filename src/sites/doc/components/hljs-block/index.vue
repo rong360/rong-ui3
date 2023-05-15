@@ -1,5 +1,5 @@
 <template>
-  <pre ref="preRef" class="hljs-block" @click="clcikHandle"><code v-html="code" :class="codeClass"></code></pre>
+  <pre ref="preRef" class="hljs-block" @click.self="clcikHandle"><code v-html="code" :class="codeClass"></code></pre>
 </template>
 
 <script setup lang="ts">
@@ -32,13 +32,11 @@ onMounted(() => {
 
 const clcikHandle = (e: MouseEvent) => {
   const target = e.target as HTMLElement;
-  if (target.className.includes('hljs-block')) {
-    copy(props.code);
-    target.classList.add('code-copy-success');
-    setTimeout(() => {
-      target.classList.remove('code-copy-success');
-    }, 1000);
-  }
+  copy(props.code);
+  target.classList.add('code-copy-success');
+  setTimeout(() => {
+    target.classList.remove('code-copy-success');
+  }, 1000);
 };
 </script>
 

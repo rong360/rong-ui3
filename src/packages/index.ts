@@ -1,4 +1,6 @@
+
 import type { App } from 'vue';
+
 import Button from './button/index.vue';
 import Cell from './cell/index.vue';
 import CellGroup from './cell-group/index.vue';
@@ -35,7 +37,7 @@ const install = (app: App): void => {
     app.use(component);
   });
 };
-declare module 'vue' {
+declare module '@vue/runtime-core' {
   interface GlobalComponents {
     RButton: typeof Button;
 RCell: typeof Cell;

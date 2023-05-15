@@ -2,7 +2,7 @@ import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-rou
 import HomeView from '../views/HomeView.vue';
 
 const routes: Array<RouteRecordRaw> = [];
-const demoPages = import.meta.glob('/packages/*/demo/index.vue');
+const demoPages = import.meta.glob('@/packages/*/demo/index.vue');
 
 routes.push({
   path: '',

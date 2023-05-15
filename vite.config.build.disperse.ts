@@ -1,6 +1,6 @@
 import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
+// import dts from 'vite-plugin-dts';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import pkg from './package.json';
@@ -12,7 +12,7 @@ const banner = `/*!
 * Released under the MIT License.
 */`;
 
-const camelize = (str: string) => str.replace(/-(\w)/g, (_, c) => c.toUpperCase());
+// const camelize = (str: string) => str.replace(/-(\w)/g, (_, c) => c.toUpperCase());
 
 const input: Record<string, string> = {};
 
@@ -23,13 +23,13 @@ componentInfo.forEach((component: Record<string, string>) => {
 // // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    vue()
     //     dts({
     //       insertTypesEntry: false,
     //       copyDtsFiles: false,
     //       cleanVueFileName: false,
     //       outputDir: path.resolve(__dirname, './dist/types'),
-    //       include: path.resolve(__dirname, './packages/components/'),
+    //       include: path.resolve(__dirname, './src/packages/components/'),
     //       beforeWriteFile: (filePath: string, content: string) => {
     //         const fileContent = `import { App, PropType, CSSProperties } from 'vue';
     // declare type Install<T> = T & {
@@ -55,33 +55,33 @@ export default defineConfig({
     //         };
     //       }
     //     })
-    dts({
-      include: componentInfo.map((component: Record<string, string>) =>
-        path.resolve(__dirname, `./packages/${component.folder}`)
-      ),
-      outputDir: path.resolve(__dirname, './release/types'),
-      beforeWriteFile: (filePath: string, content: string) => {
-        if (content.indexOf('export default _sfc_main;') > -1) {
-          const name = filePath.split('/').slice(-2)[0];
-          content += `
-          declare module 'vue' {
-            interface GlobalComponents {
-              R${camelize(`-${name}`)}: typeof _sfc_main;
-            }
-          }
-          `;
-        }
-        return {
-          filePath,
-          content
-        };
-      }
-    })
+
+    // dts({
+    //   include: componentInfo.map((component: Record<string, string>) =>
+    //     path.resolve(__dirname, `./src/packages/${component.folder}`)
+    //   ),
+    //   outputDir: path.resolve(__dirname, './release/types'),
+    //   beforeWriteFile: (filePath: string, content: string) => {
+    //     if (content.indexOf('export default _sfc_main;') > -1) {
+    //       const name = filePath.split('/').slice(-2)[0];
+    //       content += `
+    //       declare module 'vue' {
+    //         interface GlobalComponents {
+    //           R${camelize(`-${name}`)}: typeof _sfc_main;
+    //         }
+    //       }
+    //       `;
+    //     }
+    //     return {
+    //       filePath,
+    //       content
+    //     };
+    //   }
+    // })
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '@packages': fileURLToPath(new URL('./packages', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
   build: {
@@ -95,14 +95,15 @@ export default defineConfig({
           vue: 'Vue'
         },
         dir: path.resolve(__dirname, './release/es'),
-        entryFileNames: '[name]/index.js',
+        entryFileNames: '[name]/index.mjs',
         // chunkFileNames: '[name].js',
         chunkFileNames: (chunkInfo) => {
           if (chunkInfo.facadeModuleId?.includes('icon')) {
-            return `icons/[name].js`;
+            return `icons/[name].mjs`;
           }
-          return `[name].js`;
+          return `[name].mjs`;
         },
+
         plugins: []
       }
     },

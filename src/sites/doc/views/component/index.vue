@@ -30,8 +30,8 @@
 <script lang="ts" setup>
 import { ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
-import { kebabCase } from '@/docs/utils';
-import componentConfig from '../../../../config/component.json';
+import { kebabCase } from '@/sites/doc/utils';
+import componentConfig from '../../../../../config/component.json';
 
 const demoUrl = ref('');
 const route = useRoute();

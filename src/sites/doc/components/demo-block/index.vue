@@ -5,6 +5,7 @@
       <UnExpandIcon v-else @click="toggleEpandIcon"></UnExpandIcon>
     </div>
     <slot></slot>
+    <div class="source-code" style="display: none"><slot name="source-code"></slot></div>
     <div class="demo-block-tools">
       <a :href="jumpHref" class="demo-block-tools__item" target="_blank">
         <img
@@ -41,8 +42,6 @@ import UnExpandIcon from '../icons/UnExpand.vue';
 
 import { getParameters } from 'codesandbox/lib/api/define';
 import { sandboxPackage, sandboxTsConfig, sandboxVite, sandboxHtml, sandboxMainJs } from './sandboxConfig';
-
-import { decompressText } from '../../utils';
 
 // Expand
 const isScroll = ref(false);
@@ -85,7 +84,7 @@ onMounted(() => {
         isBinary: false
       },
       'src/App.vue': {
-        content: decompressText(demoBlock.value?.dataset.value || ''),
+        content: (demoBlock.value?.dataset.value || ''),
         isBinary: false
       }
     }
@@ -98,9 +97,9 @@ const toggleEpandIcon = () => {
 };
 
 const copyCode = () => {
-  const sourceCode = decompressText(demoBlock.value?.dataset.value || '');
+  const sourceCode = (demoBlock.value?.dataset.value || '');
   copy(sourceCode);
-  console.log('复制成功');
+  console.log('复制成功2');
 };
 </script>
 

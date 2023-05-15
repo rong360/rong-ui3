@@ -8,7 +8,7 @@ var lessBaseImport = require('gulp-less-base-import');
 // copyLess && add index.js  css.js entry
 gulp.task('copyLess', function () {
   return gulp
-    .src('./packages/*/style/*.less')
+    .src('./src/packages/*/style/*.less')
     .pipe(
       through2.obj(function z(file, encoding, next) {
         if (file.path.match(/(\/|\\)style(\/|\\)index\.less/)) {
@@ -37,7 +37,7 @@ gulp.task('copyLess', function () {
 });
 
 gulp.task('copyStyles', function () {
-  return gulp.src('./packages/styles/**/*.less').pipe(gulp.dest('./release/es/styles'));
+  return gulp.src('./src/packages/styles/**/*.less').pipe(gulp.dest('./release/es/styles'));
 });
 
 // index.less -> index.css

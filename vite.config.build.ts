@@ -2,7 +2,8 @@ import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import pkg from './package.json';
-import replace from '@rollup/plugin-replace';
+import dts from 'vite-plugin-dts';
+import path from 'path';
 
 const banner = `/*!
 * ${pkg.name} v${pkg.version} ${new Date()}
@@ -12,21 +13,26 @@ const banner = `/*!
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [
+    vue(),
+    dts({
+      include: path.resolve(__dirname, './src/packages'),
+      outputDir: path.resolve(__dirname, './release/types')
+    })
+  ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url)),
-      '@packages': fileURLToPath(new URL('./packages', import.meta.url))
+      '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
   css: {
     preprocessorOptions: {
       scss: {
         // 加载全局样式
-        additionalData: '@import "@/docs/assets/styles/variables.scss";'
+        additionalData: '@import "@/doc/assets/styles/variables.scss";'
       },
       less: {
-        additionalData: '@import "@packages/styles/variables.less";'
+        additionalData: '@import "@/packages/styles/variables.less";'
       }
     },
     postcss: {
@@ -61,10 +67,11 @@ export default defineConfig({
       }
     },
     lib: {
-      entry: 'packages/index.ts',
+      entry: 'src/packages/index.ts',
       name: 'rong-ui3',
       fileName: 'rong-ui3',
-      formats: ['es', 'umd']
-    }
+      formats: ['umd']
+    },
+    emptyOutDir: false
   }
 });
