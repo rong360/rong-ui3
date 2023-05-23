@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, h, defineAsyncComponent } from 'vue';
+import { defineComponent, h, defineAsyncComponent, type ExtractPropTypes } from 'vue';
 import { createNamespace, kebabCase, makeStringProp, withInstall } from '../utils';
 const { name } = createNamespace('icon');
 
@@ -15,13 +15,17 @@ const icons = {
 
 export type IconType = keyof typeof icons;
 
+export const iconProps = {
+  name: makeStringProp<IconType>('close'),
+  color: String,
+  size: [String, Number]
+};
+
+export type IconProps = ExtractPropTypes<typeof iconProps>;
+
 const Icon = defineComponent({
   name,
-  props: {
-    name: makeStringProp<IconType>('close'),
-    color: String,
-    size: [String, Number]
-  },
+  props: iconProps,
   setup(props, { slots }) {
     return () =>
       h(

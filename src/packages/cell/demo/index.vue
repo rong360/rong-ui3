@@ -1,6 +1,6 @@
 <template>
   <div class="demo demo-cell">
-    <CellBasic />
+    <CellBase />
     <CellGroup />
     <CellSize />
     <CellArrow />
@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import CellBasic from './CellBasic.vue';
+import CellBase from './CellBase.vue';
 import CellGroup from './CellGroup.vue';
 import CellSize from './CellSize.vue';
 import CellArrow from './CellArrow.vue';

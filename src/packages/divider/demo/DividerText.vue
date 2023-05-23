@@ -1,5 +1,4 @@
 <template>
-  <demo-item title="展示文本">
-    <r-divider>文本</r-divider>
-  </demo-item>
+  <h2>展示文本</h2>
+  <r-divider>文本</r-divider>
 </template>

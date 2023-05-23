@@ -1,5 +1,4 @@
 <template>
-  <demo-item title="无上下边距">
-    <r-divider :margin="false">文本</r-divider>
-  </demo-item>
+  <h2>无上下边距</h2>
+  <r-divider :margin="false">文本</r-divider>
 </template>

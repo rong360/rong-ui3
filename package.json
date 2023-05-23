@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "checked": "npm run generate:entry",
-    "dev": "npm run checked && vite",
+    "dev": "npm run checked && vite --mode dev",
+    "dev:release": "npm run checked && vite --mode release",
     "build2": "run-p type-check build-only",
     "build:release": "rimraf ./release && npm run checked && vite build --config vite.config.build.ts && npm run generate:es && npm run generate:packagejson && npm run generate:resolver && npm run generate:es-style",
     "build:site": "npm run checked && vite build",

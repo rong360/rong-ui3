@@ -26,8 +26,8 @@ import ButtonSlot from './ButtonSlot.vue';
 
 <style lang="less">
 .demo-button {
-  .demo__item {
-    .r-button:not(:first-child) {
+  .row {
+    .r-button:not(:first-of-type) {
       margin-left: 10px;
     }
   }

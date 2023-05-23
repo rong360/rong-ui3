@@ -17,9 +17,9 @@ app.use(OverLay);
 ### 基础用法
 使用 show 控制遮罩层的显示/隐藏
 <script setup>
-  import OverlayBasic from '../demo/OverlayBasic.vue?raw'
+  import OverlayBase from '../demo/OverlayBase.vue?raw'
 </script>
-<HljsBlock :code="OverlayBasic"></HljsBlock>
+<HljsBlock :code="OverlayBase"></HljsBlock>
 
 
 ### 嵌入内容
@@ -47,12 +47,6 @@ app.use(OverLay);
 <HljsBlock :code="OverlayCssTransition"></HljsBlock>
 
 
-### 点击遮罩不关闭
-设置 `close-on-click-overlay` 可控制点击遮罩是否关闭
-<script setup>
-  import OverlayCloseOnClick from '../demo/OverlayCloseOnClick.vue?raw'
-</script>
-<HljsBlock :code="OverlayCloseOnClick"></HljsBlock>
 
 
 ## API
@@ -65,6 +59,7 @@ app.use(OverLay);
 | z-index                | 遮罩层级             | String, Number | `1000`  |
 | duration               | 动画时长，单位秒      | String, Number | `0.3`   |
 | css-transition         | 背景是否添加渐变动画 | Boolean        | `true`  |
+| transition-name        | 渐变动画名称 | String        | `r-overlay--fade`  |
 | close-on-click-overlay | 是否点击遮罩关闭     | Boolean        | `true`  |
 
 

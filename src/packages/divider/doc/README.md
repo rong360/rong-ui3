@@ -18,9 +18,9 @@ app.use(Divider);
 ### 基础用法
 默认渲染一条水平分割线。
 <script setup>
-  import DividerBasic from '../demo/DividerBasic.vue?raw'
+  import DividerBase from '../demo/DividerBase.vue?raw'
 </script>
-<HljsBlock :code="DividerBasic"></HljsBlock>
+<HljsBlock :code="DividerBase"></HljsBlock>
 
 
 ### 展示文本

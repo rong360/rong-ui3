@@ -1,11 +1,17 @@
 <template>
-  <pre ref="preRef" class="hljs-block" @click.self="clcikHandle"><code v-html="code" :class="codeClass"></code></pre>
+  <pre
+    class="hljs-block"
+    ref="preBlock"
+    @click.self="clcikHandle"
+  ><div class="demo-block-expand" v-if="isScroll" :title="isExpand? '折叠': '展开'"><ExpandIcon v-if="isExpand" @click="toggleEpandIcon"></ExpandIcon><UnExpandIcon v-else @click="toggleEpandIcon"></UnExpandIcon></div><code v-html="code" :class="codeClass" :style="{ maxHeight: maxHeight}"></code></pre>
 </template>
 
 <script setup lang="ts">
 import { ref, watchEffect, computed, onMounted } from 'vue';
 import hljs from 'highlight.js/lib/common';
 import copy from 'copy-to-clipboard';
+import ExpandIcon from '../icons/Expand.vue';
+import UnExpandIcon from '../icons/UnExpand.vue';
 
 const props = defineProps({
   code: {
@@ -15,7 +21,20 @@ const props = defineProps({
   lang: {
     type: String,
     default: 'html'
+  },
+  maxHeight: {
+    type: String,
+    default: ''
   }
+});
+
+// Expand
+const isScroll = ref(false);
+const isExpand = ref(false);
+const preBlock = ref<HTMLElement | null>(null);
+onMounted(() => {
+  const codeBlock = preBlock.value?.querySelector('code') as HTMLElement;
+  isScroll.value = codeBlock.scrollHeight > 400;
 });
 
 const code = ref('');
@@ -23,12 +42,7 @@ watchEffect(() => {
   code.value = hljs.highlight(props.code, { language: props.lang }).value;
 });
 
-const codeClass = computed(() => 'language-' + props.lang);
-
-const preRef = ref<HTMLElement | null>(null);
-onMounted(() => {
-  // preRef.value && preRef.value.parentElement && (preRef.value.parentElement.className = 'hljs-wrap');
-});
+const codeClass = computed(() => ['language-' + props.lang, { 'is-expand': isExpand.value }]);
 
 const clcikHandle = (e: MouseEvent) => {
   const target = e.target as HTMLElement;
@@ -38,6 +52,10 @@ const clcikHandle = (e: MouseEvent) => {
     target.classList.remove('code-copy-success');
   }, 1000);
 };
+
+const toggleEpandIcon = () => {
+  isExpand.value = !isExpand.value;
+};
 </script>
 
 <style lang="less">
@@ -45,6 +63,9 @@ const clcikHandle = (e: MouseEvent) => {
   > code {
     max-height: 400px;
     overflow-y: auto;
+    &.is-expand {
+      max-height: inherit;
+    }
   }
   &:hover:before {
     position: absolute;
@@ -70,6 +91,18 @@ const clcikHandle = (e: MouseEvent) => {
       top: 0;
       animation: ease-out code-copy-animation 0.2s;
       animation-fill-mode: forwards;
+    }
+  }
+  .demo-block-expand {
+    position: absolute;
+    right: 50px;
+    top: 13px;
+    display: none;
+    cursor: pointer;
+  }
+  &:hover {
+    .demo-block-expand {
+      display: block;
     }
   }
 }

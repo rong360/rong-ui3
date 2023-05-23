@@ -1,5 +1,5 @@
 <template>
-  <transition :name="transition" :css="cssTransition" appear>
+  <transition :name="transitionName" :css="cssTransition" appear>
     <div :class="classes.root" :style="style" v-preventscroll @click="onClick" v-show="show">
       <slot></slot>
     </div>
@@ -19,8 +19,8 @@ export const overlayProps = {
   zIndex: makeNumberProp(1000),
   cssTransition: makeBooleanProp(),
   duration: makeNumberProp(0.5),
-  transition: makeStringProp(`${prefixCls}-fade`),
-  closeOnClickOverlay: makeBooleanProp()
+  transitionName: makeStringProp(`${prefixCls}-fade`),
+  closeOnClickOverlay: makeBooleanProp(false)
 };
 
 export type OverlayProps = ExtractPropTypes<typeof overlayProps>;

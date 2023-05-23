@@ -1,6 +1,6 @@
 <template>
   <r-popup
-    :animate="animate"
+    :css-transition="cssTransition"
     :teleport="teleport"
     :position="position"
     :close-on-click-overlay="closeOnClickOverlay"
@@ -9,24 +9,48 @@
     :overlay-class="classes.overlay"
     :overlay-style="overlayStyle"
     :round="round"
+    :show-close-icon="showCloseIcon"
+    :close-icon-position="closeIconPosition"
+    :close-icon="closeIcon"
+    :close-icon-class="closeIconClass"
+    :close-on-click-close-icon="closeOnClickCloseIcon"
     @click-overlay="clickOverlay"
+    @click-popup="clickPopup"
+    @click-close-icon="clickCloseIcon"
+    @opened="popupOpened"
     @closed="popupClosed"
     v-model:show="isDialogShow"
   >
     <div :class="classes.header" :style="headerStyle" v-if="$slots.header || title">
       <slot name="header">{{ title }}</slot>
     </div>
-    <r-icon name="close" :class="classes.close" @click="isDialogShow = false" v-if="showCloseButton" />
+    <template #close-icon><slot name="close-icon"></slot></template>
     <div :class="classes.content" :style="contentStyle">
       <slot>
         <div v-if="typeof message === 'string'" v-html="message"></div>
-        <component v-else :is="message" />
+        <component v-else-if="typeof message === 'object'" :is="message" />
       </slot>
     </div>
-    <div :class="classes.footer" :style="footerStyle" v-if="showConfirmButton || showCancelButton">
-      <r-button :class="classes.cancel" shape="square" v-if="showCancelButton">取消</r-button>
-      <r-button :class="classes.confirm" shape="square" v-if="showConfirmButton">确认</r-button>
-    </div>
+    <slot name="footer">
+      <div :class="classes.footer" :style="footerStyle" v-if="showConfirmButton || showCancelButton || $slots.footer">
+        <r-button
+          :class="classes.cancel"
+          :style="cancelButtonStyle"
+          :text="cancelButtonText"
+          shape="square"
+          v-if="showCancelButton"
+          @click="clickCancel"
+        />
+        <r-button
+          :class="classes.confirm"
+          :style="confirmButtonStyle"
+          :text="confirmButtonText"
+          shape="square"
+          v-if="showConfirmButton"
+          @click="clickConfirm"
+        />
+      </div>
+    </slot>
   </r-popup>
 </template>
 
@@ -35,26 +59,36 @@ import { defineComponent, ref, watch, render, type ExtractPropTypes, reactive, c
 import Popup, { popupProps } from '../popup/index.vue';
 import Icon from '../icon/index.vue';
 import Button from '../button/index.vue';
-import { createNamespace, makeStringProp, makeStyleProp, makeBooleanProp, withInstall } from '../utils';
+import {
+  createNamespace,
+  makeStringProp,
+  makeStyleProp,
+  makeBooleanProp,
+  makeStringObjectProp,
+  withInstall
+} from '../utils';
 import { useEventListener, useCustomEvent } from '../composables';
-import { $dialog, type $Dialog } from './function-call';
+import { showDialog } from './function-call';
+
+export { showDialog } from './function-call';
 
 const { name, bem } = createNamespace('dialog');
 
 export const dialogProps = {
   ...popupProps,
-  title: makeStringProp(''),
+  round: makeBooleanProp(),
+  title: makeStringProp(),
   headerStyle: makeStyleProp(),
-  showCloseButton: makeBooleanProp(),
-  message: [String, Object, Function],
+  message: makeStringObjectProp(),
   contentStyle: makeStyleProp(),
   footerStyle: makeStyleProp(),
+  showCancelButton: makeBooleanProp(),
+  cancelButtonText: makeStringObjectProp('取消'),
+  cancelButtonStyle: makeStyleProp(),
+  closeOnClickCancelButton: makeBooleanProp(),
   showConfirmButton: makeBooleanProp(),
-  showCancelButton: makeBooleanProp()
-  // onClickOverlay: Function,
-  // 自定义类名
-  // className: [String, Array, Object]
-  // onClickOverlay: Function,
+  confirmButtonText: makeStringObjectProp('确定'),
+  confirmButtonStyle: makeStyleProp()
 };
 
 export type DialogProps = ExtractPropTypes<typeof dialogProps>;
@@ -68,7 +102,7 @@ const Dialog = defineComponent({
     [Icon.name]: Icon,
     [Button.name]: Button
   },
-  emits: ['clickOverlay', 'update:show'],
+  emits: ['clickOverlay', 'clickPopup', 'clickCloseIcon', 'update:show', 'cancel', 'confirm', 'opened', 'closed'],
   setup(props, { emit, attrs, slots }) {
     const classes = reactive({
       close: computed(() => bem('close')),
@@ -100,23 +134,35 @@ const Dialog = defineComponent({
       useCustomEvent(window, 'replacestate', unmountDialog);
     }
 
-    const popupClosed = () => {
-      if (attrs.from$dialog) unmountDialog();
+    const popupOpened = (e: MouseEvent) => emit('opened', e);
+    const popupClosed = (e: MouseEvent) => {
       emit('update:show', false);
+      emit('closed', e);
+      if (attrs.from$dialog) unmountDialog();
     };
 
-    const clickOverlay = (e: TouchEvent) => {
-      emit('clickOverlay', e);
+    const clickOverlay = (e: MouseEvent) => emit('clickOverlay', e);
+    const clickPopup = (e: MouseEvent) => emit('clickPopup', e);
+    const clickCloseIcon = (e: MouseEvent) => emit('clickCloseIcon', e);
+    const clickConfirm = (e: MouseEvent) => emit('confirm', e);
+    const clickCancel = (e: MouseEvent) => {
+      emit('cancel', e);
+      if (props.closeOnClickCancelButton) isDialogShow.value = false;
     };
 
     return {
       classes,
       isDialogShow,
       clickOverlay,
+      clickPopup,
+      clickCloseIcon,
+      clickConfirm,
+      clickCancel,
+      popupOpened,
       popupClosed
     };
   }
 });
 
-export default withInstall(Dialog, { $dialog });
+export default withInstall(Dialog, { $dialog: showDialog });
 </script>

@@ -1,5 +1,4 @@
 <template>
-  <demo-item title="虚线">
-    <r-divider dashed></r-divider>
-  </demo-item>
+  <h2>虚线</h2>
+  <r-divider dashed></r-divider>
 </template>

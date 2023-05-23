@@ -1,6 +1,6 @@
 <template>
   <div class="demo demo-divider">
-    <DividerBasic />
+    <DividerBase />
     <DividerText />
     <DividerContentPosition />
     <DividerDashed />
@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import DividerBasic from './DividerBasic.vue';
+import DividerBase from './DividerBase.vue';
 import DividerText from './DividerText.vue';
 import DividerContentPosition from './DividerContentPosition.vue';
 import DividerDashed from './DividerDashed.vue';

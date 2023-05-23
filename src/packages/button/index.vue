@@ -2,8 +2,10 @@
   <div :class="classes.root" @click="handleClick">
     <div :class="classes.content">
       <slot name="prepend"></slot>
-      <div :class="classes.text">
-        <slot></slot>
+      <div :class="classes.text" v-if="typeof text === 'string'" v-html="text"></div>
+      <div :class="classes.text" v-else>
+        <slot v-if="$slots.default"></slot>
+        <component :is="text" v-else-if="typeof text === 'object'"></component>
       </div>
       <slot name="append"></slot>
     </div>
@@ -12,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, type ExtractPropTypes, computed, reactive } from 'vue';
-import { createNamespace, makeStringProp, makeBooleanProp, withInstall } from '../utils';
+import { createNamespace, makeStringProp, makeBooleanProp, makeStringObjectProp, withInstall } from '../utils';
 import type { ButtonShape, ButtonSize, ButtonType } from './type';
 
 const { name, bem } = createNamespace('button');
@@ -23,7 +25,8 @@ export const buttonProps = {
   size: makeStringProp<ButtonSize>('normal'),
   disabled: makeBooleanProp(false),
   plain: makeBooleanProp(false),
-  block: makeBooleanProp(false)
+  block: makeBooleanProp(false),
+  text: makeStringObjectProp()
 };
 
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>;

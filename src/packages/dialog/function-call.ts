@@ -1,28 +1,37 @@
-import { render, h } from 'vue';
+import { render, createVNode, type VNode } from 'vue';
 import Dialog, { type DialogProps } from './index.vue';
 
-export type $Dialog = (props: Partial<DialogProps>) => { remove: () => void };
-
-export const $dialog: $Dialog = (props) => {
-  props = Object.assign(
-    {
-      show: true
-    },
-    props
-  );
-  const instance = h(Dialog, { ...props, from$dialog: true }) as any;
-  render(instance, document.body);
-
-  const remove = () => (instance.component.proxy.isDialogShow = false);
-
-  return {
-    remove
-  };
+type ShowDialogRet = {
+  remove: () => void;
+  vNode: VNode;
 };
 
-declare module 'vue' {
-  // 使 TypeScript 更好地支持 this.$dialog方式调用
-  interface ComponentCustomProperties {
-    $dialog: $Dialog;
-  }
+export interface ShowDialogOtions extends Partial<DialogProps> {
+  onCancel?: (this: ShowDialogRet) => void;
+  onConfirm?: (this: ShowDialogRet) => void;
+  onClickOverlay?: (this: ShowDialogRet) => void;
+  onClickCloseIcon?: (this: ShowDialogRet) => void;
 }
+
+export const showDialog = (options: ShowDialogOtions, children?: unknown): ShowDialogRet => {
+  const { onCancel, onConfirm, onClickOverlay, onClickCloseIcon, ...restOptions } = options;
+  const vNode = createVNode(
+    Dialog,
+    {
+      show: true,
+      from$dialog: true,
+      onCancel: () => onCancel && onCancel.call(ret),
+      onConfirm: () => onConfirm && onConfirm.call(ret),
+      onClickOverlay: () => onClickOverlay && onClickOverlay.call(ret),
+      onClickCloseIcon: () => onClickCloseIcon && onClickCloseIcon.call(ret),
+      ...restOptions
+    },
+    children
+  );
+  const remove = () => ((vNode?.component?.proxy as any).isDialogShow = false);
+  const ret: ShowDialogRet = { remove, vNode };
+
+  render(vNode, document.body);
+
+  return ret;
+};

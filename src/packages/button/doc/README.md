@@ -74,14 +74,15 @@ app.use(Button);
 
 ### Props
 
-| 参数     | 说明                                                         | 类型    | 默认值    |
-| -------- | ------------------------------------------------------------ | ------- | --------- |
-| type     | 类型，可选值为 `primary` `success` `warning` `danger` | String  | `default` |
-| size     | 尺寸，可选值为 `large` `small` `mini`                        | String  | `normal`  |
-| shape    | 形状，可选值为 `square`                                      | String  | `round`   |
-| plain    | 是否为朴素按钮                                               | Boolean | `false`   |
-| disabled | 是否禁用按钮                                                 | Boolean | `false`   |
-| block    | 是否为块级元素                                               | Boolean | `false`   |
+| 参数     | 说明                                                 | 类型         | 默认值    |
+|----------|----------------------------------------------------|--------------|-----------|
+| type     | 类型，可选值为 `primary` `success` `warning` `danger` | String       | `default` |
+| size     | 尺寸，可选值为 `large` `small` `mini`                 | String       | `normal`  |
+| shape    | 形状，可选值为 `square`                               | String       | `round`   |
+| plain    | 是否为朴素按钮                                       | Boolean      | `false`   |
+| disabled | 是否禁用按钮                                         | Boolean      | `false`   |
+| block    | 是否为块级元素                                       | Boolean      | `false`   |
+| text     | 按钮文字                                             | string/VNode | -         |
 
 ### Events
 
