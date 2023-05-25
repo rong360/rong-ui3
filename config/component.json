@@ -42,6 +42,18 @@
     ]
   },
   {
+    "name": "导航组件",
+    "enName": "nav",
+    "packages": [
+      {
+        "name": "NavBar",
+        "cName": "头部导航",
+        "desc": "头部导航",
+        "show": true
+      }
+    ]
+  },
+  {
     "name": "布局组件",
     "enName": "layout",
     "packages": [

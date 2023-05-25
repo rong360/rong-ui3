@@ -67,7 +67,7 @@ showDialog({ message: '提示' });
 ```html
 
 <template>
-  <r-dialog v-model:show="scrollAreaShow">
+  <r-dialog v-model:show="showScrollArea">
     <div style="height: 100px; overflow-y: scroll" class="scroll-area">
       <p>1</p>
       <p>2</p>
@@ -79,7 +79,7 @@ showDialog({ message: '提示' });
 </template>
 
 <script lang="ts" setup>
-const scrollAreaShow = ref(true);
+const showScrollArea = ref(true);
 </script>
 
 
