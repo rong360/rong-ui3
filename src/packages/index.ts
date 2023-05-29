@@ -12,17 +12,6 @@ import FlexFixed from './flex-fixed/index.vue';
 import Divider from './divider/index.vue';
 import Dialog from './dialog/index.vue';
 
-import './button/style/index.less';
-import './cell/style/index.less';
-import './cell-group/style/index.less';
-import './overlay/style/index.less';
-import './popup/style/index.less';
-import './icon/style/index.less';
-import './nav-bar/style/index.less';
-import './flex-fixed/style/index.less';
-import './divider/style/index.less';
-import './dialog/style/index.less';
-
 export * from './button/index.vue';
 export * from './cell/index.vue';
 export * from './cell-group/index.vue';

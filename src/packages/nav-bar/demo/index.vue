@@ -1,4 +1,5 @@
 <template>
+  <nav-bar>NavBar</nav-bar>
   <div class="demo demo-nav-bar">
     <BaseUsage />
     <BackTo />

@@ -1,4 +1,5 @@
 <template>
+  <nav-bar>Popup</nav-bar>
   <div class="demo demo-popup">
     <PopupBase />
     <PopupPosition />

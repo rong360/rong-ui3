@@ -67,10 +67,4 @@ export const Button = defineComponent({
 });
 
 export default withInstall(Button);
-
-// declare module 'vue' {
-//   interface GlobalComponents {
-//     RButton: typeof Button;
-//   }
-// }
 </script>

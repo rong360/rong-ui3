@@ -1,4 +1,5 @@
 <template>
+  <nav-bar>Button</nav-bar>
   <div class="demo demo-button">
     <ButtonType />
     <ButtonShape />
@@ -22,6 +23,8 @@ import ButtonBlock from './ButtonBlock.vue';
 import ButtonDisabled from './ButtonDisabled.vue';
 import ButtonPlain from './ButtonPlain.vue';
 import ButtonSlot from './ButtonSlot.vue';
+
+const clickLeft = () => history.back();
 </script>
 
 <style lang="less">

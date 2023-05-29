@@ -1,4 +1,5 @@
 <template>
+  <nav-bar>Dialog</nav-bar>
   <div class="demo demo-dialog">
     <DialogFunction />
     <DialogComponent />

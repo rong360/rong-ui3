@@ -1,17 +1,12 @@
-:root {
-  --r-divider-text-font-size: 14px;
-  --r-divider-text-color: #707070;
-  --r-divider-horizontal-margin: 16px 0;
-  --r-divider-vertical-margin: 0 8px;
-  --r-divider-content-padding: 16px;
-}
+@r-divider-text-color: #707070;
+@r-divider-content-padding: 16px;
 
 .r-divider {
   display: flex;
   align-items: center;
-  font-size: var(--r-divider-text-font-size);
-  color: var(--r-divider-text-color);
-  border-color: var(--r-divider-text-color);
+  font-size: var(--r-divider-text-font-size, 14px);
+  color: var(--r-divider-text-color, @r-divider-text-color);
+  border-color: var(--r-divider-text-color, @r-divider-text-color);
   &::before,
   &::after {
     content: '';
@@ -71,26 +66,26 @@
   // content padding
   &--horizontal&--hascontent {
     &::before {
-      margin-right: var(--r-divider-content-padding);
+      margin-right: var(--r-divider-content-padding, @r-divider-content-padding);
     }
     &::after {
-      margin-left: var(--r-divider-content-padding);
+      margin-left: var(--r-divider-content-padding, @r-divider-content-padding);
     }
   }
   &--vertical&--hascontent {
     &::before {
-      margin-bottom: var(--r-divider-content-padding);
+      margin-bottom: var(--r-divider-content-padding, @r-divider-content-padding);
     }
     &::after {
-      margin-top: var(--r-divider-content-padding);
+      margin-top: var(--r-divider-content-padding, @r-divider-content-padding);
     }
   }
   // margin
   &--horizontal&--margin {
-    margin: var(--r-divider-horizontal-margin);
+    margin: var(--r-divider-horizontal-margin, 16px 0);
   }
   &--vertical&--margin {
-    margin: var(--r-divider-vertical-margin);
+    margin: var(--r-divider-vertical-margin, 0 8px);
   }
   &--left {
     &::before {

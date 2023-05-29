@@ -1,4 +1,5 @@
 <template>
+  <nav-bar>Cell</nav-bar>
   <div class="demo demo-cell">
     <CellBase />
     <CellGroup />

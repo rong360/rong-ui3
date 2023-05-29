@@ -10,8 +10,16 @@ import { RongUIResolver } from './src/resolver';
 
 import hljs from 'highlight.js';
 
-// true 测试src/packages源码, false 测试release包
-const isTestSrcPackages = process.env.npm_lifecycle_event == 'dev';
+/**
+ * isTestRongUi3, 测试rong-ui3安装包
+ * true 测试release包, false 测试src/packages源码
+ * 需要软链 rong-ui3 -> release
+ *  cd release
+ *  npm link
+ *  cd ..
+ *  npm link rong-ui3
+ */
+const isTestRongUi3 = false;
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -65,14 +73,20 @@ export default defineConfig(({ mode }) => {
           });
         }
       }),
-      Components({
-        resolvers: [
-          RongUIResolver({
-            from: isTestSrcPackages ? '@/packages/index.ts' : '',
-            importStyle: isTestSrcPackages ? false : 'less'
-          })
-        ]
-      })
+      // Components({
+      //   resolvers: [
+      //     isTestRongUi3
+      //       ? RongUIResolver({
+      //           importStyle: 'less'
+      //         })
+      //       : RongUIResolver({
+      //           from: '@/packages/index.ts',
+      //           sideEffects(dirName) {
+      //             return `@/packages/${dirName}/style/index.less`;
+      //           }
+      //         })
+      //   ]
+      // })
     ],
     resolve: {
       alias: {
@@ -97,30 +111,10 @@ export default defineConfig(({ mode }) => {
         less: {
           additionalData: '@import "@/packages/styles/variables.less";@import "@/packages/styles/base.less";'
         }
-      },
-      postcss: {
-        plugins: [
-          // 前缀追加
-          require('autoprefixer')({
-            overrideBrowserslist: ['> 0.5%', 'last 2 versions', 'ie > 11', 'iOS >= 10', 'Android >= 5'],
-            grid: true
-          }),
-          require('postcss-flexbugs-fixes'),
-          require('postcss-plugin-px2rem')({
-            // base on 320px standard.
-            rootValue: 18.75,
-            // to leave 1px alone.
-            minPixelValue: 1.01,
-            selectorBlackList: ['.r-doc', '.markdown-body'],
-            exclude: ['/doc/']
-          })
-        ]
       }
     },
     build: {
       target: 'es2021',
-      // cssCodeSplit: false,
-      // cssTarget: ['chrome61'],
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'index.html'),

@@ -47,7 +47,6 @@ let globalComponentInterface = `declare module '@vue/runtime-core' {
 let fileStrDev = `
 import type { App } from 'vue';\n
 ${importStr}
-${importLessStr}
 ${exportStr}
 ${installFunctionTs}
 ${globalComponentInterface}
@@ -59,6 +58,7 @@ fse.outputFile(path.resolve(__dirname, '../src/packages/index.ts'), fileStrDev, 
   if (err) return console.error(err)
   console.log('/src/packages/index.ts')
 });
+
 
 // release包es入口
 let fileStrEs = `${importStrEs}

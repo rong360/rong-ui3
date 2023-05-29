@@ -1,4 +1,5 @@
 <template>
+  <nav-bar>Divider</nav-bar>
   <div class="demo demo-divider">
     <DividerBase />
     <DividerText />

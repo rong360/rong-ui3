@@ -6,12 +6,15 @@ interface RongUIResolverOptions {
   importStyle?: boolean | 'css' | 'less';
   // import component from, default 'rong-ui3'
   from?: string;
+  sideEffects?: (dirName: string) => string;
 }
 
 function getSideEffects(dirName: string, options: RongUIResolverOptions): SideEffectsInfo | undefined {
-  const { importStyle = true } = options;
+  const { importStyle = true, sideEffects } = options;
 
   if (!importStyle) return;
+
+  if (sideEffects) return sideEffects(dirName);
 
   if (importStyle === 'less') return `rong-ui3/es/${dirName}/style/index.js`;
 
@@ -22,12 +25,13 @@ export function RongUIResolver(options: RongUIResolverOptions = {}): ComponentRe
   return {
     type: 'component',
     resolve: (name: string) => {
+      if (!options.from) options.from = 'rong-ui3';
       const { from } = options;
       if (/R[A-Z][a-z]+/.test(name)) {
         const componentName = name.slice(1);
         return {
           name: componentName,
-          from: from || `rong-ui3`,
+          from,
           sideEffects: getSideEffects(kebabCase(componentName), options)
         };
       }

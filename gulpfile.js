@@ -1,9 +1,11 @@
 const gulp = require('gulp');
 const less = require('gulp-less');
 const through2 = require('through2');
-const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS = require('gulp-clean-css');
-var lessBaseImport = require('gulp-less-base-import');
+const rename = require('gulp-rename');
+const postcss = require('gulp-postcss');
+
+// var lessBaseImport = require('gulp-less-base-import');
 
 // copyLess && add index.js  css.js entry
 gulp.task('copyLess', function () {
@@ -40,19 +42,27 @@ gulp.task('copyStyles', function () {
   return gulp.src('./src/packages/styles/**/*.less').pipe(gulp.dest('./release/es/styles'));
 });
 
-// index.less -> index.css
-gulp.task('less2css', function () {
+function compileLess(src) {
   return (
     gulp
-      .src('./release/**/style/index.less')
+      .src(src)
       // .pipe(lessBaseImport('./packages/styles/variables.less'))
       .pipe(less()) // 处理less文件
-      .pipe(autoprefixer()) // 根据browserslistrc增加前缀
+      .pipe(postcss()) // automatically from postcss.config.js, so you don't have to specify any options.
       .pipe(cleanCSS({ format: 'keep-breaks', compatibility: 'ie8' }))
-      .pipe(gulp.dest('./release'))
   );
+}
+
+// disperse index.less -> index.css
+gulp.task('less2css', function () {
+  return compileLess('./release/**/style/index.less').pipe(gulp.dest('./release'));
 });
 
-const buildStyles = gulp.series('copyLess', 'copyStyles', 'less2css');
+// entry index.less -> style.css
+gulp.task('less2css_entry', function () {
+  return compileLess('./src/packages/index.less', './release').pipe(rename('style.css')).pipe(gulp.dest('./release'));
+});
+
+const buildStyles = gulp.series('copyLess', 'copyStyles', 'less2css', 'less2css_entry');
 
 exports.buildStyles = buildStyles;

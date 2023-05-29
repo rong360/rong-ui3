@@ -1,4 +1,5 @@
 <template>
+  <nav-bar>Overlay</nav-bar>
   <div class="demo demo-overlay">
     <OverlayBase />
     <OverlayEmbedContent />
