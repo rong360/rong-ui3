@@ -1,23 +1,33 @@
 import { onMounted, onUnmounted, unref } from 'vue';
 import type { Ref } from 'vue';
-import type { D } from 'vitest/dist/global-732f9b14';
-
-type DD = 'pushState' | 'replaceState';
 
 // GlobalEventHandlersEventMap -> https://github.com/microsoft/TypeScript/blob/v3.7.5/lib/lib.dom.d.ts#L18434-L18532
 export function useEventListener<K extends keyof HTMLElementEventMap>(
   target: HTMLElement | Ref,
   type: K,
-  listener: (this: GlobalEventHandlers, ev: HTMLElementEventMap[K]) => any
+  listener: (this: GlobalEventHandlers, ev: HTMLElementEventMap[K]) => any,
+  options?: boolean | AddEventListenerOptions
 ): void;
 export function useEventListener<K extends keyof WindowEventMap>(
   target: Window,
   type: K,
-  listener: (this: Window, ev: WindowEventMap[K]) => any
+  listener: (this: Window, ev: WindowEventMap[K]) => any,
+  options?: boolean | AddEventListenerOptions
 ): void;
-export function useEventListener(target: any, type: any, listener: any): void {
-  onMounted(() => unref(target).addEventListener(type, listener));
-  onUnmounted(() => unref(target).addEventListener(type, listener));
+export function useEventListener<K extends keyof DocumentEventMap>(
+  target: Document,
+  type: K,
+  listener: (this: GlobalEventHandlers, ev: DocumentEventMap[K]) => any,
+  options?: boolean | AddEventListenerOptions
+): void;
+export function useEventListener(
+  target: any,
+  type: any,
+  listener: any,
+  options?: boolean | AddEventListenerOptions
+): void {
+  onMounted(() => unref(target).addEventListener(type, listener, options));
+  onUnmounted(() => unref(target).addEventListener(type, listener, options));
 }
 
 export function useCustomEvent(target: Window, type: string, listener: (event: CustomEventInit) => void) {

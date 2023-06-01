@@ -62,6 +62,12 @@ app.use(OverLay);
 | transition-name        | 渐变动画名称 | String        | `r-overlay--fade`  |
 | close-on-click-overlay | 是否点击遮罩关闭     | Boolean        | `true`  |
 
+### Slots
+
+| 名称    | 说明 |
+|---------|----|
+| default | 内容 |
+
 
 ### Events
 

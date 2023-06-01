@@ -115,6 +115,14 @@ Popup 支持以下点击事件
 | teleport                  | 指定挂载节点                                              | string        | `body`      |
 
 
+### Slots
+
+| 名称 | 说明       |
+| ------ | ---------- |
+| default  | 自定义内嵌内容 |
+| close-icon  | 关闭按钮的自定义图标 |
+
+
 
 ### Events
 
@@ -128,9 +136,14 @@ Popup 支持以下点击事件
 | closed           | 遮罩关闭动画结束时触发 | `event: MouseEvent` |
 
 
-### Slots
 
-| 名称 | 说明       |
-| ------ | ---------- |
-| default  | 自定义内嵌内容 |
-| close-icon  | 关闭按钮的自定义图标 |
+### 样式变量
+
+| 名称                           | 默认值  |
+|--------------------------------|---------|
+| --r-popup-background-color     | #fff    |
+| --r-popup-border-radius        | 16px    |
+| --r-popup-close-icon-z-index   | 1       |
+| --r-popup-close-icon-color     | #969799 |
+| --r-popup-close-icon-font-size | 16px    |
+| --r-popup-close-icon-margin    | 12px    |

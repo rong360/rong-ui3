@@ -4,11 +4,11 @@
       <slot name="header"></slot>
     </header>
     <main :class="bem('main')" class="scroll-area" @touchstart.passive="touchstartMain" @scroll.passive="onScroll">
-      <div :class="bem('headercopy')" v-if="useFixed">
+      <div :class="bem('header-copy')" v-if="useFixed">
         <slot name="header"></slot>
       </div>
       <slot></slot>
-      <div :class="bem('footercopy')" v-if="useFixed">
+      <div :class="bem('footer-copy')" v-if="useFixed">
         <slot name="footer"></slot>
       </div>
     </main>
@@ -19,75 +19,54 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, reactive, ref, onMounted, onUnmounted } from 'vue';
-import { createNamespace, withInstall } from '../utils';
+import { defineComponent, reactive, ref, onMounted } from 'vue';
+import { createNamespace, withInstall, makeBooleanProp } from '../utils';
 import { preventscroll } from '../directives';
+import { useEventListener } from '../composables';
 
 const { name, bem } = createNamespace('flex-fixed');
-
-function scrollDirection(scrollTop: number, maxScrollTop: number, preScrollTop: number) {
-  let direction = '';
-  if (scrollTop > preScrollTop) {
-    direction = 'up';
-  } else if (scrollTop < preScrollTop) {
-    direction = 'down';
-  } else {
-    direction = '';
-  }
-  if (scrollTop <= 0) {
-    direction = 'down';
-  } else if (scrollTop >= maxScrollTop) {
-    direction = 'up';
-  }
-  return direction;
-}
 
 const FlexFixed = defineComponent({
   name,
   props: {
-    hideFooterOnKeyboardShow: {
-      type: Boolean
-    },
+    hideFooterOnKeyboardShow: makeBooleanProp(false),
     // header、footer采用position: fixed方式固定
-    useFixed: {
-      type: Boolean
-    }
+    useFixed: makeBooleanProp(false)
   },
   emits: ['scroll', 'scroll-debounce'],
   directives: {
     preventscroll
   },
   setup(props, { emit }) {
-    const { useFixed } = toRefs(props);
-
     // --- touchmove on main element ---
-    const mainInfo = reactive({
+    const scrollInfo = reactive({
       scrollTop: 0,
       maxScrollTop: 0,
-      prevScrollTop: 0
+      prevScrollTop: 0,
+      direction: ''
     });
     let scrollTimer: number;
-    function touchstartMain(e: Event) {
+    function touchstartMain(e: TouchEvent) {
       const mainEl = e.currentTarget as HTMLElement;
-      mainInfo.maxScrollTop = mainEl.scrollHeight - mainEl.offsetHeight;
+      scrollInfo.maxScrollTop = mainEl.scrollHeight - mainEl.offsetHeight;
     }
-    function onScroll(e: Event) {
+    function onScroll(e: TouchEvent) {
       const mainEl = e.currentTarget as HTMLElement;
-      mainInfo.scrollTop = mainEl.scrollTop;
 
-      const mainScrollDirection = scrollDirection(mainInfo.scrollTop, mainInfo.maxScrollTop, mainInfo.prevScrollTop);
-      mainInfo.prevScrollTop = mainInfo.scrollTop;
+      if (!scrollInfo.maxScrollTop) scrollInfo.maxScrollTop = mainEl.scrollHeight - mainEl.offsetHeight;
+
+      scrollInfo.scrollTop = Math.min(Math.max(0, mainEl.scrollTop), scrollInfo.maxScrollTop);
+
+      scrollInfo.direction = scrollInfo.scrollTop > scrollInfo.prevScrollTop ? 'up' : 'down';
+      if (scrollInfo.scrollTop >= scrollInfo.maxScrollTop) scrollInfo.direction = 'up';
+
+      scrollInfo.prevScrollTop = scrollInfo.scrollTop;
 
       // 抛出main滚动信息
-      const scrollInfo = {
-        scrollTop: mainInfo.scrollTop,
-        maxScrollTop: mainInfo.maxScrollTop,
-        direction: mainScrollDirection
-      };
       if (scrollTimer) clearTimeout(scrollTimer);
       scrollTimer = window.setTimeout(() => {
         emit('scroll-debounce', scrollInfo);
-      }, 150);
+      }, 100);
       emit('scroll', scrollInfo);
     }
 
@@ -104,13 +83,9 @@ const FlexFixed = defineComponent({
     }
     onMounted(() => {
       docHeight.value = document.documentElement.clientHeight;
-      document.addEventListener('scroll', hideFooterOnScroll, false); // ios
-      window.addEventListener('resize', hideFooterOnResize, false); // android
     });
-    onUnmounted(() => {
-      document.removeEventListener('scroll', hideFooterOnScroll, false);
-      window.removeEventListener('resize', hideFooterOnResize, false);
-    });
+    useEventListener(document, 'scroll', hideFooterOnScroll, false); // ios
+    useEventListener(window, 'resize', hideFooterOnResize, false); // android
 
     return {
       bem,

@@ -113,6 +113,15 @@ const showScrollArea = ref(true);
 | pop-class                    | 自定义popup弹窗类名            | String        | -       |
 | pop-style                    | 自定义popup弹窗样式            | CSSProperties | -       |
 
+### Slots
+
+| 名称    | 说明               |
+|---------|------------------|
+| header  | 自定义标题区域     |
+| default | 自定义内容         |
+| footer  | 自定义底部按钮区域 |
+| close-icon  | 自定义close按钮 |
+
 
 ### Events
 
@@ -122,13 +131,3 @@ const showScrollArea = ref(true);
 | cancel       | 取消按钮回调           | Function | -      |
 | clickOverlay | 点击遮罩回调           | Function | -      |
 | close        | 点击右上角关闭按钮回调 | Function | -      |
-
-
-### Slots
-
-| 名称    | 说明               |
-|---------|------------------|
-| header  | 自定义标题区域     |
-| default | 自定义内容         |
-| footer  | 自定义底部按钮区域 |
-| close-icon  | 自定义close按钮 |

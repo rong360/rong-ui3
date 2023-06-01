@@ -84,6 +84,15 @@ app.use(Button);
 | block    | 是否为块级元素                                       | Boolean      | `false`   |
 | text     | 按钮文字                                             | string/VNode | -         |
 
+
+### Slots
+
+| 名称    | 说明         |
+|---------|------------|
+| default | 按钮内容     |
+| prepend | 按钮前方内容 |
+| append  | 按钮后方内容 |
+
 ### Events
 
 | 事件名 | 说明           | 回调参数          |

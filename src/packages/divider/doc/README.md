@@ -79,6 +79,24 @@ app.use(Divider);
 <HljsBlock :code="DividerDirection"></HljsBlock>
 
 
+## API
+
+### Props
+
+| 参数             | 说明                             | 类型    | 默认值       |
+|------------------|--------------------------------|---------|--------------|
+| dashed           | 是否使用虚线                     | boolean | `false`      |
+| hairline         | 是否使用 `0.5px` 线              | boolean | `true`       |
+| content-position | 内容位置，可选值为 `left`、`right` | string  | `center`     |
+| direction        | 水平还是垂直类型                 | string  | `horizontal` |
+
+### Slots
+
+| 名称    | 说明 |
+|---------|----|
+| default | 内容 |
+
+
 ### 样式变量
 | 名称                          | 默认值  |
 |-------------------------------|---------|

@@ -9,24 +9,15 @@ a.router-link-active,
 }
 
 #app {
-  // min-height: 100%;
-  > .r-nav-bar {
-    .r-nav-bar__content {
-      height: 56px;
-    }
-    .r-nav-bar__left {
-      color: #969799;
-      font-size: 20px;
-    }
-  }
+  height: 100%;
 }
 .demo {
-  min-height: 100vh;
+  min-height: calc(100vh - 56px);
   box-sizing: border-box;
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: #f7f8fa;
-  padding: 15px 15px 30px 15px;
+  padding: 0 15px 30px 15px;
   >h2,
   .r-cell-group__title {
     margin-top: 30px;
@@ -44,7 +35,12 @@ a.router-link-active,
   }
 }
 
-// :root {
-//   --r-nav-bar-left-color: #969799;
-//   --r-nav-bar-left-font-size: 44px;
-// }
+.nav-bar {
+  .r-nav-bar__content {
+    height: 56px;
+  }
+  .r-nav-bar__left {
+    color: #969799;
+    font-size: 20px;
+  }
+}

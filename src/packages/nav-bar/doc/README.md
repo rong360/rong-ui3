@@ -75,20 +75,19 @@ app.use(NavBar);
 | className           | 导航类名                                          | string       | -       |
 
 
-### Events
-| 事件名      | 说明               | 回调参数         |
-|-------------|------------------|------------------|
-| click-right | 点击左侧按钮时触发 | event:MouseEvent |
-| click-right | 点击右侧按钮时触发 | event:MouseEvent |
-
 ### Slots
 | 名称    | 说明               |
 |---------|------------------|
 | left    | 自定义左侧区域内容 |
 | right   | 自定义右侧区域内容 |
+| bottom  | 自定义底部区域内容 |
 | default | 自定义标题         |
 
-## 主题定制
+### Events
+| 事件名      | 说明               | 回调参数         |
+|-------------|------------------|------------------|
+| click-right | 点击左侧按钮时触发 | event:MouseEvent |
+| click-right | 点击右侧按钮时触发 | event:MouseEvent |
 
 ### 样式变量
 

@@ -91,12 +91,6 @@ app.use(CellGroup);
 
 
 
-### Cell Events
-
-| 事件名 | 说明             | 回调参数         |
-|--------|----------------|------------------|
-| click  | 点击单元格时触发 | event:MouseEvent |
-
 ### Cell Slots
 
 | 名称       | 说明                         |
@@ -114,6 +108,13 @@ app.use(CellGroup);
 |---------|---------------------|
 | title   | 自定义`title`标题区域 |
 | default | 默认插槽              |
+
+
+### Cell Events
+
+| 事件名 | 说明             | 回调参数         |
+|--------|----------------|------------------|
+| click  | 点击单元格时触发 | event:MouseEvent |
 
 
 

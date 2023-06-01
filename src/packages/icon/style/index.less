@@ -1,14 +1,10 @@
-:root {
-  --loading-spin-animation: loadingCircle  1s infinite linear;
-}
-
 .r-icon {
   display: inline-flex;
   svg {
     display: inline-block;
   }
   &--spin {
-    animation: var(--loading-spin-animation);
+    animation: var(--loading-spin-animation, loadingCircle  1s infinite linear);
   }
 }
 
