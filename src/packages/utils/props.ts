@@ -7,6 +7,11 @@ export const makeStringProp = <T>(defaultVal?: T) => ({
   default: defaultVal
 });
 
+export const makeStringNumberProp = <T>(defaultVal?: T) => ({
+  type: [String, Number],
+  default: defaultVal
+});
+
 export const makeNumberProp = <T>(defaultVal: T) => ({
   type: Number as unknown as PropType<T>,
   default: defaultVal
@@ -21,7 +26,7 @@ export const makeStyleProp = () => ({
   type: Object as PropType<CSSProperties>,
   default: () => ({})
 });
-export const makeBooleanProp = (defaultVal: Boolean = true) => ({
+export const makeBooleanProp = <T>(defaultVal?: T) => ({
   type: Boolean,
   default: defaultVal
 });
@@ -33,4 +38,13 @@ export const truthProp = {
 export const makeStringObjectProp = <T>(defaultVal?: T) => ({
   type: [String, Object],
   default: defaultVal
+});
+
+export const makeObjectProp = () => ({
+  type: Object,
+  default: () => ({})
+});
+
+export const makeClassProp = () => ({
+  type: [String, Array, Object]
 });

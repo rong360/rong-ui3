@@ -1352,6 +1352,11 @@
   dependencies:
     "async-done" "^1.2.2"
 
+"async-validator@^4.2.5":
+  "integrity" "sha512-7HhHjtERjqlNbZtqNqy2rckN/SpOOlmDliet+lP7k+eKZEjPk3DgyeU9lIXLdeLz0uBbbVp+9Qdow9wJWgwwfg=="
+  "resolved" "https://registry.npmjs.org/async-validator/-/async-validator-4.2.5.tgz"
+  "version" "4.2.5"
+
 "asynckit@^0.4.0":
   "integrity" "sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q=="
   "resolved" "https://registry.npmjs.org/asynckit/-/asynckit-0.4.0.tgz"
@@ -2064,6 +2069,13 @@
   dependencies:
     "capture-stack-trace" "^1.0.0"
 
+"cross-env@^7.0.3":
+  "integrity" "sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw=="
+  "resolved" "https://registry.npmjs.org/cross-env/-/cross-env-7.0.3.tgz"
+  "version" "7.0.3"
+  dependencies:
+    "cross-spawn" "^7.0.1"
+
 "cross-spawn@^5.0.1":
   "integrity" "sha512-pTgQJ5KC0d2hcY8eyL1IzlBPYjTkyH72XRZPnLyKus2mBfNjQs3klqbJU2VILqZryAZUt9JOb3h/mWMy23/f5A=="
   "resolved" "https://registry.npmjs.org/cross-spawn/-/cross-spawn-5.1.0.tgz"
@@ -2084,7 +2096,7 @@
     "shebang-command" "^1.2.0"
     "which" "^1.2.9"
 
-"cross-spawn@^7.0.0", "cross-spawn@^7.0.2":
+"cross-spawn@^7.0.0", "cross-spawn@^7.0.1", "cross-spawn@^7.0.2":
   "integrity" "sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w=="
   "resolved" "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.3.tgz"
   "version" "7.0.3"
@@ -6285,10 +6297,6 @@
   "version" "2.78.1"
   optionalDependencies:
     "fsevents" "~2.3.2"
-
-"rong-ui3@file:release":
-  "resolved" "file:release"
-  "version" "0.0.1"
 
 "run-async@^2.2.0":
   "integrity" "sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ=="

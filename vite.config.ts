@@ -73,20 +73,20 @@ export default defineConfig(({ mode }) => {
           });
         }
       }),
-      // Components({
-      //   resolvers: [
-      //     isTestRongUi3
-      //       ? RongUIResolver({
-      //           importStyle: 'less'
-      //         })
-      //       : RongUIResolver({
-      //           from: '@/packages/index.ts',
-      //           sideEffects(dirName) {
-      //             return `@/packages/${dirName}/style/index.less`;
-      //           }
-      //         })
-      //   ]
-      // })
+      Components({
+        resolvers: [
+          isTestRongUi3
+            ? RongUIResolver({
+                importStyle: 'less'
+              })
+            : RongUIResolver({
+                from: '@/packages/index.ts',
+                sideEffects(dirName) {
+                  return `@/packages/${dirName}/style/index.less`;
+                }
+              })
+        ]
+      })
     ],
     resolve: {
       alias: {

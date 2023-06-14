@@ -82,5 +82,29 @@
         "show": true
       }
     ]
+  },
+  {
+    "name": "表单组件",
+    "enName": "form",
+    "packages": [
+      {
+        "name": "Form",
+        "cName": "表单",
+        "desc": "表单。",
+        "show": true
+      },
+      {
+        "name": "FormItem",
+        "cName": "表单列表",
+        "desc": "表单列表",
+        "show": true
+      },
+      {
+        "name": "Input",
+        "cName": "输入框",
+        "desc": "输入框",
+        "show": true
+      }
+    ]
   }
 ]

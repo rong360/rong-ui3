@@ -18,7 +18,7 @@ componentInfo.forEach(component => {
   importStrEs += `import ${name} from './es/${folder}/index.mjs';\n`;
   exportStr += `export * from './${folder}/index.vue';\n`;
   exportStrEs += `export * from './es/${folder}/index.mjs';\n`;
-  importLessStr += `import './${folder}/style/index.less';\n`;
+  importLessStr += `@import './${folder}/style/index.less';\n`;
   globalComponentsStr += `R${name}: typeof ${name};\n`
   components.push(name);
 })
@@ -57,6 +57,13 @@ export default { install, version };
 fse.outputFile(path.resolve(__dirname, '../src/packages/index.ts'), fileStrDev, err => {
   if (err) return console.error(err)
   console.log('/src/packages/index.ts')
+});
+
+// src/packages 样式入口
+let fileStrCss = `${importLessStr}`;
+fse.outputFile(path.resolve(__dirname, '../src/packages/index.less'), fileStrCss, err => {
+  if (err) return console.error(err)
+  console.log('/src/packages/index.less')
 });
 
 

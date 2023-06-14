@@ -1,18 +1,19 @@
 //:: @import '../../icon/style/index.less';
 
 @r-cell-horizontal-padding: var(--r-cell-horizontal-padding, 16px);
-@r-cell-large-vertical-padding: var(--r-cell-large-vertical-padding, 12px);
+@r-cell-large-vertical-padding: var(--r-cell-large-vertical-padding, 18px);
 
 .r-cell {
   display: flex;
-  padding: var(--r-cell-vertical-padding, 13px) @r-cell-horizontal-padding;
+  padding: var(--r-cell-vertical-padding, 10px) @r-cell-horizontal-padding;
   box-sizing: border-box;
-  color: var(--r-cell-color, #666);
+  color: var(--r-cell-color, #323233);
   font-size: var(--r-cell-font-size, 14px);
-  line-height: var(--r-cell-line-height, 20px);
+  line-height: var(--r-cell-line-height, 24px);
   background: var(--r-cell-background, #fff);
   border-color: var(--r-cell-border-color, #ebedf0);
-  align-items: flex-start;
+  align-items: center;
+  position: relative;
   &--clickable {
     cursor: pointer;
     &:active {
@@ -43,21 +44,13 @@
     padding-top: @r-cell-large-vertical-padding;
     padding-bottom: @r-cell-large-vertical-padding;
   }
-  &__title-content,
-  &__value-content {
-    flex: 1;
+  &--top {
+    align-items: flex-start;
   }
-  &__title-content {
+  &__title {
     &--has-left-icon {
       margin-left: var(--r-cell-left-icon-margin-right, 4px);
     }
-  }
-  &__value-content {
-    display: flex;
-    align-items: center;
-  }
-  &__title {
-    font-size: var(--r-cell-title-font-size, 14px);
   }
   &--large &__title {
     font-size: var(--r-cell-large-title-font-size, 16px);
@@ -65,16 +58,32 @@
   &__title-desc {
     font-size: var(--r-cell-title-desc-font-size, 12px);
     line-height: var(--r-cell-title-desc-line-height, 18px);
-    color: var(--r-cell-title-desc-color, #666);
+    color: var(--r-cell-title-desc-color, #969799);
     margin-top: var(--r-cell-title-desc-margin-top, 4px);
   }
   &__value{
     text-align: right;
     word-wrap: break-word;
-    color: var(--r-cell-value-color, #ccc);
+    color: var(--r-cell-value-color, #969799);
     flex: 1;
     &--has-right-icon {
       margin-right: var(--r-cell-right-icon-margin-left, 4px);
+    }
+  }
+  &__title,
+  &__value {
+    flex: 1;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    word-break: break-all;
+    &--left {
+      text-align: left;
+    }
+    &--right {
+      text-align: right;
+    }
+    &--center {
+      text-align: center;
     }
   }
 }

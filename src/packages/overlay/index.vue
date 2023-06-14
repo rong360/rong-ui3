@@ -17,7 +17,7 @@ const { name, bem, prefixCls } = createNamespace('overlay');
 export const overlayProps = {
   show: Boolean,
   zIndex: makeNumberProp(1000),
-  cssTransition: makeBooleanProp(),
+  cssTransition: makeBooleanProp(true),
   duration: makeNumberProp(0.5),
   transitionName: makeStringProp(`${prefixCls}-fade`),
   closeOnClickOverlay: makeBooleanProp(false)

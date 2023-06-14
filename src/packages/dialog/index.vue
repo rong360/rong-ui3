@@ -76,17 +76,17 @@ const { name, bem } = createNamespace('dialog');
 
 export const dialogProps = {
   ...popupProps,
-  round: makeBooleanProp(),
+  round: makeBooleanProp(true),
   title: makeStringProp(),
   headerStyle: makeStyleProp(),
   message: makeStringObjectProp(),
   contentStyle: makeStyleProp(),
   footerStyle: makeStyleProp(),
-  showCancelButton: makeBooleanProp(),
+  showCancelButton: makeBooleanProp(true),
   cancelButtonText: makeStringObjectProp('取消'),
   cancelButtonStyle: makeStyleProp(),
-  closeOnClickCancelButton: makeBooleanProp(),
-  showConfirmButton: makeBooleanProp(),
+  closeOnClickCancelButton: makeBooleanProp(true),
+  showConfirmButton: makeBooleanProp(true),
   confirmButtonText: makeStringObjectProp('确定'),
   confirmButtonStyle: makeStyleProp()
 };

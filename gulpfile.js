@@ -5,7 +5,7 @@ const cleanCSS = require('gulp-clean-css');
 const rename = require('gulp-rename');
 const postcss = require('gulp-postcss');
 
-// var lessBaseImport = require('gulp-less-base-import');
+var lessBaseImport = require('gulp-less-base-import');
 
 // copyLess && add index.js  css.js entry
 gulp.task('copyLess', function () {
@@ -42,15 +42,15 @@ gulp.task('copyStyles', function () {
   return gulp.src('./src/packages/styles/**/*.less').pipe(gulp.dest('./release/es/styles'));
 });
 
-function compileLess(src) {
-  return (
-    gulp
-      .src(src)
-      // .pipe(lessBaseImport('./packages/styles/variables.less'))
-      .pipe(less()) // 处理less文件
-      .pipe(postcss()) // automatically from postcss.config.js, so you don't have to specify any options.
-      .pipe(cleanCSS({ format: 'keep-breaks', compatibility: 'ie8' }))
-  );
+function compileLess(src, baseImports = []) {
+  let stream = gulp.src(src);
+  baseImports.forEach((item) => {
+    stream = stream.pipe(item);
+  });
+  return stream
+  .pipe(less()) // 处理less文件
+  .pipe(postcss()) // automatically from postcss.config.js, so you don't have to specify any options.
+  .pipe(cleanCSS({ format: 'keep-breaks', compatibility: 'ie8' }))
 }
 
 // disperse index.less -> index.css
@@ -60,7 +60,7 @@ gulp.task('less2css', function () {
 
 // entry index.less -> style.css
 gulp.task('less2css_entry', function () {
-  return compileLess('./src/packages/index.less', './release').pipe(rename('style.css')).pipe(gulp.dest('./release'));
+  return compileLess('./src/packages/index.less', [lessBaseImport('./src/packages/styles/variables.less'), lessBaseImport('./src/packages/styles/base.less')]).pipe(rename('style.css')).pipe(gulp.dest('./release'));
 });
 
 const buildStyles = gulp.series('copyLess', 'copyStyles', 'less2css', 'less2css_entry');

@@ -77,11 +77,13 @@ app.use(CellGroup);
 
 | 字段        | 说明                                          | 类型             | 默认值           |
 |-----------|----------------------------------------------|-----------------|------------------|
-| title     | 标题名称                                      | String           | -                |
+| title     | 标题名称                                      | String \| VNode    | -                |
 | title-desc| 标题描述                                      | String           | -                |
+| title-align| 标题对齐 可选值为 `left` `center` `right`          | String           | -             |
 | value     | 右侧内容                                      | String           | -                |
+| value-align| 右侧内容对齐 可选值为 `left` `center` `right`          | String           | -             |
 | border    | 是否显示下边框                                    | Boolean          | true            |
-| center    | 是否使内容垂直居中                                | Boolean          | false            |
+| center    | 是否使内容垂直居中                                | Boolean          | true            |
 | size      | 单元格大小，可选值为 `large`                       | String           | -                |
 | is-link   | 是否展示右侧箭头并开启点击反馈                    | Boolean          | false            |
 | url       | 点击后跳转的链接地址                             | String           | -         |
@@ -95,7 +97,7 @@ app.use(CellGroup);
 
 | 名称       | 说明                         |
 |------------|----------------------------|
-| default    | 自定义左侧标题               |
+| title    | 自定义左侧标题               |
 | title-desc | 自定义标题下方的描述信息     |
 | value      | 自定义右侧内容               |
 | left-icon  | 自定义左侧图标               |
@@ -107,7 +109,7 @@ app.use(CellGroup);
 | 名称    | 说明                  |
 |---------|---------------------|
 | title   | 自定义`title`标题区域 |
-| default | 默认插槽              |
+| value | 默认插槽              |
 
 
 ### Cell Events
@@ -121,13 +123,12 @@ app.use(CellGroup);
 ### 样式变量
 | 名称                             | 默认值             |
 |----------------------------------|--------------------|
-| --r-cell-vertical-padding        | 13px               |
+| --r-cell-vertical-padding        | 10px               |
 | --r-cell-horizontal-padding      | 16px               |
 | --r-cell-color                   | #666               |
 | --r-cell-font-size               | 14px               |
-| --r-cell-line-height             | 20px               |
+| --r-cell-line-height             | 24px               |
 | --r-cell-background              | #fff               |
-| --r-cell-title-font-size         | 14px               |
 | --r-cell-title-desc-font-size    | 12px               |
 | --r-cell-title-desc-line-height  | 18px               |
 | --r-cell-title-desc-color        | #666               |

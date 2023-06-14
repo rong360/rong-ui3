@@ -4,13 +4,15 @@ import { createNamespace, kebabCase, makeStringProp, withInstall } from '../util
 const { name } = createNamespace('icon');
 
 const icons = {
+  loading: defineAsyncComponent(() => import('./loading.vue')),
   close: defineAsyncComponent(() => import('./close.vue')),
   'close-circle': defineAsyncComponent(() => import('./close-circle.vue')),
-  loading: defineAsyncComponent(() => import('./loading.vue')),
+  'close-mask': defineAsyncComponent(() => import('./close-mask.vue')),
   'arrow-up': defineAsyncComponent(() => import('./arrow-up.vue')),
   'arrow-down': defineAsyncComponent(() => import('./arrow-down.vue')),
   'arrow-left': defineAsyncComponent(() => import('./arrow-left.vue')),
-  'arrow-right': defineAsyncComponent(() => import('./arrow-right.vue'))
+  'arrow-right': defineAsyncComponent(() => import('./arrow-right.vue')),
+  'question-circle': defineAsyncComponent(() => import('./question-circle.vue'))
 };
 
 export type IconType = keyof typeof icons;

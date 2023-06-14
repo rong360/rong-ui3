@@ -7,7 +7,7 @@ type modsType = Record<string, boolean> | Array<string | Record<string, boolean>
 function genBem(name: string, mods: string): string;
 function genBem(name: string, mods?: modsType): string;
 function genBem(name: string, mods?: unknown): string {
-  if (!mods) return '';
+  if (!mods || mods === 'undefined') return '';
 
   if (typeof mods == 'string') return ` ${name}--${mods.toLowerCase()}`;
 

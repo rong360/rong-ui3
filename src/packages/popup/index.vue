@@ -43,7 +43,7 @@ const { name, bem, prefixCls } = createNamespace('popup');
 
 export const popupProps = {
   ...overlayProps,
-  overlay: makeBooleanProp(),
+  overlay: makeBooleanProp(true),
   overlayClass: [String, Array, Object],
   overlayStyle: makeStyleProp(),
   overlayTransitionName: String,

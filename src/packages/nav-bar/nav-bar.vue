@@ -26,15 +26,15 @@ import Icon from '../icon/index.vue';
 const { bem, prefixCls } = createNamespace('nav-bar');
 
 export const navBarProps = {
-  border: makeBooleanProp(),
-  showLeftArrow: makeBooleanProp(),
+  border: makeBooleanProp(true),
+  showLeftArrow: makeBooleanProp(true),
   leftText: makeStringObjectProp(),
   leftStyle: makeStyleProp(),
   title: makeStringObjectProp(),
   titleStyle: makeStyleProp(),
   rightText: makeStringObjectProp(),
   rightStyle: makeStyleProp(),
-  clickable: makeBooleanProp(),
+  clickable: makeBooleanProp(true),
   fixed: makeBooleanProp(false),
   placeholder: makeBooleanProp(false),
   safeAreaInsetTop: makeBooleanProp(false),

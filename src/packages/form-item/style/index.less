@@ -1,0 +1,22 @@
+.r-form-item {
+  &__title {
+    width: var(--r-form-item-title-width, 90px);
+    flex: none;
+    padding-right: var(--r-form-item-title-padding-right, 10px);
+    &--star {
+      &::before {
+        content: "*";
+        color: var(--r-form-item-required-color, #f5222d);
+        margin-right: var(--r-form-item-required-margin-right, 2px);
+      }
+    }
+  }
+  &__value {
+    text-align: left;
+  }
+  &__error-message {
+    color: var(--r-form-item-error-message-color, #f5222d);
+    font-size: var(--r-form-item-error-message-font-size, 12px);
+    line-height: var(--r-form-item-error-message-line-height, 1.5);
+  }
+}

@@ -6,14 +6,14 @@ module.exports = {
       grid: true
     }),
     require('postcss-flexbugs-fixes'),
-    require('postcss-plugin-px2rem')({
+    process.env.NODE_ENV != 'gulp' ? require('postcss-plugin-px2rem')({
       // base on 320px standard.
       rootValue: 18.75,
       // to leave 1px alone.
       minPixelValue: 1.01,
       selectorBlackList: ['.r-doc', '.markdown-body'],
       exclude: ['/doc/']
-    })
+    }) : null
   ]
   // plugins: {
   //   autoprefixer: {
