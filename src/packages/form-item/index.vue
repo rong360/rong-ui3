@@ -35,10 +35,17 @@ import {
   ref,
   watch
 } from 'vue';
-import { createNamespace, withInstall, makeStringProp, makeBooleanProp, RenderText, objectAssign } from '../utils';
+import {
+  createNamespace,
+  withInstall,
+  makeStringProp,
+  makeBooleanProp,
+  RenderText,
+  objectAssign,
+  isPromise
+} from '../utils';
 import Cell, { cellProps } from '../cell/index.vue';
-import type { Field } from './type';
-import AsyncValidator from 'async-validator';
+import type { Field, FormItemRule } from './type';
 
 const { name, bem } = createNamespace('form-item');
 
@@ -95,7 +102,7 @@ const FormItem = defineComponent({
     const classes = reactive({
       root: computed(() => bem()),
       title: computed(() => bem('title', { star: computedProps.value.showStar && isRequired.value && isField.value })),
-      value: computed(() => bem('value', { [computedProps.value.valueAlign]: true })),
+      value: computed(() => bem('value', { [computedProps.value.valueAlign]: true, error: !!validateMessage.value })),
       errorMessage: computed(() => bem('error-message'))
     });
 
@@ -110,7 +117,7 @@ const FormItem = defineComponent({
       let formRules = form.props.rules;
       let selfRules = props.rules;
       formRules = formRules && props.prop ? formRules[props.prop] : [];
-      let rules = [].concat(selfRules || formRules || []) as Record<string, any>[];
+      let rules = [].concat(selfRules || formRules || []) as FormItemRule[];
       if (computedProps.value.required && rules.length === 0) {
         rules = [{ required: true, message: (props.title || props.prop) + '不能为空' }];
       }
@@ -119,42 +126,81 @@ const FormItem = defineComponent({
     const isRequired = computed(() => {
       let rules = fieldRules.value;
       let isRequired = false;
-      if (rules && rules.length) {
-        rules.every((rule) => {
-          if (rule.required) {
+      if (props.required != false && rules && rules.length) {
+        for (let i = 0; i < rules.length; i++) {
+          if (rules[i].required) {
             isRequired = true;
-            return false;
+            break;
           }
-          return true;
-        });
+        }
       }
       return isRequired;
     });
-    const getFilteredRule = (trigger: string) => {
-      const rules = fieldRules.value;
-      return rules.filter((rule) => {
-        return !rule.trigger || rule.trigger.indexOf(trigger) !== -1;
+
+    const asyncValidator = (value: any = '', rules: FormItemRule[] = []) => {
+      return new Promise((resolve, reject) => {
+        const passed = { valid: true, errors: '' };
+        for (let i = 0; i < rules.length; i++) {
+          const rule = rules[i];
+          const { validator, ...ruleWithoutValidator } = rule;
+          const { required, pattern, message } = ruleWithoutValidator;
+          const failed = { valid: false, errors: message };
+          if (required && !value && value !== 0) {
+            resolve(failed);
+            return;
+          }
+          if (pattern && !pattern.test(value)) {
+            resolve(failed);
+            return;
+          }
+          if (validator && typeof validator === 'function') {
+            const result = validator(value, ruleWithoutValidator);
+            if (isPromise(result)) {
+              (result as Promise<any>)
+                .then((res: any) => {
+                  if (!res) {
+                    resolve(failed);
+                  } else {
+                    resolve(passed);
+                  }
+                })
+                .catch((err) => {
+                  reject(err);
+                });
+            } else {
+              resolve(result ? passed : failed);
+            }
+            return;
+          }
+        }
+        resolve(passed);
       });
     };
-    const validate = (trigger: string, callback: (errors?: string) => void) => {
-      let rules = getFilteredRule(trigger);
 
-      if (!rules || rules.length === 0) {
-        callback();
-        return true;
-      }
+    const validate = () => {
+      return new Promise((resolve, reject) => {
+        try {
+          const rules = fieldRules.value;
+          const res = { valid: true, errors: '', prop: props.prop, title: props.title };
+          if (!rules || rules.length === 0 || props.required === false) {
+            res.valid = true;
+            res.errors = '';
+            resolve(res);
+            return;
+          }
 
-      validateState.value = 'validating';
-
-      const descriptor = { [props.prop]: rules };
-      const validator = new AsyncValidator(descriptor);
-      const model = { [props.prop]: currentValue.value };
-      validator.validate(model, { firstFields: true, suppressWarning: true }, (errors) => {
-        validateState.value = !errors ? 'success' : 'error';
-        validateMessage.value = errors && errors[0].message ? errors[0].message : '';
-        callback(validateMessage.value);
+          asyncValidator(currentValue.value, rules).then((result: any) => {
+            validateMessage.value = result.valid ? '' : result.errors;
+            res.valid = result.valid;
+            res.errors = result.errors;
+            resolve(res);
+          });
+        } catch (error) {
+          reject(error);
+        }
       });
     };
+
     watch(currentValue, () => {
       validateState.value = '';
       validateMessage.value = '';
@@ -186,6 +232,8 @@ const FormItem = defineComponent({
       initialValue.value = currentValue.value;
     });
 
+    const isCompleted = computed(() => (isRequired.value ? currentValue.value !== '' : true));
+
     // 向form组件提供form-item组件信息
     const labelFor = computed(
       () => props.labelFor || `input-${String(Date.now()).slice(-4)}${Math.round(Math.random() * 10000)}`
@@ -196,9 +244,10 @@ const FormItem = defineComponent({
       validate,
       reset,
       getValue,
-      currentValue
+      currentValue,
+      isCompleted
     };
-    const isField = computed(() => props.prop !== '' || typeof props.modelValue != 'undefined');
+    const isField = computed(() => props.title !== '');
     onMounted(() => isField.value && form.add(field));
     onUnmounted(() => isField.value && form.remove(field));
 
@@ -209,7 +258,8 @@ const FormItem = defineComponent({
       classes,
       computedProps,
       labelFor,
-      validateMessage
+      validateMessage,
+      isCompleted
     };
   }
 });

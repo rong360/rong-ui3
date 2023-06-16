@@ -1,17 +1,20 @@
 <template>
   <h2>基础用法二</h2>
-  <r-form ref="formRef">
+  <r-form ref="formRef" @complete="onComplete">
     <r-form-item title="姓名" prop="name" :rules="ruleValidate.name" v-model="formValidate.name">
-      <r-input v-model="formValidate.name"></r-input>
+      <r-input v-model="formValidate.name" placeholder="请输入姓名"></r-input>
+    </r-form-item>
+    <r-form-item title="年龄" prop="age" :rules="ruleValidate.age" v-model="formValidate.age">
+      <r-input v-model="formValidate.age" type="digit" placeholder="请输入年龄"></r-input>
     </r-form-item>
     <r-form-item title="密码" prop="password" v-model="formValidate.password">
-      <r-input v-model="formValidate.password" type="password"></r-input>
+      <r-input v-model="formValidate.password" type="password" placeholder="请输入密码，非必填项"></r-input>
     </r-form-item>
     <r-form-item title="邮箱" prop="mail" :rules="ruleValidate.mail" v-model="formValidate.mail">
-      <r-input v-model="formValidate.mail" type="email"></r-input>
+      <r-input v-model="formValidate.mail" type="email" placeholder="请输入邮箱，异步校验"></r-input>
     </r-form-item>
     <r-form-item :border="false" class="button-group">
-      <r-button type="primary" size="small" @click="doSubmit">Submit</r-button>
+      <r-button type="primary" size="small" :disabled="!isCompleted" @click="doSubmit">Submit</r-button>
       <r-button size="small" @click="doReset">Reset</r-button>
     </r-form-item>
   </r-form>
@@ -21,36 +24,58 @@
 import { ref, reactive } from 'vue';
 
 const formValidate = reactive({
-  name: 'zyx',
+  name: '',
+  age: '',
   password: '',
-  mail: 'zyx'
+  mail: ''
 });
+
+const asyncValidator = (val: string) => {
+  return new Promise((resolve) => {
+    // 模拟异步验证中...'
+    setTimeout(() => {
+      const regEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+      resolve(regEmail.test(val));
+    }, 1000);
+  });
+};
+
 const ruleValidate = reactive({
   name: [
-    { required: true, message: 'The name cannot be empty', rigger: 'blur' },
-    { min: 3, message: '姓名不能少于三位' }
+    { required: true, message: 'name cannot be empty' },
+    { validator: (val: string) => !/\d+/.test(val), message: '姓名中不能有数字' }
+  ],
+  age: [
+    { required: true, message: '请填写年龄' },
+    { pattern: /^(\d{1,2}|1\d{2}|200)$/, message: '必须输入0-200区间' },
+    { validator: (val: string) => /^[^0]/.test(val), message: '不能以 0 开头' }
   ],
   mail: [
-    { required: true, message: 'Mailbox cannot be empty', trigger: 'blur' },
-    { type: 'email', message: 'Incorrect email format', trigger: 'blur' }
+    { required: true, message: 'Mailbox cannot be empty' },
+    { validator: asyncValidator, message: 'Incorrect email format' }
   ]
 });
 
 const formRef = ref();
+const isCompleted = ref(false);
 
 const doSubmit = () => {
-  formRef.value.validate((valid: boolean, errors: string[]) => {
-    if (valid) {
+  formRef.value.validate().then((res: any) => {
+    if (res.valid) {
       console.log('getValue:', formRef.value.getValue());
       console.log('getJsonValue', formRef.value.getJsonValue());
       console.log('getSerializeValue', formRef.value.getSerializeValue());
     } else {
-      console.log('error submit!!', errors);
-      return false;
+      console.log('error submit!!', res);
     }
   });
 };
+
 const doReset = () => {
   formRef.value.reset();
+};
+
+const onComplete = (val: boolean) => {
+  isCompleted.value = val;
 };
 </script>

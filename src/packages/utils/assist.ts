@@ -11,3 +11,7 @@ export function objectAssign(target: Record<string, any>, ...sources: Record<str
   });
   return to;
 }
+
+export function isPromise(value: any) {
+  return value && typeof value.then === 'function';
+}

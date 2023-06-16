@@ -5,11 +5,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type ExtractPropTypes, computed, reactive, ref, provide } from 'vue';
+import { defineComponent, type ExtractPropTypes, computed, reactive, ref, provide, watch } from 'vue';
 import { createNamespace, withInstall, makeObjectProp, makeBooleanProp } from '../utils';
 import type { Field } from '../form-item/type';
 import { formItemProps } from '../form-item/index.vue';
-import { inputProps } from '../input/index.vue'
+import { inputProps } from '../input/index.vue';
 
 const { name, bem } = createNamespace('form');
 
@@ -26,7 +26,9 @@ export type FormProps = ExtractPropTypes<typeof formProps>;
 const Form = defineComponent({
   name,
   props: formProps,
-  setup(props) {
+  expose: ['validate', 'reset', 'getValue', 'getJsonValue', 'getSerializeValue'],
+  emits: ['complete'],
+  setup(props, { emit }) {
     const classes = reactive({
       root: computed(() => bem())
     });
@@ -45,22 +47,24 @@ const Form = defineComponent({
       props
     });
 
-    const validate = (callback: (valid: boolean, errors?: string[]) => void) => {
+    const validate = (customProp = '') => {
       return new Promise((resolve) => {
-        let valid = true;
-        let count = 0;
-        let err: string[] = [];
-        fields.value.forEach((field) => {
-          field.validate('', (errors) => {
-            if (errors) {
-              valid = false;
-              err.push(errors);
-            }
-            if (++count === fields.value.length) {
-              callback(valid, err);
-              resolve(valid);
-            }
-          });
+        if (customProp) {
+          const field = fields.value.find((field) => field.props.prop === customProp);
+          if (field) {
+            const res = field.validate();
+            resolve(res);
+          } else {
+            resolve({ valid: false, errors: ['prop not found'] });
+            console.error(`prop: ${customProp} not found`);
+          }
+          return;
+        }
+
+        const validFields = fields.value.map((field) => field.validate());
+        Promise.all(validFields).then((res) => {
+          const valid = res.every((item) => item.valid);
+          resolve({ valid, results: res });
         });
       });
     };
@@ -78,7 +82,10 @@ const Form = defineComponent({
         .map((obj) => obj.name + '=' + obj.value)
         .join('&');
 
-    const isCompleted = computed(() => fields.value.every((field) => field.currentValue !== ''));
+    const isCompleted = computed(() => fields.value.every((field) => field.isCompleted));
+    watch(isCompleted, (val) => {
+      emit('complete', val);
+    });
 
     return {
       classes,
@@ -86,9 +93,7 @@ const Form = defineComponent({
       reset,
       getValue,
       getJsonValue,
-      getSerializeValue,
-      fields,
-      isCompleted
+      getSerializeValue
     };
   }
 });

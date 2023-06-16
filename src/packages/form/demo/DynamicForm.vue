@@ -1,6 +1,6 @@
 <template>
   <h2>动态表单</h2>
-  <r-form ref="formRef" required>
+  <r-form ref="formRef" required clearable @complete="onComplete">
     <r-form-item
       v-for="item in formData"
       :key="item.name"
@@ -21,7 +21,7 @@
     <div class="button-group">
       <r-button size="small" @click="addField">Add</r-button>
       <r-button size="small" @click="removeField">Remove</r-button>
-      <r-button type="primary" size="small" @click="doSubmit">Submit</r-button>
+      <r-button type="primary" size="small" :disabled="!isCompleted" @click="doSubmit">Submit</r-button>
       <r-button size="small" @click="doReset">Reset</r-button>
     </div>
   </r-form>
@@ -36,7 +36,11 @@ const formData: Record<string, any>[] = reactive([
     componentType: 'input',
     title: '姓名',
     name: 'name',
-    value: 'zyx'
+    value: '',
+    rules: [
+      { required: true, message: 'name cannot be empty' },
+      { validator: (val: string) => !/\d+/.test(val), message: '姓名中不能有数字' }
+    ]
   },
   {
     type: 'password',
@@ -50,17 +54,22 @@ const formData: Record<string, any>[] = reactive([
     componentType: 'input',
     title: '年龄',
     name: 'age',
-    value: ''
+    value: '',
+    rules: [
+      { required: true, message: '请填写年龄' },
+      { pattern: /^(\d{1,2}|1\d{2}|200)$/, message: '必须输入0-200区间' },
+      { validator: (val: string) => /^[^0]/.test(val), message: '不能以 0 开头' }
+    ]
   },
   {
     type: 'email',
     componentType: 'input',
     title: '邮箱',
     name: 'mail',
-    value: 'zyx',
+    value: '',
     rules: [
-      { required: true, message: 'Mailbox cannot be empty', trigger: 'blur' },
-      { type: 'email', message: 'Incorrect email format', trigger: 'blur' }
+      { required: true, message: 'Mailbox cannot be empty' },
+      { pattern: /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/, message: 'Incorrect email format' }
     ]
   }
 ]);
@@ -85,20 +94,25 @@ const removeField = () => {
 };
 
 const formRef = ref();
+const isCompleted = ref(false);
 
 const doSubmit = () => {
-  formRef.value.validate((valid: boolean, errors: string[]) => {
-    if (valid) {
+  formRef.value.validate().then((res: any) => {
+    if (res.valid) {
       console.log('getValue:', formRef.value.getValue());
       console.log('getJsonValue', formRef.value.getJsonValue());
       console.log('getSerializeValue', formRef.value.getSerializeValue());
     } else {
-      console.log('error submit!!', errors);
-      return false;
+      console.log('error submit!!', res);
     }
   });
 };
+
 const doReset = () => {
   formRef.value.reset();
+};
+
+const onComplete = (val: boolean) => {
+  isCompleted.value = val;
 };
 </script>
