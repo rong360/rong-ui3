@@ -55,6 +55,16 @@ Form 设置 `requied` 可给所有项开启非空校验
 
 
 
+### 滚动到指定表单项
+调用Form的 `scrollToField(name: string, options?: boolean | ScrollIntoViewOptions)` 方法：     
+不传参数时默认滚动到表单第一个错误项。 传name参数时滚动到指定表单项。
+<script setup>
+  import ScrollToField from '../demo/ScrollToField.vue?raw'
+</script>
+<HljsBlock :code="ScrollToField"></HljsBlock>
+
+
+
 ## API
 ### Form Props
 
@@ -118,15 +128,14 @@ Form 设置 `requied` 可给所有项开启非空校验
 
 ### Methods
 
-通过 [ref](https://vuejs.org/guide/essentials/template-refs.html#template-refs) 可以获取到 `Form` 实例并调用实例方法
-
 | 方法名            | 说明                   | 参数 | 返回值                                        |
 |-------------------|----------------------|------|-----------------------------------------------|
 | validate          | 验证表单，支持传入 name 来验证单个表单项，不传入 name 时，会验证所有表单项 | name | Promise |
 | reset             | 重置表单项             | -    | -                                             |
-| getValue          | 获取所有表单项当前的值 | -    | `[{name: 'age', value: '', originalValue: ''}]` value和originalValue的区别是value值清空了所有空格 |
+| getValue          | 获取所有表单项当前的值 | -    | `[{name: 'age', value: '', rawValue: ''}]` value和rawValue的区别是value值清空了所有空格 |
 | getJsonValue      | 获取所有表单项当前的值 | -    | `{name: '', age: ''} `                          |
 | getSerializeValue | 获取所有表单项当前的值 | -    | `name=xx&age=18`                                |
+| scrollToField | 不传参数时默认滚动到表单第一个错误项。 传name参数时滚动到指定表单项。 | (name: string, options?: boolean \| ScrollIntoViewOptions)   | -                         |
 
 
 ## 主题定制

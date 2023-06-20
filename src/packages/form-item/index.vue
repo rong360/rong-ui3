@@ -1,5 +1,6 @@
 <template>
   <r-cell
+    ref="formItemRef"
     :class="classes.root"
     :title-class="classes.title"
     :title-align="computedProps.titleAlign"
@@ -45,7 +46,7 @@ import {
   isPromise
 } from '../utils';
 import Cell, { cellProps } from '../cell/index.vue';
-import type { Field, FormItemRule } from './type';
+import type { FormItemRule } from './type';
 
 const { name, bem } = createNamespace('form-item');
 
@@ -93,6 +94,7 @@ const FormItem = defineComponent({
     [Cell.name]: Cell,
     RenderText
   },
+  expose: [],
   emits: ['update:modelValue'],
   setup(props, { emit, attrs }) {
     const form = inject('form') as any;
@@ -224,7 +226,7 @@ const FormItem = defineComponent({
       return {
         name: props.prop || attrs.name,
         value: currentValue.value.replace(/\s/g, ''),
-        originalValue: currentValue.value
+        rawValue: currentValue.value
       };
     };
 
@@ -232,20 +234,31 @@ const FormItem = defineComponent({
       initialValue.value = currentValue.value;
     });
 
+    // 表单项是否完成， 常用于提交按钮是否可用
     const isCompleted = computed(() => (isRequired.value ? currentValue.value !== '' : true));
 
-    // 向form组件提供form-item组件信息
+    // 滚动到当前表单项
+    const formItemRef = ref();
+    // eslint-disable-next-line no-undef
+    const scrollIntoView = (options: boolean | ScrollIntoViewOptions) => {
+      formItemRef.value.$el.scrollIntoView(options);
+    };
+
     const labelFor = computed(
       () => props.labelFor || `input-${String(Date.now()).slice(-4)}${Math.round(Math.random() * 10000)}`
     );
-    const field: Field = {
+
+    // 向form组件提供form-item组件信息
+    const field = {
       props,
       labelFor,
       validate,
       reset,
       getValue,
       currentValue,
-      isCompleted
+      isCompleted,
+      scrollIntoView,
+      validateMessage
     };
     const isField = computed(() => props.title !== '');
     onMounted(() => isField.value && form.add(field));
@@ -259,7 +272,8 @@ const FormItem = defineComponent({
       computedProps,
       labelFor,
       validateMessage,
-      isCompleted
+      isCompleted,
+      formItemRef
     };
   }
 });

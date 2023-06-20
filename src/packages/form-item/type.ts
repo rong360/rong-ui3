@@ -1,16 +1,3 @@
-import type { ComputedRef } from 'vue';
-import type { FormItemProps } from './index.vue';
-
-export interface Field {
-  props: FormItemProps;
-  labelFor: ComputedRef;
-  validate: () => Promise<any>;
-  reset: () => void;
-  getValue: () => any;
-  currentValue: ComputedRef;
-  isCompleted: ComputedRef;
-}
-
 export interface FormItemRuleWithoutValidator {
   pattern?: RegExp;
   message: string;

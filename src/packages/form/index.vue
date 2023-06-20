@@ -5,9 +5,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type ExtractPropTypes, computed, reactive, ref, provide, watch } from 'vue';
+import { defineComponent, type ExtractPropTypes, computed, reactive, ref, provide, watch, onMounted } from 'vue';
 import { createNamespace, withInstall, makeObjectProp, makeBooleanProp } from '../utils';
-import type { Field } from '../form-item/type';
 import { formItemProps } from '../form-item/index.vue';
 import { inputProps } from '../input/index.vue';
 
@@ -26,27 +25,25 @@ export type FormProps = ExtractPropTypes<typeof formProps>;
 const Form = defineComponent({
   name,
   props: formProps,
-  expose: ['validate', 'reset', 'getValue', 'getJsonValue', 'getSerializeValue'],
+  expose: ['validate', 'reset', 'getValue', 'getJsonValue', 'getSerializeValue', 'scrollToField'],
   emits: ['complete'],
   setup(props, { emit }) {
     const classes = reactive({
       root: computed(() => bem())
     });
 
-    // form组件内部的form-item组件需要调用form组件的方法，所以需要通过provide提供一个form对象
+    // 表单项
+    type Field = Record<string, any>;
     const fields = ref<Field[]>([]);
-    const add = (field: Field) => {
-      fields.value.push(field);
-    };
-    const remove = (field: Field) => {
-      fields.value.splice(fields.value.indexOf(field), 1);
-    };
+    const add = (field: Field) => fields.value.push(field);
+    const remove = (field: Field) => fields.value.splice(fields.value.indexOf(field), 1);
     provide('form', {
       add,
       remove,
       props
     });
 
+    // 表单校验
     const validate = (customProp = '') => {
       return new Promise((resolve) => {
         if (customProp) {
@@ -69,12 +66,14 @@ const Form = defineComponent({
       });
     };
 
+    // 表单重置
     const reset = () => {
       fields.value.forEach((field) => {
         field.reset();
       });
     };
 
+    // 获取表单值
     const getValue = () => fields.value.map((field) => field.getValue());
     const getJsonValue = () => Object.assign({}, ...getValue().map((obj) => ({ [obj.name]: obj.value })));
     const getSerializeValue = () =>
@@ -87,13 +86,31 @@ const Form = defineComponent({
       emit('complete', val);
     });
 
+    // 滚动到指定表单项
+    // eslint-disable-next-line no-undef
+    const scrollToField = (name: string, options?: boolean | ScrollIntoViewOptions) => {
+      if (name) {
+        fields.value.find((field) => field.props.prop === name)?.scrollIntoView(options);
+        return;
+      }
+
+      for (let i = 0; i < fields.value.length; i++) {
+        let field = fields.value[i];
+        if (field.validateMessage) {
+          field.scrollIntoView(options);
+          return;
+        }
+      }
+    };
+
     return {
       classes,
       validate,
       reset,
       getValue,
       getJsonValue,
-      getSerializeValue
+      getSerializeValue,
+      scrollToField
     };
   }
 });
