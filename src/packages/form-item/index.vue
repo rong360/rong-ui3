@@ -193,6 +193,7 @@ const FormItem = defineComponent({
 
           asyncValidator(currentValue.value, rules).then((result: any) => {
             validateMessage.value = result.valid ? '' : result.errors;
+            validateState.value = result.valid ? 'success' : 'error';
             res.valid = result.valid;
             res.errors = result.errors;
             resolve(res);
@@ -258,7 +259,7 @@ const FormItem = defineComponent({
       currentValue,
       isCompleted,
       scrollIntoView,
-      validateMessage
+      validateState
     };
     const isField = computed(() => props.title !== '');
     onMounted(() => isField.value && form.add(field));

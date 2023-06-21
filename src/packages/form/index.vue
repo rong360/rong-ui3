@@ -96,7 +96,7 @@ const Form = defineComponent({
 
       for (let i = 0; i < fields.value.length; i++) {
         let field = fields.value[i];
-        if (field.validateMessage) {
+        if (field.validateState === 'error') {
           field.scrollIntoView(options);
           return;
         }

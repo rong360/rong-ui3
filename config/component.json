@@ -104,6 +104,12 @@
         "cName": "输入框",
         "desc": "输入框",
         "show": true
+      },
+      {
+        "name": "Picker",
+        "cName": "选择器",
+        "desc": "选择器",
+        "show": true
       }
     ]
   }

@@ -5,3 +5,4 @@ export * from './format';
 export * from './mouse';
 export * from './render';
 export * from './assist';
+export * from './constant';

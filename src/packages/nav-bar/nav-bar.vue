@@ -20,7 +20,14 @@
 
 <script lang="ts">
 import { defineComponent, reactive, computed } from 'vue';
-import { createNamespace, makeBooleanProp, makeStringObjectProp, makeStyleProp, RenderText } from '../utils';
+import {
+  createNamespace,
+  makeBooleanProp,
+  makeStringObjectProp,
+  makeStyleProp,
+  RenderText,
+  HAPTICS_FEEDBACK
+} from '../utils';
 import Icon from '../icon/index.vue';
 
 const { bem, prefixCls } = createNamespace('nav-bar');
@@ -66,9 +73,9 @@ const NavBar = defineComponent({
           'r-hairline--bottom': props.border
         }
       ]),
-      left: computed(() => [bem('left'), { 'r-click-feedback': props.clickable }]),
+      left: computed(() => [bem('left'), { [HAPTICS_FEEDBACK]: props.clickable }]),
       title: computed(() => [bem('title')]),
-      right: computed(() => [bem('right'), { 'r-click-feedback': props.clickable }])
+      right: computed(() => [bem('right'), { [HAPTICS_FEEDBACK]: props.clickable }])
     });
 
     const clickLeft = (e: MouseEvent) => emit('clickLeft', e);

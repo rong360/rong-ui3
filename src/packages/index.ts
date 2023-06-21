@@ -14,6 +14,7 @@ import Dialog from './dialog/index.vue';
 import Form from './form/index.vue';
 import FormItem from './form-item/index.vue';
 import Input from './input/index.vue';
+import Picker from './picker/index.vue';
 
 export * from './button/index.vue';
 export * from './cell/index.vue';
@@ -28,9 +29,10 @@ export * from './dialog/index.vue';
 export * from './form/index.vue';
 export * from './form-item/index.vue';
 export * from './input/index.vue';
+export * from './picker/index.vue';
 
 const install = (app: App): void => {
-  const components = [Button, Cell, CellGroup, Overlay, Popup, Icon, NavBar, FlexFixed, Divider, Dialog, Form, FormItem, Input];
+  const components = [Button, Cell, CellGroup, Overlay, Popup, Icon, NavBar, FlexFixed, Divider, Dialog, Form, FormItem, Input, Picker];
   components.forEach((component) => {
     app.use(component);
   });
@@ -50,10 +52,11 @@ RDialog: typeof Dialog;
 RForm: typeof Form;
 RFormItem: typeof FormItem;
 RInput: typeof Input;
+RPicker: typeof Picker;
 
   }
 }
 const version = '0.0.1';
 
-export { install, version, Button, Cell, CellGroup, Overlay, Popup, Icon, NavBar, FlexFixed, Divider, Dialog, Form, FormItem, Input };
+export { install, version, Button, Cell, CellGroup, Overlay, Popup, Icon, NavBar, FlexFixed, Divider, Dialog, Form, FormItem, Input, Picker };
 export default { install, version };
