@@ -34,6 +34,7 @@ export default defineConfig(({ mode }) => {
       vueJsx(),
       Markdown({
         markdownItOptions: {
+          typographer: false,
           highlight: function (str, lang) {
             if (lang && hljs.getLanguage(lang)) {
               try {
@@ -72,7 +73,7 @@ export default defineConfig(({ mode }) => {
             }
           });
         }
-      }),
+      })
       // Components({
       //   resolvers: [
       //     isTestRongUi3

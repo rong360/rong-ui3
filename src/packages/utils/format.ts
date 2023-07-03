@@ -40,3 +40,8 @@ export function formatNumber(num: string | number, isForceFormat = false, decima
 
   return `${integer}.${fraction}${zeroString}`;
 }
+
+// 限制数字在指定范围内
+export function clamp(num: number, min: number, max: number) {
+  return Math.min(Math.max(num, min), max);
+}

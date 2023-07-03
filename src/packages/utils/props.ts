@@ -36,7 +36,7 @@ export const truthProp = {
 };
 
 export const makeStringObjectProp = <T>(defaultVal?: T) => ({
-  type: [String, Object],
+  type: [String, Object] as PropType<T>,
   default: defaultVal
 });
 
@@ -47,4 +47,14 @@ export const makeObjectProp = () => ({
 
 export const makeClassProp = () => ({
   type: [String, Array, Object]
+});
+
+export const makeArrayProp = <T>() => ({
+  type: Array as PropType<T[]>,
+  default: () => []
+});
+
+export const makeRequiredProp = <T>(type: T) => ({
+  type,
+  required: true as const
 });

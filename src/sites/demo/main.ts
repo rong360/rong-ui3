@@ -1,6 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
+import './assets/touchEmulator';
 import RongUi3 from '../../packages';
 import './assets/main.less';
 import '../../packages/index.less';

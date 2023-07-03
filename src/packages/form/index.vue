@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, type ExtractPropTypes, computed, reactive, ref, provide, watch, onMounted } from 'vue';
+import { defineComponent, type ExtractPropTypes, computed, reactive, ref, provide, watch } from 'vue';
 import { createNamespace, withInstall, makeObjectProp, makeBooleanProp } from '../utils';
 import { formItemProps } from '../form-item/index.vue';
 import { inputProps } from '../input/index.vue';

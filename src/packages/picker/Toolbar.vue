@@ -1,28 +1,29 @@
 <template>
   <div :class="classes.root">
-    <slot name="toolbar">
-      <button :class="classes.cancel" @click="onCancel">
-        <slot name="cancel">{{ cancelButtonText }}</slot>
-      </button>
-      <div :class="classes.title">
-        <slot name="title">{{ title }}</slot>
-      </div>
-      <button :class="classes.confirm" @click="onConfirm">
-        <slot name="confirm">{{ confirmButtonText }}</slot>
-      </button>
-    </slot>
+    <button :class="classes.cancel" :style="cancelButtonStyle" @click="onCancel">
+      <RenderText :text="cancelButtonText" />
+    </button>
+    <div :class="classes.title" :style="titleStyle">
+      <RenderText :text="title" />
+    </div>
+    <button :class="classes.confirm" :style="confirmButtonStyle" @click="onConfirm">
+      <RenderText :text="confirmButtonText" />
+    </button>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed } from 'vue';
-import { makeStringProp, HAPTICS_FEEDBACK } from '../utils';
+import { defineComponent, reactive, computed, type VNode } from 'vue';
+import { makeStringObjectProp, makeStyleProp, HAPTICS_FEEDBACK, RenderText } from '../utils';
 import { bem } from './utils';
 
 export const pickerToolbarProps = {
-  title: String,
-  cancelButtonText: makeStringProp('取消'),
-  confirmButtonText: makeStringProp('确认')
+  title: makeStringObjectProp<string | VNode>(),
+  titleStyle: makeStyleProp(),
+  cancelButtonText: makeStringObjectProp<string | VNode>('取消'),
+  cancelButtonStyle: makeStyleProp(),
+  confirmButtonText: makeStringObjectProp<string | VNode>('确认'),
+  confirmButtonStyle: makeStyleProp()
 };
 
 export const pickerToolbarSlots = ['cancel', 'confirm', 'title', 'toolbar'];
@@ -30,6 +31,9 @@ export const pickerToolbarSlots = ['cancel', 'confirm', 'title', 'toolbar'];
 export default defineComponent({
   props: pickerToolbarProps,
   emits: ['cancel', 'confirm'],
+  components: {
+    RenderText
+  },
   setup(props, { emit }) {
     const classes = reactive({
       root: computed(() => bem('toolbar')),

@@ -4,5 +4,7 @@ export * from './props';
 export * from './format';
 export * from './mouse';
 export * from './render';
-export * from './assist';
+export * from './basic';
 export * from './constant';
+export * from './dom';
+export * from './types';
