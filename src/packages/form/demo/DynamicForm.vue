@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from 'vue';
+import { ref, reactive, createVNode } from 'vue';
 
 const formData: Record<string, any>[] = reactive([
   {
@@ -45,7 +45,7 @@ const formData: Record<string, any>[] = reactive([
   {
     type: 'password',
     componentType: 'input',
-    title: '密码',
+    title: createVNode('span', { style: { color: 'red' } }, '密码'),
     name: 'password',
     value: ''
   },

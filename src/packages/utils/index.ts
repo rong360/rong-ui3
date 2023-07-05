@@ -7,4 +7,3 @@ export * from './render';
 export * from './basic';
 export * from './constant';
 export * from './dom';
-export * from './types';

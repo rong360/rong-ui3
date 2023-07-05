@@ -110,6 +110,12 @@
         "cName": "选择器",
         "desc": "选择器",
         "show": true
+      },
+      {
+        "name": "Select",
+        "cName": "选择器",
+        "desc": "选择器",
+        "show": true
       }
     ]
   }

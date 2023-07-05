@@ -25,7 +25,7 @@ import { defineComponent, type ExtractPropTypes, computed, reactive } from 'vue'
 import {
   createNamespace,
   makeStringProp,
-  makeStringObjectProp,
+  makeTextualProp,
   makeBooleanProp,
   makeNumericProp,
   makeStyleProp,
@@ -48,7 +48,7 @@ export const routeProps = {
 };
 
 export const cellProps = {
-  title: makeStringObjectProp(''),
+  title: makeTextualProp(),
   titleDesc: makeStringProp(''),
   titleDescStyle: makeStyleProp(),
   titleClass: makeClassProp(),

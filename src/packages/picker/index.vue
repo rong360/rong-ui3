@@ -27,7 +27,7 @@
 import { defineComponent, reactive, ref, computed, onMounted, nextTick, watch, type PropType } from 'vue';
 
 // Utils
-import { withInstall, makeArrayProp, makeNumericProp, truthProp, pick, isSameValue, type Numeric } from '../utils';
+import { withInstall, makeArrayProp, makeNumericProp, truthProp, pick, isSameValue } from '../utils';
 import { name, bem, formatCascade, findOptionByValue } from './utils';
 
 // Components
@@ -36,6 +36,7 @@ import Column from './Column.vue';
 
 // Types
 import type { PickerOption, PickerColumn, PickerFieldNames } from './types';
+import type { Numeric } from '../types';
 
 export const pickerProps = {
   modelValue: makeArrayProp<string | number>(),

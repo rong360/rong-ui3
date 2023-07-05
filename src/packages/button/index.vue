@@ -2,10 +2,10 @@
   <div :class="classes.root" @click="handleClick">
     <div :class="classes.content">
       <slot name="prepend"></slot>
-      <div :class="classes.text" v-if="typeof text === 'string'" v-html="text"></div>
-      <div :class="classes.text" v-else>
-        <slot v-if="$slots.default"></slot>
-        <component :is="text" v-else-if="typeof text === 'object'"></component>
+      <div :class="classes.text">
+        <slot>
+          <RenderText :text="text"></RenderText>
+        </slot>
       </div>
       <slot name="append"></slot>
     </div>
@@ -14,7 +14,11 @@
 
 <script lang="ts">
 import { defineComponent, type ExtractPropTypes, computed, reactive } from 'vue';
-import { createNamespace, makeStringProp, makeBooleanProp, makeStringObjectProp, withInstall } from '../utils';
+
+// Utils
+import { createNamespace, makeStringProp, makeBooleanProp, makeTextualProp, RenderText, withInstall } from '../utils';
+
+// Types
 import type { ButtonShape, ButtonSize, ButtonType } from './type';
 
 const { name, bem } = createNamespace('button');
@@ -26,7 +30,7 @@ export const buttonProps = {
   disabled: makeBooleanProp(false),
   plain: makeBooleanProp(false),
   block: makeBooleanProp(false),
-  text: makeStringObjectProp()
+  text: makeTextualProp()
 };
 
 export type ButtonProps = ExtractPropTypes<typeof buttonProps>;
@@ -34,6 +38,9 @@ export type ButtonProps = ExtractPropTypes<typeof buttonProps>;
 export const Button = defineComponent({
   name,
   props: buttonProps,
+  components: {
+    RenderText
+  },
   emits: ['click'],
   setup(props, { emit, slots }) {
     const classes = reactive({

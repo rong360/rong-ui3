@@ -1,4 +1,5 @@
-import { createNamespace, clamp, type Numeric } from '../utils';
+import { createNamespace, clamp } from '../utils';
+import type { Numeric } from '../types';
 import type { PickerOption, PickerFieldNames } from './types';
 
 const { name, bem } = createNamespace('picker');

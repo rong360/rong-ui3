@@ -23,7 +23,7 @@ import { defineComponent, reactive, computed } from 'vue';
 import {
   createNamespace,
   makeBooleanProp,
-  makeStringObjectProp,
+  makeTextualProp,
   makeStyleProp,
   RenderText,
   HAPTICS_FEEDBACK
@@ -35,11 +35,11 @@ const { bem, prefixCls } = createNamespace('nav-bar');
 export const navBarProps = {
   border: makeBooleanProp(true),
   showLeftArrow: makeBooleanProp(true),
-  leftText: makeStringObjectProp(),
+  leftText: makeTextualProp(),
   leftStyle: makeStyleProp(),
-  title: makeStringObjectProp(),
+  title: makeTextualProp(),
   titleStyle: makeStyleProp(),
-  rightText: makeStringObjectProp(),
+  rightText: makeTextualProp(),
   rightStyle: makeStyleProp(),
   clickable: makeBooleanProp(true),
   fixed: makeBooleanProp(false),

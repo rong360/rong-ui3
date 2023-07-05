@@ -64,7 +64,7 @@ import {
   makeStringProp,
   makeStyleProp,
   makeBooleanProp,
-  makeStringObjectProp,
+  makeTextualProp,
   withInstall
 } from '../utils';
 import { useEventListener, useCustomEvent } from '../composables';
@@ -79,15 +79,15 @@ export const dialogProps = {
   round: makeBooleanProp(true),
   title: makeStringProp(),
   headerStyle: makeStyleProp(),
-  message: makeStringObjectProp(),
+  message: makeTextualProp(),
   contentStyle: makeStyleProp(),
   footerStyle: makeStyleProp(),
   showCancelButton: makeBooleanProp(true),
-  cancelButtonText: makeStringObjectProp('取消'),
+  cancelButtonText: makeTextualProp('取消'),
   cancelButtonStyle: makeStyleProp(),
   closeOnClickCancelButton: makeBooleanProp(true),
   showConfirmButton: makeBooleanProp(true),
-  confirmButtonText: makeStringObjectProp('确定'),
+  confirmButtonText: makeTextualProp('确定'),
   confirmButtonStyle: makeStyleProp()
 };
 

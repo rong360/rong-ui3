@@ -90,6 +90,7 @@ Form 设置 `requied` 可给所有项开启非空校验
 | 参数               | 说明                                                             | 类型            | 默认值 |
 |--------------------|----------------------------------------------------------------|-----------------|--------|
 | v-model              | 需要验证的数据（Form上的`mode` `rules` 和 FormItem上的v-model 只能二选一）     | FormItemRule [] | []     |
+| title               | 输入框左侧文本                                            | string \| VNode          | -      |
 | rules              | 定义校验规则                                                     | FormItemRule [] | []     |
 | prop               | 表单域 `v-model` 字段， 在使用表单校验功能的情况下，该属性是 _必填_ 的 | string          | -      |
 | required           | 是否必填字段                                                     | boolean         | -      |

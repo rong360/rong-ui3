@@ -1,4 +1,4 @@
-import type { PropType, CSSProperties } from 'vue';
+import type { PropType, CSSProperties, VNode } from 'vue';
 
 export const numericProp = [Number, String];
 
@@ -35,13 +35,13 @@ export const truthProp = {
   default: true as const
 };
 
-export const makeStringObjectProp = <T>(defaultVal?: T) => ({
-  type: [String, Object] as PropType<T>,
+export const makeTextualProp = <T>(defaultVal?: T) => ({
+  type: [String, Number, Object] as PropType<string | number | VNode>,
   default: defaultVal
 });
 
-export const makeObjectProp = () => ({
-  type: Object,
+export const makeObjectProp = <T>() => ({
+  type: Object as PropType<T>,
   default: () => ({})
 });
 

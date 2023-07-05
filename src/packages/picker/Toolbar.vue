@@ -13,16 +13,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, computed, type VNode } from 'vue';
-import { makeStringObjectProp, makeStyleProp, HAPTICS_FEEDBACK, RenderText } from '../utils';
+import { defineComponent, reactive, computed } from 'vue';
+import { makeTextualProp, makeStyleProp, HAPTICS_FEEDBACK, RenderText } from '../utils';
 import { bem } from './utils';
 
 export const pickerToolbarProps = {
-  title: makeStringObjectProp<string | VNode>(),
+  title: makeTextualProp(),
   titleStyle: makeStyleProp(),
-  cancelButtonText: makeStringObjectProp<string | VNode>('取消'),
+  cancelButtonText: makeTextualProp('取消'),
   cancelButtonStyle: makeStyleProp(),
-  confirmButtonText: makeStringObjectProp<string | VNode>('确认'),
+  confirmButtonText: makeTextualProp('确认'),
   confirmButtonStyle: makeStyleProp()
 };
 
