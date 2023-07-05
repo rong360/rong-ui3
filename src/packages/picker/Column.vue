@@ -70,7 +70,6 @@ export default defineComponent({
     const touch = useTouch();
 
     const baseOffset = computed(() => (props.optionHeight * (Number(props.visibleOptionNum) - 1)) / 2); // 基础偏移量，负责将元素起始位置移动到中间位置
-    const count = computed(() => props.options.length);
 
     const updateValueByIndex = (index: number) => {
       let enabledIndex = findIndexOfEnabledOption(props.options, index, props.fields);
@@ -80,7 +79,8 @@ export default defineComponent({
       selectedIndex.value = enabledIndex;
     };
 
-    const getIndexByOffset = (offset: number) => clamp(Math.round(-offset / props.optionHeight), 0, count.value - 1);
+    const getIndexByOffset = (offset: number) =>
+      clamp(Math.round(-offset / props.optionHeight), 0, props.options.length - 1);
 
     const onTouchstart = (event: TouchEvent) => {
       touch.start(event);
@@ -96,7 +96,7 @@ export default defineComponent({
 
       const newOffset = clamp(
         startOffset + touch.deltaY.value,
-        -(count.value * props.optionHeight),
+        -(props.options.length * props.optionHeight),
         props.optionHeight
       );
 

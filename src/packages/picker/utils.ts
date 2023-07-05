@@ -35,7 +35,7 @@ export function findIndexOfEnabledOption(
   index: number,
   fieldNames: Required<PickerFieldNames>
 ) {
-  index = clamp(index, 0, options.length);
+  index = clamp(index, 0, options.length - 1);
 
   for (let i = index; i < options.length; i++) {
     if (!options[i][fieldNames.disabled]) return i;

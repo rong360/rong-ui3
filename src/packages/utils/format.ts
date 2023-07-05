@@ -43,5 +43,6 @@ export function formatNumber(num: string | number, isForceFormat = false, decima
 
 // 限制数字在指定范围内
 export function clamp(num: number, min: number, max: number) {
+  if (max < min) max = min;
   return Math.min(Math.max(num, min), max);
 }

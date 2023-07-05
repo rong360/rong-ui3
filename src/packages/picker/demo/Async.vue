@@ -20,7 +20,7 @@ onMounted(() => {
       { text: '湖州', value: 'Huzhou' }
     ];
     selectedValues.value = ['Wenzhou'];
-  }, 1000);
+  }, 5000);
 });
 
 const onConfirm = (value: any) => {
