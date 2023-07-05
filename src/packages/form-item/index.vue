@@ -261,7 +261,7 @@ const FormItem = defineComponent({
       scrollIntoView,
       validateState
     };
-    const isField = computed(() => props.title !== '');
+    const isField = computed(() => props.title !== undefined);
     onMounted(() => isField.value && form.add(field));
     onUnmounted(() => isField.value && form.remove(field));
 
