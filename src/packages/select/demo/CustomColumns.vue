@@ -1,16 +1,21 @@
 <template>
   <h2>自定义 Columns 的结构</h2>
-  <r-picker
+  <r-select
+    v-model="selectedValues"
+    value-separator="_"
+    text-separator="/"
     :columns="columns"
     :columns-field-names="customFieldName"
     @confirm="onConfirm"
     @cancel="onCancel"
-  ></r-picker>
-  <div class="selected-values" v-show="selectedValues.length"> 当前值：{{ selectedValues }} </div>
+    @change="onChange"
+  ></r-select>
+  {{ selectedValues }}
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+
 const columns = [
   {
     cityName: '浙江',
@@ -48,13 +53,18 @@ const customFieldName = {
   disabled: 'cityDisabled'
 };
 
-const selectedValues = ref([]);
+// const selectedValues = ref(['福建', '厦门', '思明区']);
+const selectedValues = ref('福建_厦门_思明区');
 
 const onConfirm = (value: any) => {
-  selectedValues.value = value.selectedValues;
+  console.log(value);
 };
 
-const onCancel = () => {
-  selectedValues.value = [];
+const onCancel = (value: any) => {
+  console.log(value);
+};
+
+const onChange = (value: any) => {
+  console.log(value);
 };
 </script>

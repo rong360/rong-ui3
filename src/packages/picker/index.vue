@@ -66,7 +66,7 @@ const Picker = defineComponent({
 
     const columnRef = ref<InstanceType<typeof Column>[]>();
     const frameRef = ref<HTMLElement>();
-    const selectedValues = ref(props.modelValue.slice(0));
+    const selectedValues = ref<(string | number)[]>([]);
 
     const fields = computed(() =>
       Object.assign(
@@ -158,9 +158,7 @@ const Picker = defineComponent({
         selectedValues.value.length = currentColumns.value.length;
       }
 
-      if (from === 'initialValue') {
-        emit('changeOnInitialValue', Object.assign({ columnIndex, selectedIndex }, getEventParams()));
-      } else if (from === 'transitionend') {
+      if (from === 'transitionend') {
         emit('update:modelValue', selectedValues.value.slice(0));
         emit('change', Object.assign({ columnIndex, selectedIndex }, getEventParams()));
       } else if (from === 'stopMomentum') {
@@ -185,8 +183,10 @@ const Picker = defineComponent({
       (newValues) => {
         if (!isSameValue(newValues, selectedValues.value)) {
           selectedValues.value = newValues.slice(0);
+          emit('changeOnInitialValue', getEventParams());
         }
-      }
+      },
+      { immediate: true }
     );
 
     return {

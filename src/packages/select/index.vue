@@ -1,6 +1,6 @@
 <template>
   <div :class="classes.root" @click="show = true">
-    <div :class="classes.content">{{ selectedTexts }}</div>
+    <div :class="classes.content">{{ placeholderText }}</div>
     <r-icon name="arrow-right" />
   </div>
   <r-popup v-bind="popupPropss" position="bottom" v-model:show="show">
@@ -19,7 +19,8 @@
 import { defineComponent, type ExtractPropTypes, type PropType, computed, reactive, ref, watch } from 'vue';
 
 // Utils
-import { createNamespace, withInstall, pick, makeBooleanProp, isSameValue } from '../utils';
+import { createNamespace, withInstall, pick, makeBooleanProp, makeStringProp, isSameValue } from '../utils';
+import { formatValueToArray, formatValueToString } from './utils';
 
 // components
 import Icon from '../icon/index.vue';
@@ -32,10 +33,14 @@ export const selectProps = {
   ...pickerProps,
   ...popupProps,
   modelValue: {
-    type: [String, Number, Array] as PropType<string | number | (string | number)[]>,
+    type: [String, Array] as PropType<string | string[]>,
     default: ''
   },
-  round: makeBooleanProp(true)
+  round: makeBooleanProp(true),
+  formatText: Function as PropType<(value: string[]) => string>,
+  textSeparator: String,
+  valueSeparator: makeStringProp(','),
+  placeholder: String
 };
 
 export type SelectProps = ExtractPropTypes<typeof selectProps>;
@@ -55,9 +60,9 @@ export const Select = defineComponent({
       content: computed(() => bem('content'))
     });
 
-    const show = ref(true);
-    const selectedValues = ref(Array.isArray(props.modelValue) ? props.modelValue.slice(0) : [props.modelValue]);
-    const selectedTexts = ref([]);
+    const show = ref(false);
+    const selectedValues = ref(formatValueToArray(props.modelValue, props.valueSeparator));
+    const selectedTexts = ref<string[]>([]);
 
     const pickerPropss = computed(() =>
       pick(
@@ -67,10 +72,20 @@ export const Select = defineComponent({
       )
     );
     const popupPropss = computed(() => pick(props, Object.keys(popupProps), true));
+    const placeholderText = computed(
+      () => selectedTexts.value.filter((item) => item !== '').join(props.textSeparator) || props.placeholder
+    );
 
     const onConfirm = (value: any) => {
       show.value = false;
+      selectedTexts.value = value.selectedTexts;
       emit('confirm', value);
+      emit(
+        'update:modelValue',
+        Array.isArray(props.modelValue)
+          ? value.selectedValues
+          : formatValueToString(value.selectedValues, props.valueSeparator)
+      );
     };
     const onCancel = (value: any) => {
       show.value = false;
@@ -86,11 +101,11 @@ export const Select = defineComponent({
 
     watch(
       () => props.modelValue,
-      (newValues) => {
-        newValues = Array.isArray(newValues) ? newValues.slice(0) : [newValues];
+      (newValue) => {
+        newValue = formatValueToArray(newValue, props.valueSeparator);
 
-        if (!isSameValue(newValues, selectedValues.value)) {
-          selectedValues.value = newValues.slice(0);
+        if (!isSameValue(newValue, selectedValues.value)) {
+          selectedValues.value = newValue;
         }
       }
     );
@@ -102,6 +117,7 @@ export const Select = defineComponent({
       popupPropss,
       selectedValues,
       selectedTexts,
+      placeholderText,
       onConfirm,
       onCancel,
       onChange,

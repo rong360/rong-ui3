@@ -1,6 +1,13 @@
 <template>
   <h2>基础用法</h2>
-  <r-select :columns="columns" @confirm="onConfirm" @cancel="onCancel" @change="onChange"></r-select>
+  <r-select
+    v-model="selectedValues"
+    :columns="columns"
+    @confirm="onConfirm"
+    @cancel="onCancel"
+    @change="onChange"
+  ></r-select>
+  <div class="fs-12">{{ selectedValues }}</div>
 </template>
 
 <script lang="ts" setup>
@@ -14,15 +21,14 @@ const columns = [
   { text: '湖州', value: 'Huzhou' }
 ];
 
-const selectedValues = ref('Shaoxing');
+const selectedValues = ref('Wenzhou');
 
 const onConfirm = (value: any) => {
-  // console.log(value);
-  selectedValues.value = value.selectedValues;
+  console.log(value);
 };
 
 const onCancel = (value: any) => {
-  // console.log(value);
+  console.log(value);
 };
 
 const onChange = (value: any) => {
