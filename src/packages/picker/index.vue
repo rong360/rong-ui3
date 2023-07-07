@@ -13,7 +13,7 @@
         :value="selectedValues[columnIndex]"
         :visibleOptionNum="visibleOptionNum"
         :swipeDuration="swipeDuration"
-        @change="(value: Numeric, selectedIndex: number) => onColumnChange(value, selectedIndex, columnIndex)"
+        @change="(value: Numeric, selectedIndex: number, from: string) => onColumnChange(value, selectedIndex, columnIndex, from)"
       ></Column>
       <div :class="classes.mask" :style="maskStyle">
         <div ref="frameRef" :class="classes.frame"></div>
@@ -28,7 +28,7 @@ import { defineComponent, reactive, ref, computed, onMounted, nextTick, watch, t
 
 // Utils
 import { withInstall, makeArrayProp, makeNumericProp, truthProp, pick, isSameValue } from '../utils';
-import { name, bem, formatCascade, findOptionByValue } from './utils';
+import { name, bem, formatCascade, findOptionByValue, isOptionExist, findIndexOfEnabledOption } from './utils';
 
 // Components
 import Toolbar, { pickerToolbarProps } from './Toolbar.vue';
@@ -39,13 +39,13 @@ import type { PickerOption, PickerColumn, PickerFieldNames } from './types';
 import type { Numeric } from '../types';
 
 export const pickerProps = {
+  ...pickerToolbarProps,
   modelValue: makeArrayProp<string | number>(),
   columns: makeArrayProp<PickerOption | PickerColumn>(),
   columnsFieldNames: Object as PropType<PickerFieldNames>,
   visibleOptionNum: makeNumericProp(6),
   swipeDuration: makeNumericProp(1000),
-  showToolbar: truthProp,
-  ...pickerToolbarProps
+  showToolbar: truthProp
 };
 
 const Picker = defineComponent({
@@ -55,7 +55,7 @@ const Picker = defineComponent({
     Toolbar,
     Column
   },
-  emits: ['change', 'update:modelValue', 'confirm', 'cancel'],
+  emits: ['change', 'changeOnInitialValue', 'update:modelValue', 'confirm', 'cancel'],
   setup(props, { emit }) {
     const classes = reactive({
       root: computed(() => bem()),
@@ -124,6 +124,10 @@ const Picker = defineComponent({
       )
     );
 
+    const selectedTexts = computed(() =>
+      selectedOptions.value.map((option) => (option ? option[fields.value.text] : ''))
+    );
+
     const setValue = (index: number, value: Numeric) => {
       if (selectedValues.value[index] !== value) {
         const newValues = selectedValues.value.slice(0);
@@ -135,20 +139,33 @@ const Picker = defineComponent({
     const getEventParams = () => ({
       selectedValues: selectedValues.value.slice(0),
       selectedOptions: selectedOptions.value,
-      selectedIndexes: selectedIndexes.value
+      selectedIndexes: selectedIndexes.value,
+      selectedTexts: selectedTexts.value
     });
 
-    const onColumnChange = (value: Numeric, selectedIndex: number, columnIndex: number) => {
+    const onColumnChange = (value: Numeric, selectedIndex: number, columnIndex: number, from: string) => {
       setValue(columnIndex, value);
 
       if (columnsType.value === 'cascade') {
-        for (let i = columnIndex + 1; i < currentColumns.value.length; i++) {
-          setValue(i, currentColumns.value[i][0][fields.value.value]);
-        }
+        // reset values after cascading
+        selectedValues.value.forEach((value, index) => {
+          const options = currentColumns.value[index];
+          if (options && options.length && !isOptionExist(options, value, fields.value)) {
+            let enabledIndex = findIndexOfEnabledOption(options, 0, fields.value);
+            setValue(index, options[enabledIndex][fields.value.value]);
+          }
+        });
+        selectedValues.value.length = currentColumns.value.length;
       }
 
-      emit('update:modelValue', selectedValues.value.slice(0));
-      emit('change', Object.assign({ columnIndex, selectedIndex }, getEventParams()));
+      if (from === 'initialValue') {
+        emit('changeOnInitialValue', Object.assign({ columnIndex, selectedIndex }, getEventParams()));
+      } else if (from === 'transitionend') {
+        emit('update:modelValue', selectedValues.value.slice(0));
+        emit('change', Object.assign({ columnIndex, selectedIndex }, getEventParams()));
+      } else if (from === 'stopMomentum') {
+        emit('update:modelValue', selectedValues.value.slice(0));
+      }
     };
 
     const stopMomentum = () => columnRef.value?.forEach((column) => column.stopMomentum());

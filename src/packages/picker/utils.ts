@@ -20,7 +20,7 @@ export const formatCascade = (
     const index = options.findIndex((option) => option[fields.value] === defaultValues[columnIndex]);
     const cursor = options[index > -1 ? index : 0];
     const children = cursor[fields.children];
-    if (children) searchChildren(children, columnIndex + 1);
+    if (children && children.length) searchChildren(children, columnIndex + 1);
   }
   searchChildren(columns, 0);
 
@@ -47,6 +47,12 @@ export function findIndexOfEnabledOption(
 
   return 0;
 }
+
+export const isOptionExist = (
+  options: PickerOption[],
+  value: Numeric | undefined,
+  fields: Required<PickerFieldNames>
+) => value !== undefined && !!options.find((option) => option[fields.value] === value);
 
 // 惯性滚动 距离
 export const momentum = (distance: number, duration: number) => {

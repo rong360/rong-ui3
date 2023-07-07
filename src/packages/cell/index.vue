@@ -10,7 +10,7 @@
       </div>
     </div>
     <div :class="classes.value">
-      <slot name="value">{{ value }}</slot>
+      <slot>{{ value }}</slot>
     </div>
     <slot name="right-icon">
       <r-icon :name="`arrow-${arrowDirection}`" v-if="isLink" />

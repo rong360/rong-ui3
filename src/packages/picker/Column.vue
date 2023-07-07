@@ -40,15 +40,17 @@ const MOMENTUM_DISTANCE = 15;
 
 const DEFAULT_DURATION = 200;
 
+export const columnProps = {
+  value: numericProp,
+  options: makeArrayProp<PickerOption>(),
+  fields: makeRequiredProp(Object as PropType<Required<PickerFieldNames>>),
+  optionHeight: makeRequiredProp(Number),
+  visibleOptionNum: makeRequiredProp(numericProp),
+  swipeDuration: makeRequiredProp(numericProp)
+};
+
 export default defineComponent({
-  props: {
-    value: numericProp,
-    options: makeArrayProp<PickerOption>(),
-    fields: makeRequiredProp(Object as PropType<Required<PickerFieldNames>>),
-    optionHeight: makeRequiredProp(Number),
-    visibleOptionNum: makeRequiredProp(numericProp),
-    swipeDuration: makeRequiredProp(numericProp)
-  },
+  props: columnProps,
   components: {
     RenderText
   },
@@ -131,16 +133,18 @@ export default defineComponent({
       }
     };
 
-    const onTransitionend = () => setChooseValue();
+    const onTransitionend = () => setChooseValue('transitionend');
 
     const stopMomentum = () => {
       currentDuration.value = 0;
-      setChooseValue();
+      setChooseValue('stopMomentum');
     };
 
-    const setChooseValue = () => {
+    const setChooseValue = (from: string) => {
+      if (props.options.length === 0) return;
+
       const value = props.options[selectedIndex.value][props.fields.value];
-      if (props.value !== value) emit('change', value, selectedIndex.value);
+      emit('change', value, selectedIndex.value, from);
     };
 
     const wrapperStyle = computed(() => {
@@ -156,7 +160,10 @@ export default defineComponent({
       () => props.value,
       (value: any) => {
         const index = props.options.findIndex((option) => option[props.fields.value] === value);
-        updateValueByIndex(index);
+        if (index !== selectedIndex.value) {
+          updateValueByIndex(index);
+          setChooseValue('initialValue');
+        }
       },
       { immediate: true }
     );

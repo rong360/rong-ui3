@@ -50,7 +50,7 @@ const customFieldName = {
 
 const selectedValues = ref([]);
 
-const onConfirm = (value: any) => {
+const onConfirm = (value: any) => {console.log(value)
   selectedValues.value = value.selectedValues;
 };
 

@@ -14,12 +14,10 @@
         <slot name="title"> <RenderText :text="title" /> </slot>
       </label>
     </template>
-    <template #value>
-      <slot></slot>
-      <div :class="classes.errorMessage" v-if="validateMessage && computedProps.showErrorMessage">
-        {{ validateMessage }}
-      </div>
-    </template>
+    <slot></slot>
+    <div :class="classes.errorMessage" v-if="validateMessage && computedProps.showErrorMessage">
+      {{ validateMessage }}
+    </div>
   </r-cell>
 </template>
 

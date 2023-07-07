@@ -1,6 +1,6 @@
 <template>
   <h2>双向绑定</h2>
-  <r-picker v-model="selectedValues" title="标题" :columns="columns" @cancel="onCancel"/>
+  <r-picker v-model="selectedValues" title="标题" :columns="columns" @cancel="onCancel" />
   <div class="selected-values" v-show="selectedValues.length"> 当前值：{{ selectedValues }} </div>
 </template>
 

@@ -15,7 +15,7 @@ const columns = [
         text: '杭州',
         value: 'Hangzhou',
         children: [
-          { text: '西湖区', value: 'Xihu' },
+          { text: '西湖区', value: 'Xihu', disabled: true },
           { text: '余杭区', value: 'Yuhang' }
         ]
       },

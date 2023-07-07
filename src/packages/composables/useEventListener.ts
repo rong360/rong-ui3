@@ -26,8 +26,15 @@ export function useEventListener(
   listener: any,
   options?: boolean | AddEventListenerOptions
 ): void {
-  onMounted(() => unref(target).addEventListener(type, listener, options));
-  onUnmounted(() => unref(target).addEventListener(type, listener, options));
+  let el: any;
+  onMounted(() => {
+    el = unref(target);
+    el.addEventListener(type, listener, options);
+  });
+  onUnmounted(() => {
+    el.removeEventListener(type, listener, options);
+    el = null;
+  });
 }
 
 export function useCustomEvent(target: Window, type: string, listener: (event: CustomEventInit) => void) {

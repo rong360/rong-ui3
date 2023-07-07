@@ -25,5 +25,12 @@ export function pick(obj: Record<string, any>, keys: string[], ignoreUndefined?:
   }, {} as Record<string, any>);
 }
 
+export function keyAddPrefix(obj: Record<string, any>, prefix: string) {
+  return Object.keys(obj).reduce((ret, key) => {
+    ret[`${prefix}${key.charAt(0).toUpperCase()}${key.slice(1)}`] = obj[key];
+    return ret;
+  }, {} as Record<string, any>);
+}
+
 export const isSameValue = (newValue: unknown, oldValue: unknown) =>
   JSON.stringify(newValue) === JSON.stringify(oldValue);

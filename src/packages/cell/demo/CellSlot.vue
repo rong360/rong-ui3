@@ -6,7 +6,7 @@
     </template>
     <template #title>title</template>
     <template #title-desc> <strong>title desc</strong></template>
-    <template #value>content</template>
+    <template>content</template>
     <template #right-icon>
       <r-icon name="loading" />
     </template>
