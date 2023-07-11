@@ -1,17 +1,35 @@
 <template>
   <div :class="classes.root" @click="show = true">
-    <div :class="classes.content">{{ placeholderText }}</div>
-    <r-icon name="arrow-right" />
+    <div :class="classes.content">{{ placeholderText || placeholder }}</div>
+    <r-icon name="arrow-right"><slot name="icon"></slot></r-icon>
   </div>
   <r-popup v-bind="popupPropss" position="bottom" v-model:show="show">
-    <r-picker
-      v-bind="pickerPropss"
-      v-model="selectedValues"
-      @confirm="onConfirm"
-      @cancel="onCancel"
-      @change="onChange"
-      @change-on-initial-value="onChangeOnInitialValue"
-    />
+    <template v-if="type === 'picker'">
+      <r-picker
+        v-bind="pickerPropss"
+        v-model="selectedValues"
+        @confirm="onConfirm"
+        @cancel="onCancel"
+        @change="onChange"
+        @change-on-initial-value="onChangeOnInitialValue"
+      />
+    </template>
+    <template v-else-if="type === 'tile'">
+      <Tile
+        v-model="selectedValues"
+        :title="title"
+        :title-style="titleStyle"
+        :cancel-button-text="cancelButtonText"
+        :cancel-button-style="cancelButtonStyle"
+        :show-toolbar="showToolbar"
+        :options="columns"
+        :options-field-names="columnsFieldNames"
+        :visible-option-num="visibleOptionNum"
+        @cancel="onCancel"
+        @confirm="onConfirm"
+        @change-on-initial-value="onChangeOnInitialValue"
+      />
+    </template>
   </r-popup>
 </template>
 
@@ -26,6 +44,7 @@ import { formatValueToArray, formatValueToString } from './utils';
 import Icon from '../icon/index.vue';
 import Popup, { popupProps } from '../popup/index.vue';
 import Picker, { pickerProps } from '../picker/index.vue';
+import Tile from './Tile.vue';
 
 const { name, bem } = createNamespace('select');
 
@@ -37,10 +56,12 @@ export const selectProps = {
     default: ''
   },
   round: makeBooleanProp(true),
-  formatText: Function as PropType<(value: string[]) => string>,
+  textFormatter: Function as PropType<(value: string) => string>,
   textSeparator: String,
   valueSeparator: makeStringProp(','),
-  placeholder: String
+  placeholder: String,
+  textAlign: makeStringProp<'left' | 'right'>(),
+  type: makeStringProp<'picker' | 'tile'>('picker')
 };
 
 export type SelectProps = ExtractPropTypes<typeof selectProps>;
@@ -51,13 +72,14 @@ export const Select = defineComponent({
   components: {
     [Icon.name]: Icon,
     [Popup.name]: Popup,
-    [Picker.name]: Picker
+    [Picker.name]: Picker,
+    Tile
   },
   emits: ['confirm', 'cancel', 'change', 'update:modelValue'],
   setup(props, { emit }) {
     const classes = reactive({
       root: computed(() => bem()),
-      content: computed(() => bem('content'))
+      content: computed(() => bem('content', { placeholder: !placeholderText.value, [props.textAlign]: true }))
     });
 
     const show = ref(false);
@@ -72,8 +94,11 @@ export const Select = defineComponent({
       )
     );
     const popupPropss = computed(() => pick(props, Object.keys(popupProps), true));
-    const placeholderText = computed(
-      () => selectedTexts.value.filter((item) => item !== '').join(props.textSeparator) || props.placeholder
+    const placeholderText = computed(() =>
+      selectedTexts.value
+        .filter((item) => item !== '')
+        .map((item) => (props.textFormatter ? props.textFormatter(item) : item))
+        .join(props.textSeparator)
     );
 
     const onConfirm = (value: any) => {

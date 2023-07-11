@@ -10,7 +10,7 @@
     @cancel="onCancel"
     @change="onChange"
   ></r-select>
-  {{ selectedValues }}
+  <div class="fs-12">{{ selectedValues }}</div>
 </template>
 
 <script lang="ts" setup>

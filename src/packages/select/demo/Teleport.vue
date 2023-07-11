@@ -1,8 +1,8 @@
 <template>
-  <h2>基础用法</h2>
+  <h2>指定根节点</h2>
   <r-select
     v-model="selectedValues"
-    placeholder="请选择"
+    teleport="body"
     :columns="columns"
     @confirm="onConfirm"
     @cancel="onCancel"
@@ -22,7 +22,7 @@ const columns = ref([
   { text: '湖州', value: 'Huzhou' }
 ]);
 
-const selectedValues = ref('');
+const selectedValues = ref('Shaoxing');
 
 const onConfirm = (value: any) => {
   console.log(value);

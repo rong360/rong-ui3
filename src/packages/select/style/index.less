@@ -1,11 +1,20 @@
+@import './tile.less';
 .r-select {
   display: flex;
   align-items: center;
   line-height: var(--r-select-line-height, var(--r-cell-line-height, 24px));
   font-size: var(--r-select-font-size, var(--r-cell-font-size, 14px));
+  color: var(--r-select-color, #323233);
   box-sizing: border-box;
   &__content {
     flex: 1;
     box-sizing: border-box;
+    &--placeholder {
+      color: var(--r-select-placeholder-color, #c8c7cc);
+    }
+    &--right {
+      padding-right: var(--r-select-content-right-padding-right, 4px);
+    }
   }
 }
+

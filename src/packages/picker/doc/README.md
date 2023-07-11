@@ -95,8 +95,8 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 | 事件名 | 说明           | 回调参数     |
 |--------|----------------|--------------|
-| confirm  | 点击确定按钮时触发 | `{ selectedValues, selectedOptions, selectedIndexes }` |
-| cancel  | 点击取消按钮时触发 | `{ selectedValues, selectedOptions, selectedIndexes }` |
+| confirm  | 点击确定按钮时触发 | `{ selectedValues, selectedTexts, selectedOptions, selectedIndexes }` |
+| cancel  | 点击取消按钮时触发 | `{ selectedValues, selectedTexts, selectedOptions, selectedIndexes }` |
 | change  | 选项发生改变时触发 | `{ columnIndex, selectedIndex, selectedValues, selectedOptions, selectedIndexes }` |
 
 ### Slots

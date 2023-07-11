@@ -1,13 +1,13 @@
 <template>
   <div :class="classes.root">
     <button :class="classes.cancel" :style="cancelButtonStyle" @click="onCancel">
-      <RenderText :text="cancelButtonText" />
+      <RenderText :text="cancelButtonText || '取消'" />
     </button>
     <div :class="classes.title" :style="titleStyle">
       <RenderText :text="title" />
     </div>
     <button :class="classes.confirm" :style="confirmButtonStyle" @click="onConfirm">
-      <RenderText :text="confirmButtonText" />
+      <RenderText :text="confirmButtonText || '确认'" />
     </button>
   </div>
 </template>
@@ -20,9 +20,9 @@ import { bem } from './utils';
 export const pickerToolbarProps = {
   title: makeTextualProp(),
   titleStyle: makeStyleProp(),
-  cancelButtonText: makeTextualProp('取消'),
+  cancelButtonText: makeTextualProp(),
   cancelButtonStyle: makeStyleProp(),
-  confirmButtonText: makeTextualProp('确认'),
+  confirmButtonText: makeTextualProp(),
   confirmButtonStyle: makeStyleProp()
 };
 
