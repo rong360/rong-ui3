@@ -63,6 +63,12 @@ Form 设置 `requied` 可给所有项开启非空校验
 </script>
 <HljsBlock :code="ScrollToField"></HljsBlock>
 
+### 表单类型
+<script setup>
+  import FormType from '../demo/FormType.vue?raw'
+</script>
+<HljsBlock :code="FormType"></HljsBlock>
+
 
 
 ## API
