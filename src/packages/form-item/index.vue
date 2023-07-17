@@ -14,7 +14,9 @@
         <slot name="title"> <RenderText :text="title" /> </slot>
       </label>
     </template>
-    <slot></slot>
+    <template #value>
+      <slot></slot>
+    </template>
     <div :class="classes.errorMessage" v-if="validateMessage && computedProps.showErrorMessage">
       {{ validateMessage }}
     </div>

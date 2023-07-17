@@ -16,6 +16,8 @@ import FormItem from './form-item/index.vue';
 import Input from './input/index.vue';
 import Picker from './picker/index.vue';
 import Select from './select/index.vue';
+import Checkbox from './checkbox/index.vue';
+import CheckboxGroup from './checkbox-group/index.vue';
 
 export * from './button/index.vue';
 export * from './cell/index.vue';
@@ -32,9 +34,11 @@ export * from './form-item/index.vue';
 export * from './input/index.vue';
 export * from './picker/index.vue';
 export * from './select/index.vue';
+export * from './checkbox/index.vue';
+export * from './checkbox-group/index.vue';
 
 const install = (app: App): void => {
-  const components = [Button, Cell, CellGroup, Overlay, Popup, Icon, NavBar, FlexFixed, Divider, Dialog, Form, FormItem, Input, Picker, Select];
+  const components = [Button, Cell, CellGroup, Overlay, Popup, Icon, NavBar, FlexFixed, Divider, Dialog, Form, FormItem, Input, Picker, Select, Checkbox, CheckboxGroup];
   components.forEach((component) => {
     app.use(component);
   });
@@ -56,10 +60,12 @@ RFormItem: typeof FormItem;
 RInput: typeof Input;
 RPicker: typeof Picker;
 RSelect: typeof Select;
+RCheckbox: typeof Checkbox;
+RCheckboxGroup: typeof CheckboxGroup;
 
   }
 }
 const version = '0.0.1';
 
-export { install, version, Button, Cell, CellGroup, Overlay, Popup, Icon, NavBar, FlexFixed, Divider, Dialog, Form, FormItem, Input, Picker, Select };
+export { install, version, Button, Cell, CellGroup, Overlay, Popup, Icon, NavBar, FlexFixed, Divider, Dialog, Form, FormItem, Input, Picker, Select, Checkbox, CheckboxGroup };
 export default { install, version };

@@ -12,7 +12,10 @@ const icons = {
   'arrow-down': defineAsyncComponent(() => import('./arrow-down.vue')),
   'arrow-left': defineAsyncComponent(() => import('./arrow-left.vue')),
   'arrow-right': defineAsyncComponent(() => import('./arrow-right.vue')),
-  'question-circle': defineAsyncComponent(() => import('./question-circle.vue'))
+  'question-circle': defineAsyncComponent(() => import('./question-circle.vue')),
+  'checked-circle': defineAsyncComponent(() => import('./checked-circle.vue')),
+  'check-circle': defineAsyncComponent(() => import('./check-circle.vue')),
+  'check-disabled-circle': defineAsyncComponent(() => import('./check-disabled-circle.vue'))
 };
 
 export type IconType = keyof typeof icons;

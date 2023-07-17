@@ -116,6 +116,18 @@
         "cName": "选择器",
         "desc": "选择器",
         "show": true
+      },
+      {
+        "name": "Checkbox",
+        "cName": "复选框",
+        "desc": "复选框",
+        "show": true
+      },
+      {
+        "name": "CheckboxGroup",
+        "cName": "复选框组",
+        "desc": "复选框组",
+        "show": true
       }
     ]
   }

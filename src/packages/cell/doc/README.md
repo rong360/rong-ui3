@@ -99,7 +99,8 @@ app.use(CellGroup);
 |------------|----------------------------|
 | title    | 自定义左侧标题               |
 | title-desc | 自定义标题下方的描述信息     |
-| default    | 自定义右侧内容               |
+| value    | 自定义右侧内容               |
+| default    | 自定义内容               |
 | left-icon  | 自定义左侧图标               |
 | right-icon | 自定义右侧图标               |
 | extra      | 自定义单元格最右侧的额外内容 |

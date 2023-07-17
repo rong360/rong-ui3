@@ -1,22 +1,24 @@
 <template>
   <div :class="classes.root" @click="handleClick">
-    <slot name="left-icon"></slot>
-    <div :class="classes.title">
-      <slot name="title">
-        <RenderText :text="title" />
-      </slot>
-      <div :class="classes.titleDesc" :style="titleDescStyle" v-if="titleDesc || $slots['title-desc']">
-        <slot name="title-desc">{{ titleDesc }}</slot>
+    <slot>
+      <slot name="left-icon"></slot>
+      <div :class="classes.title">
+        <slot name="title">
+          <RenderText :text="title" />
+        </slot>
+        <div :class="classes.titleDesc" :style="titleDescStyle" v-if="titleDesc || $slots['title-desc']">
+          <slot name="title-desc">{{ titleDesc }}</slot>
+        </div>
       </div>
-    </div>
-    <div :class="classes.value">
-      <slot>{{ value }}</slot>
-    </div>
-    <slot name="right-icon">
-      <r-icon :name="`arrow-${arrowDirection}`" v-if="isLink" />
-    </slot>
+      <div :class="classes.value">
+        <slot name="value">{{ value }}</slot>
+      </div>
+      <slot name="right-icon">
+        <r-icon :name="`arrow-${arrowDirection}`" v-if="isLink" />
+      </slot>
 
-    <slot name="extra"></slot>
+      <slot name="extra"></slot>
+    </slot>
   </div>
 </template>
 
