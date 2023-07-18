@@ -14,8 +14,4 @@
 import { ref } from 'vue';
 
 const checked = ref(true);
-const checked2 = ref(false);
-
-const activeIcon = `https://img.yzcdn.cn/vant/user-active.png`;
-const inactiveIcon = `https://img.yzcdn.cn/vant/user-inactive.png`;
 </script>

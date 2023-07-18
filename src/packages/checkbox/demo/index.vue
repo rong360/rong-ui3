@@ -15,6 +15,7 @@
     <Toggle />
     <ToggleIndeterminate />
     <Shape />
+    <CellGroup />
   </div>
 </template>
 
@@ -33,6 +34,7 @@ import Max from './Max.vue';
 import Toggle from './Toggle.vue';
 import ToggleIndeterminate from './ToggleIndeterminate.vue';
 import Shape from './Shape.vue';
+import CellGroup from './CellGroup.vue';
 </script>
 
 <style lang="less"></style>

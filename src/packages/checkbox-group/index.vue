@@ -14,6 +14,9 @@ import {
 // Utils
 import { createNamespace, withInstall, makeArrayProp, isSameValue, makeStringProp, numericProp } from '../utils';
 
+// Types
+import type { CheckboxGroupToggleAllOptions } from './types';
+
 const { name, bem } = createNamespace('checkbox-group');
 
 export const checkboxGroupProps = {
@@ -57,31 +60,29 @@ export const CheckboxGroup = defineComponent({
       checked
     });
 
-    const toggleAll = (checked: Boolean) => {
-      const names: string[] = [];
-      children.value.forEach((item: any) => {
-        if (!item.props.disabled) {
-          names.push(item.props.name);
+    const toggleAll = (options: CheckboxGroupToggleAllOptions = {}) => {
+      if (typeof options === 'boolean') {
+        options = { checked: options };
+      }
+
+      const { checked, skipDisabled = true } = options;
+
+      const checkedChildren = children.value.filter((item: any) => {
+        if (item.props.disabled && skipDisabled) {
+          return item.exposed.isChecked;
         }
+
+        return checked ?? !item.exposed.isChecked;
       });
 
-      updateValue(checked ? names : []);
-    };
-
-    const toggleReverse = () => {
-      const names: string[] = [];
-      children.value.forEach((item: any) => {
-        if (!item.props.disabled && !checked.value.includes(item.props.name)) {
-          names.push(item.props.name);
-        }
-      });
+      const names = checkedChildren.map((item: any) => item.props.name);
 
       updateValue(names);
     };
 
     expose({
       toggleAll,
-      toggleReverse
+      children
     });
 
     watch(

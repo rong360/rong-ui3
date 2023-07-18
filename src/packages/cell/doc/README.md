@@ -51,14 +51,14 @@ app.use(CellGroup);
 <HljsBlock :code="CellNav"></HljsBlock>
 
 
-### slot 插槽
+### 插槽
 通过 slot `left-icon` `right-icon` `title-desc` 可以插入左右Icon、标题内容、描述内容等
 <script setup>
   import CellSlot from '../demo/CellSlot.vue?raw'
 </script>
 <HljsBlock :code="CellSlot"></HljsBlock>
 
-### 垂直居中
+### 顶部对齐
 通过 `center` 属性可以让 `Cell` 的左右内容都垂直居中。
 <script setup>
   import CellCenter from '../demo/CellCenter.vue?raw'

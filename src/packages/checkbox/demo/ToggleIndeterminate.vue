@@ -11,6 +11,7 @@
         <r-checkbox name="d"> 复选框 D </r-checkbox>
       </r-checkbox-group>
     </r-cell>
+    <r-cell>当前选中值: {{ checked }}</r-cell>
   </r-cell-group>
 </template>
 

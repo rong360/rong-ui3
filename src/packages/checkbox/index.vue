@@ -32,7 +32,6 @@ export const checkboxProps = {
   modelValue: Boolean,
   disabled: Boolean,
   textPosition: makeStringProp<'left' | 'right'>('right'),
-  iconSize: makeNumericProp(''),
   name: makeStringProp(''),
   indeterminate: Boolean,
   shape: makeStringProp<'round' | 'button'>('round'),
@@ -47,8 +46,8 @@ export const Checkbox = defineComponent({
   components: {
     RenderText
   },
-  emits: ['click', 'change', 'update:modelValue'],
-  setup(props, { slots, emit }) {
+  emits: ['change', 'update:modelValue'],
+  setup(props, { slots, emit, expose }) {
     const checkboxGroup = inject('checkboxGroup', null) as any;
 
     const state = reactive({
@@ -163,6 +162,11 @@ export const Checkbox = defineComponent({
         }
       }
     );
+
+    expose({
+      toggle: handleClick,
+      isChecked
+    });
 
     return () =>
       h(

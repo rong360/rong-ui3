@@ -14,5 +14,5 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-const checked = ref(['a', 'd']);
+const checked = ref(['a']);
 </script>

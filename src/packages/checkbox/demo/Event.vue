@@ -1,5 +1,5 @@
 <template>
-  <h2>点击触发change事件</h2>
+  <h2>change事件</h2>
   <r-cell :border="false">
     <r-checkbox v-model="checked" @change="onChange">复选框 </r-checkbox>
   </r-cell>
