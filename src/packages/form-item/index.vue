@@ -16,10 +16,10 @@
     </template>
     <template #value>
       <slot></slot>
+      <div :class="classes.errorMessage" v-if="validateMessage && computedProps.showErrorMessage">
+        {{ validateMessage }}
+      </div>
     </template>
-    <div :class="classes.errorMessage" v-if="validateMessage && computedProps.showErrorMessage">
-      {{ validateMessage }}
-    </div>
   </r-cell>
 </template>
 
@@ -147,7 +147,7 @@ const FormItem = defineComponent({
           const { validator, ...ruleWithoutValidator } = rule;
           const { required, pattern, message } = ruleWithoutValidator;
           const failed = { valid: false, errors: message };
-          if (required && !value && value !== 0) {
+          if (required && value === '') {
             resolve(failed);
             return;
           }
@@ -224,10 +224,12 @@ const FormItem = defineComponent({
 
     // 获取表单值
     const getValue = () => {
+      const value = Array.isArray(currentValue.value) ? [...currentValue.value] : currentValue.value;
+
       return {
         name: props.prop || attrs.name,
-        value: currentValue.value.replace(/\s/g, ''),
-        rawValue: currentValue.value
+        value: typeof value === 'string' ? value.replace(/\s/g, '') : value,
+        rawValue: value
       };
     };
 
@@ -236,7 +238,13 @@ const FormItem = defineComponent({
     });
 
     // 表单项是否完成， 常用于提交按钮是否可用
-    const isCompleted = computed(() => (isRequired.value ? currentValue.value !== '' : true));
+    const isCompleted = computed(() =>
+      isRequired.value
+        ? Array.isArray(currentValue.value)
+          ? currentValue.value.length > 0
+          : currentValue.value !== ''
+        : true
+    );
 
     // 滚动到当前表单项
     const formItemRef = ref();

@@ -82,9 +82,13 @@ const Form = defineComponent({
         .join('&');
 
     const isCompleted = computed(() => fields.value.every((field) => field.isCompleted));
-    watch(isCompleted, (val) => {
-      emit('complete', val);
-    });
+    watch(
+      isCompleted,
+      (val) => {
+        emit('complete', val);
+      },
+      { immediate: true }
+    );
 
     // 滚动到指定表单项
     // eslint-disable-next-line no-undef

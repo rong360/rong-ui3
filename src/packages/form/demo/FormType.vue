@@ -13,6 +13,24 @@
     <r-form-item title="邮箱" prop="mail">
       <r-input v-model="formValidate.mail" type="email" placeholder="请输入邮箱，异步校验"></r-input>
     </r-form-item>
+    <r-form-item title="银行卡" prop="bankCard">
+      <r-input
+        v-model="formValidate.bankCard"
+        type="digit"
+        placeholder="请输入银行卡"
+        max-length="19"
+        :formatter="(value: string) => value.replace(/(\d{4})(?=\d)/g, '$1 ')"
+      ></r-input>
+    </r-form-item>
+    <r-form-item title="复选框" prop="checked">
+      <r-checkbox v-model="formValidate.checked">复选框</r-checkbox>
+    </r-form-item>
+    <r-form-item title="复选框组" prop="groupChecked">
+      <r-checkbox-group v-model="formValidate.groupChecked" direction="horizontal">
+        <r-checkbox name="1">复选框 1</r-checkbox>
+        <r-checkbox name="2">复选框 2</r-checkbox>
+      </r-checkbox-group>
+    </r-form-item>
     <r-form-item title="选择器" prop="city">
       <r-select v-model="formValidate.city" :columns="columns" placeholder="点击选择城市"></r-select>
     </r-form-item>
@@ -40,6 +58,9 @@ const formValidate = reactive({
   age: '',
   password: '',
   mail: '',
+  bankCard: '',
+  checked: false,
+  groupChecked: [],
   city: '',
   area: ''
 });
@@ -67,6 +88,15 @@ const ruleValidate = reactive({
   mail: [
     { required: true, message: 'Mailbox cannot be empty' },
     { validator: asyncValidator, message: 'Incorrect email format' }
+  ],
+  bankCard: [
+    { required: true, message: 'Bank card cannot be empty' },
+    { validator: (val: string) => val.replace(/\s/g, '').length === 16, message: '银行卡号格式不正确' }
+  ],
+  checked: [{ required: true, message: '请选择复选框' }],
+  groupChecked: [
+    { required: true, message: '请选择复选框组' },
+    { validator: (val: []) => val.length > 0, message: '复选框组最少选择一项' }
   ],
   city: [{ required: true, message: '请选择城市' }],
   area: [{ required: true, message: '请选择省市区' }]

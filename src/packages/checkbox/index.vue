@@ -137,11 +137,13 @@ export const Checkbox = defineComponent({
     onBeforeUnmount(() => {
       checkboxGroup?.remove(instance);
 
-      let value = [...checkboxGroup.checked.value];
-      let index = value.indexOf(props.name);
-      if (index > -1) {
-        value.splice(index, 1);
-        checkboxGroup.updateValue(value);
+      if (checkboxGroup) {
+        let value = [...checkboxGroup.checked.value];
+        let index = value.indexOf(props.name);
+        if (index > -1) {
+          value.splice(index, 1);
+          checkboxGroup.updateValue(value);
+        }
       }
     });
 
