@@ -85,8 +85,8 @@ export const Checkbox = defineComponent({
         ? 'check-disabled-circle'
         : isChecked.value
         ? props.shape === 'square'
-          ? 'checked-square'
-          : 'checked-circle'
+          ? 'check-active-square'
+          : 'check-active-circle'
         : props.shape === 'square'
         ? 'check-square'
         : 'check-circle';
