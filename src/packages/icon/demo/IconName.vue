@@ -10,6 +10,11 @@
     <li><r-icon name="arrow-left" /><div class="text">arrow-left</div></li>
     <li><r-icon name="arrow-right" /><div class="text">arrow-right</div></li>
     <li><r-icon name="question-circle" /><div class="text">question-circle</div></li>
+    <li><r-icon name="check-circle" /><div class="text">check-circle</div></li>
+    <li><r-icon name="checked-circle" /><div class="text">checked-circle</div></li>
+    <li><r-icon name="check-disabled-circle" /><div class="text">check-disabled-circle</div></li>
+    <li><r-icon name="check-square" /><div class="text">check-square</div></li>
+    <li><r-icon name="checked-square" /><div class="text">checked-square</div></li>
   </ul>
 </template>
 

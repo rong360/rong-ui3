@@ -9,19 +9,12 @@ import {
   watch,
   getCurrentInstance,
   onMounted,
-  onBeforeUnmount
+  onBeforeUnmount,
+  withModifiers
 } from 'vue';
 
 // Utils
-import {
-  createNamespace,
-  withInstall,
-  makeStringProp,
-  makeNumericProp,
-  RenderText,
-  isSameValue,
-  makeStyleProp
-} from '../utils';
+import { createNamespace, withInstall, makeStringProp, RenderText, isSameValue, makeStyleProp } from '../utils';
 
 // Components
 import Icon from '../icon/index.vue';
@@ -34,8 +27,9 @@ export const checkboxProps = {
   textPosition: makeStringProp<'left' | 'right'>('right'),
   name: makeStringProp(''),
   indeterminate: Boolean,
-  shape: makeStringProp<'round' | 'button'>('round'),
-  iconStyle: makeStyleProp()
+  shape: makeStringProp<'round' | 'square' | 'button'>('round'),
+  iconStyle: makeStyleProp(),
+  labelDisabled: Boolean
 };
 
 export type CheckboxProps = ExtractPropTypes<typeof checkboxProps>;
@@ -46,7 +40,7 @@ export const Checkbox = defineComponent({
   components: {
     RenderText
   },
-  emits: ['change', 'update:modelValue'],
+  emits: ['change', 'update:modelValue', 'clickLabel'],
   setup(props, { slots, emit, expose }) {
     const checkboxGroup = inject('checkboxGroup', null) as any;
 
@@ -90,7 +84,11 @@ export const Checkbox = defineComponent({
       const iconName = state.partialSelect
         ? 'check-disabled-circle'
         : isChecked.value
-        ? 'checked-circle'
+        ? props.shape === 'square'
+          ? 'checked-square'
+          : 'checked-circle'
+        : props.shape === 'square'
+        ? 'check-square'
         : 'check-circle';
       const iconSlot = state.partialSelect ? slots.indeterminate : isChecked.value ? slots.checkedIcon : slots.icon;
       return h(
@@ -103,7 +101,14 @@ export const Checkbox = defineComponent({
     };
 
     const renderLabel = () => {
-      return h('label', { class: classes.label }, slots.default?.());
+      return h(
+        'label',
+        {
+          class: classes.label,
+          onClick: withModifiers((event: MouseEvent) => emit('clickLabel', event), [props.labelDisabled ? 'stop' : ''])
+        },
+        slots.default?.()
+      );
     };
 
     const handleClick = () => {

@@ -17,7 +17,7 @@ app.use(CheckboxGroup);
 
 ### 基础用法
 通过 `v-model` 绑定复选框的勾选状态。  
-将 text-position 属性设置为 'left'，可以将文本位置调整到复选框左侧。
+通过 `shape` 属性可设置形状，可选值：`round` `square` `button`
 <script setup>
   import Base from '../demo/Base.vue?raw'
 </script>
@@ -38,6 +38,21 @@ app.use(CheckboxGroup);
   import Disabled from '../demo/Disabled.vue?raw'
 </script>
 <HljsBlock :code="Disabled"></HljsBlock>
+
+
+### 禁用文本点击
+设置 label-disabled 属性后，点击图标以外的内容不会触发复选框切换。
+<script setup>
+  import LabelDisabled from '../demo/LabelDisabled.vue?raw'
+</script>
+<HljsBlock :code="LabelDisabled"></HljsBlock>
+
+### 左侧文本
+将 text-position 属性设置为 'left'，可以将文本位置调整到复选框左侧。
+<script setup>
+  import TextPosition from '../demo/TextPosition.vue?raw'
+</script>
+<HljsBlock :code="TextPosition"></HljsBlock>
 
 
 ### 自定义大小
@@ -151,15 +166,16 @@ checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });
 
 ### Checkbox Props
 
-| 参数          | 说明                                 | 类型    | 默认值  |
-|---------------|------------------------------------|---------|---------|
-| v-model       | 是否处于选中状态                     | boolean | `false` |
-| disabled      | 是否禁用选择                         | boolean | `false` |
-| text-position | 文本所在的位置，可选值：`left`,`right` | string  | `right` |
-| name          | 标识符，通常为一个唯一的字符串或数字  | string  | -       |
-| indeterminate | 当前是否支持半选状态，一般用在全选操作中        | boolean                  | `false` |
-| shape | 形状，可选值：`button`、`round` | String | `round` |
-| icon-style | 自定义icon样式 | CSSProperties | - |
+| 参数           | 说明                                    | 类型          | 默认值  |
+|----------------|---------------------------------------|---------------|---------|
+| v-model        | 是否处于选中状态                        | boolean       | `false` |
+| disabled       | 是否禁用选择                            | boolean       | `false` |
+| label-disabled | 是否禁用复选框文本点击                  | boolean       | `false` |
+| text-position  | 文本所在的位置，可选值：`left`,`right`    | string        | `right` |
+| name           | 标识符，通常为一个唯一的字符串或数字     | string        | -       |
+| indeterminate  | 当前是否支持半选状态，一般用在全选操作中 | boolean       | `false` |
+| shape          | 形状，可选值：`round` `square` `button`、  | String        | `round` |
+| icon-style     | 自定义icon样式                          | CSSProperties | -       |
 
 ### Checkbox Slots
 | 名称          | 说明           |

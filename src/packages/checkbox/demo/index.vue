@@ -4,6 +4,8 @@
     <Base />
     <Indeterminate />
     <Disabled />
+    <LabelDisabled />
+    <TextPosition />
     <CustomSize />
     <CustomColor />
     <IconSlot />
@@ -23,6 +25,8 @@
 import Base from './Base.vue';
 import Indeterminate from './Indeterminate.vue';
 import Disabled from './Disabled.vue';
+import LabelDisabled from './LabelDisabled.vue';
+import TextPosition from './TextPosition.vue';
 import CustomSize from './CustomSize.vue';
 import CustomColor from './CustomColor.vue';
 import IconSlot from './IconSlot.vue';

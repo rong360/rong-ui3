@@ -15,7 +15,9 @@ const icons = {
   'question-circle': defineAsyncComponent(() => import('./question-circle.vue')),
   'checked-circle': defineAsyncComponent(() => import('./checked-circle.vue')),
   'check-circle': defineAsyncComponent(() => import('./check-circle.vue')),
-  'check-disabled-circle': defineAsyncComponent(() => import('./check-disabled-circle.vue'))
+  'check-disabled-circle': defineAsyncComponent(() => import('./check-disabled-circle.vue')),
+  'check-square': defineAsyncComponent(() => import('./check-square.vue')),
+  'checked-square': defineAsyncComponent(() => import('./checked-square.vue'))
 };
 
 export type IconType = keyof typeof icons;

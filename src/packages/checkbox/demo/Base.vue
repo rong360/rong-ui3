@@ -4,7 +4,10 @@
       <r-checkbox v-model="checked">复选框 </r-checkbox>
     </r-cell>
     <r-cell>
-      <r-checkbox v-model="checked2" text-position="left">复选框 </r-checkbox>
+      <r-checkbox v-model="checked2" shape="square">复选框 </r-checkbox>
+    </r-cell>
+    <r-cell>
+      <r-checkbox v-model="checked3" shape="button">复选框 </r-checkbox>
     </r-cell>
   </r-cell-group>
 </template>
@@ -14,4 +17,5 @@ import { ref } from 'vue';
 
 const checked = ref(true);
 const checked2 = ref(false);
+const checked3 = ref(false);
 </script>
