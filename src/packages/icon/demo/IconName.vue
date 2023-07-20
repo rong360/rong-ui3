@@ -15,6 +15,8 @@
     <li><r-icon name="check-disabled-circle" /><div class="text">check-disabled-circle</div></li>
     <li><r-icon name="check-square" /><div class="text">check-square</div></li>
     <li><r-icon name="check-active-square" /><div class="text">check-active-square</div></li>
+    <li><r-icon name="radio-circle" /><div class="text">radio-circle</div></li>
+    <li><r-icon name="radio-active-circle" /><div class="text">radio-active-circle</div></li>
   </ul>
 </template>
 

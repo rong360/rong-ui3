@@ -97,7 +97,7 @@
         "name": "FormItem",
         "cName": "表单列表",
         "desc": "表单列表",
-        "show": true
+        "show": false
       },
       {
         "name": "Input",
@@ -127,7 +127,19 @@
         "name": "CheckboxGroup",
         "cName": "复选框组",
         "desc": "复选框组",
+        "show": false
+      },
+      {
+        "name": "Radio",
+        "cName": "单选框",
+        "desc": "单选框",
         "show": true
+      },
+      {
+        "name": "RadioGroup",
+        "cName": "单选框组",
+        "desc": "单选框组",
+        "show": false
       }
     ]
   }

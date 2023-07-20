@@ -2,6 +2,8 @@ import type { PropType, CSSProperties, VNode } from 'vue';
 
 export const numericProp = [Number, String];
 
+export const unknownProp = null as unknown as PropType<unknown>;
+
 export const makeStringProp = <T>(defaultVal?: T) => ({
   type: String as unknown as PropType<T>,
   default: defaultVal

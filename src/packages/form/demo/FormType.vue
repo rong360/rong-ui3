@@ -31,6 +31,12 @@
         <r-checkbox name="2">复选框 2</r-checkbox>
       </r-checkbox-group>
     </r-form-item>
+    <r-form-item title="单选框" prop="radio">
+      <r-radio-group v-model="formValidate.radio" direction="horizontal">
+        <r-radio name="a">单选框 A</r-radio>
+        <r-radio name="b">单选框 B</r-radio>
+      </r-radio-group>
+    </r-form-item>
     <r-form-item title="选择器" prop="city">
       <r-select v-model="formValidate.city" :columns="columns" placeholder="点击选择城市"></r-select>
     </r-form-item>
@@ -61,6 +67,7 @@ const formValidate = reactive({
   bankCard: '',
   checked: false,
   groupChecked: [],
+  radio: '',
   city: '',
   area: ''
 });
@@ -98,6 +105,7 @@ const ruleValidate = reactive({
     { required: true, message: '请选择复选框组' },
     { validator: (val: []) => val.length > 0, message: '复选框组最少选择一项' }
   ],
+  radio: [{ required: true, message: '请选择单选框' }],
   city: [{ required: true, message: '请选择城市' }],
   area: [{ required: true, message: '请选择省市区' }]
 });
