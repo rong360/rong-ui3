@@ -19,7 +19,9 @@ const icons = {
   'check-square': defineAsyncComponent(() => import('./check-square.vue')),
   'check-active-square': defineAsyncComponent(() => import('./check-active-square.vue')),
   'radio-circle': defineAsyncComponent(() => import('./radio-circle.vue')),
-  'radio-active-circle': defineAsyncComponent(() => import('./radio-active-circle.vue'))
+  'radio-active-circle': defineAsyncComponent(() => import('./radio-active-circle.vue')),
+  success: defineAsyncComponent(() => import('./success.vue')),
+  fail: defineAsyncComponent(() => import('./fail.vue'))
 };
 
 export type IconType = keyof typeof icons;

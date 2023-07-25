@@ -16,9 +16,14 @@ export function isPromise(value: any) {
   return value && typeof value.then === 'function';
 }
 
-export function pick(obj: Record<string, any>, keys: string[], ignoreUndefined?: boolean) {
+export function pick(
+  obj: Record<string, any>,
+  keys: string[],
+  ignoreUndefined: boolean = false,
+  ignoreKeys: string[] = []
+) {
   return keys.reduce((ret, key) => {
-    if ((!ignoreUndefined || obj[key] !== undefined) && key in obj) {
+    if ((!ignoreUndefined || obj[key] !== undefined) && key in obj && ignoreKeys.indexOf(key) < 0) {
       ret[key] = obj[key];
     }
     return ret;

@@ -1,5 +1,5 @@
 <template>
-  <teleport :to="teleport" :disabled="teleport === undefined">
+  <Teleport :to="teleport" :disabled="teleport === undefined">
     <r-overlay
       :class="overlayClass"
       :style="overlayStyle"
@@ -28,7 +28,7 @@
         ></r-icon>
       </div>
     </Transition>
-  </teleport>
+  </Teleport>
 </template>
 
 <script lang="ts">

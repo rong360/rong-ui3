@@ -38,7 +38,7 @@ export const truthProp = {
 };
 
 export const makeTextualProp = <T>(defaultVal?: T) => ({
-  type: [String, Number, Object] as PropType<string | number | VNode>,
+  type: [String, Number, Object, Array] as PropType<string | number | VNode | (string | VNode)[]>,
   default: defaultVal
 });
 

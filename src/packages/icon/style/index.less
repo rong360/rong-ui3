@@ -3,8 +3,15 @@
   svg {
     display: inline-block;
   }
-  &--spin {
-    animation: var(--loading-spin-animation, loadingCircle  1s infinite linear);
+  &--circle {
+    animation: var(--loading-spin-animation, loadingCircle  0.8s infinite linear);
+    animation-duration: 2s;
+    circle {
+      animation: r-circular 1.5s ease-in-out infinite;
+      stroke: currentColor;
+      stroke-width: 3;
+      stroke-linecap: round;
+    }
   }
 }
 
@@ -12,5 +19,22 @@
   100%{
     -webkit-transform:rotate(360deg);
     transform: rotate(360deg);
+  }
+}
+
+@keyframes r-circular {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+
+  50% {
+    stroke-dasharray: 90, 200;
+    stroke-dashoffset: -40;
+  }
+
+  100% {
+    stroke-dasharray: 90, 300;
+    stroke-dashoffset: -120;
   }
 }

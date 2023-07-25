@@ -83,6 +83,17 @@
     transform: translate(100%, 0);
   }
 
+  &-fade {
+    &-enter-active,
+    &-leave-active {
+      transition: opacity .55s ease;
+    }
+    &-enter-from,
+    &-leave-to {
+      opacity: 0;
+    }
+  }
+
   &__close-icon {
     position: absolute;
     z-index: var(--r-popup-close-icon-z-index, 1);
