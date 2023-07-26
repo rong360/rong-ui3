@@ -8,7 +8,7 @@ export default defineConfig({
     vue(),
     dts({
       include: path.resolve(__dirname, './src/resolver'),
-      outputDir: path.resolve(__dirname, './release/resolver'),
+      outputDir: path.resolve(__dirname, './release/'),
       compilerOptions: {
         skipLibCheck: true
       }
