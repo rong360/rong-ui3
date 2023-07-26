@@ -17,7 +17,7 @@ app.use(Icon);
 ### Icon 名称
 通过 `name` 属性来指定需要使用的图标，rong-ui3 内置了一套图标库，可以直接传入对应的名称来使用
 <script setup>
-  import IconName from '../demo/IconName.vue?raw'
+  import IconName from './demo/IconName.vue?raw'
 </script>
 <HljsBlock :code="IconName"></HljsBlock>
 
@@ -26,7 +26,7 @@ app.use(Icon);
 ### Icon 大小 和 颜色
 可以通过 `size` 和 `color` 属性设置大小和颜色。也可以直接用style样式 `font-size` `color`设置大小和颜色。
 <script setup>
-  import IconSize from '../demo/IconSize.vue?raw'
+  import IconSize from './demo/IconSize.vue?raw'
 </script>
 <HljsBlock :code="IconSize"></HljsBlock>
 

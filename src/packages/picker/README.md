@@ -18,7 +18,7 @@ app.use(Picker);
 ### 基础用法
 ### 基础用法
 <script setup>
-  import Base from '../demo/Base.vue?raw'
+  import Base from './demo/Base.vue?raw'
 </script>
 <HljsBlock :code="Base"></HljsBlock>
 
@@ -26,7 +26,7 @@ app.use(Picker);
 ### 搭配弹出层使用
 Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 <script setup>
-  import Popup from '../demo/Popup.vue?raw'
+  import Popup from './demo/Popup.vue?raw'
 </script>
 <HljsBlock :code="Popup"></HljsBlock>
 
@@ -36,7 +36,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 
 `v-model` 的值是一个数组，数组的第一位对应第一列选中项的 `value`，第二位对应第二列选中项的 `value`，以此类推。
 <script setup>
-  import Model from '../demo/Model.vue?raw'
+  import Model from './demo/Model.vue?raw'
 </script>
 <HljsBlock :code="Model"></HljsBlock>
 
@@ -44,7 +44,7 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 ### 多列选择
 `columns` 属性可以通过二维数组的形式配置多列选择。
 <script setup>
-  import Multiple from '../demo/Multiple.vue?raw'
+  import Multiple from './demo/Multiple.vue?raw'
 </script>
 <HljsBlock :code="Multiple"></HljsBlock>
 
@@ -52,20 +52,20 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 ### 级联选择
 使用 `columns` 的 `children` 字段可以实现选项级联的效果
 <script setup>
-  import Cascade from '../demo/Cascade.vue?raw'
+  import Cascade from './demo/Cascade.vue?raw'
 </script>
 <HljsBlock :code="Cascade"></HljsBlock>
 
 ### 禁用选项
 <script setup>
-  import Disabled from '../demo/Disabled.vue?raw'
+  import Disabled from './demo/Disabled.vue?raw'
 </script>
 <HljsBlock :code="Disabled"></HljsBlock>
 
 
 ### 自定义 Columns 的结构
 <script setup>
-  import CustomColumns from '../demo/CustomColumns.vue?raw'
+  import CustomColumns from './demo/CustomColumns.vue?raw'
 </script>
 <HljsBlock :code="CustomColumns"></HljsBlock>
 

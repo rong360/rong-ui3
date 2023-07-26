@@ -18,8 +18,8 @@ app.use(CellGroup);
 ### 基础用法
 `Cell` 可以单独使用。
 <script setup>
-  import CellBase from '../demo/CellBase.vue?raw'
-  import CellGroup from '../demo/CellGroup.vue?raw'
+  import CellBase from './demo/CellBase.vue?raw'
+  import CellGroup from './demo/CellGroup.vue?raw'
 </script>
 <HljsBlock :code="CellBase"></HljsBlock>
 
@@ -30,7 +30,7 @@ app.use(CellGroup);
 ### 单元格大小
 通过 `size` 属性可以控制单元格的大小。
 <script setup>
-  import CellSize from '../demo/CellSize.vue?raw'
+  import CellSize from './demo/CellSize.vue?raw'
 </script>
 <HljsBlock :code="CellSize"></HljsBlock>
 
@@ -38,7 +38,7 @@ app.use(CellGroup);
 ### 展示箭头
 设置 `is-link` 属性后会在单元格右侧显示箭头，并且可以通过 `arrow-direction` 属性控制箭头方向。
 <script setup>
-  import CellArrow from '../demo/CellArrow.vue?raw'
+  import CellArrow from './demo/CellArrow.vue?raw'
 </script>
 <HljsBlock :code="CellArrow"></HljsBlock>
 
@@ -46,7 +46,7 @@ app.use(CellGroup);
 ### 页面导航
 可以通过 `url` 属性进行 URL 跳转，或通过 `to` 属性进行路由跳转。
 <script setup>
-  import CellNav from '../demo/CellNav.vue?raw'
+  import CellNav from './demo/CellNav.vue?raw'
 </script>
 <HljsBlock :code="CellNav"></HljsBlock>
 
@@ -54,14 +54,14 @@ app.use(CellGroup);
 ### 插槽
 通过 slot `left-icon` `right-icon` `title-desc` 可以插入左右Icon、标题内容、描述内容等
 <script setup>
-  import CellSlot from '../demo/CellSlot.vue?raw'
+  import CellSlot from './demo/CellSlot.vue?raw'
 </script>
 <HljsBlock :code="CellSlot"></HljsBlock>
 
 ### 顶部对齐
 通过 `center` 属性可以让 `Cell` 的左右内容都垂直居中。
 <script setup>
-  import CellCenter from '../demo/CellCenter.vue?raw'
+  import CellCenter from './demo/CellCenter.vue?raw'
 </script>
 <HljsBlock :code="CellCenter"></HljsBlock>
 

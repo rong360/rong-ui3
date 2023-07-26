@@ -27,7 +27,7 @@ showToast('提示内容');
 代码演示
 
 <script setup>
-  import ToastFunction from '../demo/ToastFunction.vue?raw'
+  import ToastFunction from './demo/ToastFunction.vue?raw'
 </script>
 <HljsBlock :code="ToastFunction"></HljsBlock>
 
@@ -58,7 +58,7 @@ setToastDefaultOptions('success', { overlayStyle: { backgroundColor: 'rgba(123 ,
 代码演示
 
 <script setup>
-  import ToastComponent from '../demo/ToastComponent.vue?raw'
+  import ToastComponent from './demo/ToastComponent.vue?raw'
 </script>
 <HljsBlock :code="ToastComponent"></HljsBlock>
 

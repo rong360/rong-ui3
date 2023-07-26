@@ -17,7 +17,7 @@ app.use(OverLay);
 ### 基础用法
 使用 show 控制遮罩层的显示/隐藏
 <script setup>
-  import OverlayBase from '../demo/OverlayBase.vue?raw'
+  import OverlayBase from './demo/OverlayBase.vue?raw'
 </script>
 <HljsBlock :code="OverlayBase"></HljsBlock>
 
@@ -26,7 +26,7 @@ app.use(OverLay);
 通过默认插槽可以在遮罩层上嵌入任意内容。  
 **特别提示：嵌套内容中有滚动区域时，滚动元素需要添加 scroll-area 类名才能滚动。**
 <script setup>
-  import OverlayEmbedContent from '../demo/OverlayEmbedContent.vue?raw'
+  import OverlayEmbedContent from './demo/OverlayEmbedContent.vue?raw'
 </script>
 <HljsBlock :code="OverlayEmbedContent"></HljsBlock>
 
@@ -34,7 +34,7 @@ app.use(OverLay);
 ### 设置动画时间
 通过 `duration` 设置遮罩显示/隐藏的时间，单位 `s`
 <script setup>
-  import OverlayDuration from '../demo/OverlayDuration.vue?raw'
+  import OverlayDuration from './demo/OverlayDuration.vue?raw'
 </script>
 <HljsBlock :code="OverlayDuration"></HljsBlock>
 
@@ -42,7 +42,7 @@ app.use(OverLay);
 ### 关闭背景渐变
 通过 `css-transition` 设置背景是否添加渐变动画
 <script setup>
-  import OverlayCssTransition from '../demo/OverlayCssTransition.vue?raw'
+  import OverlayCssTransition from './demo/OverlayCssTransition.vue?raw'
 </script>
 <HljsBlock :code="OverlayCssTransition"></HljsBlock>
 

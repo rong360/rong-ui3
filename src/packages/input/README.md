@@ -17,7 +17,7 @@ app.use(Input);
 ### 基础用法
 可以通过 `v-model` 双向绑定输入框的值，通过 `placeholder` 设置占位提示文字。
 <script setup>
-  import Base from '../demo/Base.vue?raw'
+  import Base from './demo/Base.vue?raw'
 </script>
 <HljsBlock :code="Base"></HljsBlock>
 
@@ -25,7 +25,7 @@ app.use(Input);
 ### 自定义类型
 根据 `type` 属性定义不同类型的输入框，默认值为 text。
 <script setup>
-  import CustomType from '../demo/CustomType.vue?raw'
+  import CustomType from './demo/CustomType.vue?raw'
 </script>
 <HljsBlock :code="CustomType"></HljsBlock>
 
@@ -35,7 +35,7 @@ app.use(Input);
 通过设置 `clearable` 在输入过程中展示清除图标。
 通过 `show-clear-icon-always` 设置始终显示清除图标。
 <script setup>
-  import Clearable from '../demo/Clearable.vue?raw'
+  import Clearable from './demo/Clearable.vue?raw'
 </script>
 <HljsBlock :code="Clearable"></HljsBlock>
 
@@ -43,7 +43,7 @@ app.use(Input);
 ### 格式化输入内容
 通过 `formatter` 属性可以对输入的内容进行格式化，通过 `format-trigger` 属性可以指定执行格式化的时机。例如对银行卡进行分隔：
 <script setup>
-  import Formatter from '../demo/Formatter.vue?raw'
+  import Formatter from './demo/Formatter.vue?raw'
 </script>
 <HljsBlock :code="Formatter"></HljsBlock>
 
@@ -51,7 +51,7 @@ app.use(Input);
 ### 禁用和只读
 通过 `readonly` 将输入框设置为只读状态，通过 `disabled` 将输入框设置为禁用状态。
 <script setup>
-  import Readonly from '../demo/Readonly.vue?raw'
+  import Readonly from './demo/Readonly.vue?raw'
 </script>
 <HljsBlock :code="Readonly"></HljsBlock>
 
@@ -59,21 +59,21 @@ app.use(Input);
 ### 对齐方式
 通过 `input-align` 设置输入框对齐方式。
 <script setup>
-  import InputAlign from '../demo/InputAlign.vue?raw'
+  import InputAlign from './demo/InputAlign.vue?raw'
 </script>
 <HljsBlock :code="InputAlign"></HljsBlock>
 
 
 ### 事件演示
 <script setup>
-  import Event from '../demo/Event.vue?raw'
+  import Event from './demo/Event.vue?raw'
 </script>
 <HljsBlock :code="Event"></HljsBlock>
 
 ### 组件暴露的方法
 组件对外暴露的方法有 `focus` `blur` `select`
 <script setup>
-  import Method from '../demo/Method.vue?raw'
+  import Method from './demo/Method.vue?raw'
 </script>
 <HljsBlock :code="Method"></HljsBlock>
 
@@ -81,14 +81,14 @@ app.use(Input);
 ### 插槽演示
 可以通过 `left` `right` 插槽, 在输入框前后插入自定义内容。
 <script setup>
-  import Slots from '../demo/Slots.vue?raw'
+  import Slots from './demo/Slots.vue?raw'
 </script>
 <HljsBlock :code="Slots"></HljsBlock>
 
 
 ### 配合表单使用
 <script setup>
-  import Form from '../demo/Form.vue?raw'
+  import Form from './demo/Form.vue?raw'
 </script>
 <HljsBlock :code="Form"></HljsBlock>
 

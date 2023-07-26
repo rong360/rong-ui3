@@ -20,7 +20,7 @@ app.use(Select);
 
 ### 基础用法
 <script setup>
-  import Base from '../demo/Base.vue?raw'
+  import Base from './demo/Base.vue?raw'
 </script>
 <HljsBlock :code="Base"></HljsBlock>
 
@@ -28,7 +28,7 @@ app.use(Select);
 ### 指定根节点
 设置 `teleport` 属性指定根节点。
 <script setup>
-  import Teleport from '../demo/Teleport.vue?raw'
+  import Teleport from './demo/Teleport.vue?raw'
 </script>
 <HljsBlock :code="Teleport"></HljsBlock>
 
@@ -36,14 +36,14 @@ app.use(Select);
 `v-model` 参数可以是数组或者字符串。为字符串时，需传递 `value-separator` 分隔符。  
 标题通过传递 value-separator="_" 进行分隔。  
 <script setup>
-  import Multiple from '../demo/Multiple.vue?raw'
+  import Multiple from './demo/Multiple.vue?raw'
 </script>
 <HljsBlock :code="Multiple"></HljsBlock>
 
 
 ### 级联选择 
 <script setup>
-  import Cascade from '../demo/Cascade.vue?raw'
+  import Cascade from './demo/Cascade.vue?raw'
 </script>
 <HljsBlock :code="Cascade"></HljsBlock>
 
@@ -51,7 +51,7 @@ app.use(Select);
 ### 自定义 Columns 的结构
 通过设置 `columns-field-names` 自定义 columns 结构中的字段。
 <script setup>
-  import CustomColumns from '../demo/CustomColumns.vue?raw'
+  import CustomColumns from './demo/CustomColumns.vue?raw'
 </script>
 <HljsBlock :code="CustomColumns"></HljsBlock>
 
@@ -61,7 +61,7 @@ app.use(Select);
 * 平铺显示为一种特殊的 `Select`, 数据结构和参数同 `Select`，但只支持单列效果。
 * 设置 `visible-option-num` 指定显示数量，数据超过这个值时才出现滚动效果。
 <script setup>
-  import Tile from '../demo/Tile.vue?raw'
+  import Tile from './demo/Tile.vue?raw'
 </script>
 <HljsBlock :code="Tile"></HljsBlock>
 

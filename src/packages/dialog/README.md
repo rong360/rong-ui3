@@ -37,7 +37,7 @@ showDialog({ message: '提示' });
 代码演示
 
 <script setup>
-  import DialogFunction from '../demo/DialogFunction.vue?raw'
+  import DialogFunction from './demo/DialogFunction.vue?raw'
 </script>
 <HljsBlock :code="DialogFunction"></HljsBlock>
 
@@ -55,7 +55,7 @@ showDialog({ message: '提示' });
 代码演示
 
 <script setup>
-  import DialogComponent from '../demo/DialogComponent.vue?raw'
+  import DialogComponent from './demo/DialogComponent.vue?raw'
 </script>
 <HljsBlock :code="DialogComponent"></HljsBlock>
 

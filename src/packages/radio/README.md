@@ -19,7 +19,7 @@ app.use(RadioGroup);
 通过 `v-model` 绑定值当前选中项的 name。  
 通过 `shape` 属性可设置形状，可选值：`radio` `round` `square` `button`
 <script setup>
-  import Base from '../demo/Base.vue?raw'
+  import Base from './demo/Base.vue?raw'
 </script>
 <HljsBlock :code="Base"></HljsBlock>
 
@@ -27,7 +27,7 @@ app.use(RadioGroup);
 ### 禁用文本点击
 设置 label-disabled 属性后，点击图标以外的内容不会触发单选框切换。
 <script setup>
-  import LabelDisabled from '../demo/LabelDisabled.vue?raw'
+  import LabelDisabled from './demo/LabelDisabled.vue?raw'
 </script>
 <HljsBlock :code="LabelDisabled"></HljsBlock>
 
@@ -36,7 +36,7 @@ app.use(RadioGroup);
 ### 左侧文本
 将 text-position 属性设置为 'left'，可以将文本位置调整到单选框左侧。
 <script setup>
-  import TextPosition from '../demo/TextPosition.vue?raw'
+  import TextPosition from './demo/TextPosition.vue?raw'
 </script>
 <HljsBlock :code="TextPosition"></HljsBlock>
 
@@ -44,7 +44,7 @@ app.use(RadioGroup);
 ### 自定义大小
 通过设置 `style` 或者 `class` 的font-size可以控制 `Icon` 大小。 
 <script setup>
-  import CustomSize from '../demo/CustomSize.vue?raw'
+  import CustomSize from './demo/CustomSize.vue?raw'
 </script>
 <HljsBlock :code="CustomSize"></HljsBlock>
 
@@ -53,7 +53,7 @@ app.use(RadioGroup);
 ### 自定义颜色
 通过设置 `class` 的color可以控制 `Icon` 颜色。 
 <script setup>
-  import CustomColor from '../demo/CustomColor.vue?raw'
+  import CustomColor from './demo/CustomColor.vue?raw'
 </script>
 <HljsBlock :code="CustomColor"></HljsBlock>
 
@@ -61,7 +61,7 @@ app.use(RadioGroup);
 ### 自定义图标
 通过 slot 自定义图标, `icon` `checkedIcon` 分别对应 `未选择` `已选择`  两种状态所对应的图标。
 <script setup>
-  import IconSlot from '../demo/IconSlot.vue?raw'
+  import IconSlot from './demo/IconSlot.vue?raw'
 </script>
 <HljsBlock :code="IconSlot"></HljsBlock>
 
@@ -69,7 +69,7 @@ app.use(RadioGroup);
 ### change事件
 值发生变化时，将触发 `change` 事件
 <script setup>
-  import Event from '../demo/Event.vue?raw'
+  import Event from './demo/Event.vue?raw'
 </script>
 <HljsBlock :code="Event"></HljsBlock>
 
@@ -78,7 +78,7 @@ app.use(RadioGroup);
 ### 水平排列
 将 `direction` 属性设置为 `horizontal` 后，单选框组会变成水平排列。
 <script setup>
-  import Direction from '../demo/Direction.vue?raw'
+  import Direction from './demo/Direction.vue?raw'
 </script>
 <HljsBlock :code="Direction"></HljsBlock>
 
@@ -86,7 +86,7 @@ app.use(RadioGroup);
 ### RadioGroup禁用
 `RadioGroup` 设置 `disabled` 属性可以禁用单选框。
 <script setup>
-  import GroupDisabled from '../demo/GroupDisabled.vue?raw'
+  import GroupDisabled from './demo/GroupDisabled.vue?raw'
 </script>
 <HljsBlock :code="GroupDisabled"></HljsBlock>
 
@@ -95,7 +95,7 @@ app.use(RadioGroup);
 ### 按钮形状
 设置 `shape` 属性可改变单选框为 `button` 或 `square` 形状。
 <script setup>
-  import Shape from '../demo/Shape.vue?raw'
+  import Shape from './demo/Shape.vue?raw'
 </script>
 <HljsBlock :code="Shape"></HljsBlock>
 
@@ -103,7 +103,7 @@ app.use(RadioGroup);
 ### 搭配单元格组件使用
 搭配单元格组件使用时，需要再引入 `Cell` 和 `CellGroup` 组件。
 <script setup>
-  import CellGroup from '../demo/CellGroup.vue?raw'
+  import CellGroup from './demo/CellGroup.vue?raw'
 </script>
 <HljsBlock :code="CellGroup"></HljsBlock>
 

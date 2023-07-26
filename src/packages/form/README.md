@@ -20,7 +20,7 @@ app.use(FormItem);
 ### 基础用法
 通过Form 传递需要校验的值和规则。  
 <script setup>
-  import Base from '../demo/Base.vue?raw'
+  import Base from './demo/Base.vue?raw'
 </script>
 <HljsBlock :code="Base"></HljsBlock>
 
@@ -28,7 +28,7 @@ app.use(FormItem);
 ### 基础用法二
 通过FormItem 传递需要校验的值和规则
 <script setup>
-  import Base2 from '../demo/Base2.vue?raw'
+  import Base2 from './demo/Base2.vue?raw'
 </script>
 <HljsBlock :code="Base2"></HljsBlock>
 
@@ -40,7 +40,7 @@ Form 设置`show-star`可给所有项显示必填的`*`号，FormItem 设置 `:r
 Form 设置`clearable`可给所有项显示清除按钮。FormItem 设置 `:clearable=false`可取消。  
 Form 设置`title-align` 控制标题对齐方式、`value-align` 控制右侧内容对齐方式。  
 <script setup>
-  import NotEmptyVerify from '../demo/NotEmptyVerify.vue?raw'
+  import NotEmptyVerify from './demo/NotEmptyVerify.vue?raw'
 </script>
 <HljsBlock :code="NotEmptyVerify"></HljsBlock>
 
@@ -49,7 +49,7 @@ Form 设置`title-align` 控制标题对齐方式、`value-align` 控制右侧�
 ### 动态表单
 Form 设置 `requied` 可给所有项开启非空校验
 <script setup>
-  import DynamicForm from '../demo/DynamicForm.vue?raw'
+  import DynamicForm from './demo/DynamicForm.vue?raw'
 </script>
 <HljsBlock :code="DynamicForm"></HljsBlock>
 
@@ -59,13 +59,13 @@ Form 设置 `requied` 可给所有项开启非空校验
 调用Form的 `scrollToField(name: string, options?: boolean | ScrollIntoViewOptions)` 方法：     
 不传参数时默认滚动到表单第一个错误项。 传name参数时滚动到指定表单项。
 <script setup>
-  import ScrollToField from '../demo/ScrollToField.vue?raw'
+  import ScrollToField from './demo/ScrollToField.vue?raw'
 </script>
 <HljsBlock :code="ScrollToField"></HljsBlock>
 
 ### 表单类型
 <script setup>
-  import FormType from '../demo/FormType.vue?raw'
+  import FormType from './demo/FormType.vue?raw'
 </script>
 <HljsBlock :code="FormType"></HljsBlock>
 

@@ -18,10 +18,10 @@ const routes: Array<RouteRecordRaw> = [
 
 // 中文路由
 const cnRoutes: Array<RouteRecordRaw> = [];
-const cnDoc = import.meta.glob('@/packages/**/doc/README.md');
+const cnDoc = import.meta.glob('@/packages/**/README.md');
 
 for (const path in cnDoc) {
-  const name = (path.match(/\/packages\/(.*)\/doc\/README.md/) as any[])[1];
+  const name = (path.match(/\/packages\/(.*)\/README.md/) as any[])[1];
   cnRoutes.push({
     path: name,
     component: cnDoc[path]

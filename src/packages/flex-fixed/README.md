@@ -15,7 +15,7 @@ app.use(FlexFixed);
 
 ### 代码演示
 <script setup>
-  import Index from '../demo/index.vue?raw'
+  import Index from './demo/index.vue?raw'
 </script>
 <HljsBlock :code="Index"></HljsBlock>
 

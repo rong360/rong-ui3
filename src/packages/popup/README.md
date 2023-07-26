@@ -18,7 +18,7 @@ app.use(Popup)
 ### 基础用法
 通过 v-model:show 控制弹出层是否展示。
 <script setup>
-  import PopupBase from '../demo/PopupBase.vue?raw'
+  import PopupBase from './demo/PopupBase.vue?raw'
 </script>
 <HljsBlock :code="PopupBase"></HljsBlock>
 
@@ -29,7 +29,7 @@ app.use(Popup)
 * 当弹窗从顶部或底部弹出时，默认宽度与屏幕宽度保持一致，弹窗高度取决于内容的高度
 * 当弹窗从左侧或右侧弹出时，默认不设置宽度和高度，弹窗的宽高取决于内容的宽高。
 <script setup>
-  import PopupPosition from '../demo/PopupPosition.vue?raw'
+  import PopupPosition from './demo/PopupPosition.vue?raw'
 </script>
 <HljsBlock :code="PopupPosition"></HljsBlock>
 
@@ -38,7 +38,7 @@ app.use(Popup)
 ### 内容滚动
 特别提示：默认锁屏，滚动元素需要添加 class="scroll-area" 样式 
 <script setup>
-  import PopupScroll from '../demo/PopupScroll.vue?raw'
+  import PopupScroll from './demo/PopupScroll.vue?raw'
 </script>
 <HljsBlock :code="PopupScroll"></HljsBlock>
 
@@ -46,7 +46,7 @@ app.use(Popup)
 ### 关闭图标
 设置 `show-close-icon` 属性后，会在弹出层的右上角显示关闭图标，通过`close-icon-position` 来设置图标的位置。可以通过 close-icon 属性自定义图标（等同于 Icon 组件的 name 属性）
 <script setup>
-  import PopupClose from '../demo/PopupClose.vue?raw'
+  import PopupClose from './demo/PopupClose.vue?raw'
 </script>
 <HljsBlock :code="PopupClose"></HljsBlock>
 
@@ -55,7 +55,7 @@ app.use(Popup)
 ### 圆角弹窗
 设置 `round` 属性后，弹窗会根据弹出位置添加不同的圆角样式。
 <script setup>
-  import PopupRound from '../demo/PopupRound.vue?raw'
+  import PopupRound from './demo/PopupRound.vue?raw'
 </script>
 <HljsBlock :code="PopupRound"></HljsBlock>
 
@@ -74,7 +74,7 @@ Popup 支持以下点击事件
 * close: 关闭弹出层时立即触发。
 * closed: 关闭弹出层且动画结束后触发。
 <script setup>
-  import PopupEventListener from '../demo/PopupEventListener.vue?raw'
+  import PopupEventListener from './demo/PopupEventListener.vue?raw'
 </script>
 <HljsBlock :code="PopupEventListener"></HljsBlock>
 
@@ -83,7 +83,7 @@ Popup 支持以下点击事件
 ### 指定挂载位置
 弹出层默认挂载到组件标签所在位置，可以通过 `teleport` 属性指定挂载位置。
 <script setup>
-  import PopupTeleport from '../demo/PopupTeleport.vue?raw'
+  import PopupTeleport from './demo/PopupTeleport.vue?raw'
 </script>
 <HljsBlock :code="PopupTeleport"></HljsBlock>
 

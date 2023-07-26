@@ -17,7 +17,7 @@ app.use(NavBar);
 ### 基础用法
 通过 `title` 属性设置导航栏标题。
 <script setup>
-  import BaseUsage from '../demo/BaseUsage.vue?raw'
+  import BaseUsage from './demo/BaseUsage.vue?raw'
 </script>
 <HljsBlock :code="BaseUsage"></HljsBlock>
 
@@ -25,7 +25,7 @@ app.use(NavBar);
 ### 返回上级
 在导航栏实现返回上级功能。
 <script setup>
-  import BackTo from '../demo/BackTo.vue?raw'
+  import BackTo from './demo/BackTo.vue?raw'
 </script>
 <HljsBlock :code="BackTo"></HljsBlock>
 
@@ -34,7 +34,7 @@ app.use(NavBar);
 ### 右侧按钮
 在导航栏右侧添加可点击的按钮。
 <script setup>
-  import RightButton from '../demo/RightButton.vue?raw'
+  import RightButton from './demo/RightButton.vue?raw'
 </script>
 <HljsBlock :code="RightButton"></HljsBlock>
 
@@ -43,7 +43,7 @@ app.use(NavBar);
 ### 使用插槽
 可以通过插槽自定义导航栏两侧的内容。
 <script setup>
-  import UseSlot from '../demo/UseSlot.vue?raw'
+  import UseSlot from './demo/UseSlot.vue?raw'
 </script>
 <HljsBlock :code="UseSlot"></HljsBlock>
 
@@ -52,7 +52,7 @@ app.use(NavBar);
 ### 固定到顶部
 通过 `fixed` 属性固定到顶部。同时可以用 `placeholder` 属性设置是否在标签位置生成一个等高的占位元素
 <script setup>
-  import FixedTop from '../demo/FixedTop.vue?raw'
+  import FixedTop from './demo/FixedTop.vue?raw'
 </script>
 <HljsBlock :code="FixedTop"></HljsBlock>
 

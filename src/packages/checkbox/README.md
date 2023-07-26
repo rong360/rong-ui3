@@ -19,7 +19,7 @@ app.use(CheckboxGroup);
 通过 `v-model` 绑定复选框的勾选状态。  
 通过 `shape` 属性可设置形状，可选值：`round` `square` `button`
 <script setup>
-  import Base from '../demo/Base.vue?raw'
+  import Base from './demo/Base.vue?raw'
 </script>
 <HljsBlock :code="Base"></HljsBlock>
 
@@ -27,7 +27,7 @@ app.use(CheckboxGroup);
 ### 半选状态
 通过 `indeterminate` 属性设置是否支持半选状态。
 <script setup>
-  import Indeterminate from '../demo/Indeterminate.vue?raw'
+  import Indeterminate from './demo/Indeterminate.vue?raw'
 </script>
 <HljsBlock :code="Indeterminate"></HljsBlock>
 
@@ -35,7 +35,7 @@ app.use(CheckboxGroup);
 ### 禁用状态
 通过设置 `disabled` 属性可以禁用复选框。
 <script setup>
-  import Disabled from '../demo/Disabled.vue?raw'
+  import Disabled from './demo/Disabled.vue?raw'
 </script>
 <HljsBlock :code="Disabled"></HljsBlock>
 
@@ -43,14 +43,14 @@ app.use(CheckboxGroup);
 ### 禁用文本点击
 设置 label-disabled 属性后，点击图标以外的内容不会触发复选框切换。
 <script setup>
-  import LabelDisabled from '../demo/LabelDisabled.vue?raw'
+  import LabelDisabled from './demo/LabelDisabled.vue?raw'
 </script>
 <HljsBlock :code="LabelDisabled"></HljsBlock>
 
 ### 左侧文本
 将 text-position 属性设置为 'left'，可以将文本位置调整到复选框左侧。
 <script setup>
-  import TextPosition from '../demo/TextPosition.vue?raw'
+  import TextPosition from './demo/TextPosition.vue?raw'
 </script>
 <HljsBlock :code="TextPosition"></HljsBlock>
 
@@ -58,7 +58,7 @@ app.use(CheckboxGroup);
 ### 自定义大小
 通过设置 `style` 或者 `class` 的font-size可以控制 `Icon` 大小。 
 <script setup>
-  import CustomSize from '../demo/CustomSize.vue?raw'
+  import CustomSize from './demo/CustomSize.vue?raw'
 </script>
 <HljsBlock :code="CustomSize"></HljsBlock>
 
@@ -67,7 +67,7 @@ app.use(CheckboxGroup);
 ### 自定义颜色
 通过设置 `class` 的color可以控制 `Icon` 颜色。 
 <script setup>
-  import CustomColor from '../demo/CustomColor.vue?raw'
+  import CustomColor from './demo/CustomColor.vue?raw'
 </script>
 <HljsBlock :code="CustomColor"></HljsBlock>
 
@@ -75,7 +75,7 @@ app.use(CheckboxGroup);
 ### 自定义图标
 通过 slot 自定义图标, `icon` `checkedIcon` `indeterminate` 分别对应 `未选择` `已选择` `半选择` 三种状态所对应的图标。
 <script setup>
-  import IconSlot from '../demo/IconSlot.vue?raw'
+  import IconSlot from './demo/IconSlot.vue?raw'
 </script>
 <HljsBlock :code="IconSlot"></HljsBlock>
 
@@ -83,7 +83,7 @@ app.use(CheckboxGroup);
 ### change事件
 值发生变化时，将触发 `change` 事件
 <script setup>
-  import Event from '../demo/Event.vue?raw'
+  import Event from './demo/Event.vue?raw'
 </script>
 <HljsBlock :code="Event"></HljsBlock>
 
@@ -91,7 +91,7 @@ app.use(CheckboxGroup);
 ### 复选框组
 复选框可以与复选框组一起使用，复选框组通过 `v-model` 数组绑定复选框的勾选状态。
 <script setup>
-  import Group from '../demo/Group.vue?raw'
+  import Group from './demo/Group.vue?raw'
 </script>
 <HljsBlock :code="Group"></HljsBlock>
 
@@ -99,7 +99,7 @@ app.use(CheckboxGroup);
 ### 水平排列
 将 `direction` 属性设置为 `horizontal` 后，复选框组会变成水平排列。
 <script setup>
-  import Direction from '../demo/Direction.vue?raw'
+  import Direction from './demo/Direction.vue?raw'
 </script>
 <HljsBlock :code="Direction"></HljsBlock>
 
@@ -107,7 +107,7 @@ app.use(CheckboxGroup);
 ### checkboxGroup禁用
 `CheckboxGroup` 设置 `disabled` 属性可以禁用复选框。
 <script setup>
-  import CheckboxGroupDisabled from '../demo/CheckboxGroupDisabled.vue?raw'
+  import CheckboxGroupDisabled from './demo/CheckboxGroupDisabled.vue?raw'
 </script>
 <HljsBlock :code="CheckboxGroupDisabled"></HljsBlock>
 
@@ -115,7 +115,7 @@ app.use(CheckboxGroup);
 ### checkboxGroup使用，限制最大可选数（2个）
 `CheckboxGroup` 设置 `max` 属性可以限制复选框组的最大可选数。
 <script setup>
-  import Max from '../demo/Max.vue?raw'
+  import Max from './demo/Max.vue?raw'
 </script>
 <HljsBlock :code="Max"></HljsBlock>
 
@@ -135,13 +135,13 @@ checkboxGroupRef?.value.toggleAll({  skipDisabled: true });
 checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });  
 
 <script setup>
-  import Toggle from '../demo/Toggle.vue?raw'
+  import Toggle from './demo/Toggle.vue?raw'
 </script>
 <HljsBlock :code="Toggle"></HljsBlock>
 
 ### checkboxGroup 全选/半选/取消
 <script setup>
-  import ToggleIndeterminate from '../demo/ToggleIndeterminate.vue?raw'
+  import ToggleIndeterminate from './demo/ToggleIndeterminate.vue?raw'
 </script>
 <HljsBlock :code="ToggleIndeterminate"></HljsBlock>
 
@@ -149,7 +149,7 @@ checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });
 ### 按钮形状
 设置 `shape` 属性可改变复选框为 `button` 形状。
 <script setup>
-  import Shape from '../demo/Shape.vue?raw'
+  import Shape from './demo/Shape.vue?raw'
 </script>
 <HljsBlock :code="Shape"></HljsBlock>
 
@@ -157,7 +157,7 @@ checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });
 ### 搭配单元格组件使用
 利用 `CheckboxGroup` 抛出的 `children` 和 `Checkbox` 抛出的 `toggle`方法进行切换。
 <script setup>
-  import CellGroup from '../demo/CellGroup.vue?raw'
+  import CellGroup from './demo/CellGroup.vue?raw'
 </script>
 <HljsBlock :code="CellGroup"></HljsBlock>
 
