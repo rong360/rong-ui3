@@ -1,6 +1,6 @@
 import { fileURLToPath, URL } from 'node:url';
 import { resolve } from 'path';
-import { defineConfig, loadEnv } from 'vite';
+import { defineConfig, loadEnv, type Plugin } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import Markdown from 'vite-plugin-md';
@@ -20,6 +20,20 @@ import hljs from 'highlight.js';
  *  npm link rong-ui3
  */
 const isTestRongUi3 = false;
+
+// 文件重命名 如：logo.svg?v=s234sd3 --> logo.svg
+export function renameFileName(): Plugin {
+  return {
+    name: 'renameFileName', // 这个名字将会出现在在警告和报错中
+    apply: 'build', // 应用模式
+    enforce: 'post', // 作用阶段
+    generateBundle(options, bundle) {
+      Object.values(bundle).forEach((item) => {
+        return (item.fileName = item.fileName.split('?')[0]);
+      });
+    }
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
@@ -74,7 +88,7 @@ export default defineConfig(({ mode }) => {
             }
           });
         }
-      })
+      }),
       // Components({
       //   resolvers: [
       //     isTestRongUi3
@@ -89,6 +103,7 @@ export default defineConfig(({ mode }) => {
       //         })
       //   ]
       // })
+      renameFileName()
     ],
     resolve: {
       alias: {
@@ -125,7 +140,10 @@ export default defineConfig(({ mode }) => {
         output: {
           manualChunks: {
             highlightjs: ['highlight.js']
-          }
+          },
+          chunkFileNames: 'js/[name].js?v=[hash]',
+          entryFileNames: 'js/[name].js?v=[hash]',
+          assetFileNames: '[ext]/[name].[ext]?v=[hash]'
         }
       }
     }
