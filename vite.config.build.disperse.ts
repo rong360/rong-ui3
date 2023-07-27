@@ -8,7 +8,7 @@ const componentInfo = require('./build/getComponentInfo');
 
 const banner = `/*!
 * ${pkg.name} v${pkg.version} ${new Date()}
-* (c) 2022 @jdf2e.
+* (c) 2023 @jay200212003.
 * Released under the MIT License.
 */`;
 
