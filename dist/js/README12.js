@@ -1,4 +1,4 @@
-import{d as s,o as r,c,a as t,b as n,u as d,W as l,g as a,e as u}from"./_plugin-vue_export-helper.js";const p=`<template>
+import{d as s,o as r,c,a as t,b as n,u as d,W as l,g as a,e as u}from"./plugin-vueexport-helper.js";const p=`<template>
   <h2>\u57FA\u7840\u7528\u6CD5</h2>
   <r-input v-model="state.text" placeholder="\u8BF7\u8F93\u5165\u6587\u672C" />
 </template>

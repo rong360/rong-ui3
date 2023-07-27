@@ -1,4 +1,4 @@
-import{d as a,o as u,c as o,a as e,b as n,u as c,W as l,g as d,e as t}from"./_plugin-vue_export-helper.js";const r=`<template>
+import{d as a,o as u,c as o,a as e,b as n,u as c,W as l,g as d,e as t}from"./plugin-vueexport-helper.js";const r=`<template>
   <h2>Icon \u540D\u79F0</h2>
   <ul class="icons">
     <li><r-icon name="close" /><div class="text">close</div></li>

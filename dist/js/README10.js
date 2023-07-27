@@ -1,4 +1,4 @@
-import{d as l,o as d,c as s,a as e,b as n,u,W as a,g as m,e as r}from"./_plugin-vue_export-helper.js";const i=`<template>
+import{d as l,o as d,c as s,a as e,b as n,u,W as a,g as m,e as r}from"./plugin-vueexport-helper.js";const i=`<template>
   <h2>\u57FA\u7840\u7528\u6CD5</h2>
   <r-form :model="formValidate" :rules="ruleValidate" ref="formRef" @complete="onComplete">
     <r-form-item title="\u59D3\u540D" prop="name">

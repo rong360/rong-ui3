@@ -1,4 +1,4 @@
-import{d as l,o as s,c as p,a as e,b as c,u as r,W as n,g as u}from"./_plugin-vue_export-helper.js";const a=`<template>
+import{d as l,o as s,c as p,a as e,b as c,u as r,W as n,g as u}from"./plugin-vueexport-helper.js";const a=`<template>
   <r-flex-fixed @scroll="scroll" @scroll-debounce="scrollDebounce">
     <template #header>
       <nav-bar>
