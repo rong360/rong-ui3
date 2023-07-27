@@ -10,7 +10,7 @@ import { RouterLink, RouterView } from 'vue-router';
     </div>
     <div class="doc-header__nav">
       <ul class="nav-list">
-        <li class="nav-item"><router-link to="/guide">指南</router-link></li>
+        <li class="nav-item"><router-link to="/zh-CN/guide">指南</router-link></li>
         <li class="nav-item"><router-link to="/zh-CN/component">组件</router-link></li>
       </ul>
     </div>

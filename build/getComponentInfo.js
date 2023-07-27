@@ -17,11 +17,11 @@
 // })
 
 const path = require('path');
-const componentConfig = require('../config/component.json')
+const config = require('../src/config.json')
 const componentInfo = [];
 const kebabCase = (str) => str.replace(/([A-Z])/g, '-$1').toLowerCase().replace(/^-/, '');
 
-componentConfig.forEach(category => {
+config.component.forEach(category => {
   category.packages.forEach(component => {
     const folder = kebabCase(component.name)
     componentInfo.push({

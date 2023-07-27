@@ -1,7 +1,7 @@
 <template>
   <div class="doc-component">
     <div class="doc-component-nav">
-      <div class="doc-component-nav__group" v-for="item in componentConfig" :key="item.enName">
+      <div class="doc-component-nav__group" v-for="item in config.component" :key="item.enName">
         <div class="doc-component-nav__title">{{ item.name }}</div>
         <template v-for="component in item.packages" :key="component.name">
           <div class="doc-component-nav__item" v-if="component.show">
@@ -31,7 +31,7 @@
 import { ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 import { kebabCase } from '@/sites/doc/utils';
-import componentConfig from '../../../../../config/component.json';
+import config from '@/config.json';
 
 const demoUrl = ref('');
 const route = useRoute();

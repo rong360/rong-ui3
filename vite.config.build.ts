@@ -68,7 +68,7 @@ export default defineConfig({
     },
     lib: {
       entry: 'src/packages/index.ts',
-      name: 'rong-ui3',
+      name: 'rongui3',
       fileName: 'rong-ui3',
       formats: ['umd']
     },

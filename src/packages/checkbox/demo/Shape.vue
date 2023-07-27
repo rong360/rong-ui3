@@ -15,7 +15,7 @@
         <r-checkbox name="c" shape="square">复选框 C</r-checkbox>
       </r-checkbox-group>
     </r-cell>
-    <r-cell>当前选中值: {{ checked }}</r-cell>
+    <r-cell>当前选中值: {{ checked2 }}</r-cell>
   </r-cell-group>
 </template>
 

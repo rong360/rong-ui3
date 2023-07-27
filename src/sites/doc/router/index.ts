@@ -2,18 +2,19 @@ import { createRouter, createWebHashHistory, type RouteRecordRaw } from 'vue-rou
 import Home from '../views/home/index.vue';
 import Guide from '../views/guide/index.vue';
 import Component from '../views/component/index.vue';
+import config from '@/config.json';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
     component: Home
-  },
-  {
-    path: '/guide',
-    name: 'guide',
-    component: Guide
   }
+  // {
+  //   path: '/guide',
+  //   name: 'guide',
+  //   component: Guide
+  // }
 ];
 
 // 中文路由
@@ -33,6 +34,17 @@ routes.push({
   component: Component,
   redirect: '/zh-CN/component/dialog',
   children: cnRoutes
+});
+
+// 指南
+routes.push({
+  path: '/zh-CN/guide',
+  component: Guide,
+  redirect: '/zh-CN/guide/intro',
+  children: config.guide.map((item) => ({
+    path: item.name,
+    component: () => import(`../views/guide/markdown/${item.name}.md`)
+  }))
 });
 
 // 英文路由
