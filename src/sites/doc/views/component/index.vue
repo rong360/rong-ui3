@@ -38,7 +38,7 @@ const route = useRoute();
 watchEffect(() => {
   const ret = route.path.match(/component\/(.*)/);
   const componentName = ret ? ret[1] : '';
-  demoUrl.value = `${location.origin}/demo.html#/${componentName}`;
+  demoUrl.value = `${location.origin}${location.pathname}/demo.html#/${componentName}`;
 });
 </script>
 

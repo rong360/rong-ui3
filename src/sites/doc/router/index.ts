@@ -8,6 +8,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
+    redirect: '/zh-CN/guide/intro',
     component: Home
   }
   // {
