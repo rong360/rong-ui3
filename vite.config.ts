@@ -27,6 +27,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, root);
 
   return {
+    base: './',
     plugins: [
       vue({
         include: [/\.vue$/, /\.md$/] // <--

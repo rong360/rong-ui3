@@ -1,0 +1,1 @@
+import{d as t,o,c as s,a as c}from"./_plugin-vue_export-helper.1af59c52.js";const n={class:"markdown-body"},r=c("p",null,"cellgroup",-1),a=[r],m={},i="",f=t({__name:"README",setup(_,{expose:e}){return e({frontmatter:{},excerpt:void 0}),(d,p)=>(o(),s("div",n,a))}});export{f as default,i as excerpt,m as frontmatter};
