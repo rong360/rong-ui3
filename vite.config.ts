@@ -88,7 +88,7 @@ export default defineConfig(({ mode }) => {
             }
           });
         }
-      }),
+      })
       // Components({
       //   resolvers: [
       //     isTestRongUi3
@@ -103,7 +103,6 @@ export default defineConfig(({ mode }) => {
       //         })
       //   ]
       // })
-      renameFileName()
     ],
     resolve: {
       alias: {
@@ -131,7 +130,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     build: {
-      target: 'es2021',
+      // cssCodeSplit: true, //css代码拆分,禁用则所有样式保存在一个css里面
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'index.html'),
@@ -141,9 +140,9 @@ export default defineConfig(({ mode }) => {
           manualChunks: {
             highlightjs: ['highlight.js']
           },
-          chunkFileNames: 'js/[name].js?v=[hash]',
-          entryFileNames: 'js/[name].js?v=[hash]',
-          assetFileNames: '[ext]/[name].[ext]?v=[hash]'
+          chunkFileNames: 'js/[name].js',
+          entryFileNames: 'js/[name].js',
+          assetFileNames: '[ext]/[name].[ext]'
         }
       }
     }

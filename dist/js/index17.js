@@ -1,0 +1,1 @@
+import{n as o,o as a,c,b as t,w as n,F as s,a as r,g as _,e as d}from"./_plugin-vue_export-helper.js";const l={},m=r("div",{class:"demo demo-checkbox-group"}," checkbox-group ",-1);function p(u,x){const e=_("nav-bar");return a(),c(s,null,[t(e,null,{default:n(()=>[d("CheckboxGroup")]),_:1}),m],64)}const i=o(l,[["render",p]]);export{i as default};
