@@ -1,4 +1,4 @@
-import{d as s,o as l,c as o,a as t,b as e,u as d,W as r,g as c,e as n}from"./_plugin-vue_export-helper.js";const i=`<template>
+import{d as s,o as l,c as o,a as t,b as e,u as d,W as r,g as c,e as n}from"./plugin-vueexport-helper.js";const i=`<template>
   <h2>\u57FA\u7840\u7528\u6CD5</h2>
   <r-nav-bar title="\u6807\u9898" />
 </template>

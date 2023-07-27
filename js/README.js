@@ -1,4 +1,4 @@
-import{d as s,o as a,c as l,a as t,b as n,u as r,W as e,g as c,e as u}from"./_plugin-vue_export-helper.js";const p=`<template>
+import{d as s,o as a,c as l,a as t,b as n,u as r,W as e,g as c,e as u}from"./plugin-vueexport-helper.js";const p=`<template>
   <h2>\u6309\u94AE\u7C7B\u578B</h2>
   <div class="row">
     <r-button>default</r-button>

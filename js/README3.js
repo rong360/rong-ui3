@@ -1,4 +1,4 @@
-import{d as c,o as n,c as o,a as t,b as l,u as d,e as u,W as r,g as a}from"./_plugin-vue_export-helper.js";const i=`<template>
+import{d as c,o as n,c as o,a as t,b as l,u as d,e as u,W as r,g as a}from"./plugin-vueexport-helper.js";const i=`<template>
   <h2>\u57FA\u7840\u7528\u6CD5</h2>
   <r-cell title="\u5355\u5143\u683C" value="\u5185\u5BB9" />
   <r-cell title="\u5355\u5143\u683C" value="\u5185\u5BB9" title-desc="\u63CF\u8FF0\u4FE1\u606F" />

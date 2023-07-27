@@ -1,4 +1,4 @@
-import{d as c,o as d,c as p,a as u,b as o,u as e,W as l,g as r,e as n}from"./_plugin-vue_export-helper.js";const i=`<template>
+import{d as c,o as d,c as p,a as u,b as o,u as e,W as l,g as r,e as n}from"./plugin-vueexport-helper.js";const i=`<template>
   <h2>\u57FA\u7840\u7528\u6CD5</h2>
   <r-cell title="\u5C55\u793A\u5F39\u51FA\u5C42" is-link @click="clickBase" :border="false" />
   <r-popup :popup-style="{ padding: '30px 50px' }" :close-on-click-overlay="true" v-model:show="show">\u5185\u5BB9</r-popup>

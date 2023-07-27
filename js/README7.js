@@ -1,4 +1,4 @@
-import{d as l,o as r,c as i,a as t,b as d,u as n,W as s,g as a,e as u}from"./_plugin-vue_export-helper.js";const c=`<template>
+import{d as l,o as r,c as i,a as t,b as d,u as n,W as s,g as a,e as u}from"./plugin-vueexport-helper.js";const c=`<template>
   <h2>\u57FA\u7840\u7528\u6CD5</h2>
   <r-divider />
 </template>

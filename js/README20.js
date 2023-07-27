@@ -1,4 +1,4 @@
-import{d as e,o as l,c,a as u,b as n,u as a,W as t,g as d}from"./_plugin-vue_export-helper.js";const r=`<template>
+import{d as e,o as l,c,a as u,b as n,u as a,W as t,g as d}from"./plugin-vueexport-helper.js";const r=`<template>
   <r-cell-group title="\u51FD\u6570\u5F0F\u8C03\u7528" round>
     <r-cell title="\u6587\u5B57\u63D0\u793A" is-link @click="clickBase" />
     <r-cell title="\u6210\u529F\u63D0\u793A" is-link @click="clickSuccess" />

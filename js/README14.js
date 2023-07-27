@@ -1,4 +1,4 @@
-import{d as a,o as l,c as d,a as t,b as n,u as s,W as o,g as c,e as u}from"./_plugin-vue_export-helper.js";const p=`<template>
+import{d as a,o as l,c as d,a as t,b as n,u as s,W as o,g as c,e as u}from"./plugin-vueexport-helper.js";const p=`<template>
   <h2>\u57FA\u7840\u7528\u6CD5</h2>
   <r-button type="primary" @click="show = true">\u663E\u793A\u906E\u7F69\u5C42 {{ show }} </r-button>
   <r-overlay v-model:show="show" @click="show = false"></r-overlay>
