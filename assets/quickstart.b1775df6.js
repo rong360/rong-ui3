@@ -1,1 +1,0 @@
-import{d as e,o,c as s,a as c}from"./_plugin-vue_export-helper.cbc82318.js";const n={class:"markdown-body"},a=c("h1",null,"\u5FEB\u901F\u4E0A\u624B",-1),r=[a],m={},p="",l=e({__name:"quickstart",setup(_,{expose:t}){return t({frontmatter:{},excerpt:void 0}),(d,u)=>(o(),s("div",n,r))}});export{l as default,p as excerpt,m as frontmatter};
