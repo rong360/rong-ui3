@@ -1,1 +1,1 @@
-import{n as e,o as c,c as n}from"./plugin-vueexport-helper.js";const o={};function r(t,s){return c(),n("div",null," form - item demo ")}const _=e(o,[["render",r]]);export{_ as default};
+import{q as e,o as c,c as o}from"./plugin-vueexport-helper.js";const n={};function r(t,s){return c(),o("div",null," form - item demo ")}const _=e(n,[["render",r]]);export{_ as default};
