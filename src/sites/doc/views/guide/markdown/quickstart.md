@@ -124,7 +124,7 @@ pnpm add unplugin-vue-components -D
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/vite'
-import RongUIResolver from 'rong-ui3/resolver'
+import { RongUIResolver } from 'rong-ui3/resolver'
 
 // https://vitejs.dev/config/
 export default defineConfig({

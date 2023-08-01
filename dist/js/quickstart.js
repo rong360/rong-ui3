@@ -57,7 +57,7 @@ pnpm add unplugin-vue-components -D
 <span class="hljs-keyword">import</span> { defineConfig } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;vite&#39;</span>
 <span class="hljs-keyword">import</span> vue <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;@vitejs/plugin-vue&#39;</span>
 <span class="hljs-keyword">import</span> <span class="hljs-title class_">Components</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;unplugin-vue-components/vite&#39;</span>
-<span class="hljs-keyword">import</span> <span class="hljs-title class_">RongUIResolver</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;rong-ui3/resolver&#39;</span>
+<span class="hljs-keyword">import</span> { <span class="hljs-title class_">RongUIResolver</span> } <span class="hljs-keyword">from</span> <span class="hljs-string">&#39;rong-ui3/resolver&#39;</span>
 
 <span class="hljs-comment">// https://vitejs.dev/config/</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>({
