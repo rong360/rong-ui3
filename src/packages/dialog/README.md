@@ -1,9 +1,11 @@
 # Dialog 对话框
 
+<div class="card">
 
 ### 介绍
 弹出模态框，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。支持组件调用和函数调用两种方式。
 
+</div>
 <!--
 <script setup>
 import demo from './test.vue'
@@ -12,6 +14,9 @@ import demo from './test.vue'
 <demo />
 -->
 
+
+
+<div class="card">
 
 ### 安装
 
@@ -22,6 +27,12 @@ import { Dialog } from 'rong-ui3';
 const app = createApp();
 app.use(Dialog);
 ```
+
+</div>
+
+
+
+<div class="card">
 
 ### 函数调用
 
@@ -41,6 +52,11 @@ showDialog({ message: '提示' });
 </script>
 <HljsBlock :code="DialogFunction"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 组件式调用
 
@@ -59,10 +75,15 @@ showDialog({ message: '提示' });
 </script>
 <HljsBlock :code="DialogComponent"></HljsBlock>
 
+</div>
 
 
-#### 特别提示
+
+<div class="card">
+
+### 特别提示
 弹窗默认锁屏，滚动元素需要添加 `class="scroll-area"` 样式
+
 :::demo 嵌套滚动
 ```html
 
@@ -86,7 +107,13 @@ const showScrollArea = ref(true);
 ```
 :::
 
+</div>
+
+
+
 ## API
+
+<div class="card">
 
 > 当前组件内部透传了 [Popup组件](#/zh-CN/component/popup) 和 [Overlay组件](#/zh-CN/component/overlay)
 
@@ -113,6 +140,11 @@ const showScrollArea = ref(true);
 | pop-class                    | 自定义popup弹窗类名            | String        | -       |
 | pop-style                    | 自定义popup弹窗样式            | CSSProperties | -       |
 
+</div>
+
+
+<div class="card">
+
 ### Slots
 
 | 名称    | 说明               |
@@ -122,6 +154,10 @@ const showScrollArea = ref(true);
 | footer  | 自定义底部按钮区域 |
 | close-icon  | 自定义close按钮 |
 
+</div>
+
+
+<div class="card">
 
 ### Events
 
@@ -131,3 +167,5 @@ const showScrollArea = ref(true);
 | cancel       | 取消按钮回调           | Function | -      |
 | clickOverlay | 点击遮罩回调           | Function | -      |
 | close        | 点击右上角关闭按钮回调 | Function | -      |
+
+</div>

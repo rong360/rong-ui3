@@ -1,13 +1,18 @@
 # 快速上手
 
 
+<div class="card">
 
 ### 介绍
 通过本文你可以掌握 rong-ui3 的安装和使用方法，操作简单易上手，开发简洁快速。
 
+</div>
+
 
 
 ### 安装
+
+<div class="card">
 
 #### 1. 通过 npm 安装
 
@@ -26,7 +31,11 @@ yarn add rong-ui3
 pnpm add rong-ui3
 ```
 
+</div>
 
+
+
+<div class="card">
 
 #### 2. 通过 CDN 安装及使用
 > 可以在 jsdelivr 和 unpkg 等公共 CDN 上获取到 RongUI。 不推荐在生产环境使用组件库 CDN，如果需要这种使用方式，建议将特定版本的 CDN 文件下载至本地项目目录中使用。
@@ -64,9 +73,12 @@ pnpm add rong-ui3
 </html>
 ```
 
+</div>
 
 
 ### 组件使用
+
+<div class="card">
 
 #### 方法一、常规用法
 ##### 1. 全局全量引入
@@ -86,6 +98,9 @@ import "rong-ui3/style.css";
 createApp(App).use(Button).mount("#app");
 ```
 
+</div>
+
+<div class="card">
 
 #### 方法二、自动按需引入
 在基于 vite、vue-cli 或 webpack 的项目中使用 NutUI 时，可以使用 unplugin-vue-components 插件，不需手动引入组件，它可自动引入组件及样式。此方法在使用中配置过程比较繁琐一些，如业务场景无特殊要求，更推荐使用简便的常规用法。
@@ -178,9 +193,13 @@ import { showDialog } from 'rong-ui3';
 import 'rong-ui3/es/dialog/style/index.css'; // or index.less
 ```
 
+</div>
 
 
 ### 注意事项
+
+<div class="card">
+
 #### 1、按需引入插件升级
 rong-ui3 移除了 `babel-plugin-import` 、`vite-plugin-style-import` 插件的使用，按需引入样式不再依赖于 `babel`，开发者可以选择其他效率更高的编译工具。同时，rong-ui3 适配了支持自动引入和注册组件的 `unplugin-vue-components` 插件，这将使开发体验有所提升。
 
@@ -208,3 +227,5 @@ Components({
   ],
 }
 ```
+
+</div>

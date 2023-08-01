@@ -1,6 +1,14 @@
 # Toast 轻提示
 
+<div class="card">
+
+### 介绍
 在页面中间弹出黑色半透明提示，用于消息通知、加载提示、操作结果提示等场景。
+
+</div>
+
+
+<div class="card">
 
 ### 安装
 
@@ -12,6 +20,11 @@ const app = createApp();
 app.use(Toast);
 ```
 
+</div>
+
+
+
+<div class="card">
 
 ### 函数调用
 
@@ -31,6 +44,10 @@ showToast('提示内容');
 </script>
 <HljsBlock :code="ToastFunction"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 修改默认配置
 通过 `setToastDefaultOptions` 函数可以全局修改 showToast 等方法的默认配置。
@@ -41,6 +58,11 @@ setToastDefaultOptions({ duration: 3000 });
 setToastDefaultOptions('success', { overlayStyle: { backgroundColor: 'rgba(123 ,2, 33, 0.5)' } });
 ```
 
+</div>
+
+
+
+<div class="card">
 
 ### 组件式调用
 
@@ -62,8 +84,11 @@ setToastDefaultOptions('success', { overlayStyle: { backgroundColor: 'rgba(123 ,
 </script>
 <HljsBlock :code="ToastComponent"></HljsBlock>
 
+</div>
 
 ## API
+
+<div class="card">
 
 ### 方法
 rong-ui3 中导出了以下 Toast 相关的辅助函数
@@ -76,6 +101,11 @@ rong-ui3 中导出了以下 Toast 相关的辅助函数
 | showLongToast    | 展示长文案提示 |string \| ToastOptions                  | 同上 |
 | setToastDefaultOptions    | 修改默认配置，影响所有的 showToast 调用。传入 type 可以修改指定类型的默认配置 | type \| ToastOptions                 | void |
 
+</div>
+
+
+
+<div class="card">
 
 ### ToastOptions 数据结构
 
@@ -91,10 +121,11 @@ rong-ui3 中导出了以下 Toast 相关的辅助函数
 | overlay-duration               | 遮罩展示时长（毫秒）        | number           |  -             |
 | content-style               | 自定义内容区域样式        | CSSProperties           |  -             |
 
+</div>
 
 
-### Slots
-使用 `Toast` 组件时，支持以下插槽：
+<div class="card">
+
 ### Slots
 
 | 名称 | 说明       |
@@ -102,6 +133,11 @@ rong-ui3 中导出了以下 Toast 相关的辅助函数
 | default  | 自定义message内容 |
 | icon  | 自定义图标 |
 
+</div>
+
+
+
+<div class="card">
 
 ### 样式变量
 
@@ -118,3 +154,5 @@ rong-ui3 中导出了以下 Toast 相关的辅助函数
 | --r-toast-border-radius            | 8px !important    |
 | --r-toast-icon-font-size           | 32px              |
 | --r-toast-icon-margin-bottom       | 8px               |
+
+</div>

@@ -1,8 +1,15 @@
 # Cell 单元格
 
+<div class="card">
+
 ### 介绍
 
 单元格为列表中的单个展示项。
+
+</div>
+
+
+<div class="card">
 
 ### 安装
 
@@ -15,6 +22,12 @@ app.use(Cell);
 app.use(CellGroup);
 ```
 
+</div>
+
+
+
+<div class="card">
+
 ### 基础用法
 `Cell` 可以单独使用。
 <script setup>
@@ -26,6 +39,11 @@ app.use(CellGroup);
 也可以于 `CellGroup` 搭配使用，展示分组标题，转换为圆角卡片风格.
 <HljsBlock :code="CellGroup"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 单元格大小
 通过 `size` 属性可以控制单元格的大小。
@@ -34,6 +52,11 @@ app.use(CellGroup);
 </script>
 <HljsBlock :code="CellSize"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 展示箭头
 设置 `is-link` 属性后会在单元格右侧显示箭头，并且可以通过 `arrow-direction` 属性控制箭头方向。
@@ -42,6 +65,11 @@ app.use(CellGroup);
 </script>
 <HljsBlock :code="CellArrow"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 页面导航
 可以通过 `url` 属性进行 URL 跳转，或通过 `to` 属性进行路由跳转。
@@ -50,6 +78,10 @@ app.use(CellGroup);
 </script>
 <HljsBlock :code="CellNav"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 插槽
 通过 slot `left-icon` `right-icon` `title-desc` 可以插入左右Icon、标题内容、描述内容等
@@ -58,6 +90,11 @@ app.use(CellGroup);
 </script>
 <HljsBlock :code="CellSlot"></HljsBlock>
 
+</div>
+
+
+<div class="card">
+
 ### 顶部对齐
 通过 `center` 属性可以让 `Cell` 的左右内容都垂直居中。
 <script setup>
@@ -65,6 +102,10 @@ app.use(CellGroup);
 </script>
 <HljsBlock :code="CellCenter"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### CellGroup Props
 
@@ -72,6 +113,11 @@ app.use(CellGroup);
 |-------|------------|---------|--------|
 | title | 分组标题     | String  | -      |
 | round | 是否圆角展示 | Boolean | false  |
+
+</div>
+
+
+<div class="card">
 
 ### Cell Props
 
@@ -91,7 +137,11 @@ app.use(CellGroup);
 | replace   | 是否在跳转时替换当前页面历史                        | Boolean          | false           |
 | arrow-direction  | 单元格大小，可选值为 `up` `down` `left`     | String           | right            |
 
+</div>
 
+
+
+<div class="card">
 
 ### Cell Slots
 
@@ -105,6 +155,11 @@ app.use(CellGroup);
 | right-icon | 自定义右侧图标               |
 | extra      | 自定义单元格最右侧的额外内容 |
 
+</div>
+
+
+<div class="card">
+
 ### CellGroup Slots
 
 | 名称    | 说明                  |
@@ -112,6 +167,11 @@ app.use(CellGroup);
 | title   | 自定义`title`标题区域 |
 | value | 默认插槽              |
 
+</div>
+
+
+
+<div class="card">
 
 ### Cell Events
 
@@ -119,7 +179,11 @@ app.use(CellGroup);
 |--------|----------------|------------------|
 | click  | 点击单元格时触发 | event:MouseEvent |
 
+</div>
 
+
+
+<div class="card">
 
 ### 样式变量
 | 名称                             | 默认值             |
@@ -141,3 +205,5 @@ app.use(CellGroup);
 | --r-cell-large-vertical-padding  | 12px               |
 | --r-cell-large-title-font-size   | 16px               |
 | --r-cell-active-background-color | rgba(0, 0, 0, 0.1) |
+
+</div>

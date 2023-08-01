@@ -1,8 +1,17 @@
 # Checkbox 复选按钮
 
+
+<div class="card">
+
 ### 介绍
 
 多选按钮用于选择。
+
+</div>
+
+
+
+<div class="card">
 
 ### 安装
 
@@ -15,6 +24,13 @@ app.use(Checkbox);
 app.use(CheckboxGroup);
 ```
 
+</div>
+
+
+
+
+<div class="card">
+
 ### 基础用法
 通过 `v-model` 绑定复选框的勾选状态。  
 通过 `shape` 属性可设置形状，可选值：`round` `square` `button`
@@ -23,6 +39,11 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="Base"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 半选状态
 通过 `indeterminate` 属性设置是否支持半选状态。
@@ -31,6 +52,12 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="Indeterminate"></HljsBlock>
 
+</div>
+
+
+
+
+<div class="card">
 
 ### 禁用状态
 通过设置 `disabled` 属性可以禁用复选框。
@@ -39,6 +66,12 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="Disabled"></HljsBlock>
 
+</div>
+
+
+
+
+<div class="card">
 
 ### 禁用文本点击
 设置 label-disabled 属性后，点击图标以外的内容不会触发复选框切换。
@@ -47,6 +80,13 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="LabelDisabled"></HljsBlock>
 
+</div>
+
+
+
+
+<div class="card">
+
 ### 左侧文本
 将 text-position 属性设置为 'left'，可以将文本位置调整到复选框左侧。
 <script setup>
@@ -54,6 +94,11 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="TextPosition"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 自定义大小
 通过设置 `style` 或者 `class` 的font-size可以控制 `Icon` 大小。 
@@ -62,7 +107,12 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="CustomSize"></HljsBlock>
 
+</div>
 
+
+
+
+<div class="card">
 
 ### 自定义颜色
 通过设置 `class` 的color可以控制 `Icon` 颜色。 
@@ -71,6 +121,11 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="CustomColor"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 自定义图标
 通过 slot 自定义图标, `icon` `checkedIcon` `indeterminate` 分别对应 `未选择` `已选择` `半选择` 三种状态所对应的图标。
@@ -79,6 +134,11 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="IconSlot"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### change事件
 值发生变化时，将触发 `change` 事件
@@ -87,6 +147,11 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="Event"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 复选框组
 复选框可以与复选框组一起使用，复选框组通过 `v-model` 数组绑定复选框的勾选状态。
@@ -95,6 +160,11 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="Group"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 水平排列
 将 `direction` 属性设置为 `horizontal` 后，复选框组会变成水平排列。
@@ -103,6 +173,11 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="Direction"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### checkboxGroup禁用
 `CheckboxGroup` 设置 `disabled` 属性可以禁用复选框。
@@ -111,6 +186,11 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="CheckboxGroupDisabled"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### checkboxGroup使用，限制最大可选数（2个）
 `CheckboxGroup` 设置 `max` 属性可以限制复选框组的最大可选数。
@@ -119,6 +199,12 @@ app.use(CheckboxGroup);
 </script>
 <HljsBlock :code="Max"></HljsBlock>
 
+</div>
+
+
+
+
+<div class="card">
 
 ### checkboxGroup 全选/取消/反选
 通过 `CheckboxGroup` 实例上的 `toggleAll` 方法切换所有复选框，传 true 为选中，false 为取消选中，不传参为取反。  
@@ -139,12 +225,24 @@ checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });
 </script>
 <HljsBlock :code="Toggle"></HljsBlock>
 
+</div>
+
+
+
+
+<div class="card">
+
 ### checkboxGroup 全选/半选/取消
 <script setup>
   import ToggleIndeterminate from './demo/ToggleIndeterminate.vue?raw'
 </script>
 <HljsBlock :code="ToggleIndeterminate"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 按钮形状
 设置 `shape` 属性可改变复选框为 `button` 形状。
@@ -153,6 +251,11 @@ checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });
 </script>
 <HljsBlock :code="Shape"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 搭配单元格组件使用
 利用 `CheckboxGroup` 抛出的 `children` 和 `Checkbox` 抛出的 `toggle`方法进行切换。
@@ -161,8 +264,13 @@ checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });
 </script>
 <HljsBlock :code="CellGroup"></HljsBlock>
 
+</div>
+
 
 ## API
+
+
+<div class="card">
 
 ### Checkbox Props
 
@@ -177,12 +285,24 @@ checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });
 | shape          | 形状，可选值：`round` `square` `button`、  | String        | `round` |
 | icon-style     | 自定义icon样式                          | CSSProperties | -       |
 
+</div>
+
+
+
+<div class="card">
+
 ### Checkbox Slots
 | 名称          | 说明           |
 |---------------|--------------|
 | icon          | 未选中时的图标 |
 | checkedIcon   | 选中时的图标   |
 | indeterminate | 半选时的图标   |
+
+</div>
+
+
+<div class="card">
+
 ### CheckboxGroup Props
 
 | 参数      | 说明                                                           | 类型    | 默认值     |
@@ -192,7 +312,11 @@ checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });
 | max       | 限制选择的数量，不能和`全选/取消/反选`一起使用, `0`表示没有限制 | number  | `0`        |
 | direction | 排列方向，可选值为 `horizontal`                                 | string  | `vertical` |
 
+</div>
 
+
+
+<div class="card">
 
 ### Checkbox Events
 
@@ -200,11 +324,23 @@ checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });
 |--------|------------|---------------------------------------------------------------|
 | change | 值变化时触发 | (checked, label), `checked` 代表当前状态，`label` 表示当前选中的值 |
 
+</div>
+
+
+
+
+<div class="card">
+
 ### Checkbox Methods
 
 | 方法名 | 说明       | 参数 |
 |--------|----------|------|
 | toggle | 切换复选框 | -    |
+
+</div>
+
+
+<div class="card">
 
 ### CheckboxGroup Events
 
@@ -212,6 +348,13 @@ checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });
 |----- | ----- | ----- 
 | change | 值变化时触发 | `label`,`label` 返回一个数组，表示当前选中项的集合
 
+</div>
+
+
+
+
+
+<div class="card">
 
 ### CheckboxGroup Methods
 
@@ -219,8 +362,12 @@ checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });
 |-----------|---------------------------------------------------------------|-----------------------------|
 | toggleAll | 切换所有复选框，传 `true` 为选中，`false` 为取消选中，不传参为取反 | `options?: boolean \| object` |
 
+</div>
 
-## 主题定制
+
+
+
+<div class="card">
 
 ### 样式变量
 
@@ -243,3 +390,5 @@ checkboxGroupRef?.value.toggleAll({  checked: true,  skipDisabled: true });
 | --r-checkbox-button-padding            | 5px 18px                |
 | --r-checkbox-button-checked-background | #666                    |
 | --r-checkbox-button-checked-color      | #fff                    |
+
+</div>

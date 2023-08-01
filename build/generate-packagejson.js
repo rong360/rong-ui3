@@ -26,6 +26,10 @@ const pkgStr = `{
   "module": "rong-ui3.es.js",
   "typings": "types/index.d.ts",
   "style": "style.css",
+  "sideEffects": [
+    "es/**/style/*",
+    "*.css"
+  ],
   "dependencies": {},
   "contributors": [
     {

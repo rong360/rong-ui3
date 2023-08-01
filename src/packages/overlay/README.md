@@ -1,8 +1,15 @@
 # Overlay 遮罩层
 
+
+<div class="card">
+
 ### 介绍
 创建一个遮罩层，通常用于阻止用户进行其它操作
 
+</div>
+
+
+<div class="card">
 
 ### 安装
 ```javascript
@@ -13,6 +20,10 @@ const app = createApp();
 app.use(OverLay);
 ```
 
+</div>
+
+
+<div class="card">
 
 ### 基础用法
 使用 show 控制遮罩层的显示/隐藏
@@ -21,6 +32,10 @@ app.use(OverLay);
 </script>
 <HljsBlock :code="OverlayBase"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 嵌入内容
 通过默认插槽可以在遮罩层上嵌入任意内容。  
@@ -30,6 +45,10 @@ app.use(OverLay);
 </script>
 <HljsBlock :code="OverlayEmbedContent"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 设置动画时间
 通过 `duration` 设置遮罩显示/隐藏的时间，单位 `s`
@@ -38,6 +57,11 @@ app.use(OverLay);
 </script>
 <HljsBlock :code="OverlayDuration"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 关闭背景渐变
 通过 `css-transition` 设置背景是否添加渐变动画
@@ -46,10 +70,14 @@ app.use(OverLay);
 </script>
 <HljsBlock :code="OverlayCssTransition"></HljsBlock>
 
+</div>
+
 
 
 
 ## API
+
+<div class="card">
 
 ### Props
 
@@ -62,12 +90,21 @@ app.use(OverLay);
 | transition-name        | 渐变动画名称 | String        | `r-overlay--fade`  |
 | close-on-click-overlay | 是否点击遮罩关闭     | Boolean        | `true`  |
 
+</div>
+
+
+<div class="card">
+
 ### Slots
 
 | 名称    | 说明 |
 |---------|----|
 | default | 内容 |
 
+</div>
+
+
+<div class="card">
 
 ### Events
 
@@ -75,9 +112,16 @@ app.use(OverLay);
 |--------|----------|-------------------|
 | click  | 点击时触发 | event: MouseEvent |
 
+</div>
+
+
+
+<div class="card">
 
 ### 样式变量
 
 | 名称                   | 默认值             |
 |------------------------|--------------------|
 | --r-overlay-background | rgba(0, 0, 0, 0.7) |
+
+</div>

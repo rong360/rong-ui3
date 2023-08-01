@@ -1,8 +1,18 @@
 # Radio 单选框
 
+
+<div class="card">
+
 ### 介绍
 
 在一组备选项中进行单选。
+
+</div>
+
+
+
+
+<div class="card">
 
 ### 安装
 
@@ -15,6 +25,12 @@ app.use(Radio);
 app.use(RadioGroup);
 ```
 
+</div>
+
+
+
+<div class="card">
+
 ### 基础用法
 通过 `v-model` 绑定值当前选中项的 name。  
 通过 `shape` 属性可设置形状，可选值：`radio` `round` `square` `button`
@@ -23,6 +39,11 @@ app.use(RadioGroup);
 </script>
 <HljsBlock :code="Base"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 禁用文本点击
 设置 label-disabled 属性后，点击图标以外的内容不会触发单选框切换。
@@ -31,7 +52,12 @@ app.use(RadioGroup);
 </script>
 <HljsBlock :code="LabelDisabled"></HljsBlock>
 
+</div>
 
+
+
+
+<div class="card">
 
 ### 左侧文本
 将 text-position 属性设置为 'left'，可以将文本位置调整到单选框左侧。
@@ -40,6 +66,11 @@ app.use(RadioGroup);
 </script>
 <HljsBlock :code="TextPosition"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 自定义大小
 通过设置 `style` 或者 `class` 的font-size可以控制 `Icon` 大小。 
@@ -48,7 +79,11 @@ app.use(RadioGroup);
 </script>
 <HljsBlock :code="CustomSize"></HljsBlock>
 
+</div>
 
+
+
+<div class="card">
 
 ### 自定义颜色
 通过设置 `class` 的color可以控制 `Icon` 颜色。 
@@ -57,6 +92,11 @@ app.use(RadioGroup);
 </script>
 <HljsBlock :code="CustomColor"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 自定义图标
 通过 slot 自定义图标, `icon` `checkedIcon` 分别对应 `未选择` `已选择`  两种状态所对应的图标。
@@ -65,6 +105,11 @@ app.use(RadioGroup);
 </script>
 <HljsBlock :code="IconSlot"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### change事件
 值发生变化时，将触发 `change` 事件
@@ -73,7 +118,11 @@ app.use(RadioGroup);
 </script>
 <HljsBlock :code="Event"></HljsBlock>
 
+</div>
 
+
+
+<div class="card">
 
 ### 水平排列
 将 `direction` 属性设置为 `horizontal` 后，单选框组会变成水平排列。
@@ -82,6 +131,10 @@ app.use(RadioGroup);
 </script>
 <HljsBlock :code="Direction"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### RadioGroup禁用
 `RadioGroup` 设置 `disabled` 属性可以禁用单选框。
@@ -90,7 +143,12 @@ app.use(RadioGroup);
 </script>
 <HljsBlock :code="GroupDisabled"></HljsBlock>
 
+</div>
 
+
+
+
+<div class="card">
 
 ### 按钮形状
 设置 `shape` 属性可改变单选框为 `button` 或 `square` 形状。
@@ -99,6 +157,11 @@ app.use(RadioGroup);
 </script>
 <HljsBlock :code="Shape"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 搭配单元格组件使用
 搭配单元格组件使用时，需要再引入 `Cell` 和 `CellGroup` 组件。
@@ -107,8 +170,13 @@ app.use(RadioGroup);
 </script>
 <HljsBlock :code="CellGroup"></HljsBlock>
 
+</div>
+
 
 ## API
+
+
+<div class="card">
 
 ### Radio Props
 
@@ -121,6 +189,11 @@ app.use(RadioGroup);
 | shape          | 形状，可选值： `radio` `round` `square` `button`、 | String        | `radio` |
 | icon-style     | 自定义icon样式                                  | CSSProperties | -       |
 
+</div>
+
+
+
+<div class="card">
 
 ### Radio Slots
 | 名称          | 说明           |
@@ -128,6 +201,11 @@ app.use(RadioGroup);
 | icon          | 未选中时的图标 |
 | checkedIcon   | 选中时的图标   |
 
+</div>
+
+
+
+<div class="card">
 
 ### RadioGroup Props
 | 参数      | 说明                                                           | 类型    | 默认值     |
@@ -136,7 +214,12 @@ app.use(RadioGroup);
 | disabled  | 是否禁用选择,将用于其下的全部单选框                            | boolean | `false`    |
 | direction | 排列方向，可选值为 `horizontal`                                 | string  | `vertical` |
 
+</div>
 
+
+
+
+<div class="card">
 
 ### RadioGroup Events
 
@@ -144,6 +227,12 @@ app.use(RadioGroup);
 |--------|------------------------|--------------|
 | change | 当绑定值变化时触发的事件 | name: string |
 
+</div>
+
+
+
+
+<div class="card">
 
 ### 样式变量
 
@@ -166,3 +255,5 @@ app.use(RadioGroup);
 | --r-radio-button-padding            | 5px 18px                |
 | --r-radio-button-checked-background | #666                    |
 | --r-radio-button-checked-color      | #fff                    |
+
+</div>

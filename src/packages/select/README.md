@@ -1,8 +1,16 @@
 # Select
 
+<div class="card">
+
 ### 介绍
 
 提供多个选项集合供用户选择其中一项，带弹层效果。    
+
+</div>
+
+
+<div class="card">
+
 ### 安装
 
 ```javascript
@@ -12,11 +20,24 @@ import { Select } from 'rong-ui3';
 const app = createApp();
 app.use(Select);
 ```
+
+</div>
+
+
+
+<div class="card">
+
 ### 参数说明
 * `Select` 基于 `Picker` `Popup` 封装，参数与 `Picker` `Popup` 相同。  
 * `columns` 参数同 `Picker` 可以是一维数组或者二维数组。  
 * `v-model` 参数可以是数组或者字符串。当为字符串并且是多列效果时，需传递 `value-separator` 分隔符。
 * 多列选择器的标题可以传递 `text-separator` 分隔符进行分割。
+
+</div>
+
+
+
+<div class="card">
 
 ### 基础用法
 <script setup>
@@ -24,6 +45,11 @@ app.use(Select);
 </script>
 <HljsBlock :code="Base"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 指定根节点
 设置 `teleport` 属性指定根节点。
@@ -31,6 +57,12 @@ app.use(Select);
   import Teleport from './demo/Teleport.vue?raw'
 </script>
 <HljsBlock :code="Teleport"></HljsBlock>
+
+</div>
+
+
+
+<div class="card">
 
 ### 多列选择
 `v-model` 参数可以是数组或者字符串。为字符串时，需传递 `value-separator` 分隔符。  
@@ -40,6 +72,12 @@ app.use(Select);
 </script>
 <HljsBlock :code="Multiple"></HljsBlock>
 
+</div>
+
+
+
+
+<div class="card">
 
 ### 级联选择 
 <script setup>
@@ -47,6 +85,12 @@ app.use(Select);
 </script>
 <HljsBlock :code="Cascade"></HljsBlock>
 
+</div>
+
+
+
+
+<div class="card">
 
 ### 自定义 Columns 的结构
 通过设置 `columns-field-names` 自定义 columns 结构中的字段。
@@ -55,6 +99,11 @@ app.use(Select);
 </script>
 <HljsBlock :code="CustomColumns"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 平铺显示
 * 通过设置 `type="tile"` 显示平铺效果。
@@ -65,8 +114,13 @@ app.use(Select);
 </script>
 <HljsBlock :code="Tile"></HljsBlock>
 
+</div>
+
 
 ## API
+
+
+<div class="card">
 
 ### Props
 > 当前组件内部透传了 [Popup组件](#/zh-CN/component/popup) 、[Overlay组件](#/zh-CN/component/overlay) 和 [Picker组件](#/zh-CN/component/picker)
@@ -81,6 +135,11 @@ app.use(Select);
 | textAlign      | 标题文字对齐方式，可选值为`left` `right` | string                    | -      |
 | type           | 选择器类型，可选值为`picker` `tile`      | string                    | -      |
 
+</div>
+
+
+
+<div class="card">
 
 ### Events
 
@@ -90,8 +149,11 @@ app.use(Select);
 | cancel  | 点击取消按钮时触发 | `{ selectedValues, selectedTexts, selectedOptions, selectedIndexes }` |
 | change  | 选项发生改变时触发 | `{ columnIndex, selectedIndex, selectedValues, selectedTexts, selectedOptions, selectedIndexes }` |
 
+</div>
 
-## 主题定制
+
+
+<div class="card">
 
 ### 样式变量
 
@@ -116,3 +178,5 @@ app.use(Select);
 | --r-tile-option-border-color           | #ebedf0                         |
 | --r-tile-option-disabled-opacity       | 0.3                             |
 | --r-tile-option-active-text-color      | #4080e8                         |
+
+</div>

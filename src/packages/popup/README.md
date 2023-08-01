@@ -1,8 +1,16 @@
 # Popup 弹出层
 
+
+<div class="card">
+
 ### 介绍
 
 弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示
+
+</div>
+
+
+<div class="card">
 
 ### 安装
 
@@ -13,7 +21,10 @@ import { Popup } from 'rong-ui3';
 const app = createApp();
 app.use(Popup)
 ```
+</div>
 
+
+<div class="card">
 
 ### 基础用法
 通过 v-model:show 控制弹出层是否展示。
@@ -22,7 +33,10 @@ app.use(Popup)
 </script>
 <HljsBlock :code="PopupBase"></HljsBlock>
 
+</div>
 
+
+<div class="card">
 
 ### 弹出位置
 通过 `position` 属性设置弹窗的弹出位置，默认为居中弹出，可以设置为 `top`、`bottom`、`left`、`right`。
@@ -33,7 +47,10 @@ app.use(Popup)
 </script>
 <HljsBlock :code="PopupPosition"></HljsBlock>
 
+</div>
 
+
+<div class="card">
 
 ### 内容滚动
 特别提示：默认锁屏，滚动元素需要添加 class="scroll-area" 样式 
@@ -42,6 +59,10 @@ app.use(Popup)
 </script>
 <HljsBlock :code="PopupScroll"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 关闭图标
 设置 `show-close-icon` 属性后，会在弹出层的右上角显示关闭图标，通过`close-icon-position` 来设置图标的位置。可以通过 close-icon 属性自定义图标（等同于 Icon 组件的 name 属性）
@@ -50,7 +71,10 @@ app.use(Popup)
 </script>
 <HljsBlock :code="PopupClose"></HljsBlock>
 
+</div>
 
+
+<div class="card">
 
 ### 圆角弹窗
 设置 `round` 属性后，弹窗会根据弹出位置添加不同的圆角样式。
@@ -59,6 +83,11 @@ app.use(Popup)
 </script>
 <HljsBlock :code="PopupRound"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 监听点击事件 和 监听显示事件
 Popup 支持以下点击事件
@@ -78,7 +107,11 @@ Popup 支持以下点击事件
 </script>
 <HljsBlock :code="PopupEventListener"></HljsBlock>
 
+</div>
 
+
+
+<div class="card">
 
 ### 指定挂载位置
 弹出层默认挂载到组件标签所在位置，可以通过 `teleport` 属性指定挂载位置。
@@ -87,8 +120,13 @@ Popup 支持以下点击事件
 </script>
 <HljsBlock :code="PopupTeleport"></HljsBlock>
 
+</div>
+
 
 ## API
+
+
+<div class="card">
 
 > 当前组件内部透传了 [Icon组件](#/zh-CN/component/icon) 和 [Overlay组件](#/zh-CN/component/overlay)
 ### Props
@@ -114,6 +152,10 @@ Popup 支持以下点击事件
 | round                     | 是否显示圆角                                              | boolean       | `false`     |
 | teleport                  | 指定挂载节点                                              | string        | `body`      |
 
+</div>
+
+
+<div class="card">
 
 ### Slots
 
@@ -122,7 +164,10 @@ Popup 支持以下点击事件
 | default  | 自定义内嵌内容 |
 | close-icon  | 关闭按钮的自定义图标 |
 
+</div>
 
+
+<div class="card">
 
 ### Events
 
@@ -135,7 +180,10 @@ Popup 支持以下点击事件
 | opend            | 遮罩打开动画结束时触发 | `event: MouseEvent` |
 | closed           | 遮罩关闭动画结束时触发 | `event: MouseEvent` |
 
+</div>
 
+
+<div class="card">
 
 ### 样式变量
 
@@ -147,3 +195,5 @@ Popup 支持以下点击事件
 | --r-popup-close-icon-color     | #969799 |
 | --r-popup-close-icon-font-size | 16px    |
 | --r-popup-close-icon-margin    | 12px    |
+
+</div>

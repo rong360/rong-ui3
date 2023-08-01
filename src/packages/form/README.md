@@ -1,8 +1,16 @@
 # Form 表单
 
+
+<div class="card">
+
 ### 介绍
 
 用于数据录入、校验，支持输入框、单选框、复选框、文件上传等类型。
+
+</div>
+
+
+<div class="card">
 
 ### 安装
 
@@ -16,6 +24,10 @@ app.use(Form);
 app.use(FormItem);
 ```
 
+</div>
+
+
+<div class="card">
 
 ### 基础用法
 通过Form 传递需要校验的值和规则。  
@@ -24,6 +36,11 @@ app.use(FormItem);
 </script>
 <HljsBlock :code="Base"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 基础用法二
 通过FormItem 传递需要校验的值和规则
@@ -32,7 +49,11 @@ app.use(FormItem);
 </script>
 <HljsBlock :code="Base2"></HljsBlock>
 
+</div>
 
+
+
+<div class="card">
 
 ### 开启非空校验、必填*号、清除按钮、单个表单项验证
 Form 设置`requied`可给所有项开启非空校验，FormItem 设置 `:required=false`可取消。 
@@ -44,7 +65,11 @@ Form 设置`title-align` 控制标题对齐方式、`value-align` 控制右侧�
 </script>
 <HljsBlock :code="NotEmptyVerify"></HljsBlock>
 
+</div>
 
+
+
+<div class="card">
 
 ### 动态表单
 Form 设置 `requied` 可给所有项开启非空校验
@@ -53,7 +78,11 @@ Form 设置 `requied` 可给所有项开启非空校验
 </script>
 <HljsBlock :code="DynamicForm"></HljsBlock>
 
+</div>
 
+
+
+<div class="card">
 
 ### 滚动到指定表单项
 调用Form的 `scrollToField(name: string, options?: boolean | ScrollIntoViewOptions)` 方法：     
@@ -63,15 +92,24 @@ Form 设置 `requied` 可给所有项开启非空校验
 </script>
 <HljsBlock :code="ScrollToField"></HljsBlock>
 
+</div>
+
+
+<div class="card">
+
 ### 表单类型
 <script setup>
   import FormType from './demo/FormType.vue?raw'
 </script>
 <HljsBlock :code="FormType"></HljsBlock>
 
+</div>
 
 
 ## API
+
+<div class="card">
+
 ### Form Props
 
 | 参数               | 说明                                      | 类型    | 默认值 |
@@ -85,11 +123,21 @@ Form 设置 `requied` 可给所有项开启非空校验
 | show-star          | 显示必填`*`号                             | boolean | -      |
 | show-error-message | 显示错误提示                              | boolean | true   |
 
+</div>
+
+
+<div class="card">
+
 ### Form Events
 
 | 事件名   | 说明                                                             | 回调参数 |
 |----------|----------------------------------------------------------------|----------|
 | complete | 返回所有必填表单项是否输入完毕，常用于没输入完时按钮置灰，禁止提交 | val      |
+
+</div>
+
+
+<div class="card">
 
 ### FormItem Props
 
@@ -107,6 +155,10 @@ Form 设置 `requied` 可给所有项开启非空校验
 | show-error-message | 是否在校验不通过时在输入框下方展示错误提示                       | boolean         | `true` |
 | label-for   | 指定原生的 label 标签的 for 属性，配合控件的 element-id 属性，可以点击 label 时聚焦控件。  | string      | -  |
 
+</div>
+
+<div class="card">
+
 ### FormItemRule 数据结构
 
 使用 `FormItem` 的 `rules` 属性可以定义校验规则，可选属性如下:
@@ -118,6 +170,11 @@ Form 设置 `requied` 可给所有项开启非空校验
 | validator | 通过函数进行校验       | (value:string, rule?:FormItemRule ) => boolean \| Promise |
 | pattern   | 通过正则表达式进行校验 | RegExp                                                    |
 
+</div>
+
+
+<div class="card">
+
 ### FormItem Slots
 
 | 名称    | 说明              |
@@ -126,12 +183,18 @@ Form 设置 `requied` 可给所有项开启非空校验
 | title   | 自定义 `title` 区域 |
 
 
+
 ``` html
   插槽使用方式
   <r-form-item>
     <template v-slot:title>slot title</template>
   </r-form-item>
 ```
+
+</div>
+
+
+<div class="card">
 
 ### Methods
 
@@ -144,8 +207,10 @@ Form 设置 `requied` 可给所有项开启非空校验
 | getSerializeValue | 获取所有表单项当前的值 | -    | `name=xx&age=18`                                |
 | scrollToField | 不传参数时默认滚动到表单第一个错误项。 传name参数时滚动到指定表单项。 | (name: string, options?: boolean \| ScrollIntoViewOptions)   | -                         |
 
+</div>
 
-## 主题定制
+
+<div class="card">
 
 ### 样式变量
 
@@ -158,3 +223,5 @@ Form 设置 `requied` 可给所有项开启非空校验
 | --r-form-item-error-message-color       | #f5222d |
 | --r-form-item-error-message-font-size   | 12px    |
 | --r-form-item-error-message-line-height | 1.5     |
+
+</div>

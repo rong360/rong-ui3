@@ -1,9 +1,17 @@
 # Picker
 
+
+<div class="card">
+
 ### 介绍
 
 提供多个选项集合供用户选择，支持单列选择、多列选择和级联选择，通常与弹出层组件配合使用。
 
+</div>
+
+
+
+<div class="card">
 
 ### 安装
 
@@ -15,13 +23,24 @@ const app = createApp();
 app.use(Picker);
 ```
 
-### 基础用法
+</div>
+
+
+
+<div class="card">
+
 ### 基础用法
 <script setup>
   import Base from './demo/Base.vue?raw'
 </script>
 <HljsBlock :code="Base"></HljsBlock>
 
+</div>
+
+
+
+
+<div class="card">
 
 ### 搭配弹出层使用
 Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
@@ -30,6 +49,11 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 </script>
 <HljsBlock :code="Popup"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 双向绑定
 通过 `v-model` 可以绑定当前选中项的 values，修改 `v-model` 绑定的值时，Picker 的选中状态也会随之改变。
@@ -40,6 +64,11 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 </script>
 <HljsBlock :code="Model"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 多列选择
 `columns` 属性可以通过二维数组的形式配置多列选择。
@@ -48,6 +77,11 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 </script>
 <HljsBlock :code="Multiple"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 级联选择
 使用 `columns` 的 `children` 字段可以实现选项级联的效果
@@ -56,12 +90,22 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 </script>
 <HljsBlock :code="Cascade"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
+
 ### 禁用选项
 <script setup>
   import Disabled from './demo/Disabled.vue?raw'
 </script>
 <HljsBlock :code="Disabled"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 自定义 Columns 的结构
 <script setup>
@@ -69,9 +113,13 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 </script>
 <HljsBlock :code="CustomColumns"></HljsBlock>
 
+</div>
 
 
 ## API
+
+
+<div class="card">
 
 ### Props
 
@@ -90,6 +138,11 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 | visible-option-num   | 可见的选项个数                     | number \| string                   | `6`    |
 | swipe-duration       | 快速滑动时惯性滚动的时长，单位 `ms` | number \| string                   | `1000` |
 
+</div>
+
+
+
+<div class="card">
 
 ### Events
 
@@ -99,12 +152,24 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 | cancel  | 点击取消按钮时触发 | `{ selectedValues, selectedTexts, selectedOptions, selectedIndexes }` |
 | change  | 选项发生改变时触发 | `{ columnIndex, selectedIndex, selectedValues, selectedOptions, selectedIndexes }` |
 
+</div>
+
+
+
+<div class="card">
+
 ### Slots
 
 | 名称 | 说明           | 
 |--------|----------------|
 | columns-top  | 自定义滑动数据顶部区域 |
 | columns-bottom  | 自定义滑动数据底部区域 |
+
+</div>
+
+
+
+<div class="card">
 
 ### PickerOption 数据结构
 
@@ -116,7 +181,11 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 | disabled  | 是否禁用选项        | boolean                   | -      |
 | className | 添加额外的类名      | string \| Array \| object | -      |
 
-## 主题定制
+</div>
+
+
+
+<div class="card">
 
 ### 样式变量
 
@@ -134,3 +203,5 @@ Picker 通常作为用于辅助表单填写，可以搭配 Popup 实现效果。
 | --r-picker-option-text-color    | #323233 |
 | --r-picker-option-height        | 44px    |
 | --r-picker-frame-border-color   | #ebedf0 |
+
+</div>

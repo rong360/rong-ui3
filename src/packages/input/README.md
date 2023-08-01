@@ -1,8 +1,16 @@
 # Input 输入框
 
+
+<div class="card">
+
 ### 介绍
 
 用户可以在文本框里输入内容。
+
+</div>
+
+
+<div class="card">
 
 ### 安装
 
@@ -14,6 +22,11 @@ const app = createApp();
 app.use(Input);
 ```
 
+</div>
+
+
+<div class="card">
+
 ### 基础用法
 可以通过 `v-model` 双向绑定输入框的值，通过 `placeholder` 设置占位提示文字。
 <script setup>
@@ -21,6 +34,10 @@ app.use(Input);
 </script>
 <HljsBlock :code="Base"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 自定义类型
 根据 `type` 属性定义不同类型的输入框，默认值为 text。
@@ -29,7 +46,10 @@ app.use(Input);
 </script>
 <HljsBlock :code="CustomType"></HljsBlock>
 
+</div>
 
+
+<div class="card">
 
 ### 显示清除图标
 通过设置 `clearable` 在输入过程中展示清除图标。
@@ -39,6 +59,10 @@ app.use(Input);
 </script>
 <HljsBlock :code="Clearable"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 格式化输入内容
 通过 `formatter` 属性可以对输入的内容进行格式化，通过 `format-trigger` 属性可以指定执行格式化的时机。例如对银行卡进行分隔：
@@ -47,6 +71,11 @@ app.use(Input);
 </script>
 <HljsBlock :code="Formatter"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 禁用和只读
 通过 `readonly` 将输入框设置为只读状态，通过 `disabled` 将输入框设置为禁用状态。
@@ -55,6 +84,11 @@ app.use(Input);
 </script>
 <HljsBlock :code="Readonly"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 对齐方式
 通过 `input-align` 设置输入框对齐方式。
@@ -63,12 +97,23 @@ app.use(Input);
 </script>
 <HljsBlock :code="InputAlign"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 事件演示
 <script setup>
   import Event from './demo/Event.vue?raw'
 </script>
 <HljsBlock :code="Event"></HljsBlock>
+
+</div>
+
+
+
+<div class="card">
 
 ### 组件暴露的方法
 组件对外暴露的方法有 `focus` `blur` `select`
@@ -77,6 +122,11 @@ app.use(Input);
 </script>
 <HljsBlock :code="Method"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 插槽演示
 可以通过 `left` `right` 插槽, 在输入框前后插入自定义内容。
@@ -85,6 +135,10 @@ app.use(Input);
 </script>
 <HljsBlock :code="Slots"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 配合表单使用
 <script setup>
@@ -92,9 +146,12 @@ app.use(Input);
 </script>
 <HljsBlock :code="Form"></HljsBlock>
 
-
+</div>
 
 ## API
+
+<div class="card">
+
 ### Props
 
 | 参数                | 说明                                              | 类型                      | 默认值    |
@@ -113,6 +170,10 @@ app.use(Input);
 | formatter           | 输入内容格式化函数                                | `(val: string) => string` | -         |
 | format-trigger      | 格式化函数触发的时机，可选值为 `onInput`、`onBlur`  | string                    | `onInput` |
 
+</div>
+
+
+<div class="card">
 
 ### Events
 
@@ -125,6 +186,10 @@ app.use(Input);
 | click              | 点击组件时触发       | `event`  |
 | input              | 输入框输入内容时触发 | `event`  |
 
+</div>
+
+
+<div class="card">
 
 ### Slots
 | 名称  | 说明                     |
@@ -133,6 +198,10 @@ app.use(Input);
 | left  | 自定义输入框左侧插槽内容 |
 | right | 自定义输入框右侧插槽内容 |
 
+</div>
+
+<div class="card">
+
 ### Ref
 | 名称   | 说明     |
 |--------|--------|
@@ -140,6 +209,11 @@ app.use(Input);
 | blur   | 失去焦点 |
 | select | 选择文字 |
 
+</div>
+
+
+
+<div class="card">
 
 ### 样式变量
 
@@ -154,3 +228,5 @@ app.use(Input);
 | --r-input-input-slot-margin-left  | 4px                             |
 | --r-input-input-slot-margin-right | 4px                             |
 | --r-input-clear-color             | #c8c9cc                         |
+
+</div>

@@ -1,8 +1,15 @@
 # Navbar 头部导航
 
+<div class="card">
+
 ### 介绍 
 
 为页面提供导航功能，常用于页面顶部。
+
+</div>
+
+
+<div class="card">
 
 ### 安装
 
@@ -13,6 +20,10 @@ import { NavBar } from '@rong-ui3';
 const app = createApp();
 app.use(NavBar);
 ```
+</div>
+
+
+<div class="card">
 
 ### 基础用法
 通过 `title` 属性设置导航栏标题。
@@ -21,6 +32,10 @@ app.use(NavBar);
 </script>
 <HljsBlock :code="BaseUsage"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 返回上级
 在导航栏实现返回上级功能。
@@ -29,7 +44,11 @@ app.use(NavBar);
 </script>
 <HljsBlock :code="BackTo"></HljsBlock>
 
+</div>
 
+
+
+<div class="card">
 
 ### 右侧按钮
 在导航栏右侧添加可点击的按钮。
@@ -38,7 +57,11 @@ app.use(NavBar);
 </script>
 <HljsBlock :code="RightButton"></HljsBlock>
 
+</div>
 
+
+
+<div class="card">
 
 ### 使用插槽
 可以通过插槽自定义导航栏两侧的内容。
@@ -47,7 +70,11 @@ app.use(NavBar);
 </script>
 <HljsBlock :code="UseSlot"></HljsBlock>
 
+</div>
 
+
+
+<div class="card">
 
 ### 固定到顶部
 通过 `fixed` 属性固定到顶部。同时可以用 `placeholder` 属性设置是否在标签位置生成一个等高的占位元素
@@ -56,8 +83,12 @@ app.use(NavBar);
 </script>
 <HljsBlock :code="FixedTop"></HljsBlock>
 
+</div>
 
 ## API
+
+<div class="card">
+
 ### Props
 
 | 参数                | 说明                                              | 类型         | 默认值  |
@@ -74,6 +105,10 @@ app.use(NavBar);
 | safe-area-inset-top | 是否开启顶部安全区适配                            | boolean      | `false` |
 | className           | 导航类名                                          | string       | -       |
 
+</div>
+
+
+<div class="card">
 
 ### Slots
 | 名称    | 说明               |
@@ -83,11 +118,22 @@ app.use(NavBar);
 | bottom  | 自定义底部区域内容 |
 | default | 自定义标题         |
 
+</div>
+
+
+<div class="card">
+
 ### Events
 | 事件名      | 说明               | 回调参数         |
 |-------------|------------------|------------------|
 | click-right | 点击左侧按钮时触发 | event:MouseEvent |
 | click-right | 点击右侧按钮时触发 | event:MouseEvent |
+
+</div>
+
+
+
+<div class="card">
 
 ### 样式变量
 
@@ -107,3 +153,5 @@ app.use(NavBar);
 | --r-nav-bar-right-padding      | 0 16px  |
 | --r-nav-bar-right-font-size    | 14px    |
 | --r-nav-bar-right-color        | #1989fa |
+
+</div>

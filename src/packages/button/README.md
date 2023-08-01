@@ -1,8 +1,15 @@
 # Button 按钮
 
+<div class="card">
+
 ### 介绍
 
 按钮用于触发一个操作，如提交表单。
+
+</div>
+
+
+<div class="card">
 
 ### 安装
 ```javascript
@@ -13,6 +20,11 @@ const app = createApp();
 app.use(Button);
 ```
 
+</div>
+
+
+<div class="card">
+
 ### 按钮类型
 按钮支持 `default`、`primary`、`success`、`warning`、`danger` 五种类型，默认为 `default`。
 <script setup>
@@ -20,6 +32,11 @@ app.use(Button);
 </script>
 <HljsBlock :code="ButtonType"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 按钮形状
 通过 `shape` 属性设置按钮形状，支持圆形、方形按钮，默认为圆形。
@@ -28,6 +45,10 @@ app.use(Button);
 </script>
 <HljsBlock :code="ButtonShape"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 按钮尺寸
 通过 `size` 属性设置按钮尺寸，支持 `large` `normal` `small` `mini` 四种尺寸，默认为 `normal`
@@ -36,6 +57,11 @@ app.use(Button);
 </script>
 <HljsBlock :code="ButtonSize"></HljsBlock>
 
+</div>
+
+
+<div class="card">
+
 ### 块级元素
 按钮在默认情况下为行内块级元素，通过 `block` 属性可以将按钮的元素类型设置为块级元素，常用来设置通栏按钮。
 <script setup>
@@ -43,6 +69,11 @@ app.use(Button);
 </script>
 <HljsBlock :code="ButtonBlock"></HljsBlock>
 
+</div>
+
+
+
+<div class="card">
 
 ### 禁用状态
 通过 `disabled` 属性来禁用按钮，禁用状态下按钮不可点击。
@@ -51,6 +82,10 @@ app.use(Button);
 </script>
 <HljsBlock :code="ButtonDisabled"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 朴素按钮
 通过 `plain` 属性将按钮设置为朴素按钮，朴素按钮的文字为按钮颜色，背景为透明。
@@ -59,6 +94,10 @@ app.use(Button);
 </script>
 <HljsBlock :code="ButtonPlain"></HljsBlock>
 
+</div>
+
+
+<div class="card">
 
 ### 按钮插槽
 通过 `prepend` `append` 两个插槽，可以在按钮开始或者结束位置插入Icon或者其它内容。
@@ -68,9 +107,12 @@ app.use(Button);
 <HljsBlock :code="ButtonSlot"></HljsBlock>
 
 
+</div>
 
 
 ## API
+
+<div class="card">
 
 ### Props
 
@@ -85,6 +127,11 @@ app.use(Button);
 | text     | 按钮文字                                             | string/VNode | -         |
 
 
+</div>
+
+
+<div class="card">
+
 ### Slots
 
 | 名称    | 说明         |
@@ -93,13 +140,20 @@ app.use(Button);
 | prepend | 按钮前方内容 |
 | append  | 按钮后方内容 |
 
+</div>
+
+<div class="card">
+
 ### Events
 
 | 事件名 | 说明           | 回调参数          |
 | ------ | -------------- | ----------------- |
 | click  | 点击按钮时触发 | event | MouseEvent |
 
+</div>
 
+
+<div class="card">
 
 ### 样式变量
   | 名称                          | 默认值                     |
@@ -135,3 +189,5 @@ app.use(Button);
   | --r-button-round-radius       | 25px                       |
   | --r-button-plain-background   | transparent                |
   | --r-button-disabled-opacity   | 0.5                        |
+
+</div>
