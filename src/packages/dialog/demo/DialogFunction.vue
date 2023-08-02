@@ -19,7 +19,6 @@
 import { createVNode, h } from 'vue';
 import { showDialog, showCustomDialog } from '../../index';
 import Protocol from './Protocol.vue';
-import ProtocolText from './Protocol.vue?raw';
 
 // 基础弹窗
 const clickBase = () => {
