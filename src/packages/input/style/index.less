@@ -1,40 +1,53 @@
 //:: @import '../../icon/style/index.less';
 
+:root {
+  --r-input-line-height: 24px;
+  --r-input-font-size: 14px;
+  --r-input-input-color: #323232;
+  --r-input-input-font-size: 14px;
+  --r-input-input-placeholder-color: #c8c9cc;
+  --r-input-input-disabled-color: #999;
+  --r-input-input-slot-margin-left: 4px;
+  --r-input-input-slot-margin-right: 4px;
+  --r-input-clear-color: #c8c9cc;
+  --r-input-clear-padding-left: 4px;
+}
+
 .r-input {
   display: flex;
   align-items: center;
-  line-height: var(--r-input-line-height, var(--r-cell-line-height, 24px));
-  font-size: var(--r-input-font-size, var(--r-cell-font-size, 14px));
+  line-height: var(--r-input-line-height);
+  font-size: var(--r-input-font-size);
   box-sizing: border-box;
   &__input {
     box-sizing: border-box;
     flex: 1;
     margin: 0;
     padding: 0;
-    color: var(--r-input-input-color, #323232);
+    color: var(--r-input-input-color);
     line-height: inherit;
-    font-size: var(--r-input-input-font-size, var(--r-cell-font-size, 14px));
+    font-size: var(--r-input-input-font-size);
     border: 0;
     background-color: transparent;
     resize: none;
     outline: none;
     &::placeholder {
-      color: var(--r-input-input-placeholder-color, #c8c9cc);
+      color: var(--r-input-input-placeholder-color);
     }
     &:disabled {
       cursor: not-allowed;
-      color: var(--r-input-input-disabled-color, #999);
+      color: var(--r-input-input-disabled-color);
     }
     &--has-left-slot {
-      margin-left: var(--r-input-input-slot-margin-left, 4px);
+      margin-left: var(--r-input-input-slot-margin-left);
     }
     &--has-right-slot {
-      margin-right: var(--r-input-input-slot-margin-right, 4px);
+      margin-right: var(--r-input-input-slot-margin-right);
     }
   }
   &__clear {
-    color: var(--r-input-clear-color, #c8c9cc);
+    color: var(--r-input-clear-color);
     cursor: pointer;
-    padding-left: var(--r-input-clear-padding-left, 4px);
+    padding-left: var(--r-input-clear-padding-left);
   }
 }
