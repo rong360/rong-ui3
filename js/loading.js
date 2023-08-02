@@ -1,1 +1,0 @@
-import{q as o,o as s,c as t,x as n,a as e}from"./plugin-vueexport-helper.js";const r={},a={class:"r-icon--circle"},i=e("svg",{viewBox:"25 25 50 50",width:"1em",height:"1em"},[e("circle",{cx:"50",cy:"50",r:"20",fill:"none"})],-1);function l(c,_){return s(),t("span",a,[n(c.$slots,"default",{},()=>[i])])}const f=o(r,[["render",l]]);export{f as default};
