@@ -1,13 +1,19 @@
 //:: @import '../../overlay/style/index.less';
 //:: @import '../../icon/style/index.less';
 
-@r-popup-border-radius: 16px;
-@r-popup-close-icon-margin: 12px;
+:root {
+  --r-popup-border-radius: 16px;
+  --r-popup-close-icon-margin: 12px;
+  --r-popup-background-color: #fff;
+  --r-popup-close-icon-z-index: 1;
+  --r-popup-close-icon-color: #969799;
+  --r-popup-close-icon-font-size: 16px;
+}
 
 .r-popup {
   position: fixed;
   box-sizing: border-box;
-  background-color: var(--r-popup-background-color, #fff);
+  background-color: var(--r-popup-background-color);
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   &--center {
@@ -16,7 +22,7 @@
     transform: translate(-50%, -50%);
   }
   &--center&&--round {
-    border-radius: var(--r-popup-border-radius, @r-popup-border-radius);
+    border-radius: var(--r-popup-border-radius);
   }
 
   &--top,
@@ -29,13 +35,13 @@
     min-height: 30px;
   }
   &--top&&--round {
-    border-radius: 0 0 var(--r-popup-border-radius, @r-popup-border-radius) var(--r-popup-border-radius, @r-popup-border-radius);
+    border-radius: 0 0 var(--r-popup-border-radius) var(--r-popup-border-radius);
   }
   &--bottom {
     bottom: 0;
   }
   &--bottom&&--round {
-    border-radius: var(--r-popup-border-radius, @r-popup-border-radius) var(--r-popup-border-radius, @r-popup-border-radius) 0 0;
+    border-radius: var(--r-popup-border-radius) var(--r-popup-border-radius) 0 0;
   }
 
   &--left,
@@ -51,10 +57,10 @@
     right: 0;
   }
   &--left&&--round {
-    border-radius: 0 var(--r-popup-border-radius, @r-popup-border-radius) var(--r-popup-border-radius, @r-popup-border-radius) 0;
+    border-radius: 0 var(--r-popup-border-radius) var(--r-popup-border-radius) 0;
   }
   &--right&&--round {
-    border-radius: var(--r-popup-border-radius, @r-popup-border-radius) 0 0 var(--r-popup-border-radius, @r-popup-border-radius);
+    border-radius: var(--r-popup-border-radius) 0 0 var(--r-popup-border-radius);
   }
 
   &-bounce-enter-active {
@@ -97,25 +103,25 @@
 
   &__close-icon {
     position: absolute;
-    z-index: var(--r-popup-close-icon-z-index, 1);
-    color: var(--r-popup-close-icon-color, #969799);
-    font-size: var(--r-popup-close-icon-font-size, 16px);
+    z-index: var(--r-popup-close-icon-z-index);
+    color: var(--r-popup-close-icon-color);
+    font-size: var(--r-popup-close-icon-font-size);
     cursor: pointer;
     &--top-right {
-      top: var(--r-popup-close-icon-margin, @r-popup-close-icon-margin);
-      right:  var(--r-popup-close-icon-margin, @r-popup-close-icon-margin);
+      top: var(--r-popup-close-icon-margin);
+      right:  var(--r-popup-close-icon-margin);
     }
     &--top-left {
-      top: var(--r-popup-close-icon-margin, @r-popup-close-icon-margin);
-      left:  var(--r-popup-close-icon-margin, @r-popup-close-icon-margin);
+      top: var(--r-popup-close-icon-margin);
+      left:  var(--r-popup-close-icon-margin);
     }
     &--bottom-right {
-      bottom: var(--r-popup-close-icon-margin, @r-popup-close-icon-margin);
-      right:  var(--r-popup-close-icon-margin, @r-popup-close-icon-margin);
+      bottom: var(--r-popup-close-icon-margin);
+      right:  var(--r-popup-close-icon-margin);
     }
     &--bottom-left {
-      bottom: var(--r-popup-close-icon-margin, @r-popup-close-icon-margin);
-      left:  var(--r-popup-close-icon-margin, @r-popup-close-icon-margin);
+      bottom: var(--r-popup-close-icon-margin);
+      left:  var(--r-popup-close-icon-margin);
     }
   }
 }

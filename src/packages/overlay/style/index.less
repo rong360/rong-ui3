@@ -1,10 +1,14 @@
+:root {
+  --r-overlay-background: rgba(0, 0, 0, 0.7);
+}
+
 .r-overlay {
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--r-overlay-background, rgba(0, 0, 0, 0.7));
+  background-color: var(--r-overlay-background);
   &-fade {
     &-enter-active,
     &-leave-active {

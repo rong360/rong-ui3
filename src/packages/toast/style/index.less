@@ -1,37 +1,51 @@
 //:: @import '../../popup/style/index.less';
 //:: @import '../../icon/style/index.less';
 
+:root {
+  --r-toast-font-size: 14px;
+  --r-toast-line-height: 20px;
+  --r-toast-background-color: rgba(0, 0, 0, .7);
+  --r-toast-color: #fff;
+  --r-toast-padding: 8px 12px;
+  --r-toast-overlay-background-color: transparent;
+  --r-toast-default-width: 120px;
+  --r-toast-long-width: 226px;
+  --r-toast-border-radius: 8px;
+  --r-toast-icon-font-size: 32px;
+  --r-toast-icon-margin-bottom: 8px;
+}
+
 .r-toast {
   overflow: hidden;
-  font-size: var(--r-toast-font-size, 14px);
-  line-height: var(--r-toast-line-height, 20px) !important;
-  background-color: var(--r-toast-background-color, rgba(0, 0, 0, .7)) !important;
-  color: var(--r-toast-color, #fff) !important;
+  font-size: var(--r-toast-font-size);
+  line-height: var(--r-toast-line-height) !important;
+  background-color: var(--r-toast-background-color) !important;
+  color: var(--r-toast-color) !important;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: var(--r-toast-padding, 8px 12px);
+  padding: var(--r-toast-padding);
   &-overlay {
-    background-color: var(--r-toast-overlay-background-color, transparent);
+    background-color: var(--r-toast-overlay-background-color);
   }
   &.r-popup--center {
-    width: var(--r-toast-default-width, 120px);
+    width: var(--r-toast-default-width);
   }
   &.r-popup--center&--long {
-    width: var(--r-toast-long-width, 226px);
+    width: var(--r-toast-long-width);
   }
   &.r-popup--center&--middle {
     min-height: 120px;
   }
   &.r-popup--round {
-    border-radius: var(--r-toast-border-radius, 8px) !important;
+    border-radius: var(--r-toast-border-radius) !important;
   }
   &__content {
   }
   .toast-icon {
-    font-size: var(--r-toast-icon-font-size, 32px);
-    margin-bottom: var(--r-toast-icon-margin-bottom, 8px);
+    font-size: var(--r-toast-icon-font-size);
+    margin-bottom: var(--r-toast-icon-margin-bottom);
   }
 }

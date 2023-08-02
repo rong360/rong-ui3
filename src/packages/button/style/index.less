@@ -1,3 +1,41 @@
+:root {
+  --r-button-transition: opacity 0.2s;
+  --r-button-default-color: #666;
+  --r-button-default-background: #fff;
+  --r-button-default-border: 1px solid rgb(204,204,204);
+  --r-button-primary-color: #fff;
+  --r-button-primary-background: #1989fa;
+  --r-button-primary-border: 1px solid #1989fa;
+  --r-button-success-color: #fff;
+  --r-button-success-background: #07c160;
+  --r-button-success-border: 1px solid #07c160;
+  --r-button-danger-color: #fff;
+  --r-button-danger-background: #ee0a24;
+  --r-button-danger-border: 1px solid #ee0a24;
+  --r-button-warning-color: #fff;
+  --r-button-warning-background: #ff976a;
+  --r-button-warning-border: 1px solid #ff976a;
+  --r-button-large-height: 50px;
+  --r-button-large-font-size: 16px;
+  --r-button-large-padding: 0 24px;
+  --r-button-normal-height: 44px;
+  --r-button-normal-font-size: 14px;
+  --r-button-normal-padding: 0 21px;
+  --r-button-small-height: 32px;
+  --r-button-small-font-size: 12px;
+  --r-button-small-padding: 0 15px;
+  --r-button-mini-height: 24px;
+  --r-button-mini-font-size: 10px;
+  --r-button-mini-padding: 0 11px;
+  --r-button-round-radius: 25px;
+  --r-button-plain-background: transparent;
+  --r-button-primary-background: #1989fa;
+  --r-button-success-background: #07c160;
+  --r-button-danger-background: #ee0a24;
+  --r-button-warning-background: #ff976a;
+  --r-button-disabled-opacity: 0.5;
+}
+
 .r-button {
   position: relative;
   display: inline-block;
@@ -7,7 +45,7 @@
   text-align: center;
   user-select: none;
   flex-shrink: 0;
-  transition: var(--r-button-transition, opacity 0.2s);
+  transition: var(--r-button-transition);
   cursor: pointer;
   &::before {
     content: ' ';
@@ -25,56 +63,56 @@
   }
   // ButtonType
   &--default {
-    color: var(--r-button-default-color, #666);
-    background: var(--r-button-default-background, #fff);
-    border: var(--r-button-default-border, 1px solid rgb(204,204,204));
+    color: var(--r-button-default-color);
+    background: var(--r-button-default-background);
+    border: var(--r-button-default-border);
   }
   &--primary {
-    color: var(--r-button-primary-color, white);
-    background: var(--r-button-primary-background, #1989fa);
-    border: var(--r-button-primary-border, 1px solid #1989fa);
+    color: var(--r-button-primary-color);
+    background: var(--r-button-primary-background);
+    border: var(--r-button-primary-border);
   }
   &--success {
-    color: var(--r-button-success-color, white);
-    background: var(--r-button-success-background, #07c160);
-    border: var(--r-button-success-border, 1px solid #07c160)
+    color: var(--r-button-success-color);
+    background: var(--r-button-success-background);
+    border: var(--r-button-success-border)
   }
   &--danger {
-    color: var(--r-button-danger-color, white);
-    background: var(--r-button-danger-background,  #ee0a24);
-    border: var(--r-button-danger-border, 1px solid #ee0a24);
+    color: var(--r-button-danger-color);
+    background: var(--r-button-danger-background);
+    border: var(--r-button-danger-border);
   }
   &--warning {
-    color: var(--r-button-warning-color, white);
-    background: var(--r-button-warning-background, #ff976a);
-    border: var(--r-button-warning-border, 1px solid #ff976a);
+    color: var(--r-button-warning-color);
+    background: var(--r-button-warning-background);
+    border: var(--r-button-warning-border);
   }
 
   // ButtonSize
   &--large {
-    height: var(--r-button-large-height, 50px);
-    font-size: var(--r-button-large-font-size, 16px);
-    padding: var(--r-button-large-padding, 0 24px);
+    height: var(--r-button-large-height);
+    font-size: var(--r-button-large-font-size);
+    padding: var(--r-button-large-padding);
   }
   &--normal {
-    height: var(--r-button-normal-height, 44px);
-    font-size: var(--r-button-normal-font-size, 14px);
-    padding: var(--r-button-normal-padding, 0 21px);
+    height: var(--r-button-normal-height);
+    font-size: var(--r-button-normal-font-size);
+    padding: var(--r-button-normal-padding);
   }
   &--small {
-    height: var(--r-button-small-height, 32px);
-    font-size: var(--r-button-small-font-size, 12px);
-    padding: var(--r-button-small-padding, 0 15px);
+    height: var(--r-button-small-height);
+    font-size: var(--r-button-small-font-size);
+    padding: var(--r-button-small-padding);
   }
   &--mini {
-    height: var(--r-button-mini-height, 24px);
-    font-size: var(--r-button-mini-font-size, 10px);
-    padding: var(--r-button-mini-padding, 0 11px);
+    height: var(--r-button-mini-height);
+    font-size: var(--r-button-mini-font-size);
+    padding: var(--r-button-mini-padding);
   }
 
   // ButtonShape
   &--round {
-    border-radius: var(--r-button-round-radius, 25px);
+    border-radius: var(--r-button-round-radius);
   }
 
   // block
@@ -84,25 +122,25 @@
 
   // plain
   &--plain {
-    background: var(--r-button-plain-background, transparent);
+    background: var(--r-button-plain-background);
   }
   &--plain&--primary {
-    color: var(--r-button-primary-background, #1989fa);
+    color: var(--r-button-primary-background);
   }
   &--plain&--success {
-    color: var(--r-button-success-background, #07c160);
+    color: var(--r-button-success-background);
   }
   &--plain&--danger {
-    color: var(--r-button-danger-background, #ee0a24);
+    color: var(--r-button-danger-background);
   }
   &--plain&--warning {
-    color: var(--r-button-warning-background, #ff976a);
+    color: var(--r-button-warning-background);
   }
 
   // disabled
   &--disabled {
     cursor: not-allowed;
-    opacity: var(--r-button-disabled-opacity, 0.5);
+    opacity: var(--r-button-disabled-opacity);
   }
 
   &__content {

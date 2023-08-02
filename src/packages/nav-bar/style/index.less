@@ -1,22 +1,39 @@
 //:: @import '../../icon/style/index.less';
 
+:root {
+  --r-nav-bar-z-index: 1;
+  --r-nav-bar-background: #fff;
+  --r-nav-bar-height: 44px;
+  --r-nav-bar-border-color: #ebedf0;
+  --r-nav-bar-title-color: #323233;
+  --r-nav-bar-title-font-size: 16px;
+  --r-nav-bar-title-font-weight: 0;
+  --r-nav-bar-left-padding: 0 16px;
+  --r-nav-bar-left-font-size: 14px;
+  --r-nav-bar-left-color: #1989fa;
+  --r-nav-bar-arrow-margin-right: 4px;
+  --r-nav-bar-right-padding: 0 16px;
+  --r-nav-bar-right-font-size: 14px;
+  --r-nav-bar-right-color: #1989fa;
+}
+
 .r-nav-bar {
   position: relative;
-  z-index: var(--r-nav-bar-z-index, 1);
+  z-index: var(--r-nav-bar-z-index);
   user-select: none;
-  background: var(--r-nav-bar-background, #fff);
+  background: var(--r-nav-bar-background);
   &__content {
     position: relative;
     display: flex;
     align-items: center;
-    height: var(--r-nav-bar-height, 44px);
-    border-color: var(--r-nav-bar-border-color, #ebedf0);
+    height: var(--r-nav-bar-height);
+    border-color: var(--r-nav-bar-border-color);
   }
   &__title {
     margin: 0 auto;
-    color: var(--r-nav-bar-title-color, #323233);
-    font-size: var(--r-nav-bar-title-font-size, 16px);
-    font-weight: var(--r-nav-bar-title-font-weight, 0);
+    color: var(--r-nav-bar-title-color);
+    font-size: var(--r-nav-bar-title-font-size);
+    font-weight: var(--r-nav-bar-title-font-weight);
   }
   &__left,
   &__right {
@@ -28,18 +45,18 @@
   }
   &__left {
     left: 0;
-    padding: var(--r-nav-bar-left-padding, 0 16px);
-    font-size: var(--r-nav-bar-left-font-size, 14px);
-    color: var(--r-nav-bar-left-color, #1989fa);
+    padding: var(--r-nav-bar-left-padding);
+    font-size: var(--r-nav-bar-left-font-size);
+    color: var(--r-nav-bar-left-color);
     .r-icon {
-      margin-right: var(--r-nav-bar-arrow-margin-right, 4px);
+      margin-right: var(--r-nav-bar-arrow-margin-right);
     }
   }
   &__right {
     right: 0;
-    padding: var(--r-nav-bar-right-padding, 0 16px);
-    font-size: var(--r-nav-bar-right-font-size, 14px);
-    color: var(--r-nav-bar-right-color, #1989fa);
+    padding: var(--r-nav-bar-right-padding);
+    font-size: var(--r-nav-bar-right-font-size);
+    color: var(--r-nav-bar-right-color);
   }
   &--fixed {
     position: fixed !important;
