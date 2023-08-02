@@ -11,12 +11,15 @@
     <r-cell title="嵌套滚动" is-link @click="clickScrollArea" />
     <r-cell title="改变位置" is-link @click="clickPosition" />
     <r-cell title="自定义slot内容" is-link @click="clickCustomSlot" />
+    <r-cell title="自定义弹窗" is-link @click="clickCustomDialog" />
   </r-cell-group>
 </template>
 
 <script lang="ts" setup>
-import { createVNode } from 'vue';
-import { showDialog } from '../../index';
+import { createVNode, h } from 'vue';
+import { showDialog, showCustomDialog } from '../../index';
+import Protocol from './Protocol.vue';
+import ProtocolText from './Protocol.vue?raw';
 
 // 基础弹窗
 const clickBase = () => {
@@ -150,4 +153,26 @@ const clickCustomSlot = () => {
     }
   );
 };
+
+// 自定义弹窗
+const clickCustomDialog = () => {
+  const dialog = showCustomDialog({
+    message: h(Protocol, { onCloseProtocolDialog: () => dialog.remove() })
+  });
+};
+
+// Protocol.vue
+/*
+<template>
+  <div class="protocol">
+    <div>this is protocol content</div>
+    <button @click="closeProtocolDialog"> 关闭 </button>
+  </div>
+</template>
+
+const emit = defineEmits(['closeProtocolDialog']);
+const closeProtocolDialog = () => {
+  emit('closeProtocolDialog');
+};
+ */
 </script>

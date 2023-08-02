@@ -144,9 +144,9 @@ export default defineConfig(({ mode }) => {
           manualChunks: {
             highlightjs: ['highlight.js']
           },
-          chunkFileNames: 'js/[name].js',
-          entryFileNames: 'js/[name].js',
-          assetFileNames: '[ext]/[name].[ext]',
+          chunkFileNames: 'js/[name].[hash].js',
+          entryFileNames: 'js/[name].[hash].js',
+          assetFileNames: '[ext]/[name].[hash].[ext]',
           // H5打包部署到github后文件`_plugin-vue_export-helper`访问不到
           // https://github.com/rollup/rollup/blob/master/src/utils/sanitizeFileName.ts
           sanitizeFileName(name) {

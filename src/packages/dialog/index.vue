@@ -28,7 +28,7 @@
     <div :class="classes.content" :style="contentStyle">
       <slot>
         <div v-if="typeof message === 'string'" v-html="message"></div>
-        <component v-else-if="typeof message === 'object'" :is="message" />
+        <RenderText v-else :text="message" />
       </slot>
     </div>
     <slot name="footer">
@@ -65,12 +65,13 @@ import {
   makeStyleProp,
   makeBooleanProp,
   makeTextualProp,
-  withInstall
+  withInstall,
+  RenderText
 } from '../utils';
 import { useEventListener, useCustomEvent } from '../composables';
 import { showDialog } from './function-call';
 
-export { showDialog } from './function-call';
+export { showDialog, showCustomDialog } from './function-call';
 
 const { name, bem } = createNamespace('dialog');
 
@@ -100,7 +101,8 @@ const Dialog = defineComponent({
   components: {
     [Popup.name]: Popup,
     [Icon.name]: Icon,
-    [Button.name]: Button
+    [Button.name]: Button,
+    RenderText
   },
   emits: ['clickOverlay', 'clickPopup', 'clickCloseIcon', 'update:show', 'cancel', 'confirm', 'opened', 'closed'],
   setup(props, { emit, attrs, slots }) {

@@ -35,3 +35,12 @@ export const showDialog = (options: ShowDialogOtions, children?: unknown): ShowD
 
   return ret;
 };
+
+export const showCustomDialog = (options: ShowDialogOtions, children?: unknown): ShowDialogRet => {
+  options.showCancelButton = false;
+  options.showConfirmButton = false;
+  options.popupStyle = Object.assign({ backgroundColor: 'initial' }, options.popupStyle);
+  options.contentStyle = Object.assign({ padding: 0 }, options.contentStyle);
+  const dialog = showDialog(options, children);
+  return dialog;
+};
