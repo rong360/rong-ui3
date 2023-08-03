@@ -33,7 +33,7 @@ for (const path in cnDoc) {
 routes.push({
   path: '/zh-CN/component/',
   component: Component,
-  redirect: '/zh-CN/component/dialog',
+  redirect: '/zh-CN/component/button',
   children: cnRoutes
 });
 

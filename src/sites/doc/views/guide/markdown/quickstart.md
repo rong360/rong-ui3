@@ -10,9 +10,11 @@
 
 
 
-### 安装
+
 
 <div class="card">
+
+### 安装
 
 #### 1. 通过 npm 安装
 
@@ -76,9 +78,11 @@ pnpm add rong-ui3
 </div>
 
 
-### 组件使用
+
 
 <div class="card">
+
+### 组件使用
 
 #### 方法一、常规用法
 ##### 1. 全局全量引入
@@ -103,7 +107,8 @@ createApp(App).use(Button).mount("#app");
 <div class="card">
 
 #### 方法二、自动按需引入
-在基于 vite、vue-cli 或 webpack 的项目中使用 NutUI 时，可以使用 unplugin-vue-components 插件，不需手动引入组件，它可自动引入组件及样式。此方法在使用中配置过程比较繁琐一些，如业务场景无特殊要求，更推荐使用简便的常规用法。
+
+在基于 vite、vue-cli 或 webpack 的项目中使用RongUi 时，可以使用 <a href="https://github.com/antfu/unplugin-vue-components" target="_blank">unplugin-vue-components</a>插件，它可自动引入组件及样式，不再需要手动引入。
 #### 1、安装插件
 ```js
 # 通过 npm 安装
@@ -149,7 +154,7 @@ export default defineConfig({
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import Components from 'unplugin-vue-components/webpack'
-import RongUIResolver from 'rong-ui3/resolver'
+import { RongUIResolver } from 'rong-ui3/resolver'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -196,15 +201,15 @@ import 'rong-ui3/es/dialog/style/index.css'; // or index.less
 </div>
 
 
-### 注意事项
-
 <div class="card">
+
+### 注意事项
 
 #### 1、按需引入插件升级
 rong-ui3 移除了 `babel-plugin-import` 、`vite-plugin-style-import` 插件的使用，按需引入样式不再依赖于 `babel`，开发者可以选择其他效率更高的编译工具。同时，rong-ui3 适配了支持自动引入和注册组件的 `unplugin-vue-components` 插件，这将使开发体验有所提升。
 
 #### 2、组件单位选择
-组件 css 单位使用的是 px，如果你的项目中需要 rem 单位，可借助一些工具进行转换，比如 `webpack` 的 `px2rem-loader`、`postcss` 的 `postcss-plugin-px2rem` 插件等。
+组件 css 单位使用的是 px，如果你的项目中需要 rem 单位，可借助一些工具进行转换，比如 `webpack` 的 `px2rem-loader`、`postcss` 的 `postcss-plugin-px2rem`、`postcss-pxtorem` 插件等。
 
 #### 3、使用 JSX、TSX 编写项目时无法实现自动按需引入
 `unplugin-vue-components` 插件的默认配置不识别 JSX、TSX 文件，需要手动添加 include 字段：
