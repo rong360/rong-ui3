@@ -5,8 +5,9 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import Markdown from 'vite-plugin-md';
 const he = require('he');
+import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
-import { RongUIResolver } from './src/resolver';
+import { RongUIResolver, type RongUIResolverOptions } from './src/resolver';
 
 import hljs from 'highlight.js';
 
@@ -20,6 +21,16 @@ import hljs from 'highlight.js';
  *  npm link rong-ui3
  */
 const isTestRongUi3 = false;
+const rongUIResolverOptions: RongUIResolverOptions = isTestRongUi3
+  ? {
+      importStyle: 'less'
+    }
+  : {
+      from: '@/packages/index.ts',
+      sideEffects(dirName) {
+        return `@/packages/${dirName}/style/index.less`;
+      }
+    };
 
 // 文件重命名 如：logo.svg?v=s234sd3 --> logo.svg
 export function renameFileName(): Plugin {
@@ -91,22 +102,37 @@ export default defineConfig(({ mode }) => {
               }
             }
           });
+
+          md.use(require('markdown-it-container'), 'hljs', {
+            validate: function (params) {
+              // params 指的是::: 后的字符
+              return params.trim().match(/^hljs\s*(.*)$/);
+            },
+            render: function (tokens, idx) {
+              // 通过 tokens[idx].info.trim() 取出 'click me' 字符串
+              const m = tokens[idx].info.trim().match(/^hljs\s*(.*)$/);
+              // 开始标签的 nesting 为 1，结束标签的 nesting 为 -1
+              if (tokens[idx].nesting === 1) {
+                // opening tag
+                const contentHtml = he.encode(tokens[idx + 1].content);
+                return `<HljsBlock code="${contentHtml}">` + md.utils.escapeHtml(m[1]) + '\n';
+              } else {
+                // closing tag
+                return '</HljsBlock>\n';
+              }
+            }
+          });
         }
+      }),
+      AutoImport({
+        eslintrc: {
+          enabled: true
+        },
+        resolvers: [RongUIResolver(rongUIResolverOptions)]
+      }),
+      Components({
+        resolvers: [RongUIResolver(rongUIResolverOptions)]
       })
-      // Components({
-      //   resolvers: [
-      //     isTestRongUi3
-      //       ? RongUIResolver({
-      //           importStyle: 'less'
-      //         })
-      //       : RongUIResolver({
-      //           from: '@/packages/index.ts',
-      //           sideEffects(dirName) {
-      //             return `@/packages/${dirName}/style/index.less`;
-      //           }
-      //         })
-      //   ]
-      // })
     ],
     resolve: {
       alias: {

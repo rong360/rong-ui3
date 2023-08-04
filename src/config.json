@@ -11,6 +11,12 @@
       "cName": "快速上手",
       "eName": "Quickstart",
       "show": true
+    },
+    {
+      "name": "advanced-usage",
+      "cName": "进阶用法",
+      "eName": "AdvancedUsage",
+      "show": true
     }
   ],
   "component": [

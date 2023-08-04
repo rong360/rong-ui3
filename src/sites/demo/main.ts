@@ -1,13 +1,15 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
+// px2rem 自适应
+import 'lib-flexible'
 import './assets/touchEmulator';
-import RongUi3, { setToastDefaultOptions } from '../../packages';
+// import RongUi3, { setToastDefaultOptions } from '../../packages';
 import './assets/main.less';
-import '../../packages/index.less';
+// import '../../packages/index.less';
 import NavBar from './components/NavBar.vue';
 
-setToastDefaultOptions({ duration: 2000 });
+// setToastDefaultOptions({ duration: 2000 });
 setToastDefaultOptions('success', { overlayStyle: { backgroundColor: 'rgba(123 ,2, 33, 0.5)' } });
 
 // import RongUi3 from 'rong-ui3';
@@ -18,7 +20,7 @@ setToastDefaultOptions('success', { overlayStyle: { backgroundColor: 'rgba(123 ,
 const app = createApp(App);
 
 app.use(router);
-app.use(RongUi3);
+// app.use(RongUi3);
 
 app.component('NavBar', NavBar);
 

@@ -18,11 +18,16 @@
 
 在项目中使用 rong-ui3 时，可通过 npm 安装：  
 
+:::hljs
 ```js
 npm i rong-ui3
 ```
+:::
 
-你也可以使用 yarn 或 pnpm 进行安装：
+<br/>
+
+你也可以使用 yarn 或 pnpm 进行安装：  
+:::hljs
 ```js
 # 通过 yarn 安装
 yarn add rong-ui3
@@ -30,6 +35,7 @@ yarn add rong-ui3
 # 通过 pnpm 安装
 pnpm add rong-ui3
 ```
+:::
 
 </div>
 
@@ -39,6 +45,7 @@ pnpm add rong-ui3
 
 #### 2. 通过 CDN 安装及使用
 > 可以在 jsdelivr 和 unpkg 等公共 CDN 上获取到 RongUI。 不推荐在生产环境使用组件库 CDN，如果需要这种使用方式，建议将特定版本的 CDN 文件下载至本地项目目录中使用。
+:::hljs
 ```html
 <!DOCTYPE html>
 <html>
@@ -72,6 +79,7 @@ pnpm add rong-ui3
   </body>
 </html>
 ```
+:::
 
 </div>
 
@@ -82,6 +90,8 @@ pnpm add rong-ui3
 
 #### 方法一、常规用法
 ##### 1. 全局全量引入
+如果你对打包后的文件大小不是很在乎，那么使用完整导入会更方便。
+:::hljs
 ```js
 import { createApp } from "vue";
 import App from "./App.vue";
@@ -89,7 +99,12 @@ import RongUI from "rong-ui3";
 import "rong-ui3/style.css";
 createApp(App).use(RongUI).mount("#app");
 ```
+:::
+
+
+
 ##### 2. 全局部分引入
+:::hljs
 ```js
 import { createApp } from "vue";
 import App from "./App.vue";
@@ -97,32 +112,30 @@ import { Button } from "rong-ui3";
 import "rong-ui3/style.css";
 createApp(App).use(Button).mount("#app");
 ```
+:::
 
 </div>
 
 <div class="card">
 
-#### 方法二、自动按需引入
-在基于 vite、vue-cli 或 webpack 的项目中使用 NutUI 时，可以使用 unplugin-vue-components 插件，不需手动引入组件，它可自动引入组件及样式。此方法在使用中配置过程比较繁琐一些，如业务场景无特殊要求，更推荐使用简便的常规用法。
-#### 1、安装插件
+#### 方法二、按需导入
+#### 1、自动导入 (推荐)
+在基于 vite、vue-cli 或 webpack 的项目中使用 rong-ui3 时，可以使用 unplugin-vue-components 和 unplugin-auto-import这两款插件，不需手动引入组件，它可自动引入组件及样式。
+:::hljs
 ```js
-# 通过 npm 安装
-npm i unplugin-vue-components -D
-
-# 通过 yarn 安装
-yarn add unplugin-vue-components -D
-
-# 通过 pnpm 安装
-pnpm add unplugin-vue-components -D
+npm install -D unplugin-vue-components unplugin-auto-import
 ```
-#### 2、项目配置
+:::
+然后把下列代码插入到你的 Vite 或 Webpack 的配置文件中
 <details>
 <summary>vite</summary>
 
+:::hljs
 ```js
 // vite.config.js
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { RongUIResolver } from 'rong-ui3/resolver'
 
@@ -130,13 +143,19 @@ import { RongUIResolver } from 'rong-ui3/resolver'
 export default defineConfig({
   plugins: [
     vue(),
-    // 开启 unplugin 插件，自动引入 RongUI 组件
+    AutoImport({
+      eslintrc: {
+        enabled: true,
+      },
+      resolvers: [RongUIResolver()],
+    }),
     Components({
       resolvers: [RongUIResolver()]
     }),
   ]
 })
 ```
+:::
 </details>
 
 <br/>
@@ -144,88 +163,106 @@ export default defineConfig({
 <details>
 <summary>webpack</summary>
 
+:::hljs
 ```js
 // vite.config.js
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import Components from 'unplugin-vue-components/webpack'
-import RongUIResolver from 'rong-ui3/resolver'
+const AutoImport = require('unplugin-auto-import/webpack')
+const Components = require('unplugin-vue-components/webpack')
+const { RongUIResolver } = require('rong-ui3/resolver')
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
-    // 开启 unplugin 插件，自动引入 RongUI 组件
+    AutoImport({
+      eslintrc: {
+        enabled: true,
+      },
+      resolvers: [RongUIResolver()],
+    }),
     Components({
       resolvers: [RongUIResolver()]
     }),
   ]
 })
 ```
+:::
+
 </details>
 
-#### 3、使用组件
-可以直接在模板中使用 RongUI 组件，unplugin-vue-components 插件会自动注册对应的组件，并按需引入组件样式。
-```html
-# 直接使用
-<template>
-  <r-button></r-button>
-</template>
-```
-
-```js
-# 移除手动引入和注册的代码
-// import { Button } from 'rong-ui3';
-// app.use(Button);
-```
-
-#### 4、使用函数式组件
-RongUI 中 Toast，Dialog 组件除标签式使用外，还可使用函数形式调用。在使用时，unplugin-vue-components 无法自动引入对应的样式文件，需要你手动引入样式。
-```js
-// Toast
-import { showToast } from 'rong-ui3';
-import 'rong-ui3/es/toast/style/index.css'; // or index.less
-```
-
-```js
-// Dialog
-import { showDialog } from 'rong-ui3';
-import 'rong-ui3/es/dialog/style/index.css'; // or index.less
-```
-
-</div>
-
-
-### 注意事项
-
-<div class="card">
-
-#### 1、按需引入插件升级
-rong-ui3 移除了 `babel-plugin-import` 、`vite-plugin-style-import` 插件的使用，按需引入样式不再依赖于 `babel`，开发者可以选择其他效率更高的编译工具。同时，rong-ui3 适配了支持自动引入和注册组件的 `unplugin-vue-components` 插件，这将使开发体验有所提升。
-
-#### 2、组件单位选择
-组件 css 单位使用的是 px，如果你的项目中需要 rem 单位，可借助一些工具进行转换，比如 `webpack` 的 `px2rem-loader`、`postcss` 的 `postcss-plugin-px2rem` 插件等。
-
-#### 3、使用 JSX、TSX 编写项目时无法实现自动按需引入
-`unplugin-vue-components` 插件的默认配置不识别 JSX、TSX 文件，需要手动添加 include 字段：
-```js
-Components({
-  include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/],
-  resolvers: [RongUIResolver()],
-})
-```
-
-#### 4、在 vue-cli 或 webpack 中使用按需引入时组件没有类型提示
-解决方案：`unplugin-vue-components` 插件会为引入的组件自动生成全局类型文件 `components.d.ts`，请保留该文件并在 `tsconfig.json` 中将它添加至 `include` 字段中。
+##### 添加ts类型提示   
+`unplugin-vue-components` 和 `unplugin-auto-import` 插件会为引入的组件自动生成全局类型文件 `components.d.ts` 和 `auto-imports.d.ts`，请保留该文件并在 `tsconfig.json` 中将它添加至 `include` 字段中
+:::hljs
 ```js
 {
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
-    "components.d.ts"
+    "components.d.ts",
+    "auto-imports.d.ts"
   ],
 }
 ```
+:::
+
+##### 添加eslint提示
+当 `unplugin-auto-import`插件配置 { eslintrc:{enabled: true } } 时， 插件会自动生成 `.eslintrc-auto-import.json`,请保留该文件并在 `.eslintrc.cjs` 中将它添加至 `extends` 字段中
+:::hljs
+```js
+extends: [
+  'plugin:vue/vue3-essential',
+  'eslint:recommended',
+  '@vue/eslint-config-typescript',
+  '@vue/eslint-config-prettier',
+  './.eslintrc-auto-import.json'
+]
+```
+:::
+
+##### 组件使用
+直接使用组件, `unplugin-vue-components` 和 `unplugin-auto-import` 插件会自动注册对应的组件，并按需引入组件样式。
+:::hljs
+```html
+<template>
+  <r-button @click="doSubmit"></r-button>
+</template>
+<script setup>
+  const doSubmit = () => showToast('我是提示信息')
+</script>
+```
+:::
+
+
+
+#### 2、手动导入标签组件和函数式组件
+:::hljs
+```html
+<template>
+  <r-button @click="doSubmit">我是 Button</r-button>
+</template>
+<script>
+  import { Button, showDialog } from 'rong-ui3'
+  import 'rong-ui3/es/button/style/index.css'; // or index.less
+  import 'rong-ui3/es/dialog/style/index.css'; // or index.less
+  export default {
+    components: { 
+      [Button.name]: Button
+     },
+     methods: {
+      doSubmit() {
+        showDialog({
+          title: '基础弹窗',
+          message: createVNode('span', { style: { color: 'red' } }, '我可以是一个自定义组件 vNode/.vue'),
+          onConfirm() {
+            this.remove();
+          }
+        });
+      }
+     }
+  }
+</script>
+```
+:::
 
 </div>

@@ -1,9 +1,11 @@
 <template>
-  <pre
-    class="hljs-block"
-    ref="preBlock"
-    @click.self="clcikHandle"
-  ><div class="demo-block-expand" v-if="isScroll" :title="isExpand? '折叠': '展开'"><ExpandIcon v-if="isExpand" @click="toggleEpandIcon"></ExpandIcon><UnExpandIcon v-else @click="toggleEpandIcon"></UnExpandIcon></div><code v-html="code" :class="codeClass" :style="{ maxHeight: maxHeight}"></code></pre>
+  <div class="hljs-block" ref="preBlock" @click.self="clcikHandle"
+    ><div class="demo-block-expand" v-if="isScroll" :title="isExpand ? '折叠' : '展开'"
+      ><ExpandIcon v-if="isExpand" @click="toggleEpandIcon"></ExpandIcon
+      ><UnExpandIcon v-else @click="toggleEpandIcon"></UnExpandIcon></div
+    ><div :class="codeClass" :style="{ maxHeight: maxHeight }"
+      ><slot><code v-html="code"></code></slot></div
+  ></div>
 </template>
 
 <script setup lang="ts">
@@ -60,7 +62,11 @@ const toggleEpandIcon = () => {
 
 <style lang="less">
 .hljs-block {
-  > code {
+  margin-top: 20px;
+  > .language-html,
+  > .language-js,
+  > .language-javascript,
+  > .language-xml {
     max-height: 400px;
     overflow-y: auto;
     &.is-expand {

@@ -17,7 +17,6 @@
 
 <script lang="ts" setup>
 import { createVNode, h } from 'vue';
-import { showDialog, showCustomDialog } from '../../index';
 import Protocol from './Protocol.vue';
 
 // 基础弹窗

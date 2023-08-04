@@ -2,7 +2,7 @@ import { createApp } from 'vue';
 import App from './App.vue';
 import router from './router';
 
-import './assets/main.css';
+import './assets/main.less';
 import './assets/styles/md-style.scss';
 import DemoBlock from './components/demo-block/index.vue';
 import HljsBlock from './components/hljs-block/index.vue';
@@ -24,6 +24,6 @@ app.use(router);
 // app.use(hljsVuePlugin);
 
 app.component('DemoBlock', DemoBlock);
-app.component('HljsBlock', HljsBlock)
+app.component('HljsBlock', HljsBlock);
 
 app.mount('#app');

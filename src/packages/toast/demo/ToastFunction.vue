@@ -14,7 +14,6 @@
 
 <script lang="ts" setup>
 import { createVNode, h } from 'vue';
-import { showToast, showSuccessToast, showFailToast, showLongToast, showLoadingToast } from '../../index';
 
 // 文字提示
 const clickBase = () => showToast('提示内容');

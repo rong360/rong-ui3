@@ -1,7 +1,7 @@
-import type { ComponentResolver, SideEffectsInfo } from 'unplugin-vue-components/types';
+import type { ComponentResolver, ComponentResolveResult } from 'unplugin-vue-components/types';
 import { kebabCase } from '../packages/utils/';
 
-interface RongUIResolverOptions {
+export interface RongUIResolverOptions {
   // import css or less,  default true
   importStyle?: boolean | 'css' | 'less';
   // import component from, default 'rong-ui3'
@@ -9,31 +9,45 @@ interface RongUIResolverOptions {
   sideEffects?: (dirName: string) => string;
 }
 
-function getSideEffects(dirName: string, options: RongUIResolverOptions): SideEffectsInfo | undefined {
+function getResolveResult(name: string, componentName: string, options: RongUIResolverOptions): ComponentResolveResult {
   const { importStyle = true, sideEffects } = options;
+  const dirName = kebabCase(componentName);
 
-  if (!importStyle) return;
+  if (!options.from) options.from = 'rong-ui3';
 
-  if (sideEffects) return sideEffects(dirName);
+  const style = sideEffects
+    ? sideEffects(dirName)
+    : `rong-ui3/es/${dirName}/style/${importStyle === 'less' ? 'index' : 'css'}.js`;
 
-  if (importStyle === 'less') return `rong-ui3/es/${dirName}/style/index.js`;
-
-  return `rong-ui3/es/${dirName}/style/css.js`;
+  return {
+    name,
+    from: options.from,
+    sideEffects: importStyle ? style : undefined
+  };
 }
+
+const RFunctions = [
+  { name: 'showDialog', componentName: 'Dialog' },
+  { name: 'showCustomDialog', componentName: 'Dialog' },
+  { name: 'showToast', componentName: 'Toast' },
+  { name: 'showLoadingToast', componentName: 'Toast' },
+  { name: 'showSuccessToast', componentName: 'Toast' },
+  { name: 'showFailToast', componentName: 'Toast' },
+  { name: 'showLongToast', componentName: 'Toast' },
+  { name: 'setToastDefaultOptions', componentName: 'Toast' }
+];
 
 export function RongUIResolver(options: RongUIResolverOptions = {}): ComponentResolver {
   return {
     type: 'component',
     resolve: (name: string) => {
-      if (!options.from) options.from = 'rong-ui3';
-      const { from } = options;
-      if (/R[A-Z][a-z]+/.test(name)) {
-        const componentName = name.slice(1);
-        return {
-          name: componentName,
-          from,
-          sideEffects: getSideEffects(kebabCase(componentName), options)
-        };
+      if (/R[A-Z][a-z]+/.test(name)) return getResolveResult(name.slice(1), name.slice(1), options);
+
+      for (let i = 0; i < RFunctions.length; i++) {
+        const functionComponent = RFunctions[i];
+        if (functionComponent.name === name) {
+          return getResolveResult(functionComponent.name, functionComponent.componentName, options);
+        }
       }
     }
   };

@@ -35,8 +35,8 @@ app.use(CellGroup);
   import CellGroup from './demo/CellGroup.vue?raw'
 </script>
 <HljsBlock :code="CellBase"></HljsBlock>
-
-也可以于 `CellGroup` 搭配使用，展示分组标题，转换为圆角卡片风格.
+<br/>
+也可以于 `CellGroup` 搭配使用，展示分组标题，转换为圆角卡片风格.    
 <HljsBlock :code="CellGroup"></HljsBlock>
 
 </div>
