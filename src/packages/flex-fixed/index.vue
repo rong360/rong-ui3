@@ -1,25 +1,25 @@
 <template>
-  <div :class="bem({ useFixed })" v-preventscroll>
-    <header :class="bem('header')">
+  <div :class="classes.root" v-preventscroll>
+    <header :class="classes.header">
       <slot name="header"></slot>
     </header>
-    <main :class="bem('main')" class="scroll-area" @touchstart.passive="touchstartMain" @scroll.passive="onScroll">
-      <div :class="bem('header-copy')" v-if="useFixed">
+    <main :class="classes.main" class="scroll-area" @touchstart.passive="touchstartMain" @scroll.passive="onScroll">
+      <div :class="classes['header-copy']" v-if="useFixed">
         <slot name="header"></slot>
       </div>
       <slot></slot>
-      <div :class="bem('footer-copy')" v-if="useFixed">
+      <div :class="classes['footer-copy']" v-if="useFixed">
         <slot name="footer"></slot>
       </div>
     </main>
-    <footer :class="bem('footer')" v-if="showFooter">
+    <footer :class="classes.footer" v-if="showFooter">
       <slot name="footer"></slot>
     </footer>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref, onMounted } from 'vue';
+import { defineComponent, reactive, ref, onMounted, computed } from 'vue';
 import { createNamespace, withInstall, makeBooleanProp } from '../utils';
 import { preventscroll } from '../directives';
 import { useEventListener } from '../composables';
@@ -38,6 +38,15 @@ const FlexFixed = defineComponent({
     preventscroll
   },
   setup(props, { emit }) {
+    const classes = reactive({
+      root: computed(() => bem({ usefixed: props.useFixed })),
+      header: computed(() => bem('header')),
+      main: computed(() => bem('main')),
+      footer: computed(() => bem('footer')),
+      'header-copy': computed(() => bem('header-copy')),
+      'footer-copy': computed(() => bem('footer-copy'))
+    });
+
     // --- touchmove on main element ---
     const scrollInfo = reactive({
       scrollTop: 0,
@@ -89,6 +98,7 @@ const FlexFixed = defineComponent({
 
     return {
       bem,
+      classes,
       onScroll,
       touchstartMain,
       showFooter
