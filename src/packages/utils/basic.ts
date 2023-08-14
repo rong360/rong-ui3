@@ -39,3 +39,7 @@ export function keyAddPrefix(obj: Record<string, any>, prefix: string) {
 
 export const isSameValue = (newValue: unknown, oldValue: unknown) =>
   JSON.stringify(newValue) === JSON.stringify(oldValue);
+
+export function createUnqueId(prefix: string = '') {
+  return `${prefix}-${String(Date.now()).slice(-4)}${Math.round(Math.random() * 10000)}`;
+}

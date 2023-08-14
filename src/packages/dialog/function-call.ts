@@ -1,5 +1,6 @@
 import { render, createVNode, type VNode } from 'vue';
 import Dialog, { type DialogProps } from './index.vue';
+import { createUnqueId } from '../utils';
 
 type ShowDialogRet = {
   remove: () => void;
@@ -15,11 +16,13 @@ export interface ShowDialogOtions extends Partial<DialogProps> {
 
 export const showDialog = (options: ShowDialogOtions, children?: unknown): ShowDialogRet => {
   const { onCancel, onConfirm, onClickOverlay, onClickCloseIcon, ...restOptions } = options;
+  const dialogId = createUnqueId('dialog');
   const vNode = createVNode(
     Dialog,
     {
       show: true,
       from$dialog: true,
+      dialogId,
       onCancel: () => onCancel && onCancel.call(ret),
       onConfirm: () => onConfirm && onConfirm.call(ret),
       onClickOverlay: () => onClickOverlay && onClickOverlay.call(ret),
@@ -31,7 +34,10 @@ export const showDialog = (options: ShowDialogOtions, children?: unknown): ShowD
   const remove = () => ((vNode?.component?.proxy as any).isDialogShow = false);
   const ret: ShowDialogRet = { remove, vNode };
 
-  render(vNode, document.body);
+  const dialog = document.createElement('div');
+  dialog.setAttribute('id', dialogId);
+  document.body.appendChild(dialog);
+  render(vNode, dialog);
 
   return ret;
 };

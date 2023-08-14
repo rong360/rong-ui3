@@ -128,7 +128,15 @@ const Dialog = defineComponent({
     );
 
     // 通过$dialog方法创建的弹窗，hash变化时从根节点移除弹出
-    const unmountDialog = () => render(null, document.body);
+    const unmountDialog = () => {
+      if (attrs.dialogId) {
+        const dialog = document.getElementById(attrs.dialogId as string) as HTMLElement;
+        render(null, dialog);
+        document.body.removeChild(dialog);
+      } else {
+        render(null, document.body);
+      }
+    };
     if (attrs.from$dialog) {
       useEventListener(window, 'hashchange', unmountDialog);
       useEventListener(window, 'popstate', unmountDialog);
