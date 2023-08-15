@@ -37,7 +37,7 @@ app.component(Button.name, Button);
 
 
 ##### 局部注册
-局部注册后，你可以在当前组件中使用注册的 Vant 组件。
+局部注册后，你可以在当前组件中使用注册的 RongUi3 组件。
 
 :::hljs
 ```js
@@ -57,7 +57,7 @@ export default {
 
 
 ##### script setup
-在 `<script setup>` 中可以直接使用 Vant 组件，不需要进行组件注册。
+在 `<script setup>` 中可以直接使用 RongUi3 组件，不需要进行组件注册。
 :::hljs
 ```xml
 <script setup>
@@ -73,7 +73,7 @@ export default {
 
 
 ##### JSX/TSX
-在 JSX 和 TSX 中可以直接使用 Vant 组件，不需要进行组件注册。
+在 JSX 和 TSX 中可以直接使用 RongUi3 组件，不需要进行组件注册。
 :::hljs
 ```js
 import { Button } from 'rong-ui3';
@@ -113,7 +113,7 @@ module.exports = {
 };
 ```
 :::
-> Tips: 在配置 postcss-pxtorem 时，同样应避免 ignore node_modules 目录，否则会导致 Vant 样式无法被编译。
+> Tips: 在配置 postcss-pxtorem 时，同样应避免 ignore node_modules 目录，否则会导致 RongUi3 样式无法被编译。
 
 
 
@@ -128,7 +128,7 @@ module.exports = {
     // postcss-pxtorem 插件的版本需要 >= 5.0.0
     'postcss-pxtorem': {
       rootValue({ file }) {
-        return file.indexOf('vant') !== -1 ? 37.5 : 75;
+        return file.indexOf('rong-ui3') !== -1 ? 37.5 : 75;
       },
       propList: ['*'],
     },
