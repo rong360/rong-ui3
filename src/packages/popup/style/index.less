@@ -63,11 +63,13 @@
     border-radius: var(--r-popup-border-radius) 0 0 var(--r-popup-border-radius);
   }
 
-  &-bounce-enter-active {
-    animation: popup-bounce-in .55s;
-  }
+  &-bounce-enter-active,
   &-bounce-leave-active {
-    animation: popup-bounce-in .55s reverse;
+    transition: opacity .55s ease;
+  }
+  &-bounce-enter-from,
+  &-bounce-leave-to {
+    opacity: 0;
   }
 
   &-bottom-enter-from,
@@ -123,17 +125,5 @@
       bottom: var(--r-popup-close-icon-margin);
       left:  var(--r-popup-close-icon-margin);
     }
-  }
-}
-
-@keyframes popup-bounce-in {
-  0% {
-    transform: translate(-50%, -50%) scale(0);
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.25);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
   }
 }
