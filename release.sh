@@ -5,7 +5,7 @@ npm run build
 
 cd release
 
-npm publish
+#npm publish
 
 
 # npm link
