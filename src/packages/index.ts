@@ -74,7 +74,7 @@ RRadioGroup: typeof RadioGroup;
 
   }
 }
-const version = '0.0.3';
+const version = '0.0.4';
 
 export { install, version, Button, Cell, CellGroup, Overlay, Popup, Icon, NavBar, FlexFixed, Divider, Dialog, Toast, Form, FormItem, Input, Picker, Select, Checkbox, CheckboxGroup, Radio, RadioGroup };
 export default { install, version };

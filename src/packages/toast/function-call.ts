@@ -1,6 +1,7 @@
 import { render, createVNode, type VNode } from 'vue';
 import Toast, { type ToastProps } from './index.vue';
 import type { ToastType } from './types';
+import { createUnqueId } from '../utils';
 
 export interface ToastOptions extends Partial<ToastProps> {
   type?: ToastType;
@@ -31,19 +32,24 @@ const defaultOptionsMap: Record<ToastType, ToastOptions> = {
 export const showToast = (options: string | ToastOptions): ToastRet => {
   const { onClickOverlay, type, ...restOptions } = parseOptions(options);
   const newRestOptions = Object.assign({}, defaultOptionsMap['default'], type && defaultOptionsMap[type], restOptions);
+  const toastId = createUnqueId('toast');
 
   const vNode = createVNode(
     Toast,
     {
       show: true,
       from$toast: true,
+      toastId,
       onClickOverlay: () => onClickOverlay && onClickOverlay.call(ret),
       ...newRestOptions
     },
     newRestOptions.slots
   );
 
-  render(vNode, document.body);
+  const toast = document.createElement('div');
+  toast.setAttribute('id', toastId);
+  document.body.appendChild(toast);
+  render(vNode, toast);
 
   const remove = () => ((vNode?.component?.proxy as any).isToastShow = false);
   const setMessage = (message: string | VNode) => ((vNode?.component?.props as any).message = message);

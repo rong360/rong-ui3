@@ -120,7 +120,15 @@ const Toast = defineComponent({
     );
 
     // 通过$toast方法创建的弹窗，hash变化时从根节点移除弹出
-    const unmountToast = () => render(null, document.body);
+    const unmountToast = () => {
+      if (attrs.toastId) {
+        const toast = document.getElementById(attrs.toastId as string) as HTMLElement;
+        render(null, toast);
+        document.body.removeChild(toast);
+      } else {
+        render(null, document.body);
+      }
+    };
     if (attrs.from$toast) {
       useEventListener(window, 'hashchange', unmountToast);
       useEventListener(window, 'popstate', unmountToast);
