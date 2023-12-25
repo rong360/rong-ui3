@@ -123,8 +123,10 @@ const Toast = defineComponent({
     const unmountToast = () => {
       if (attrs.toastId) {
         const toast = document.getElementById(attrs.toastId as string) as HTMLElement;
-        render(null, toast);
-        document.body.removeChild(toast);
+        if (toast) {
+          render(null, toast);
+          document.body.removeChild(toast);
+        }
       } else {
         render(null, document.body);
       }
