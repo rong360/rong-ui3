@@ -131,8 +131,10 @@ const Dialog = defineComponent({
     const unmountDialog = () => {
       if (attrs.dialogId) {
         const dialog = document.getElementById(attrs.dialogId as string) as HTMLElement;
-        render(null, dialog);
-        document.body.removeChild(dialog);
+        if (dialog) {
+          render(null, dialog);
+          document.body.removeChild(dialog);
+        }
       } else {
         render(null, document.body);
       }

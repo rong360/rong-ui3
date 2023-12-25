@@ -1,6 +1,6 @@
 {
   "name": "rong-ui3",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "scripts": {
     "checked": "npm run generate:entry",
     "dev": "npm run checked && vite --mode dev",
